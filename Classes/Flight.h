@@ -1,7 +1,3 @@
-//
-// Created by Ian on 25/11/2021.
-//
-
 #ifndef TP1_AED_FLIGHT_H
 #define TP1_AED_FLIGHT_H
 
@@ -28,7 +24,6 @@ public:
     date GetArrivalDate() const;
     date GetDepartureDate() const;
     bool operator == (const Flight& flight);
-    //Flight& operator = (const Flight& flight);
 };
 
 

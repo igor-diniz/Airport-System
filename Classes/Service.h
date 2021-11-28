@@ -11,8 +11,6 @@ struct date
 //a. Um serviço é caracterizado
 //por tipo de serviço (manutenção/limpeza), data e funcionário responsável.
 class Service {
-    Service(char *serviceType, date date, string accountable);
-
     Service(char serviceType, date date, string accountable);
     char serviceType;
     date date;

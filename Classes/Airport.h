@@ -14,19 +14,9 @@ using namespace std;
 class Airport{
     list<Transport> ListTransp;
     string name, initials;
-private:
-    Airport();
-    void AddTransport();
-
     void AddTransport(Transport transport){
         ListTransp.push_back(transport);
     }
+private:
+    Airport();
 };
-
-
-
-<<<<<<< HEAD
-#endif //TP1_AED_AIRPORT_H
-=======
-#endif //TP1_AED_AIRPORT_H
->>>>>>> de4e18f45f5235164e58cb9d1ff214034947b0cb

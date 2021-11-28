@@ -1,5 +1,5 @@
 //
-// Created by jeffe on 28/11/2021.
+// Created by Ian on 28/11/2021.
 //
 
 #ifndef TP1_AED_LUGGAGE_H

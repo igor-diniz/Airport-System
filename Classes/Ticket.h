@@ -9,9 +9,19 @@
 #include "Passenger.h"
 
 class Ticket {
+private:
     int id;
-    Flight flight;
-    Passenger passenger;
+    Flight flightAssocieted;
+    Passenger passengerAssocieted;
+    bool luggageIncluded = false;
+
+public:
+    Ticket(){};
+    Ticket(int id, Flight flightAssocieted, Passenger passengerAssocieted);
+    int getID();
+    Flight getFlightAssocited();
+    Passenger getPassengerAssocieted();
+    bool getLuggageStatus();
 };
 
 

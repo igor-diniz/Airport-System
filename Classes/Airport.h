@@ -14,12 +14,15 @@ using namespace std;
 class Airport{
     list<Transport> ListTransp;
     string name, initials;
+private:
+    Airport();
+    void AddTransport();
+
+    void AddTransport(Transport transport){
+        ListTransp.push_back(transport);
+    }
 };
 
-
-void AddTransport(Transport transport){
-    ListTransp.push_back(transport);
-}
 
 
 #endif //TP1_AED_AIRPORT_H

@@ -9,6 +9,7 @@ Plane::Plane(int capacity,string registration,string type)
     this->capacity = capacity;
     this->registration = registration;
     this->type = type;
+    flights = list<Flight>();
 }
 
 void Plane::AddFlight(Flight flight)
@@ -42,5 +43,15 @@ int Plane::GetCapacity() const
 
 list<Flight> Plane::GetFlights() const
 {
+    return flights;
+}
 
+string Plane::GetRegistration() const
+{
+    return registration;
+}
+
+string Plane::GetType() const
+{
+    return type;
 }

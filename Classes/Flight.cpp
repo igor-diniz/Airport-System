@@ -12,7 +12,7 @@ Flight::Flight(int id,date arrival,date departure,Airport destination,Airport or
     this->origin = origin;
 }
 
-const int Flight::GetId() const {
+int Flight::GetId() const {
     return id;
 }
 
@@ -40,3 +40,16 @@ bool Flight::operator==(const Flight &flight)
 {
     return id == flight.GetId();
 }
+
+/*Flight& Flight::operator=(const Flight &flight)
+{
+    if (this == &flight)
+        return *this;
+    id = flight.GetId();
+    arrival = flight.GetArrivalDate();
+    departure = flight.GetDepartureDate();
+    destination = flight.GetDestination();
+    origin = flight.GetOrigin();
+
+    return *this;
+}*/

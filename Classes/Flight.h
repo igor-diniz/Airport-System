@@ -28,6 +28,7 @@ public:
     date GetArrivalDate() const;
     date GetDepartureDate() const;
     bool operator == (const Flight& flight);
+    //Flight& operator = (const Flight& flight);
 };
 
 

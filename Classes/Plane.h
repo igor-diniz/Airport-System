@@ -19,7 +19,7 @@ class Plane{
     void AddFlight(list<Flight> flight); //adiciona uma lista de voos]
     int GetCapacity() const;
     string GetRegistration() const;
-    char GetType() const;
+    string GetType() const;
     list<Flight> GetFlights() const;
     void DeleteFlight(int id);
     //checar se há vagas para o passageiro()

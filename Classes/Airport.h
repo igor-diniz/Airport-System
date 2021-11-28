@@ -8,13 +8,12 @@ using namespace std;
 //Para cada aeroporto, a informação sobre os locais
 //de transporte terrestre (metro, comboio, autocarro) está guardada numa árvore binária de pesquisa.
 class Airport{
-    Airport(string name, string initials);
-
-    list<Transport> ListTransp;
+    list<Transport> listTransp;
     string name, initials;
 public:
     Airport();
-    void AddTransport();
+    Airport(string name, string initials);
+    void AddTransport(Transport transport);
     const string GetName() const;
     const string GetInitials() const;
     const list<Transport> GetListtransp() const;

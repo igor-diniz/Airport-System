@@ -3,5 +3,3 @@
 //
 
 #include "Plane.h"
-
-//iantrouxa

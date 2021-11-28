@@ -8,8 +8,13 @@
 //Um local
 //de transporte terrestre é caracterizado, no mínimo, por tipo de transporte (metro, autocarro, comboio), distância
 //ao aeroporto, horário.
-class Transport {
+#include <list>
+using namespace std;
 
+class Transport{
+    char type;
+    float distance;
+    time time;
 };
 
 

@@ -1,7 +1,3 @@
-//
-// Created by Ian on 25/11/2021.
-//
-
 #ifndef TP1_AED_AIRPORT_H
 #define TP1_AED_AIRPORT_H
 #include <list>
@@ -12,12 +8,15 @@ using namespace std;
 //Para cada aeroporto, a informação sobre os locais
 //de transporte terrestre (metro, comboio, autocarro) está guardada numa árvore binária de pesquisa.
 class Airport{
+    Airport(string name, string initials);
+
     list<Transport> ListTransp;
     string name, initials;
-    void AddTransport(Transport transport){
-        ListTransp.push_back(transport);
-    }
 public:
     Airport();
+    void AddTransport();
+    const string GetName() const;
+    const string GetInitials() const;
+    const list<Transport> GetListtransp() const;
 };
 #endif TP1_AED_AIRPORT_H

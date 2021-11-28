@@ -1,4 +1,6 @@
-"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" C:\Users\jeffe\CLionProjects\TP1_AED
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug
+"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\duart\Documents\GitHub\TP1_AED
+CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
+  CMake 3.20 or higher is required.  You are running version 3.17.5
+
+
+-- Configuring incomplete, errors occurred!

@@ -8,7 +8,6 @@
 //Para cada aeroporto, a informação sobre os locais
 //de transporte terrestre (metro, comboio, autocarro) está guardada numa árvore binária de pesquisa.
 class Airport{
-    private
 
 };
 

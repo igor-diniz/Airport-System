@@ -176,6 +176,54 @@ Classes/Flight.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Flight.cpp.s
 .PHONY : Classes/Flight.cpp.s
 
+Classes/Luggage.obj: Classes/Luggage.cpp.obj
+.PHONY : Classes/Luggage.obj
+
+# target to build an object file
+Classes/Luggage.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.obj
+.PHONY : Classes/Luggage.cpp.obj
+
+Classes/Luggage.i: Classes/Luggage.cpp.i
+.PHONY : Classes/Luggage.i
+
+# target to preprocess a source file
+Classes/Luggage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.i
+.PHONY : Classes/Luggage.cpp.i
+
+Classes/Luggage.s: Classes/Luggage.cpp.s
+.PHONY : Classes/Luggage.s
+
+# target to generate assembly for a file
+Classes/Luggage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.s
+.PHONY : Classes/Luggage.cpp.s
+
+Classes/Passenger.obj: Classes/Passenger.cpp.obj
+.PHONY : Classes/Passenger.obj
+
+# target to build an object file
+Classes/Passenger.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.obj
+.PHONY : Classes/Passenger.cpp.obj
+
+Classes/Passenger.i: Classes/Passenger.cpp.i
+.PHONY : Classes/Passenger.i
+
+# target to preprocess a source file
+Classes/Passenger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.i
+.PHONY : Classes/Passenger.cpp.i
+
+Classes/Passenger.s: Classes/Passenger.cpp.s
+.PHONY : Classes/Passenger.s
+
+# target to generate assembly for a file
+Classes/Passenger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.s
+.PHONY : Classes/Passenger.cpp.s
+
 Classes/Plane.obj: Classes/Plane.cpp.obj
 .PHONY : Classes/Plane.obj
 
@@ -223,6 +271,30 @@ Classes/Service.s: Classes/Service.cpp.s
 Classes/Service.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Service.cpp.s
 .PHONY : Classes/Service.cpp.s
+
+Classes/Ticket.obj: Classes/Ticket.cpp.obj
+.PHONY : Classes/Ticket.obj
+
+# target to build an object file
+Classes/Ticket.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj
+.PHONY : Classes/Ticket.cpp.obj
+
+Classes/Ticket.i: Classes/Ticket.cpp.i
+.PHONY : Classes/Ticket.i
+
+# target to preprocess a source file
+Classes/Ticket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.i
+.PHONY : Classes/Ticket.cpp.i
+
+Classes/Ticket.s: Classes/Ticket.cpp.s
+.PHONY : Classes/Ticket.s
+
+# target to generate assembly for a file
+Classes/Ticket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.s
+.PHONY : Classes/Ticket.cpp.s
 
 Classes/Transport.obj: Classes/Transport.cpp.obj
 .PHONY : Classes/Transport.obj
@@ -287,12 +359,21 @@ help:
 	@echo ... Classes/Flight.obj
 	@echo ... Classes/Flight.i
 	@echo ... Classes/Flight.s
+	@echo ... Classes/Luggage.obj
+	@echo ... Classes/Luggage.i
+	@echo ... Classes/Luggage.s
+	@echo ... Classes/Passenger.obj
+	@echo ... Classes/Passenger.i
+	@echo ... Classes/Passenger.s
 	@echo ... Classes/Plane.obj
 	@echo ... Classes/Plane.i
 	@echo ... Classes/Plane.s
 	@echo ... Classes/Service.obj
 	@echo ... Classes/Service.i
 	@echo ... Classes/Service.s
+	@echo ... Classes/Ticket.obj
+	@echo ... Classes/Ticket.i
+	@echo ... Classes/Ticket.s
 	@echo ... Classes/Transport.obj
 	@echo ... Classes/Transport.i
 	@echo ... Classes/Transport.s

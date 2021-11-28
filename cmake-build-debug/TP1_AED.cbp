@@ -92,6 +92,18 @@
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h">
 			<Option target="TP1_AED"/>
 		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.cpp">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Passenger.cpp">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Passenger.h">
+			<Option target="TP1_AED"/>
+		</Unit>
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.cpp">
 			<Option target="TP1_AED"/>
 		</Unit>
@@ -102,6 +114,12 @@
 			<Option target="TP1_AED"/>
 		</Unit>
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.cpp">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.h">
 			<Option target="TP1_AED"/>
 		</Unit>
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.cpp">

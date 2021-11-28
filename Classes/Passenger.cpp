@@ -9,3 +9,5 @@ Passenger::Passenger(string name, string passport){this->name = name; this->pass
 
 string Passenger::getName() {return name;}
 string Passenger::getPassport() {return passport;}
+bool Passenger::getCheckin() {return checkin;}
+void Passenger::setCheckin(bool const checkin) {this->checkin = checkin;}

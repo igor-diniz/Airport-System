@@ -13,13 +13,16 @@ using namespace std;
 class Passenger {
 private:
     string name, passport;
+    bool checkin = false;
 
 public:
     Passenger();
     Passenger(string name, string passport);
     string getName();
     string getPassport();
-    bool checkin();
+    bool getCheckin();
+    void setCheckin(bool const checkin);
+
 };
 
 

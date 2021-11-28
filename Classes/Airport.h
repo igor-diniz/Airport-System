@@ -17,6 +17,7 @@ class Airport{
     void AddTransport(Transport transport){
         ListTransp.push_back(transport);
     }
-private:
+public:
     Airport();
 };
+#endif TP1_AED_AIRPORT_H

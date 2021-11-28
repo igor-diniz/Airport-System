@@ -20,13 +20,14 @@ class Flight {
     Airport destination, origin;
 
 public:
-    Flight();
+    Flight(){};
     Flight(int id,date arrival,date departure,Airport destination,Airport origin);
-    int GetId();
-    Airport GetDestination();
-    Airport GetOrigin();
-    date GetArrivalDate();
-    date GetDepartureDate();
+    int GetId() const;
+    Airport GetDestination() const;
+    Airport GetOrigin() const;
+    date GetArrivalDate() const;
+    date GetDepartureDate() const;
+    bool operator == (const Flight& flight);
 };
 
 

@@ -17,11 +17,11 @@ class Plane{
     Plane(int capacity,string registration,string type);
     void AddFlight(Flight flight); //adicionar 1 voo só
     void AddFlight(list<Flight> flight); //adiciona uma lista de voos]
-    int GetCapacity();
-    string GetRegistration();
-    char GetType();
-    list<Flight> GetFlights();
-    void DeleteFlight(string registration);
+    int GetCapacity() const;
+    string GetRegistration() const;
+    char GetType() const;
+    list<Flight> GetFlights() const;
+    void DeleteFlight(int id);
     //checar se há vagas para o passageiro()
 };
 

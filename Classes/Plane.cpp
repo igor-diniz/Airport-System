@@ -10,3 +10,37 @@ Plane::Plane(int capacity,string registration,string type)
     this->registration = registration;
     this->type = type;
 }
+
+void Plane::AddFlight(Flight flight)
+{
+    flights.push_back(flight);
+}
+
+void Plane::AddFlight(list<Flight> flight)
+{
+    for (Flight a: flight)
+    {
+        flights.push_back(a);
+    }
+}
+
+void Plane::DeleteFlight(int id)
+{
+    for (Flight a: flights)
+    {
+        if(a.GetId() == id)
+        {
+            flights.remove(a);
+        }
+    }
+}
+
+int Plane::GetCapacity() const
+{
+    return capacity;
+}
+
+list<Flight> Plane::GetFlights() const
+{
+
+}

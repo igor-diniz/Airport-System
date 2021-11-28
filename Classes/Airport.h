@@ -14,8 +14,8 @@ public:
     Airport();
     Airport(string name, string initials);
     void AddTransport(Transport transport);
-    const string GetName() const;
-    const string GetInitials() const;
-    const list<Transport> GetListtransp() const;
+    const string getName() const;
+    const string getInitials() const;
+    const list<Transport> getListtransp() const;
 };
 #endif TP1_AED_AIRPORT_H

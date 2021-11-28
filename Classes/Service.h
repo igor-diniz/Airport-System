@@ -1,7 +1,3 @@
-//
-// Created by jeffe on 25/11/2021.
-//
-
 #ifndef TP1_AED_SERVICE_H
 #define TP1_AED_SERVICE_H
 #include <string>
@@ -15,9 +11,15 @@ struct date
 //a. Um serviço é caracterizado
 //por tipo de serviço (manutenção/limpeza), data e funcionário responsável.
 class Service {
-    char service_type[1];
-    date data;
-    string accountable;
+    Service(char *serviceType, date date, string accountable);
+
+    Service(char serviceType, date date, string accountable);
+    char serviceType;
+    date date;
+    string accountable; //responsável
+    const char getserviceType() const;
+    const struct date getdate() const;
+    const string getaccountable() const;
 };
 
 

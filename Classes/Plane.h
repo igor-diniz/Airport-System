@@ -10,11 +10,11 @@ using namespace std;
 class Plane{
     int capacity;
     string registration;
-    char type[4];
+    string type;
     list<Flight> flights;
 
     public:
-    Plane(int capacity,string registration,char type[4]);
+    Plane(int capacity,string registration,string type);
     void AddFlight(Flight flight); //adicionar 1 voo só
     void AddFlight(list<Flight> flight); //adiciona uma lista de voos]
     int GetCapacity();
@@ -22,7 +22,7 @@ class Plane{
     char GetType();
     list<Flight> GetFlights();
     void DeleteFlight(string registration);
-
+    //checar se há vagas para o passageiro()
 };
 
 

@@ -19,6 +19,14 @@ class Flight {
     date arrival,departure;
     Airport destination, origin;
 
+public:
+    Flight();
+    Flight(int id,date arrival,date departure,Airport destination,Airport origin);
+    int GetId();
+    Airport GetDestination();
+    Airport GetOrigin();
+    date GetArrivalDate();
+    date GetDepartureDate();
 };
 
 

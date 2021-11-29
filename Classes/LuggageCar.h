@@ -3,10 +3,13 @@
 
 
 class LuggageCar {
+    public:
+        int capacity, availability;
     private:
-        int c, passport;
-        bool checkin = false;
+        int c, n, m;
+        bool cheio = false;
         Ticket ticket;
+        capacity = c * n * m;
 };
 
 

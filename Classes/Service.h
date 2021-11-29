@@ -2,7 +2,7 @@
 #define TP1_AED_SERVICE_H
 #include <string>
 using namespace std;
-struct date
+struct Date
 {
     int day;
     int month;
@@ -11,13 +11,17 @@ struct date
 //a. Um serviço é caracterizado
 //por tipo de serviço (manutenção/limpeza), data e funcionário responsável.
 class Service {
-    Service(char serviceType, date date, string accountable);
+private:
     char serviceType;
-    date date;
+    Date date;
     string accountable; //responsável
+
+public:
+    Service(char serviceType, Date date, string accountable);
     char getserviceType() const;
-    struct date getdate() const;
+    Date getdate() const;
     string getaccountable() const;
+    bool operator< (Service s);
 };
 
 

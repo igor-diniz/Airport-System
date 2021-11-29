@@ -1,12 +1,22 @@
 #include "Plane.h"
 
-Plane::Plane(int capacity,string registration,string type)
-{
+Plane::Plane(int capacity,string registration,string type, list<Flight> &flights){
     this->capacity = capacity;
     this->registration = registration;
     this->type = type;
-    flights = list<Flight>();
+    this->flights = flights;
+    servicesToDo = queue<Service>();
 }
+
+Plane::Plane(int capacity, string registration, string type, list<Flight> &flights, queue<Service> &servicesToDo) {
+    this->capacity = capacity;
+    this->registration = registration;
+    this->type = type;
+    this->flights = flights;
+    this->servicesToDo = servicesToDo;
+}
+
+
 
 void Plane::addFlight(Flight &flight)
 {
@@ -19,6 +29,23 @@ void Plane::addFlight(list<Flight> &flight)
     {
         flights.push_back(a);
     }
+}
+
+void Plane::addService(Service &service) {
+    servicesToDo.push(service);
+}
+
+void Plane::addService(queue<Service> &services) {
+    while (!services.empty())
+    {
+        servicesToDo.push(services.front());
+        services.pop();
+    }
+}
+
+void Plane::deleteService() {
+    servicesDone.push(servicesToDo.front());
+    servicesToDo.pop();
 }
 
 void Plane::deleteFlight(int id)

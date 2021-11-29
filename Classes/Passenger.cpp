@@ -11,7 +11,7 @@ string Passenger::getPassport() {return passport;}
 
 bool Passenger::getCheckin() {return checkin;}
 
-void Passenger::setCheckin(bool const checkin) {this->checkin = checkin;}
+void Passenger::setCheckin() {this->checkin = true;}
 
 Ticket Passenger::getTicket() const{
     return ticket;

@@ -22,13 +22,10 @@ public:
     string getName();
     string getPassport();
     bool getCheckin();
-    void setCheckin(bool const checkin);
+    void setCheckin();
     Ticket getTicket() const;
-    bool buyTicket(Flight &flight, const vector<Passenger> &passengers);
-
-    bool buyTicket(Flight &flight, bool pssrhaslugg, const vector<Passenger> &passengers);
-
     bool buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger, bool>> &passengers);
+
 };
 
 

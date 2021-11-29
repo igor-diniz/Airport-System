@@ -36,7 +36,7 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
     {
         id++;
         iter.first.ticket(id,flight,this);
-        if (iter.second) ticket.setLuggageIncluded;
+        if (iter.second) ticket.setLuggageIncluded();
         flight.setAvailableSeats(flight.getAvailableSeats() - 1);
     }
 

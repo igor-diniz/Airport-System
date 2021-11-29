@@ -14,7 +14,7 @@ using namespace std;
 class Transport{
     char type;
     float distance;
-    time time;
+    time_t time;
 };
 
 

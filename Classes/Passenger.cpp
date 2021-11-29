@@ -17,7 +17,7 @@ Ticket Passenger::getTicket() const{
 }
 
 bool Passenger::buyTicket(Flight &flight, const vector<Passenger> &passengers = vector<Passenger>()) {
-    if (flight.getAvailableSeats() < passengers.size())
+    if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;
 
     int id = flight.getPlaneAssocieted().getCapacity() - flight.getAvailableSeats() + 1;

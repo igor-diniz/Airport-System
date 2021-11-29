@@ -16,12 +16,16 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.cpp" "C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/Service.cpp.obj"
   "C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.cpp" "C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj"
   "C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.cpp" "C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/Transport.cpp.obj"
+  "C:/Users/jeffe/CLionProjects/TP1_AED/Classes/tests.cpp" "C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj"
   "C:/Users/jeffe/CLionProjects/TP1_AED/main.cpp" "C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug/CMakeFiles/TP1_AED.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../lib/googletest-master/googlemock/include"
+  "../lib/googletest-master/googletest/include"
+  "../lib/googletest-master/googletest"
   )
 
 # The set of dependency files which are needed:
@@ -30,6 +34,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug/lib/googletest-master/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
+  "C:/Users/jeffe/CLionProjects/TP1_AED/cmake-build-debug/lib/googletest-master/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

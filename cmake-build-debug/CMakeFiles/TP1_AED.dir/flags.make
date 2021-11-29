@@ -4,7 +4,7 @@
 # compile CXX with D:/Mingw/mingw64/bin/g++.exe
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = @CMakeFiles/TP1_AED.dir/includes_CXX.rsp
 
 CXX_FLAGS = -g -std=gnu++14
 

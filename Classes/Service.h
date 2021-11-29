@@ -15,9 +15,9 @@ class Service {
     char serviceType;
     date date;
     string accountable; //responsável
-    const char getserviceType() const;
-    const struct date getdate() const;
-    const string getaccountable() const;
+    char getserviceType() const;
+    struct date getdate() const;
+    string getaccountable() const;
 };
 
 

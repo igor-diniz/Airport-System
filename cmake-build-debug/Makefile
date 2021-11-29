@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\jeffe\CLionProjects\TP1_AED
+CMAKE_SOURCE_DIR = C:\Users\duart\Documents\GitHub\TP1_AED
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -77,7 +77,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -86,9 +86,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\CMakeFiles C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -199,6 +199,30 @@ Classes/Luggage.s: Classes/Luggage.cpp.s
 Classes/Luggage.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.s
 .PHONY : Classes/Luggage.cpp.s
+
+Classes/LuggageCar.obj: Classes/LuggageCar.cpp.obj
+.PHONY : Classes/LuggageCar.obj
+
+# target to build an object file
+Classes/LuggageCar.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/LuggageCar.cpp.obj
+.PHONY : Classes/LuggageCar.cpp.obj
+
+Classes/LuggageCar.i: Classes/LuggageCar.cpp.i
+.PHONY : Classes/LuggageCar.i
+
+# target to preprocess a source file
+Classes/LuggageCar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/LuggageCar.cpp.i
+.PHONY : Classes/LuggageCar.cpp.i
+
+Classes/LuggageCar.s: Classes/LuggageCar.cpp.s
+.PHONY : Classes/LuggageCar.s
+
+# target to generate assembly for a file
+Classes/LuggageCar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/LuggageCar.cpp.s
+.PHONY : Classes/LuggageCar.cpp.s
 
 Classes/Passenger.obj: Classes/Passenger.cpp.obj
 .PHONY : Classes/Passenger.obj
@@ -362,6 +386,9 @@ help:
 	@echo ... Classes/Luggage.obj
 	@echo ... Classes/Luggage.i
 	@echo ... Classes/Luggage.s
+	@echo ... Classes/LuggageCar.obj
+	@echo ... Classes/LuggageCar.i
+	@echo ... Classes/LuggageCar.s
 	@echo ... Classes/Passenger.obj
 	@echo ... Classes/Passenger.i
 	@echo ... Classes/Passenger.s

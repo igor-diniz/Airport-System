@@ -25,6 +25,10 @@ public:
     void setCheckin(bool const checkin);
     Ticket getTicket() const;
     bool buyTicket(Flight &flight, const vector<Passenger> &passengers);
+
+    bool buyTicket(Flight &flight, bool pssrhaslugg, const vector<Passenger> &passengers);
+
+    bool buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger, bool>> &passengers);
 };
 
 

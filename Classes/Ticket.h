@@ -21,6 +21,7 @@ public:
     Flight getFlightAssocited();
     Passenger getPassengerAssocieted();
     bool getLuggageStatus();
+    void setLuggageIncluded();
 };
 
 

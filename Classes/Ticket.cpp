@@ -1,7 +1,3 @@
-//
-// Created by Ian on 28/11/2021.
-//
-
 #include "Ticket.h"
 
 Ticket::Ticket(int id, Flight &flightAssocieted, Passenger &passengerAssocieted){
@@ -17,3 +13,5 @@ Passenger Ticket::getPassengerAssocieted() {return passengerAssocieted;}
 int Ticket::getID() {return id;}
 
 bool Ticket::getLuggageStatus() {return luggageIncluded;}
+
+void Ticket::setLuggageIncluded() {luggageIncluded = true;}

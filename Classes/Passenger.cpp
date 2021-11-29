@@ -1,4 +1,5 @@
 #include "Passenger.h"
+#include <vector>
 
 Passenger::Passenger() : ticket(0, Flight(), Passenger()) { name = "UNKNOWN"; passport = "UNKNONW";}
 
@@ -16,7 +17,7 @@ Ticket Passenger::getTicket() const{
     return ticket;
 }
 
-bool Passenger::buyTicket(Flight &flight, const vector<Passenger> &passengers = vector<Passenger>()) {
+bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers = vector<pair<Passenger,bool>>()) {
     if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;
 
@@ -26,13 +27,16 @@ bool Passenger::buyTicket(Flight &flight, const vector<Passenger> &passengers = 
 
     this->ticket(id, flight, this); //Maybe ID for Tickets doesn't make sense, the PDF doesn't specify anything
 
+    if (haslugg) ticket.setLuggageIncluded;
+
     if(passengers.empty())
         return true;
 
-    for(Passenger p : passengers)
+    for(auto iter : passengers)
     {
         id++;
-        p.ticket(id,flight,this);
+        iter.first.ticket(id,flight,this);
+        if (iter.second) ticket.setLuggageIncluded;
         flight.setAvailableSeats(flight.getAvailableSeats() - 1);
     }
 

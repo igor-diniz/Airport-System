@@ -14,7 +14,12 @@ using namespace std;
 class Transport{
     char type;
     float distance;
-    time_t time;
+    time_t time; //ainda tem q fazer isso aqui
+
+public:
+    inline char getType() {return this->type;};
+    inline float getDistance() {return this->distance;};
+    bool operator<(const Transport& transp);
 };
 
 

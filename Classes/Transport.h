@@ -17,9 +17,11 @@ class Transport{
     time_t time; //ainda tem q fazer isso aqui
 
 public:
+    Transport(char type,float distance,time_t time);
     inline char getType() {return this->type;};
     inline float getDistance() {return this->distance;};
-    bool operator<(const Transport& transp);
+    bool operator<(const Transport& transp) const;
+    bool operator==(const Transport& transp) const;
 };
 
 

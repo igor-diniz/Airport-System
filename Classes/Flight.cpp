@@ -1,7 +1,7 @@
 #include "Flight.h"
-Flight::Flight(int id,date &arrival,date &departure,Airport &destination,Airport &origin, Plane &planeAssocieted)
+Flight::Flight(date &arrival,date &departure,Airport &destination,Airport &origin, Plane &planeAssocieted)
 {
-    this->id = id;
+    id++;
     this->arrival = arrival;
     this->departure = departure;
     this->destination = destination;

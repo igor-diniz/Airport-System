@@ -1,6 +1,12 @@
 #include "Transport.h"
+Transport::Transport(char type, float distance, time_t time)
+{
+    this->type = type;
+    this->distance = distance;
+    this->time = time;
+}
 
-bool Transport::operator<(const Transport &transp)
+bool Transport::operator<(const Transport &transp) const
 {
     if(this->time != transp.time)
     {
@@ -18,4 +24,8 @@ bool Transport::operator<(const Transport &transp)
     {
         return false;
     }
+}
+bool Transport::operator==(const Transport &transp) const
+{
+    return (this->time == transp.time) && (this->distance == transp.distance) && (this->type != transp.type);
 }

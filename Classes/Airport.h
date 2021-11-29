@@ -14,9 +14,11 @@ class Airport{
 public:
     Airport();
     Airport(string name, string initials);
-    bool AddTransport(Transport transport);
+    bool addTransport(Transport transport);
+    bool deleteTransport(Transport transport);
     const string getName() const;
     const string getInitials() const;
-    const list<Transport> getListtransp() const;
+    const BST<Transport> getTransports() const;
+    Transport getClosestTranspost() const;
 };
 #endif TP1_AED_AIRPORT_H

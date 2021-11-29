@@ -22,6 +22,7 @@ public:
     inline float getDistance() {return this->distance;};
     bool operator<(const Transport& transp) const;
     bool operator==(const Transport& transp) const;
+
 };
 
 

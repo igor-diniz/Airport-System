@@ -5,7 +5,7 @@ Airport::Airport(string name, string initials)
     this->name = name;
     this->initials = initials;
 }
-bool Airport::AddTransport(Transport transport){
+bool Airport::addTransport(Transport transport){
     //listTransp.push_back(transport);
     return transports.insert(transport);
 }
@@ -15,6 +15,17 @@ const string Airport::getName() const {
 const string Airport::getInitials() const {
     return initials;
 }
-const list<Transport> Airport::getListtransp() const {
-    return listTransp; //trocar pela binary tree
+const BST<Transport> Airport::getTransports() const {
+    return transports;
 }
+
+bool Airport::deleteTransport(Transport transport)
+{
+    return transports.remove(transport);
+}
+
+Transport Airport::getClosestTranspost() const //tlvz tenha q mudar o nome dessa classe se a gnt escolhelr mudar o sort o transport
+{
+    return transports.findMin();
+}
+

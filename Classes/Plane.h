@@ -14,14 +14,15 @@ class Plane{
     list<Flight> flights;
 
     public:
+    Plane(){};
     Plane(int capacity,string registration,string type);
-    void AddFlight(Flight flight); //adicionar 1 voo só
-    void AddFlight(list<Flight> flight); //adiciona uma lista de voos]
-    int GetCapacity() const;
-    string GetRegistration() const;
-    string GetType() const;
-    list<Flight> GetFlights() const;
-    void DeleteFlight(int id);
+    void addFlight(Flight &flight); //adicionar 1 voo só
+    void addFlight(list<Flight> &flights); //adiciona uma lista de voos]
+    int getCapacity() const;
+    string getRegistration() const;
+    string getType() const;
+    list<Flight> getFlights() const;
+    void deleteFlight(int id);
     //checar se há vagas para o passageiro()
 };
 

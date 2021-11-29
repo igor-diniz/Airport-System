@@ -4,7 +4,7 @@
 
 #include "Ticket.h"
 
-Ticket::Ticket(int id, Flight flightAssocieted, Passenger passengerAssocieted){
+Ticket::Ticket(int id, Flight &flightAssocieted, Passenger &passengerAssocieted){
     this->id = id;
     this->flightAssocieted = flightAssocieted;
     this->passengerAssocieted = passengerAssocieted;

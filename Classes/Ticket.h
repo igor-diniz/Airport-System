@@ -16,8 +16,7 @@ private:
     bool luggageIncluded = false;
 
 public:
-    Ticket(){};
-    Ticket(int id, Flight flightAssocieted, Passenger passengerAssocieted);
+    Ticket(int id, Flight &flightAssocieted, Passenger &passengerAssocieted);
     int getID();
     Flight getFlightAssocited();
     Passenger getPassengerAssocieted();

@@ -7,6 +7,8 @@
 #include "Ticket.h"
 
 class Luggage {
+    Luggage() : ticket(0, Flight(), Passenger()) {}
+
     Ticket ticket;
 };
 

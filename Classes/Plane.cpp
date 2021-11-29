@@ -8,12 +8,12 @@ Plane::Plane(int capacity,string registration,string type)
     flights = list<Flight>();
 }
 
-void Plane::AddFlight(Flight flight)
+void Plane::addFlight(Flight &flight)
 {
     flights.push_back(flight);
 }
 
-void Plane::AddFlight(list<Flight> flight)
+void Plane::addFlight(list<Flight> &flight)
 {
     for (Flight a: flight)
     {
@@ -21,33 +21,33 @@ void Plane::AddFlight(list<Flight> flight)
     }
 }
 
-void Plane::DeleteFlight(int id)
+void Plane::deleteFlight(int id)
 {
     for (Flight a: flights)
     {
-        if(a.GetId() == id)
+        if(a.getId() == id)
         {
             flights.remove(a);
         }
     }
 }
 
-int Plane::GetCapacity() const
+int Plane::getCapacity() const
 {
     return capacity;
 }
 
-list<Flight> Plane::GetFlights() const
+list<Flight> Plane::getFlights() const
 {
     return flights;
 }
 
-string Plane::GetRegistration() const
+string Plane::getRegistration() const
 {
     return registration;
 }
 
-string Plane::GetType() const
+string Plane::getType() const
 {
     return type;
 }

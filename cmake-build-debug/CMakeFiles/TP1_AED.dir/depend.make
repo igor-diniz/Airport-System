@@ -97,8 +97,6 @@ CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj: \
  ../lib/googletest-master/googletest/include/gtest/internal/gtest-type-util.h \
  ../Classes/Airport.h \
  ../Classes/BST.h \
- ../Classes/Flight.h \
- ../Classes/Plane.h \
  ../Classes/Service.h \
  ../Classes/Transport.h \
  ../Classes/tests.cpp

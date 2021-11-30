@@ -10,7 +10,7 @@ Service::Service(char serviceType, Date date, string accountable)
 char Service::getserviceType() const {
     return serviceType;
 }
-Date Service::getdate() const {
+Date Service::getDate() const {
     return date;
 }
 string Service::getaccountable() const {
@@ -18,21 +18,21 @@ string Service::getaccountable() const {
 }
 
 bool Service::operator<(Service s) {
-    if (date.year < s.getdate().year)
+    if (date.year < s.getDate().year)
         return true;
-    else if(date.year > s.getdate().year)
+    else if(date.year > s.getDate().year)
     {
         return false;
     }
-    else if(date.month < s.getdate().month)
+    else if(date.month < s.getDate().month)
     {
         return true;
     }
-    else if(date.month > s.getdate().month)
+    else if(date.month > s.getDate().month)
     {
         return false;
     }
-    else if(date.day < s.getdate().day)
+    else if(date.day < s.getDate().day)
     {
         return true;
     }

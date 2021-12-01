@@ -2,7 +2,7 @@
 #define TP1_AED_FLIGHT_H
 
 #include "Airport.h"
-#include "Plane.h"
+//#include "Plane.h"
 
 struct date
 {
@@ -18,11 +18,12 @@ private:
     int availableSeats;
     date arrival,departure;
     Airport destination, origin;
-    Plane planeAssociated;
+    //Plane planeAssociated;
+    int capacity;
 
 public:
     Flight(){};
-    Flight(date &arrival,date &departure,Airport &destination,Airport &origin, Plane &planeAssocieted);
+    Flight(date &arrival,date &departure,Airport &destination,Airport &origin, int capacity);
     int getId() const;
     Airport getDestination() const;
     Airport getOrigin() const;
@@ -30,7 +31,7 @@ public:
     date getDepartureDate() const;
     int getAvailableSeats() const;
     void setAvailableSeats(int availableSeats);
-    Plane getPlaneAssocieted() const;
+    //Plane getPlaneAssocieted() const;
     bool operator == (const Flight& flight);
 };
 

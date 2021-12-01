@@ -1,13 +1,13 @@
 #include "Flight.h"
-Flight::Flight(date &arrival,date &departure,Airport &destination,Airport &origin, Plane &planeAssocieted)
+Flight::Flight(date &arrival,date &departure,Airport &destination,Airport &origin, int capacity)
 {
     id++;
     this->arrival = arrival;
     this->departure = departure;
     this->destination = destination;
     this->origin = origin;
-    this->planeAssociated = planeAssociated;
-    availableSeats = planeAssocieted.getCapacity();
+    this->capacity = capacity;
+    availableSeats = capacity;
 }
 
 int Flight::getId() const {
@@ -43,9 +43,9 @@ void Flight::setAvailableSeats(int availableSeats){
 }
 
 
-Plane Flight::getPlaneAssocieted() const{
-    return planeAssociated;
-}
+//Plane Flight::getPlaneAssocieted() const{
+    //return planeAssociated;
+//}
 
 
 bool Flight::operator==(const Flight &flight)

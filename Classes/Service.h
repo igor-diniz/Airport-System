@@ -19,7 +19,7 @@ private:
 public:
     Service(char serviceType, Date date, string accountable);
     char getserviceType() const;
-    Date getdate() const;
+    Date getDate() const;
     string getaccountable() const;
     bool operator< (Service s);
 };

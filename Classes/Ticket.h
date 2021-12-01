@@ -6,20 +6,20 @@
 #define TP1_AED_TICKET_H
 #include <list>
 #include "Flight.h"
-#include "Passenger.h"
+//#include "Passenger.h"
 
 class Ticket {
 private:
     int id;
     Flight flightAssocieted;
-    Passenger passengerAssocieted;
+    //Passenger passengerAssocieted;
     bool luggageIncluded = false;
 
 public:
-    Ticket(int id, Flight &flightAssocieted, Passenger &passengerAssocieted);
+    Ticket(int id, Flight &flightAssocieted);
     int getID();
     Flight getFlightAssocited();
-    Passenger getPassengerAssocieted();
+    //Passenger getPassengerAssocieted();
     bool getLuggageStatus();
     void setLuggageIncluded();
 };

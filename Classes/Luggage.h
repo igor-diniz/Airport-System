@@ -6,8 +6,9 @@
 #define TP1_AED_LUGGAGE_H
 #include "Ticket.h"
 
+
 class Luggage {
-    Luggage() : ticket(0, Flight(), Passenger()) {}
+    Luggage() : ticket(0,Flight()) {}
 
     Ticket ticket;
 };

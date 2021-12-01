@@ -1,4 +1,15 @@
 #include "Flight.h"
+int Flight::id = 0;
+Flight::Flight()
+{
+    availableSeats = 0;
+    arrival = date();
+    departure = date();
+    destination = Airport();
+    origin = Airport();
+    capacity = 0;
+}
+
 Flight::Flight(date &arrival,date &departure,Airport &destination,Airport &origin, int capacity)
 {
     id++;

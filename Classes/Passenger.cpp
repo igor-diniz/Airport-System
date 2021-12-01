@@ -1,9 +1,9 @@
 #include "Passenger.h"
 #include <vector>
 
-Passenger::Passenger() : ticket(0, Flight(), Passenger()) { name = "UNKNOWN"; passport = "UNKNONW";}
+Passenger::Passenger() : ticket(0, Flight()) { name = "UNKNOWN"; passport = "UNKNONW";}
 
-Passenger::Passenger(string name, string passport) : ticket(0, Flight(), Passenger()) { this->name = name; this->passport = passport;}
+Passenger::Passenger(string name, string passport) : ticket(0, Flight()) { this->name = name; this->passport = passport;}
 
 string Passenger::getName() {return name;}
 
@@ -17,17 +17,17 @@ Ticket Passenger::getTicket() const{
     return ticket;
 }
 
-bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers = vector<pair<Passenger,bool>>()) {
+/*bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers = vector<pair<Passenger,bool>>()) {
     if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;
 
-    int id = flight.getPlaneAssocieted().getCapacity() - flight.getAvailableSeats() + 1;
+    //int id = flight.getPlaneAssocieted().getCapacity() - flight.getAvailableSeats() + 1;
 
     flight.setAvailableSeats(flight.getAvailableSeats() - 1);
 
-    this->ticket(id, flight, this); //Maybe ID for Tickets doesn't make sense, the PDF doesn't specify anything
+    //this->ticket(0, flight, this); //Maybe ID for Tickets doesn't make sense, the PDF doesn't specify anything
 
-    if (haslugg) ticket.setLuggageIncluded;
+    //if (haslugg) ticket.setLuggageIncluded;
 
     this->passengerTickets.push_back(ticket);
 
@@ -44,4 +44,4 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
     }
 
     return true;
-}
+}*/

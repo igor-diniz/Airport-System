@@ -14,7 +14,7 @@ struct date
 //caracterizado, no mínimo, por: numero de voo, data de partida, duração do voo, origem, destino.
 class Flight {
 private:
-    static int id = 0;
+    static int id;
     int availableSeats;
     date arrival,departure;
     Airport destination, origin;
@@ -22,7 +22,7 @@ private:
     int capacity;
 
 public:
-    Flight(){};
+    Flight();
     Flight(date &arrival,date &departure,Airport &destination,Airport &origin, int capacity);
     int getId() const;
     Airport getDestination() const;

@@ -5,6 +5,7 @@
 #include <vector>
 #include "Flight.h"
 #include "Ticket.h"
+#include <list>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ private:
     string name, passport;
     bool checkin = false;
     Ticket ticket;
-    List<Ticket> passengerTickets;
+    list<Ticket> passengerTickets;
 
 public:
     Passenger();

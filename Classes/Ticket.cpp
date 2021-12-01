@@ -1,14 +1,14 @@
 #include "Ticket.h"
 
-Ticket::Ticket(int id, Flight &flightAssocieted, Passenger &passengerAssocieted){
+Ticket::Ticket(int id, Flight &flightAssocieted){
     this->id = id;
     this->flightAssocieted = flightAssocieted;
-    this->passengerAssocieted = passengerAssocieted;
+    //this->passengerAssocieted = passengerAssocieted;
 }
 
 Flight Ticket::getFlightAssocited() {return flightAssocieted;}
 
-Passenger Ticket::getPassengerAssocieted() {return passengerAssocieted;}
+//Passenger Ticket::getPassengerAssocieted() {return passengerAssocieted;}
 
 int Ticket::getID() {return id;}
 

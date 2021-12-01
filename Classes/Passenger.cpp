@@ -29,6 +29,8 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
 
     if (haslugg) ticket.setLuggageIncluded;
 
+    this->passengerTickets.push_back(ticket);
+
     if(passengers.empty())
         return true;
 
@@ -37,6 +39,7 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
         id++;
         iter.first.ticket(id,flight,this);
         if (iter.second) ticket.setLuggageIncluded();
+        this->passengerTickets.push_back(ticket)
         flight.setAvailableSeats(flight.getAvailableSeats() - 1);
     }
 

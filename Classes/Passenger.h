@@ -13,6 +13,7 @@ private:
     string name, passport;
     bool checkin = false;
     Ticket ticket;
+    List<Ticket> passengerTickets;
 
 public:
     Passenger();

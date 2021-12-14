@@ -1,5 +1,5 @@
 #include "Transport.h"
-Transport::Transport(char type, float distance, time_t time)
+Transport::Transport(char type, float distance, Time time)
 {
     this->type = type;
     this->distance = distance;
@@ -8,7 +8,7 @@ Transport::Transport(char type, float distance, time_t time)
 
 bool Transport::operator<(const Transport &transp) const
 {
-    if(this->time != transp.time)
+    if(this->time != transp.getTime())
     {
         return this->time < transp.time;
     }
@@ -27,5 +27,18 @@ bool Transport::operator<(const Transport &transp) const
 }
 bool Transport::operator==(const Transport &transp) const
 {
-    return (this->time == transp.time) && (this->distance == transp.distance) && (this->type != transp.type);
+    return !(this->time != transp.time) && (this->distance == transp.distance) && (this->type != transp.type);
 }
+void Transport::setDistance(float distance) {this->distance = distance;}
+
+void Transport::setTime(Time time) {this->time = time;}
+
+void Transport::setType(char type) {this->type = type;}
+
+Time Transport::getTime() const {return this->time;}
+
+float Transport::getDistance() const {return this->distance;}
+
+char Transport::getType() const {return this->type;}
+
+

@@ -24,8 +24,17 @@ bool Airport::deleteTransport(Transport transport)
     return transports.remove(transport);
 }
 
-Transport Airport::getClosestTranspost() const //tlvz tenha q mudar o nome dessa classe se a gnt escolhelr mudar o sort o transport
+Transport Airport::getClosestTransport() const //tlvz tenha q mudar o nome dessa classe se a gnt escolhelr mudar o sort o transport
 {
     return transports.findMin();
+}
+void Airport::setInitials(string initials)
+{
+    this->initials = initials;
+}
+
+void Airport::setName(string name)
+{
+    this->name = name;
 }
 

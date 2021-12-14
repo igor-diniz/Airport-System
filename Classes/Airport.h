@@ -12,13 +12,15 @@ class Airport{
     string name, initials;
     BST<Transport> transports = BST<Transport>(Transport('o',0,0));
 public:
-    Airport(){};
+    Airport() = default;
     Airport(string name, string initials);
     bool addTransport(Transport transport);
     bool deleteTransport(Transport transport);
     const string getName() const;
     const string getInitials() const;
     const BST<Transport> getTransports() const;
-    Transport getClosestTranspost() const;
+    void setName(string name);
+    void setInitials (string initials);
+    Transport getClosestTransport() const;
 };
 #endif

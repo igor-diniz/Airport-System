@@ -10,17 +10,19 @@
 
 class Ticket {
 private:
-    int id;
+    int id; //esse "id" é o equivalente ao assento do mlk???????? se for melhor trocar o nome
     Flight flightAssocieted;
     //Passenger passengerAssocieted;
     bool luggageIncluded = false;
 
 public:
     Ticket(int id, Flight flightAssocieted);
-    int getID();
-    Flight getFlightAssocited();
+    int getID() const;
+    void setID(int id);
+    Flight getFlightAssocited() const;
+    void setFlightAssociated(Flight flight);
     //Passenger getPassengerAssocieted();
-    bool getLuggageStatus();
+    bool getLuggageStatus() const;
     void setLuggageIncluded();
 };
 

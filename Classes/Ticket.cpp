@@ -6,12 +6,16 @@ Ticket::Ticket(int id, Flight flightAssocieted){
     //this->passengerAssocieted = passengerAssocieted;
 }
 
-Flight Ticket::getFlightAssocited() {return flightAssocieted;}
+Flight Ticket::getFlightAssocited() const{return flightAssocieted;}
 
 //Passenger Ticket::getPassengerAssocieted() {return passengerAssocieted;}
 
-int Ticket::getID() {return id;}
+int Ticket::getID() const{return id;}
 
-bool Ticket::getLuggageStatus() {return luggageIncluded;}
+bool Ticket::getLuggageStatus() const{return luggageIncluded;}
 
 void Ticket::setLuggageIncluded() {luggageIncluded = true;}
+
+void Ticket::setFlightAssociated(Flight flight) { flightAssocieted = flight;}
+
+void Ticket::setID(int id) {this->id = id;}

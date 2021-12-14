@@ -18,10 +18,13 @@ private:
 
 public:
     Service(char serviceType, Date date, string accountable);
-    char getserviceType() const;
+    char getServiceType() const;
     Date getDate() const;
-    string getaccountable() const;
-    bool operator< (Service s);
+    string getAccountable() const;
+    void setDate(Date date);
+    void setServiceType(char type);
+    void setAccountable(string accountable);
+    bool operator< (Service &s); //sort pelas datas, se forem igual pelo nome do accountable
 };
 
 

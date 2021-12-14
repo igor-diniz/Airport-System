@@ -16,8 +16,6 @@ Plane::Plane(int capacity, string registration, string type, list<Flight> &fligh
     this->servicesToDo = servicesToDo;
 }
 
-
-
 void Plane::addFlight(Flight &flight)
 {
     flights.push_back(flight);
@@ -55,8 +53,10 @@ void Plane::deleteFlight(int id)
         if(a.getId() == id)
         {
             flights.remove(a);
+            return;
         }
     }
+    throw InvalidFlightId();
 }
 
 int Plane::getCapacity() const
@@ -78,3 +78,9 @@ string Plane::getType() const
 {
     return type;
 }
+
+void Plane::setType(string type) {this->type = type;}
+
+void Plane::setCapacity(int capacity) {this->capacity = capacity;}
+
+void Plane::setRegistration(string registration) {this->registration = registration;}

@@ -87,6 +87,8 @@ CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj
  ../lib/googletest-master/googletest/include/gtest/internal/gtest-type-util.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Airport.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h
+ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
+ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/tests.cpp

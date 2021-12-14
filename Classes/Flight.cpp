@@ -3,14 +3,14 @@ int Flight::id = 0;
 Flight::Flight()
 {
     availableSeats = 0;
-    arrival = date();
-    departure = date();
+    arrival = Date();
+    departure = Date();
     destination = Airport();
     origin = Airport();
     capacity = 0;
 }
 
-Flight::Flight(date &arrival,date &departure,Airport &destination,Airport &origin, int capacity)
+Flight::Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity)
 {
     id++;
     this->arrival = arrival;
@@ -25,12 +25,12 @@ int Flight::getId() const {
     return id;
 }
 
-date Flight::getArrivalDate() const
+Date Flight::getArrivalDate() const
 {
     return arrival;
 }
 
-date Flight::getDepartureDate() const
+Date Flight::getDepartureDate() const
 {
     return departure;
 }
@@ -63,3 +63,11 @@ bool Flight::operator==(const Flight &flight)
 {
     return id == flight.getId();
 }
+
+void Flight::setArrival(Date date) {arrival = date;}
+
+void Flight::setDeparture(Date date) {departure = date;}
+
+void Flight::setDestination(Airport airport) {destination = airport;}
+
+void Flight::setOrigin(Airport airport) {origin = airport;}

@@ -14,13 +14,13 @@ private:
     string name, passport;
     bool checkin = false;
     Ticket ticket;
-    list<Ticket> passengerTickets;
+    list<Ticket> passengerTickets; //acho questionavel isso aqui
 
 public:
     Passenger();
     Passenger(string name, string passport);
-    inline void setName(string name) { this->name = name; }
-    inline void setPassport(string passport) { this->passport = passport; }
+    void setName(string name);
+    void setPassport(string passport);
     string getName();
     string getPassport();
     bool getCheckin();

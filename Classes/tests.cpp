@@ -2,6 +2,7 @@
 #include <gmock/gmock.h>
 #include "Service.h"
 #include "Airport.h"
+#include "Plane.h"
 
 
 using testing::Eq;
@@ -14,5 +15,12 @@ TEST(test_1, buildService){
     ASSERT_EQ(2002, s1.getDate().year);
     ASSERT_EQ("Eduardo", s1.getAccountable());
 }
+TEST(test_2, PlaneDelete) //just to show the throw
+{
+    list<Flight> b;
+    Plane a(10,"22A","A",b);
+    a.deleteFlight(4);
+}
+
 
 

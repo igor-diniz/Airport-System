@@ -2,12 +2,15 @@
 #define TP1_AED_SERVICE_H
 #include <string>
 using namespace std;
+#ifndef DATE_STRUCT
+#define DATE_STRUCT
 struct Date
 {
     int day;
     int month;
     int year;
 };
+#endif //DATE_STRUCT
 //a. Um serviço é caracterizado
 //por tipo de serviço (manutenção/limpeza), data e funcionário responsável.
 class Service {

@@ -1,30 +1,16 @@
-//
-// Created by jeffe on 25/11/2021.
-//
 
 #ifndef TP1_AED_TRANSPORT_H
 #define TP1_AED_TRANSPORT_H
-struct Time
+struct Time //operadores definidos no cpp
 {
     int hour = 0;
     int minutes = 0;
     int seconds = 0;
 };
-bool operator !=(const Time& t1, const Time& t2)
-{
-    return !((t1.hour == t2.hour) && (t1.minutes == t2.minutes) && (t1.seconds == t2.seconds));
-}
-bool operator < (const Time& t1, const Time& t2)
-{
-    if (t1.hour != t2.hour) return t1.hour < t2.hour;
-    if (t1.minutes != t2.minutes) return t1.minutes < t2.minutes;
-    return t1.seconds < t2.seconds;
-}
 //Um local
 //de transporte terrestre é caracterizado, no mínimo, por tipo de transporte (metro, autocarro, comboio), distância
 //ao aeroporto, horário.
 #include <list>
-using namespace std;
 
 class Transport{
     char type;

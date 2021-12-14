@@ -10,7 +10,7 @@ using namespace std;
 //de transporte terrestre (metro, comboio, autocarro) está guardada numa árvore binária de pesquisa.
 class Airport{
     string name, initials;
-    BST<Transport> transports = BST<Transport>(Transport('o',0,0));
+    BST<Transport> transports = BST<Transport>(Transport('o',0,{0,0,0}));
 public:
     Airport() = default;
     Airport(string name, string initials);

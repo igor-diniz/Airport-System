@@ -9,7 +9,7 @@ using testing::Eq;
 
 //só pra ver se funciona
 TEST(test_1, buildService){
-    Date d1(26,1,2002);
+    Date d1(2002,1,26);
     Service s1('M', d1, "Eduardo");
     ASSERT_EQ('M', s1.getServiceType());
     ASSERT_EQ(2002, s1.getDate().getYear());

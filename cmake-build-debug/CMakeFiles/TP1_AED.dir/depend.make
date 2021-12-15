@@ -116,8 +116,10 @@ CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj: \
  ../Classes/Date.h \
  ../Classes/Flight.h \
  ../Classes/Luggage.h \
+ ../Classes/Passenger.h \
  ../Classes/Plane.h \
  ../Classes/Service.h \
+ ../Classes/Ticket.h \
  ../Classes/Time.h \
  ../Classes/Transport.h \
  ../Classes/tests.cpp

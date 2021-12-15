@@ -3,6 +3,8 @@
 #include "Service.h"
 #include "Airport.h"
 #include "Plane.h"
+#include "Passenger.h"
+#include <utility>
 
 
 using testing::Eq;
@@ -23,5 +25,19 @@ TEST(test_2, PlaneDelete) //just to show the throw
 
 }
 
+TEST(test_3, buyTickets){
+    Airport a1("Guarulhos", "GRU");
+    Airport a2("Tom Jobim", "GIG");
+    Date d1(2021,01,26);
+    Date d2(2021,01,27);
+    Flight f1(d2,d1,a1,a2,200);
+    Passenger p1("Igor Diniz", "XL459635"), p2("Ian Italo", "GB264578"),
+    p3("Eduardo da Silva", "GB765844"), p4("Ingrid Rodrigues", "KP256987"),
+    p5("Laura Ferreira", "SW999999");
+    p2.buyTicket(f1, true);
+    ASSERT_EQ(Ticket(1, f1), p2.getTicket());
+    ASSERT_EQ(true, p2.getTicket().getLuggageStatus());
+    vector<pair<Passenger,bool>> passengers;
+}
 
 

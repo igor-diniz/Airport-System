@@ -83,3 +83,7 @@ void Flight::setLuggageTotal(int qntd) {luggageTotal += qntd;}
 void Flight::addLuggageToVector(vector<Luggage> Luggages) {for(auto&&L:Luggages){flightLuggages.push_back(L);};}
 
 void Flight::setLuggagesOutCar(list<Luggage> &alista) {luggagesOutCar = alista;}
+
+int Flight::getCapacity() {
+    return capacity;
+}

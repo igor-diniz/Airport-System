@@ -14,7 +14,6 @@ private:
     string name, passport;
     bool checkin = false;
     Ticket ticket;
-    list<Ticket> passengerTickets; //acho questionavel isso aqui
 
 public:
     Passenger() = default;
@@ -26,6 +25,7 @@ public:
     bool getCheckin();
     void setCheckin();
     Ticket getTicket() const;
+    bool buyTicket(Flight &flight, bool haslugg);
     bool buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger, bool>> &passengers);
 };
 #endif //TP1_AED_PASSENGER_H

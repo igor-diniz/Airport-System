@@ -75,7 +75,7 @@ list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
     {
         case ID:
         {
-            if(descending) {flights.sort(sortbyiddesc)}
+            if(descending) {flights.sort(sortbyiddesc);}
             else flights.sort(sortbyiddesc);
             return flights;
             break;

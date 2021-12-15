@@ -8,7 +8,7 @@ private:
     int month;
     int day;
 public:
-    Date() = default;
+    Date(){};
     Date(int y, int m , int d);
     int getYear() const;
     int getMonth() const;

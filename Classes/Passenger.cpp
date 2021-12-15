@@ -19,7 +19,7 @@ Ticket Passenger::getTicket() const{
     return ticket;
 }
 
-bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers = vector<pair<Passenger,bool>>()) {
+/*bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers = vector<pair<Passenger,bool>>()) {
     if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;
 
@@ -52,3 +52,4 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
 
     return true;
 }
+*/

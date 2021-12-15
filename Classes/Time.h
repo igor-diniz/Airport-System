@@ -8,7 +8,7 @@ class Time {
     int second;
 
 public:
-    Time() = default;
+    Time(){};
     Time(int hour, int minutes = 0, int seconds = 0);
     int getHour() const;
     int getMinute() const;

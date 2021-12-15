@@ -1,6 +1,4 @@
 #include "LuggageCar.h"
-#include "Luggage.h"
-#include "Flight.h"
 
 LuggageCar::LuggageCar(int c,int n,int m, Flight flight){
     this-> c = c;

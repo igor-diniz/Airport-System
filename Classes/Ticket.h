@@ -26,6 +26,7 @@ public:
     void setLuggageIncluded();
     int getLuggageQuantity() const;
     void setLuggageQuantity(int qntd, vector<Luggage> Luggages);
+    bool operator==(const Ticket &t) const;
 };
 
 

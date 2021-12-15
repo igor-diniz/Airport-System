@@ -84,6 +84,18 @@ void Flight::addLuggageToVector(vector<Luggage> Luggages) {for(auto&&L:Luggages)
 
 void Flight::setLuggagesOutCar(list<Luggage> &alista) {luggagesOutCar = alista;}
 
-int Flight::getCapacity() {
+int Flight::getCapacity() const {
     return capacity;
 }
+bool Flight::operator==(const Flight &f) const{
+    return (
+    id == f.getId() &&
+    availableSeats == f.getAvailableSeats() &&
+    arrival == f.getArrivalDate() &&
+    departure == f.getDepartureDate() &&
+    destination == f.getDestination() &&
+    origin == f.getOrigin() &&
+    capacity == f.getCapacity()
+    );
+}
+

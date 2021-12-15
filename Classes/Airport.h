@@ -22,5 +22,6 @@ public:
     void setName(string name);
     void setInitials (string initials);
     Transport getClosestTransport() const;
+    bool operator==(const Airport& a) const;
 };
 #endif

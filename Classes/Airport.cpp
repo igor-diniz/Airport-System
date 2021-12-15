@@ -39,3 +39,7 @@ void Airport::setName(string name)
     this->name = name;
 }
 
+bool Airport::operator==(const Airport& a) const{
+    return name == a.getName() && initials == a.getInitials();
+}
+

@@ -23,3 +23,11 @@ bool Date::operator!=(const Date &d1) const {
     return (year != d1.getYear()) || (month != d1.getMonth()) || (day != d1.getDay());
 }
 
+bool Date::operator == (const Date& d1) const{
+    return (
+    year == d1.getYear() &&
+    month == d1.getMonth() &&
+    day == d1.getDay()
+    );
+}
+

@@ -1,6 +1,18 @@
 #include "Flight.h"
 #include "Luggage.h"
 int Flight::id = 0;
+Flight::Flight()
+{
+    availableSeats = 0;
+    arrival = Date();
+    departure = Date();
+    destination = Airport();
+    origin = Airport();
+    capacity = 0;
+    list<Luggage> flightLuggages;
+    list<Luggage> luggagesOutCar;
+}
+
 Flight::Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity)
 {
     id++;
@@ -40,8 +52,6 @@ int Flight::getAvailableSeats() const {
     return availableSeats;
 }
 
-int Flight::getCapacity(){return capacity;}
-
 void Flight::setAvailableSeats(int availableSeats){
     this->availableSeats = availableSeats;
 }
@@ -69,4 +79,6 @@ int Flight::getLuggageTotal() {return luggageTotal;}
 
 void Flight::setLuggageTotal(int qntd) {luggageTotal += qntd;}
 
-void Flight::addLuggageToVector(vector<Luggage> Luggages) {for(auto&&L:Luggages){FlightLuggages.push_back(L);};}
+void Flight::addLuggageToVector(vector<Luggage> Luggages) {for(auto&&L:Luggages){flightLuggages.push_back(L);};}
+
+void Flight::setLuggagesOutCar(list<Luggage> &alista) {luggagesOutCar = alista;}

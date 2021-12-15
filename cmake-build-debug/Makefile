@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\drigo\CLionProjects\Airport-System
+CMAKE_SOURCE_DIR = C:\Users\duart\Documents\GitHub\TP1_AED
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\drigo\CLionProjects\Airport-System\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = C:\Users\drigo\CLionProjects\Airport-System\cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -77,31 +77,31 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -120,20 +120,20 @@ list_install_components/fast: list_install_components
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\drigo\CLionProjects\Airport-System\cmake-build-debug\CMakeFiles C:\Users\drigo\CLionProjects\Airport-System\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\CMakeFiles C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\drigo\CLionProjects\Airport-System\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -249,30 +249,6 @@ Classes/Airport.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Airport.cpp.s
 .PHONY : Classes/Airport.cpp.s
 
-Classes/Date.obj: Classes/Date.cpp.obj
-.PHONY : Classes/Date.obj
-
-# target to build an object file
-Classes/Date.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Date.cpp.obj
-.PHONY : Classes/Date.cpp.obj
-
-Classes/Date.i: Classes/Date.cpp.i
-.PHONY : Classes/Date.i
-
-# target to preprocess a source file
-Classes/Date.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Date.cpp.i
-.PHONY : Classes/Date.cpp.i
-
-Classes/Date.s: Classes/Date.cpp.s
-.PHONY : Classes/Date.s
-
-# target to generate assembly for a file
-Classes/Date.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Date.cpp.s
-.PHONY : Classes/Date.cpp.s
-
 Classes/Flight.obj: Classes/Flight.cpp.obj
 .PHONY : Classes/Flight.obj
 
@@ -320,6 +296,30 @@ Classes/Luggage.s: Classes/Luggage.cpp.s
 Classes/Luggage.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.s
 .PHONY : Classes/Luggage.cpp.s
+
+Classes/LuggageCar.obj: Classes/LuggageCar.cpp.obj
+.PHONY : Classes/LuggageCar.obj
+
+# target to build an object file
+Classes/LuggageCar.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/LuggageCar.cpp.obj
+.PHONY : Classes/LuggageCar.cpp.obj
+
+Classes/LuggageCar.i: Classes/LuggageCar.cpp.i
+.PHONY : Classes/LuggageCar.i
+
+# target to preprocess a source file
+Classes/LuggageCar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/LuggageCar.cpp.i
+.PHONY : Classes/LuggageCar.cpp.i
+
+Classes/LuggageCar.s: Classes/LuggageCar.cpp.s
+.PHONY : Classes/LuggageCar.s
+
+# target to generate assembly for a file
+Classes/LuggageCar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/LuggageCar.cpp.s
+.PHONY : Classes/LuggageCar.cpp.s
 
 Classes/Passenger.obj: Classes/Passenger.cpp.obj
 .PHONY : Classes/Passenger.obj
@@ -417,30 +417,6 @@ Classes/Ticket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.s
 .PHONY : Classes/Ticket.cpp.s
 
-Classes/Time.obj: Classes/Time.cpp.obj
-.PHONY : Classes/Time.obj
-
-# target to build an object file
-Classes/Time.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj
-.PHONY : Classes/Time.cpp.obj
-
-Classes/Time.i: Classes/Time.cpp.i
-.PHONY : Classes/Time.i
-
-# target to preprocess a source file
-Classes/Time.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Time.cpp.i
-.PHONY : Classes/Time.cpp.i
-
-Classes/Time.s: Classes/Time.cpp.s
-.PHONY : Classes/Time.s
-
-# target to generate assembly for a file
-Classes/Time.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Time.cpp.s
-.PHONY : Classes/Time.cpp.s
-
 Classes/Transport.obj: Classes/Transport.cpp.obj
 .PHONY : Classes/Transport.obj
 
@@ -533,15 +509,15 @@ help:
 	@echo ... Classes/Airport.obj
 	@echo ... Classes/Airport.i
 	@echo ... Classes/Airport.s
-	@echo ... Classes/Date.obj
-	@echo ... Classes/Date.i
-	@echo ... Classes/Date.s
 	@echo ... Classes/Flight.obj
 	@echo ... Classes/Flight.i
 	@echo ... Classes/Flight.s
 	@echo ... Classes/Luggage.obj
 	@echo ... Classes/Luggage.i
 	@echo ... Classes/Luggage.s
+	@echo ... Classes/LuggageCar.obj
+	@echo ... Classes/LuggageCar.i
+	@echo ... Classes/LuggageCar.s
 	@echo ... Classes/Passenger.obj
 	@echo ... Classes/Passenger.i
 	@echo ... Classes/Passenger.s
@@ -554,9 +530,6 @@ help:
 	@echo ... Classes/Ticket.obj
 	@echo ... Classes/Ticket.i
 	@echo ... Classes/Ticket.s
-	@echo ... Classes/Time.obj
-	@echo ... Classes/Time.i
-	@echo ... Classes/Time.s
 	@echo ... Classes/Transport.obj
 	@echo ... Classes/Transport.i
 	@echo ... Classes/Transport.s

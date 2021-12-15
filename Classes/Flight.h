@@ -4,7 +4,15 @@
 #include "Airport.h"
 #include "Luggage.h"
 //#include "Plane.h"
-#include "Date.h"
+#ifndef DATE_STRUCT
+#define DATE_STRUCT
+struct Date
+{
+    int day;
+    int month;
+    int year;
+};
+#endif //DATE_STRUCT
 //Um voo é
 //caracterizado, no mínimo, por: numero de voo, data de partida, duração do voo, origem, destino.
 class Flight {
@@ -16,9 +24,11 @@ private:
     //Plane planeAssociated;
     int capacity;
     int luggageTotal = 0;
-    vector<Luggage> FlightLuggages;
+    list<Luggage> flightLuggages;
+    list<Luggage> luggagesOutCar;
+
 public:
-    Flight(){};
+    Flight();
     Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity);
     int getId() const;
     Airport getDestination() const;
@@ -36,7 +46,7 @@ public:
     int getLuggageTotal();
     void setLuggageTotal(int qntd);
     void addLuggageToVector(vector<Luggage> Luggages);
-    int getCapacity();
+    void setLuggagesOutCar(list<Luggage> &alista);
 };
 
 

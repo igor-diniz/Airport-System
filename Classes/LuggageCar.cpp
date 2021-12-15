@@ -7,25 +7,50 @@ LuggageCar::LuggageCar(int c,int n,int m, Flight flight){
     this-> flight = flight;
     capacity = c * n * m;
     availability = capacity;
+
 }
 
-list<Luggage> LuggageCar::setLuggageInCar() {
-    if (luggageOutCar.size() != 0) {
-        for (auto &&luggage: luggageOutCar) {
-            for (auto &&carruagem: luggageInCar) {
-                for (auto &&pilha: carruagem) {
-                    while (pilha.size() != m && luggageOutCar.size() != 0) {
-                        pilha.push(luggageOutCar.front());
-                        luggageOutCar.pop_front();
-                        availability -= 1;
-                        if (luggageOutCar.size() == 0) return luggageOutCar;
-                    }
+list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)
+{
+    if (luggageOutCar.empty())  return luggageOutCar;
+
+    stack<Luggage> pilha;
+    list<stack<Luggage>> carruagens;
+
+    while (luggageInCar.size() < c)
+    {
+        while(carruagens.size() < n)
+        {
+            while(pilha.size() < m)
+            {
+                pilha.push(luggageOutCar.back());
+                luggageOutCar.pop_back();
+                if (luggageOutCar.empty())
+                {
+                    carruagens.push_back(pilha);
+                    luggageInCar.push_back(carruagens);
+                    return luggageOutCar;
                 }
+            }
+            carruagens.push_back(pilha);
+        }
+        luggageInCar.push_back(carruagens);
+    }
+    return luggageOutCar;
+    /*for (auto carruagem: luggageInCar)
+    {
+        for (auto pilha: carruagem)
+        {
+            while (pilha.size() != m)
+            {
+                pilha.push(luggageOutCar.front());
+                luggageOutCar.pop_front();
+                availability -= 1;
+                if (luggageOutCar.empty()) return luggageOutCar; //isso ta retornando uma lista vazia
             }
         }
     }
-    return luggageOutCar;
+    return luggageOutCar;*/
 }
-void LuggageCar::setLuggageOutCar(list<Luggage> luggages){
-    luggageOutCar = luggages;
-}
+void addLuggages()
+{}

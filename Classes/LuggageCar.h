@@ -9,7 +9,6 @@ class LuggageCar {
 private:
     int c, n, m;
     Flight flight;
-    list<Luggage> luggageOutCar;
     list<list<stack<Luggage>>> luggageInCar;
     list<stack<Luggage>> carruagens;
     stack<Luggage> pilhas;
@@ -17,7 +16,7 @@ private:
 public:
     LuggageCar(int c, int n, int m, Flight flight);
     void setLuggageOutCar(list<Luggage> Luggages);
-    list<Luggage> setLuggageInCar();
+    list<Luggage> setLuggageInCar(list<Luggage> &luggageOutCar);
 };
 
 

@@ -73,7 +73,10 @@ bool sort_availableSeats_asc(const Flight& a, const Flight& b){return a.getAvail
 
 bool sort_availableSeats_desc(const Flight& a, const Flight& b){return a.getAvailableSeats() > b.getAvailableSeats();}
 
-//bool sort_arrival_desc(const Flight& a, const Flight& b){return a.getArrivalDate() < b.getArrivalDate();}
+bool sort_arrival_asc(const Flight& a, const Flight& b){return a.getArrivalDate() < b.getArrivalDate();}
+
+bool sort_arrival_desc(const Flight& a, const Flight& b){return !(a.getArrivalDate() < b.getArrivalDate());}
+
 
 
 list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
@@ -81,17 +84,18 @@ list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
     switch(sortOrder)
     {
         case ID:
-        {
             if(descending) {flights.sort(sort_id_desc);}
             else flights.sort(sort_id_asc);
             break;
-        }
+
         case AVAILABLESEATS:
             if(descending) {flights.sort(sort_availableSeats_desc);}
             else flights.sort(sort_availableSeats_asc);
             break;
+
         case ARRIVAL:
-            //code
+            if(descending) {flights.sort(sort_arrival_desc);}
+            else flights.sort(sort_arrival_asc);
             break;
 
     }

@@ -14,6 +14,7 @@ private:
     Flight flightAssocieted;
     //Passenger passengerAssocieted;
     bool luggageIncluded = false;
+    int luggageQuantity = 0;
 
 public:
     Ticket(int id, Flight flightAssocieted);
@@ -24,6 +25,8 @@ public:
     //Passenger getPassengerAssocieted();
     bool getLuggageStatus() const;
     void setLuggageIncluded();
+    int getLuggageQuantity() const;
+    void setLuggageQuantity(int qntd);
 };
 
 

@@ -19,7 +19,7 @@ TEST(test_2, PlaneDelete) //just to show the throw
 {
     list<Flight> b;
     Plane a(10,"22A","A",b);
-    a.deleteFlight(4);
+    ASSERT_EQ(false,a.deleteFlight(4));
 }
 
 

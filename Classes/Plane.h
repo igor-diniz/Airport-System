@@ -34,17 +34,9 @@ public:
     void setRegistration(string registration);
     string getType() const;
     void setType(string type);
-    list<Flight> getFlights() const;
-    void deleteFlight(int id);
-};
-class InvalidFlightId: public exception
-{
-public:
-    InvalidFlightId(){};
-    virtual const char* what() const throw()
-    {
-        return "The plane has no flight with the given ID";
-    }
+    list<Flight> getFlights(string sortOrder = "id" , bool descending = false) const;
+    bool deleteFlight(int id);
+
 };
 
 

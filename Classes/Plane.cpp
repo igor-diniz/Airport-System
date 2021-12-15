@@ -46,17 +46,18 @@ void Plane::deleteService() {
     servicesToDo.pop();
 }
 
-void Plane::deleteFlight(int id)
+bool Plane::deleteFlight(int id)
 {
     for (Flight a: flights)
     {
         if(a.getId() == id)
         {
             flights.remove(a);
-            return;
+            return true;
         }
     }
-    throw InvalidFlightId();
+    return false;
+
 }
 
 int Plane::getCapacity() const
@@ -64,9 +65,12 @@ int Plane::getCapacity() const
     return capacity;
 }
 
-list<Flight> Plane::getFlights() const
+list<Flight> Plane::getFlights(string sortOrder , bool descending) const
 {
-    return flights;
+    switch(sortOrder)
+    {
+        case "id": if(descending) return
+    }
 }
 
 string Plane::getRegistration() const

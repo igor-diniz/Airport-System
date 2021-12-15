@@ -65,11 +65,24 @@ int Plane::getCapacity() const
     return capacity;
 }
 
-list<Flight> Plane::getFlights(string sortOrder , bool descending) const
+bool sortbyidasc(const Flight& a, const Flight& b){return a.getId() < b.getId();}
+
+bool sortbyiddesc(const Flight& a, const Flight& b){return a.getId() < b.getId();}
+
+list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
 {
     switch(sortOrder)
     {
-        case "id": if(descending) return
+        case ID:
+        {
+            if(descending) {flights.sort(sortbyiddesc)}
+            else flights.sort(sortbyiddesc);
+            return flights;
+            break;
+        }
+        case AVAILABLESEATS:
+            //code
+            break;
     }
 }
 

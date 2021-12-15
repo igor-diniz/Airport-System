@@ -21,6 +21,7 @@ private:
 
 public:
     Plane(){};
+    enum SortPossibilites {ID,AVAILABLESEATS,ARRIVAL,DEPARTURE,DESTINATION,ORIGIN,CAPACITY};
     Plane(int capacity,string registration,string type, list<Flight> &flights, queue<Service> & servicesToDo);
     Plane(int capacity,string registration,string type, list<Flight> &flights);
     void addFlight(Flight &flight); //adicionar 1 voo só
@@ -34,7 +35,7 @@ public:
     void setRegistration(string registration);
     string getType() const;
     void setType(string type);
-    list<Flight> getFlights(string sortOrder = "id" , bool descending = false) const;
+    list<Flight> getFlights(SortPossibilites sortOrder = ID , bool descending = false);
     bool deleteFlight(int id);
 
 };

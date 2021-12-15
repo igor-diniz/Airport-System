@@ -4,15 +4,7 @@
 #include "Airport.h"
 #include "Luggage.h"
 //#include "Plane.h"
-#ifndef DATE_STRUCT
-#define DATE_STRUCT
-struct Date
-{
-    int day;
-    int month;
-    int year;
-};
-#endif //DATE_STRUCT
+#include "Date.h"
 //Um voo é
 //caracterizado, no mínimo, por: numero de voo, data de partida, duração do voo, origem, destino.
 class Flight {

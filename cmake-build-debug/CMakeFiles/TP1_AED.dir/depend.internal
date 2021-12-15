@@ -16,6 +16,7 @@ CMakeFiles/TP1_AED.dir/Classes/Flight.cpp.obj
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.cpp
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
+ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
 CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.obj
@@ -26,6 +27,7 @@ CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.obj
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
+ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Passenger.cpp
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Passenger.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.h
@@ -36,6 +38,7 @@ CMakeFiles/TP1_AED.dir/Classes/Plane.cpp.obj
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
+ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.cpp
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
@@ -50,6 +53,7 @@ CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
+ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.cpp
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
@@ -101,6 +105,7 @@ CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
+ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
  C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h

@@ -1,4 +1,5 @@
 #include "Flight.h"
+#include "Luggage.h"
 int Flight::id = 0;
 Flight::Flight()
 {
@@ -8,6 +9,7 @@ Flight::Flight()
     destination = Airport();
     origin = Airport();
     capacity = 0;
+    vector<Luggage> FlightLuggages;
 }
 
 Flight::Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity)
@@ -75,3 +77,5 @@ void Flight::setOrigin(Airport airport) {origin = airport;}
 int Flight::getLuggageTotal() {return luggageTotal;}
 
 void Flight::setLuggageTotal(int qntd) {luggageTotal += qntd;}
+
+void Flight::addLuggageToVector(vector<Luggage> Luggages) {for(auto&&L:Luggages){FlightLuggages.push_back(L);};}

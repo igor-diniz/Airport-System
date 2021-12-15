@@ -2,6 +2,7 @@
 #define TP1_AED_FLIGHT_H
 
 #include "Airport.h"
+#include "Luggage.h"
 //#include "Plane.h"
 #ifndef DATE_STRUCT
 #define DATE_STRUCT
@@ -23,6 +24,7 @@ private:
     //Plane planeAssociated;
     int capacity;
     int luggageTotal = 0;
+    vector<Luggage> FlightLuggages;
 public:
     Flight();
     Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity);
@@ -43,6 +45,8 @@ public:
     int getLuggageTotal();
 
     void setLuggageTotal(int qntd);
+
+    void addLuggageToVector(vector<Luggage> Luggages);
 };
 
 

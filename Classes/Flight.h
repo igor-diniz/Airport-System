@@ -22,7 +22,7 @@ private:
     Airport destination, origin;
     //Plane planeAssociated;
     int capacity;
-
+    int luggageTotal = 0;
 public:
     Flight();
     Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity);
@@ -39,6 +39,10 @@ public:
     void setAvailableSeats(int availableSeats);
     //Plane getPlaneAssocieted() const;
     bool operator == (const Flight& flight);
+
+    int getLuggageTotal();
+
+    void setLuggageTotal(int qntd);
 };
 
 

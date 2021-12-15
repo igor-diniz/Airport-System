@@ -71,3 +71,7 @@ void Flight::setDeparture(Date date) {departure = date;}
 void Flight::setDestination(Airport airport) {destination = airport;}
 
 void Flight::setOrigin(Airport airport) {origin = airport;}
+
+int Flight::getLuggageTotal() {return luggageTotal;}
+
+void Flight::setLuggageTotal(int qntd) {luggageTotal += qntd;}

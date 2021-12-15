@@ -65,9 +65,13 @@ int Plane::getCapacity() const
     return capacity;
 }
 
-bool sortbyidasc(const Flight& a, const Flight& b){return a.getId() < b.getId();}
+bool sort_id_asc(const Flight& a, const Flight& b){return a.getId() < b.getId();}
 
-bool sortbyiddesc(const Flight& a, const Flight& b){return a.getId() < b.getId();}
+bool sort_id_desc(const Flight& a, const Flight& b){return a.getId() > b.getId();}
+
+bool sort_availableSeats_asc(const Flight& a, const Flight& b){return a.getId() < b.getId();}
+
+bool sort_availableSeats_desc(const Flight& a, const Flight& b){return a.getId() > b.getId();}
 
 list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
 {
@@ -75,15 +79,15 @@ list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
     {
         case ID:
         {
-            if(descending) {flights.sort(sortbyiddesc);}
-            else flights.sort(sortbyiddesc);
+            if(descending) {flights.sort(sort_id_desc);}
+            else flights.sort(sort_id_asc);
             return flights;
             break;
         }
         case AVAILABLESEATS:
-            //code
             break;
     }
+    return flights; // temporary
 }
 
 string Plane::getRegistration() const

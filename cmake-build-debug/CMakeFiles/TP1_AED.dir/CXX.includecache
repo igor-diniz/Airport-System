@@ -6,51 +6,15 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Airport.h
-list
--
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.cpp
 Transport.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
-string
--
-BST.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h
-
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h
-iostream
--
-stack
--
-queue
--
-
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
-Airport.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Airport.h
-
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.cpp
-Plane.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
-
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
-Flight.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
-list
--
-string
--
-queue
--
-Service.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
-exception
--
-
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
-string
--
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
 list
 -
+Time.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
 

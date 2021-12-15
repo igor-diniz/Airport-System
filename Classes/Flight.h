@@ -1,17 +1,9 @@
 #ifndef TP1_AED_FLIGHT_H
 #define TP1_AED_FLIGHT_H
-
+#include "Date.h"
 #include "Airport.h"
+
 //#include "Plane.h"
-#ifndef DATE_STRUCT
-#define DATE_STRUCT
-struct Date
-{
-    int day;
-    int month;
-    int year;
-};
-#endif //DATE_STRUCT
 //Um voo é
 //caracterizado, no mínimo, por: numero de voo, data de partida, duração do voo, origem, destino.
 class Flight {

@@ -1,16 +1,11 @@
 
 #ifndef TP1_AED_TRANSPORT_H
 #define TP1_AED_TRANSPORT_H
-struct Time //operadores definidos no cpp
-{
-    int hour = 0;
-    int minutes = 0;
-    int seconds = 0;
-};
 //Um local
 //de transporte terrestre é caracterizado, no mínimo, por tipo de transporte (metro, autocarro, comboio), distância
 //ao aeroporto, horário.
 #include <list>
+#include "Time.h"
 
 class Transport{
     char type;

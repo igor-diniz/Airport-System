@@ -205,6 +205,34 @@ CMakeFiles/TP1_AED.dir/Classes/tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TP1_AED.dir/Classes/tests.cpp.s"
 	D:\Mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\jeffe\CLionProjects\TP1_AED\Classes\tests.cpp -o CMakeFiles\TP1_AED.dir\Classes\tests.cpp.s
 
+CMakeFiles/TP1_AED.dir/Classes/Date.cpp.obj: CMakeFiles/TP1_AED.dir/flags.make
+CMakeFiles/TP1_AED.dir/Classes/Date.cpp.obj: CMakeFiles/TP1_AED.dir/includes_CXX.rsp
+CMakeFiles/TP1_AED.dir/Classes/Date.cpp.obj: ../Classes/Date.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/TP1_AED.dir/Classes/Date.cpp.obj"
+	D:\Mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\TP1_AED.dir\Classes\Date.cpp.obj -c C:\Users\jeffe\CLionProjects\TP1_AED\Classes\Date.cpp
+
+CMakeFiles/TP1_AED.dir/Classes/Date.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TP1_AED.dir/Classes/Date.cpp.i"
+	D:\Mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\jeffe\CLionProjects\TP1_AED\Classes\Date.cpp > CMakeFiles\TP1_AED.dir\Classes\Date.cpp.i
+
+CMakeFiles/TP1_AED.dir/Classes/Date.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TP1_AED.dir/Classes/Date.cpp.s"
+	D:\Mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\jeffe\CLionProjects\TP1_AED\Classes\Date.cpp -o CMakeFiles\TP1_AED.dir\Classes\Date.cpp.s
+
+CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj: CMakeFiles/TP1_AED.dir/flags.make
+CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj: CMakeFiles/TP1_AED.dir/includes_CXX.rsp
+CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj: ../Classes/Time.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj"
+	D:\Mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\TP1_AED.dir\Classes\Time.cpp.obj -c C:\Users\jeffe\CLionProjects\TP1_AED\Classes\Time.cpp
+
+CMakeFiles/TP1_AED.dir/Classes/Time.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TP1_AED.dir/Classes/Time.cpp.i"
+	D:\Mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\jeffe\CLionProjects\TP1_AED\Classes\Time.cpp > CMakeFiles\TP1_AED.dir\Classes\Time.cpp.i
+
+CMakeFiles/TP1_AED.dir/Classes/Time.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TP1_AED.dir/Classes/Time.cpp.s"
+	D:\Mingw\mingw64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\jeffe\CLionProjects\TP1_AED\Classes\Time.cpp -o CMakeFiles\TP1_AED.dir\Classes\Time.cpp.s
+
 # Object files for target TP1_AED
 TP1_AED_OBJECTS = \
 "CMakeFiles/TP1_AED.dir/main.cpp.obj" \
@@ -216,7 +244,9 @@ TP1_AED_OBJECTS = \
 "CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj" \
 "CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.obj" \
 "CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.obj" \
-"CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj"
+"CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj" \
+"CMakeFiles/TP1_AED.dir/Classes/Date.cpp.obj" \
+"CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj"
 
 # External object files for target TP1_AED
 TP1_AED_EXTERNAL_OBJECTS =
@@ -231,6 +261,8 @@ TP1_AED.exe: CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj
 TP1_AED.exe: CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.obj
 TP1_AED.exe: CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.obj
 TP1_AED.exe: CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj
+TP1_AED.exe: CMakeFiles/TP1_AED.dir/Classes/Date.cpp.obj
+TP1_AED.exe: CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj
 TP1_AED.exe: CMakeFiles/TP1_AED.dir/build.make
 TP1_AED.exe: lib/libgtestd.a
 TP1_AED.exe: lib/libgtest_maind.a
@@ -238,7 +270,7 @@ TP1_AED.exe: lib/libgtestd.a
 TP1_AED.exe: CMakeFiles/TP1_AED.dir/linklibs.rsp
 TP1_AED.exe: CMakeFiles/TP1_AED.dir/objects1.rsp
 TP1_AED.exe: CMakeFiles/TP1_AED.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable TP1_AED.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable TP1_AED.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\TP1_AED.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

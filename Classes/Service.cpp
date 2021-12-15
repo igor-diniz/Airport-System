@@ -20,14 +20,7 @@ void Service::setDate(Date date) {this->date = date;}
 void Service::setServiceType(char type) {this->serviceType = type;}
 
 bool Service::operator<(Service &s) {
-    if (date.year != s.getDate().year)
-        return date.year < s.getDate().year;
-
-    else if(date.month != s.getDate().month)
-        return date.month < s.getDate().month;
-    else if(date.day != s.getDate().day)
-        return date.day < s.getDate().day;
-
-    return accountable < s.getAccountable();
+    if(date != s.getDate()) return date < s.getDate();
+    else return accountable < s.getAccountable();
 }
 

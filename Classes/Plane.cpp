@@ -69,9 +69,12 @@ bool sort_id_asc(const Flight& a, const Flight& b){return a.getId() < b.getId();
 
 bool sort_id_desc(const Flight& a, const Flight& b){return a.getId() > b.getId();}
 
-bool sort_availableSeats_asc(const Flight& a, const Flight& b){return a.getId() < b.getId();}
+bool sort_availableSeats_asc(const Flight& a, const Flight& b){return a.getAvailableSeats() < b.getAvailableSeats();}
 
-bool sort_availableSeats_desc(const Flight& a, const Flight& b){return a.getId() > b.getId();}
+bool sort_availableSeats_desc(const Flight& a, const Flight& b){return a.getAvailableSeats() > b.getAvailableSeats();}
+
+//bool sort_arrival_desc(const Flight& a, const Flight& b){return a.getArrivalDate() < b.getArrivalDate();}
+
 
 list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
 {
@@ -81,13 +84,18 @@ list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
         {
             if(descending) {flights.sort(sort_id_desc);}
             else flights.sort(sort_id_asc);
-            return flights;
             break;
         }
         case AVAILABLESEATS:
+            if(descending) {flights.sort(sort_availableSeats_desc);}
+            else flights.sort(sort_availableSeats_asc);
             break;
+        case ARRIVAL:
+            //code
+            break;
+
     }
-    return flights; // temporary
+    return flights;
 }
 
 string Plane::getRegistration() const

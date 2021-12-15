@@ -327,6 +327,12 @@
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/BST.h">
 			<Option target="TP1_AED"/>
 		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.cpp">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h">
+			<Option target="TP1_AED"/>
+		</Unit>
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.cpp">
 			<Option target="TP1_AED"/>
 		</Unit>
@@ -361,6 +367,12 @@
 			<Option target="TP1_AED"/>
 		</Unit>
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.h">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.cpp">
+			<Option target="TP1_AED"/>
+		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h">
 			<Option target="TP1_AED"/>
 		</Unit>
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.cpp">

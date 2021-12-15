@@ -11,6 +11,7 @@ Flight::Flight()
     capacity = 0;
     list<Luggage> flightLuggages;
     list<Luggage> luggagesOutCar;
+    luggagesOutCar = flightLuggages;
 }
 
 Flight::Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity)

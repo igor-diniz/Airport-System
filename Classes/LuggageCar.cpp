@@ -28,4 +28,6 @@ list<Luggage> LuggageCar::setLuggageInCar() {
     }
     return luggageOutCar;
 }
-void LuggageCar::setLuggageOutCar(list<Luggage> Luggages){}
+void LuggageCar::setLuggageOutCar(list<Luggage> luggages){
+    luggageOutCar = luggages;
+}

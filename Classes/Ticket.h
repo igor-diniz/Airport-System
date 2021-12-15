@@ -3,6 +3,7 @@
 #define TP1_AED_TICKET_H
 #include <list>
 #include "Flight.h"
+#include "Luggage.h"
 //#include "Passenger.h"
 
 class Ticket {
@@ -12,6 +13,7 @@ private:
     //Passenger passengerAssocieted;
     bool luggageIncluded = false;
     int luggageQuantity = 0;
+    vector<Luggage> ticketLuggages;
 
 public:
     Ticket(int id, Flight flightAssocieted);
@@ -23,7 +25,7 @@ public:
     bool getLuggageStatus() const;
     void setLuggageIncluded();
     int getLuggageQuantity() const;
-    void setLuggageQuantity(int qntd);
+    void setLuggageQuantity(int qntd, vector<Luggage> Luggages);
 };
 
 

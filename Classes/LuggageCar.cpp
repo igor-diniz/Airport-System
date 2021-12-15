@@ -7,13 +7,37 @@ LuggageCar::LuggageCar(int c,int n,int m, Flight flight){
     this-> flight = flight;
     capacity = c * n * m;
     availability = capacity;
+
 }
 
-list<Luggage> LuggageCar::setLuggageInCar()
+list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)
 {
     if (luggageOutCar.empty())  return luggageOutCar;
 
-    for (auto carruagem: luggageInCar)
+    stack<Luggage> pilhaaux;
+    list<stack<Luggage>> carruagemsaux;
+
+    for (int i = 0; i < c; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            for(int k = 0; k< m; k++)
+            {
+                pilhaaux.push(luggageOutCar.back());
+                luggageOutCar.pop_back();
+                if (luggageOutCar.empty())
+                {
+                    carruagemsaux.push_back(pilhaaux);
+                    luggageInCar.push_back(carruagemsaux);
+                    return luggageOutCar;
+                }
+            }
+            carruagemsaux.push_back(pilhaaux);
+        }
+        luggageInCar.push_back(carruagemsaux);
+    }
+    return luggageOutCar;
+    /*for (auto carruagem: luggageInCar)
     {
         for (auto pilha: carruagem)
         {
@@ -26,8 +50,7 @@ list<Luggage> LuggageCar::setLuggageInCar()
             }
         }
     }
-    return luggageOutCar;
+    return luggageOutCar;*/
 }
-void LuggageCar::setLuggageOutCar(list<Luggage> luggages){
-    luggageOutCar = luggages;
-}
+void addLuggages()
+{}

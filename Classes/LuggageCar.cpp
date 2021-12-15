@@ -14,27 +14,27 @@ list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)
 {
     if (luggageOutCar.empty())  return luggageOutCar;
 
-    stack<Luggage> pilhaaux;
-    list<stack<Luggage>> carruagemsaux;
+    stack<Luggage> pilha;
+    list<stack<Luggage>> carruagens;
 
-    for (int i = 0; i < c; i++)
+    while (luggageInCar.size() < c)
     {
-        for(int j = 0; j < n; j++)
+        while(carruagens.size() < n)
         {
-            for(int k = 0; k< m; k++)
+            while(pilha.size() < m)
             {
-                pilhaaux.push(luggageOutCar.back());
+                pilha.push(luggageOutCar.back());
                 luggageOutCar.pop_back();
                 if (luggageOutCar.empty())
                 {
-                    carruagemsaux.push_back(pilhaaux);
-                    luggageInCar.push_back(carruagemsaux);
+                    carruagens.push_back(pilha);
+                    luggageInCar.push_back(carruagens);
                     return luggageOutCar;
                 }
             }
-            carruagemsaux.push_back(pilhaaux);
+            carruagens.push_back(pilha);
         }
-        luggageInCar.push_back(carruagemsaux);
+        luggageInCar.push_back(carruagens);
     }
     return luggageOutCar;
     /*for (auto carruagem: luggageInCar)

@@ -17,7 +17,7 @@ private:
     list<Ticket> passengerTickets; //acho questionavel isso aqui
 
 public:
-    Passenger();
+    Passenger() = default;
     Passenger(string name, string passport);
     void setName(string name);
     void setPassport(string passport);

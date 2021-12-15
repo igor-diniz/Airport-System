@@ -12,7 +12,7 @@ class Airport{
     string name, initials;
     BST<Transport> transports = BST<Transport>(Transport('o',0,{0,0,0}));
 public:
-    Airport() = default;
+    Airport(){};
     Airport(string name, string initials);
     bool addTransport(Transport transport);
     bool deleteTransport(Transport transport);

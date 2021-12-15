@@ -1,17 +1,6 @@
 #include "Flight.h"
 #include "Luggage.h"
 int Flight::id = 0;
-Flight::Flight()
-{
-    availableSeats = 0;
-    arrival = Date();
-    departure = Date();
-    destination = Airport();
-    origin = Airport();
-    capacity = 0;
-    vector<Luggage> FlightLuggages;
-}
-
 Flight::Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity)
 {
     id++;
@@ -50,6 +39,8 @@ Airport Flight::getOrigin() const
 int Flight::getAvailableSeats() const {
     return availableSeats;
 }
+
+int Flight::getCapacity(){return capacity;}
 
 void Flight::setAvailableSeats(int availableSeats){
     this->availableSeats = availableSeats;

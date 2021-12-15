@@ -18,7 +18,7 @@ private:
     int luggageTotal = 0;
     vector<Luggage> FlightLuggages;
 public:
-    Flight();
+    Flight(){};
     Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity);
     int getId() const;
     Airport getDestination() const;
@@ -33,12 +33,10 @@ public:
     void setAvailableSeats(int availableSeats);
     //Plane getPlaneAssocieted() const;
     bool operator == (const Flight& flight);
-
     int getLuggageTotal();
-
     void setLuggageTotal(int qntd);
-
     void addLuggageToVector(vector<Luggage> Luggages);
+    int getCapacity();
 };
 
 

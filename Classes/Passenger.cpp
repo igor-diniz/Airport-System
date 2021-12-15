@@ -1,8 +1,6 @@
 #include "Passenger.h"
 #include <vector>
 
-Passenger::Passenger() : ticket(0, Flight()) { name = "UNKNOWN"; passport = "UNKNONW";}
-
 Passenger::Passenger(string name, string passport) : ticket(0, Flight()) { this->name = name; this->passport = passport;}
 
 string Passenger::getName() {return name;}
@@ -21,11 +19,9 @@ Ticket Passenger::getTicket() const{
     return ticket;
 }
 
-/*bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers = vector<pair<Passenger,bool>>()) {
+bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers = vector<pair<Passenger,bool>>()) {
     if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;
-
-    //int id = flight.getPlaneAssocieted().getCapacity() - flight.getAvailableSeats() + 1;
 
     flight.setAvailableSeats(flight.getAvailableSeats() - 1);
 
@@ -38,14 +34,21 @@ Ticket Passenger::getTicket() const{
     if(passengers.empty())
         return true;
 
-    for(auto iter : passengers)
+    int id = flight.getCapacity() - flight.getAvailableSeats() + 1;
+
+    for(auto p : passengers)
     {
         id++;
-        iter.first.ticket(id,flight,this);
-        if (iter.second) ticket.setLuggageIncluded();
-        this->passengerTickets.push_back(ticket)
+        Passenger anotherPassenger(p.first);
+        bool isLuggageIncluded = p.second;
+        anotherPassenger.ticket = Ticket(id, flight);
+        if (isLuggageIncluded)
+        {
+            ticket.setLuggageIncluded();
+        }
+        this->passengerTickets.push_back(anotherPassenger.ticket);
         flight.setAvailableSeats(flight.getAvailableSeats() - 1);
     }
 
     return true;
-}*/
+}

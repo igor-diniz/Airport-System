@@ -28,6 +28,7 @@ Transport Airport::getClosestTransport() const //tlvz tenha q mudar o nome dessa
 {
     return transports.findMin();
 }
+
 void Airport::setInitials(string initials)
 {
     this->initials = initials;

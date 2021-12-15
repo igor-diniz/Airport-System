@@ -17,10 +17,10 @@ private:
     string type;
     list<Flight> flights;
     queue<Service> servicesToDo;
-    queue<Service> servicesDone;
+    queue<Service> servicesDone; // não é melhor uma stack?
 
 public:
-    Plane(){};
+    Plane() = default;
     enum SortPossibilites {ID,AVAILABLESEATS,ARRIVAL,DEPARTURE,DESTINATION,ORIGIN,CAPACITY};
     Plane(int capacity,string registration,string type, list<Flight> &flights, queue<Service> & servicesToDo);
     Plane(int capacity,string registration,string type, list<Flight> &flights);
@@ -37,7 +37,6 @@ public:
     void setType(string type);
     list<Flight> getFlights(SortPossibilites sortOrder = ID , bool descending = false);
     bool deleteFlight(int id);
-
 };
 
 

@@ -9,18 +9,20 @@ LuggageCar::LuggageCar(int c,int n,int m, Flight flight){
     availability = capacity;
 }
 
-list<Luggage> LuggageCar::setLuggageInCar() {
-    if (luggageOutCar.size() != 0) {
-        for (auto &&luggage: luggageOutCar) {
-            for (auto &&carruagem: luggageInCar) {
-                for (auto &&pilha: carruagem) {
-                    while (pilha.size() != m && luggageOutCar.size() != 0) {
-                        pilha.push(luggageOutCar.front());
-                        luggageOutCar.pop_front();
-                        availability -= 1;
-                        if (luggageOutCar.size() == 0) return luggageOutCar;
-                    }
-                }
+list<Luggage> LuggageCar::setLuggageInCar()
+{
+    if (luggageOutCar.empty())  return luggageOutCar;
+
+    for (auto carruagem: luggageInCar)
+    {
+        for (auto pilha: carruagem)
+        {
+            while (pilha.size() != m)
+            {
+                pilha.push(luggageOutCar.front());
+                luggageOutCar.pop_front();
+                availability -= 1;
+                if (luggageOutCar.empty()) return luggageOutCar; //isso ta retornando uma lista vazia
             }
         }
     }

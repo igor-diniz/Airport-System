@@ -27,6 +27,6 @@ void Ticket::setLuggageQuantity(int qntd, vector<Luggage> Luggages) {
     getFlightAssocited().setLuggageTotal(-luggageQuantity);
     luggageQuantity = qntd;
     getFlightAssocited().setLuggageTotal(luggageQuantity);
-    for (auto &&L : Luggages){ticketLuggages.push_back(L);}
+    for (auto L : Luggages){ticketLuggages.push_back(L);}
     getFlightAssocited().addLuggageToVector(Luggages);
 }

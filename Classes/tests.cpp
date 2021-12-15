@@ -3,6 +3,7 @@
 #include "Service.h"
 #include "Airport.h"
 #include "Plane.h"
+#include "Time.h"
 
 
 using testing::Eq;
@@ -20,7 +21,14 @@ TEST(test_2, PlaneDelete) //just to show the throw
     list<Flight> b;
     Plane a(10,"22A","A",b);
     ASSERT_EQ(false,a.deleteFlight(4));
-
+}
+TEST(test_3, TimeTest)
+{
+    Time a(3,3,3);
+    Time b(3,3,3);
+    Time c(2,3,3);
+    ASSERT_EQ(true,a==b);
+    ASSERT_EQ(false,a==c);
 }
 
 

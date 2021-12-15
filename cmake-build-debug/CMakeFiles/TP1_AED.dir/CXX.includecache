@@ -546,10 +546,6 @@ stack
 queue
 -
 
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.cpp
-Date.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
-
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
@@ -561,6 +557,10 @@ Date.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.cpp
+Plane.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
 Flight.h
@@ -605,4 +605,6 @@ Airport.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Airport.h
 Plane.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
+Time.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
 

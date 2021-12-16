@@ -14,7 +14,7 @@ Airport LuggageCar::getAirport(const Airport &airport) const {
     return airport;
 }
 
-list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)
+queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
 {
     if (luggageOutCar.empty())  return luggageOutCar;
 
@@ -27,8 +27,8 @@ list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)
         {
             while(pilha.size() < luggagesPerStack)
             {
-                pilha.push(luggageOutCar.back());
-                luggageOutCar.pop_back();
+                pilha.push(luggageOutCar.front());
+                luggageOutCar.pop();
                 if (luggageOutCar.empty())
                 {
                     carruagens.push_back(pilha);

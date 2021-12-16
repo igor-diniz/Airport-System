@@ -3,6 +3,7 @@
 
 
 class Luggage {
+    int id = 0; //ToDo
 };
 
 

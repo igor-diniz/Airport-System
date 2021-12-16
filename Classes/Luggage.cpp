@@ -9,34 +9,28 @@
 /*
 "|===========================================================================================|\n"
 "|            ____ ______ ____   ___     ____ ____   __     ____ _   __ ______ _____         |\n"
-"|           /  _// ____//  _/  /   |   /  _// __ \\ / /    /  _// | / // ____// ___/        |\n"
-"|           / / / __/   / /   / /| |   / / / /_/ // /     / / /  |/ // __/   \\__ \\        |\n"
+"|           /  _// ____//  _/  /   |   /  _// __ \  / /    /  _// | / // ____// ___/        |\n"
+"|           / / / __/   / /   / /| |   / / / /_/ // /     / / /  |/ // __/    \__\          |\n"
 "|         _/ / / /___ _/ /   / ___ | _/ / / _, _// /___ _/ / / /|  // /___  ___/ /          |\n"
 "|        /___//_____//___/  /_/  |_|/___//_/ |_|/_____//___//_/ |_//_____/ /____/           |\n"
 "|                                                                                           |\n"
 "|===========================================================================================|\n"
-"|                  Airports                   |                  Transport                  |\n"
+"|                  Airports                   |                 Luggage Car                 |\n"
 "|=============================================|=============================================|\n"
-"|  Add Airport                           [11] |  Add Transport                         [21] |\n" //Construtor │ Construtor
-"|  Delete Airport                        [12] |  Delete Transport                      [22] |\n" //ID │ ID
-"|  Detail Airport                        [13] |  Detail Transport                      [23] |\n" //ID │ ID
-"|  Show Airports                         [14] |  Show Transport                        [24] |\n" // Open new sort page │ Open new sort page
+"|  Add Airport                           [11] |  Add Luggage Car                       [21] |\n"
+"|  Delete Airport                        [12] |  Delete Luggage Car                    [22] |\n"
+"|  Detail Airport                        [13] |  Detail Luggage Car                    [23] |\n"
+"|  Show Airports                         [14] |  Show Luggage Car                      [24] |\n"
+"|  Transports                            [15] |                                             |\n"
 "|=============================================|=============================================|\n"
-"|                 Luggage Car                 |                  Passenger                  |\n"
+"|                    Plane                    |                  Passenger                  |\n"
 "|=============================================|=============================================|\n"
-"|  Add Luggage Car                       [31] |  Add Passenger                         [41] |\n" //Construtor │ Construtor
-"|  Delete Luggage Car                    [32] |  Delete Passenger                      [42] |\n" //ID │ ID
-"|  Detail Luggage Car                    [33] |  Detail Passenger                      [43] |\n" //ID │ ID
-"|  Show Luggage Cars                     [34] |  Show Passengers                       [44] |\n" // Open new sort page │ Open new sort page
-"|                                             |  Tickets                               [45] |\n" // null │ Open new Ticket page
-"|=============================================|=============================================|\n"
-"|                    Plane                    |                   Service                   |\n"
-"|===========================================================================================|\n"
-"|  Add Plane                             [51] |  Add Service                           [61] |\n" //Construtor │ Construtor
-"|  Delete Plane                          [52] |  Delete Service                        [62] |\n" //ID │ ID
-"|  Detail Plane                          [53] |  Detail Service                        [63] |\n" //ID │ ID
-"|  Show Planes                           [54] |  Show Services                         [64] |\n" // Open new sort page │ Open new sort page
-"|  Flights                               [55] |                                             |\n" // null │ Open new Flights page
+"|  Add Plane                             [31] |  Add Passenger                         [41] |\n"
+"|  Delete Plane                          [32] |  Delete Passenger                      [42] |\n"
+"|  Detail Plane                          [33] |  Detail Passenger                      [43] |\n"
+"|  Show Plane                            [34] |  Show Passengers                       [44] |\n"
+"|  Flights                               [35] |  Tickets                               [45] |\n"
+"|  Services                              [36] |                                             |\n"
 "|=============================================|=============================================|\n"
 "|               Other operations              |                                              \n"
 "|=============================================|                                              \n"
@@ -47,19 +41,36 @@
 
  "|==============================================|\n"
  "|                   Flights                    |\n"
- "|  Add Flight                            [21]  |\n"
- "|  Delete Flight                         [22]  |\n"
- "|  Detail Flight                         [23]  |\n"
- "|  Show Flights                          [24]  |\n"
- "|  Get Luggage To Car                    [25]  |\n"
+ "|  Add Flight                             [1]  |\n"
+ "|  Delete Flight                          [2]  |\n"
+ "|  Detail Flight                          [3]  |\n"
+ "|  Show Flights                           [4]  |\n"
+ "|  Get Luggage To Car                     [5]  |\n"
  "|==============================================|\n"
 
  "|==============================================|\n"
  "|                   Tickets                    |\n"
- "|  Add Ticket                            [21]  |\n"
- "|  Delete Ticket                         [22]  |\n"
- "|  Detail Ticket                         [23]  |\n"
- "|  Show Tickets                          [24]  |\n"
- "|  Checkin                               [25]  |\n"
+ "|  Add Ticket                             [1]  |\n"
+ "|  Delete Ticket                          [2]  |\n"
+ "|  Detail Ticket                          [3]  |\n"
+ "|  Show Tickets                           [4]  |\n"
+ "|  Checkin                                [5]  |\n"
  "|==============================================|\n"
+
+ "|==============================================|\n"
+ "|                   Service                    |\n"
+ "|  Add Service                            [1]  |\n"
+ "|  Delete Service                         [2]  |\n"
+ "|  Detail Service                         [3]  |\n"
+ "|  Show Service                           [4]  |\n"
+ "|==============================================|\n"
+
+ "|==============================================|\n"
+ "|                   Transport                  |\n"
+ "|  Add Transport                          [1]  |\n"
+ "|  Delete Transport                       [2]  |\n"
+ "|  Detail Transport                       [3]  |\n"
+ "|  Show Transport                         [4]  |\n"
+ "|==============================================|\n"
+
  */

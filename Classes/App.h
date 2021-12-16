@@ -8,13 +8,9 @@
 class App {
 
 private:
-    list<Flight> flights;
     list<Passenger> passengers;
     list<Plane> planes;
-    list<Luggage> luggages;
     list<LuggageCar> luggageCars;
-    list<Service> services;
-    list<Ticket> tickets;
     list<Airport> airports;
 
 public:
@@ -29,6 +25,11 @@ private:
     void airportDeletion();
     void airportDetail();
     void showAirports();
+    void transportMenu();
+    void transportCreation(Airport &airport);
+    void transportDeletion(Airport &airport);
+    void transportDetail(Airport &airport);
+    void showTransports(Airport &airport);
 };
 
 

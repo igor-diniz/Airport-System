@@ -37,7 +37,7 @@ public:
     bool operator == (const Flight& flight);
     int getLuggageTotal();
     void setLuggageTotal(int qntd);
-    void addLuggageToVector(vector<Luggage> Luggages);
+    void addLuggageToVector(list<Luggage> Luggages);
     void setLuggagesOutCar(list<Luggage> &alista);
     int getCapacity() const;
     bool operator==(const Flight &f) const;

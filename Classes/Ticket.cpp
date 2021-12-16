@@ -35,3 +35,9 @@ bool Ticket::operator==(const Ticket &t) const{
     return (id == t.getID() && flightAssocieted == t.getFlightAssocited()
     && luggageIncluded == t.getLuggageStatus() && ticketLuggages.size() == t.getLuggageQuantity());
 }
+
+void Ticket::setCheckin() {checkin = true;}
+
+bool Ticket::getCheckin() const {return checkin;}
+
+list<Luggage> Ticket::getTicketLuggages(){return ticketLuggages;}

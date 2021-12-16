@@ -375,6 +375,9 @@
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h">
 			<Option target="TP1_AED"/>
 		</Unit>
+		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/SortForms.cpp">
+			<Option target="TP1_AED"/>
+		</Unit>
 		<Unit filename="C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.cpp">
 			<Option target="TP1_AED"/>
 		</Unit>

@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.obj"
   "CMakeFiles/TP1_AED.dir/Classes/Plane.cpp.obj"
   "CMakeFiles/TP1_AED.dir/Classes/Service.cpp.obj"
+  "CMakeFiles/TP1_AED.dir/Classes/SortForms.cpp.obj"
   "CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj"
   "CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj"
   "CMakeFiles/TP1_AED.dir/Classes/Transport.cpp.obj"

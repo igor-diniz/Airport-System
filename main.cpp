@@ -4,7 +4,8 @@
 #include "Classes/App.h"
 int main(int argc, char* argv[]) {
 
-    App::menuPrincipal();
+
+    //App::menuPrincipal();
     /*testing::InitGoogleTest(&argc, argv);
     std::cout << "TP1_AED" << std::endl;
     return RUN_ALL_TESTS();*/

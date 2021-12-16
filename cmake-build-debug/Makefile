@@ -441,6 +441,30 @@ Classes/Service.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Service.cpp.s
 .PHONY : Classes/Service.cpp.s
 
+Classes/SortForms.obj: Classes/SortForms.cpp.obj
+.PHONY : Classes/SortForms.obj
+
+# target to build an object file
+Classes/SortForms.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/SortForms.cpp.obj
+.PHONY : Classes/SortForms.cpp.obj
+
+Classes/SortForms.i: Classes/SortForms.cpp.i
+.PHONY : Classes/SortForms.i
+
+# target to preprocess a source file
+Classes/SortForms.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/SortForms.cpp.i
+.PHONY : Classes/SortForms.cpp.i
+
+Classes/SortForms.s: Classes/SortForms.cpp.s
+.PHONY : Classes/SortForms.s
+
+# target to generate assembly for a file
+Classes/SortForms.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/SortForms.cpp.s
+.PHONY : Classes/SortForms.cpp.s
+
 Classes/Ticket.obj: Classes/Ticket.cpp.obj
 .PHONY : Classes/Ticket.obj
 
@@ -605,6 +629,9 @@ help:
 	@echo ... Classes/Service.obj
 	@echo ... Classes/Service.i
 	@echo ... Classes/Service.s
+	@echo ... Classes/SortForms.obj
+	@echo ... Classes/SortForms.i
+	@echo ... Classes/SortForms.s
 	@echo ... Classes/Ticket.obj
 	@echo ... Classes/Ticket.i
 	@echo ... Classes/Ticket.s

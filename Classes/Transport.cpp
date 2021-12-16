@@ -4,6 +4,7 @@ Transport::Transport(char type, float distance, Time time)
     this->type = type;
     this->distance = distance;
     this->time = time;
+    sort = TIME;
 }
 
 void Transport::setDistance(float distance) {this->distance = distance;}
@@ -18,6 +19,12 @@ float Transport::getDistance() const {return this->distance;}
 
 char Transport::getType() const {return this->type;}
 
+void Transport::setSortByDistance() {sort = DISTANCE;}
+
+void Transport::setSortByType() {sort = TYPE;}
+
+void Transport::setSortbyTime() {sort = TIME;}
+
 bool Transport::operator==(const Transport &transp) const
 {
     return (time == transp.getTime()) && (distance == transp.getDistance()) && (this->type != transp.getType());
@@ -25,16 +32,20 @@ bool Transport::operator==(const Transport &transp) const
 
 bool Transport::operator<(const Transport &transp) const
 {
-    if(!(this->time == transp.getTime()))
+    switch(sort)
     {
-        return this->time < transp.getTime();
+        case TIME:
+            return time < transp.getTime();
+            break;
+        case DISTANCE:
+            return distance < transp.getDistance();
+            break;
+        case TYPE:
+            return type < transp.getType();
+            break;
+        default:
+            return false;
     }
-    else if(this->distance != transp.getDistance())
-    {
-        return this->distance < transp.getDistance();
-    }
-    else
-        return this->type < transp.getType();
 }
 
 

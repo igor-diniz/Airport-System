@@ -10,13 +10,17 @@
 class Transport{
     char type;
     float distance;
+    enum SortPossibilites {TYPE,DISTANCE,TIME};
     Time time; //ainda tem q fazer isso aqui
-
+    SortPossibilites sort;
 public:
     Transport(char type,float distance,Time time);
     char getType() const;
     float getDistance() const;
     Time getTime() const;
+    void setSortByDistance();
+    void setSortByType();
+    void setSortbyTime();
     void setType(char type);
     void setDistance(float distance);
     void setTime(Time time);

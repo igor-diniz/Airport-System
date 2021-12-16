@@ -39,7 +39,7 @@ public:
     void setLuggageTotal(int qntd);
     void addLuggageToVector(vector<Luggage> Luggages);
     void setLuggagesOutCar(list<Luggage> &alista);
-    int getCapacity();
+    int getCapacity() const;
 };
 
 

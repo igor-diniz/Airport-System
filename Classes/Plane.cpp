@@ -77,7 +77,21 @@ bool sort_arrival_asc(const Flight& a, const Flight& b){return a.getArrivalDate(
 
 bool sort_arrival_desc(const Flight& a, const Flight& b){return !(a.getArrivalDate() < b.getArrivalDate());}
 
+bool sort_departure_asc(const Flight& a, const Flight& b){return a.getDepartureDate() < b.getDepartureDate();}
 
+bool sort_departure_desc(const Flight& a, const Flight& b){return !(a.getDepartureDate() < b.getDepartureDate());}
+
+bool sort_destination_asc(const Flight& a, const Flight& b){return a.getDestination().getName() < b.getDestination().getName();}
+
+bool sort_destination_desc(const Flight& a, const Flight& b){return a.getDestination().getName() > b.getDestination().getName();}
+
+bool sort_origin_asc(const Flight& a, const Flight& b) {return a.getOrigin().getName() < b.getOrigin().getName();}
+
+bool sort_origin_desc(const Flight& a, const Flight& b) {return a.getOrigin().getName() > b.getOrigin().getName();}
+
+bool sort_capacity_asc(const Flight& a, const Flight& b) {return a.getCapacity() < b.getCapacity();}
+
+bool sort_capacity_desc(const Flight& a, const Flight& b) {return a.getCapacity() > b.getCapacity();}
 
 list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
 {
@@ -98,6 +112,25 @@ list<Flight> Plane::getFlights(SortPossibilites sortOrder , bool descending)
             else flights.sort(sort_arrival_asc);
             break;
 
+        case DEPARTURE:
+            if(descending) {flights.sort(sort_departure_desc);}
+            else flights.sort(sort_departure_asc);
+            break;
+
+        case DESTINATION:
+            if(descending) {flights.sort(sort_destination_desc);}
+            else flights.sort(sort_destination_asc);
+            break;
+
+        case ORIGIN:
+            if(descending){flights.sort(sort_origin_desc);}
+            else flights.sort(sort_origin_asc);
+            break;
+
+        case CAPACITY:
+            if(descending){flights.sort(sort_capacity_desc);}
+            else flights.sort(sort_capacity_asc);
+            break;
     }
     return flights;
 }

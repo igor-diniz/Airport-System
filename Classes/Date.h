@@ -18,5 +18,6 @@ public:
     void setDay(int day);
     bool operator < (const Date& d1) const;
     bool operator != (const Date& d1) const;
+    bool operator == (const Date& d1) const;
 };
 #endif //TP1_AED_DATE_H

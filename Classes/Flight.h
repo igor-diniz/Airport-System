@@ -40,6 +40,7 @@ public:
     void addLuggageToVector(vector<Luggage> Luggages);
     void setLuggagesOutCar(list<Luggage> &alista);
     int getCapacity() const;
+    bool operator==(const Flight &f) const;
 };
 
 

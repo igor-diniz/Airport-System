@@ -65,3 +65,7 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
     }
     return true;
 }
+void Passenger::Checkin(Ticket ticket){
+    ticket.getFlightAssocited().addLuggageToVector(ticket.getTicketLuggages());
+    ticket.setCheckin();
+}

@@ -11,7 +11,6 @@ Flight::Flight()
     capacity = 0;
     list<Luggage> flightLuggages;
     list<Luggage> luggagesOutCar;
-    luggagesOutCar = flightLuggages;
 }
 
 Flight::Flight(Date &departure,Date &arrival,Airport &origin,Airport &destination,int capacity)
@@ -80,7 +79,7 @@ int Flight::getLuggageTotal() {return luggageTotal;}
 
 void Flight::setLuggageTotal(int qntd) {luggageTotal += qntd;}
 
-void Flight::addLuggageToVector(vector<Luggage> Luggages) {for(auto&&L:Luggages){flightLuggages.push_back(L);};}
+void Flight::addLuggageToVector(list<Luggage> Luggages) {for(auto&&L:Luggages){flightLuggages.push_back(L);luggagesOutCar.push_back(L);}}
 
 void Flight::setLuggagesOutCar(list<Luggage> &alista) {luggagesOutCar = alista;}
 

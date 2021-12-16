@@ -43,3 +43,9 @@ bool Airport::operator==(const Airport& a) const{
     return name == a.getName() && initials == a.getInitials();
 }
 
+ostream &Airport::operator<<(ostream &os) const
+{
+    os << "Name: " << name << '\n' << "Initials: " << initials;
+    return os;
+}
+

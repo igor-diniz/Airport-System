@@ -17,37 +17,44 @@
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
 "│                  Airports                   │                   Flights                   │\n"
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
-"│  Add Airport                           [11] │  Add Flight                            [21] │\n"
-"│  Delete Airport                        [12] │  Delete Flight                         [22] │\n"
-"│  Detail Airport                        [13] │  Detail Flight                         [23] │\n"
-"│  Show Airports                         [14] │  Show Flights                          [24] │\n"
-"│                                             │  Solve Flight Luggage                  [25] │\n"
+"│  Add Airport                           [11] │  Add Flight                            [21] │\n" //Construtor │ Construtor
+"│  Delete Airport                        [12] │  Delete Flight                         [22] │\n" //ID │ ID
+"│  Detail Airport                        [13] │  Detail Flight                         [23] │\n" //ID │ ID
+"│  Show Airports                         [14] │  Show Flights                          [24] │\n" // Open new sort page │ Open new sort page
+"│                                             │  Solve Flight Luggage                  [25] │\n" // null │ LuggageCar
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
 "│                 Luggage Car                 │                  Passenger                  │\n"
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
-"│  Add Luggage Car                       [31] │  Add Passenger                         [41] │\n"
-"│  Delete Luggage Car                    [32] │  Delete Passenger                      [42] │\n"
-"│  Detail Luggage Car                    [33] │  Detail Passenger                      [43] │\n"
-"│  Show Luggage Cars                     [34] │  Show Passengers                       [44] │\n"
+"│  Add Luggage Car                       [31] │  Add Passenger                         [41] │\n" //Construtor │ Construtor
+"│  Delete Luggage Car                    [32] │  Delete Passenger                      [42] │\n" //ID │ ID
+"│  Detail Luggage Car                    [33] │  Detail Passenger                      [43] │\n" //ID │ ID
+"│  Show Luggage Cars                     [34] │  Show Passengers                       [44] │\n" // Open new sort page │ Open new sort page
+"│                                             │  Tickets                               [45] │\n" // null │ Open new Ticket page
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
 "│                    Plane                    │                   Service                   │\n"
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
-"│  Add Plane                             [51] │  Add Service                           [61] │\n"
-"│  Delete Plane                          [52] │  Delete Service                        [62] │\n"
-"│  Detail Plane                          [53] │  Detail Service                        [63] │\n"
-"│  Show Planes                           [54] │  Show Services                         [64] │\n"
+"│  Add Plane                             [51] │  Add Service                           [61] │\n" //Construtor │ Construtor
+"│  Delete Plane                          [52] │  Delete Service                        [62] │\n" //ID │ ID
+"│  Detail Plane                          [53] │  Detail Service                        [63] │\n" //ID │ ID
+"│  Show Planes                           [54] │  Show Services                         [64] │\n" // Open new sort page │ Open new sort page
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
-"│                   Ticket                    │                  Transport                  │\n"
+"│                  Transport                  │               Other operations              │\n"
 "╞═════════════════════════════════════════════╪═════════════════════════════════════════════╡\n"
-"│  Add Ticket                            [71] │  Add Transport                         [81] │\n"
-"│  Delete Ticket                         [72] │  Delete Transport                      [82] │\n"
-"│  Detail Ticket                         [73] │  Detail Transport                      [83] │\n"
-"│  Show Tickets                          [74] │  Show Transport                        [84] │\n"
-"│  Checkin                               [75] │                                             │\n"
-"╞═════════════════════════════════════════════╡                                             │\n"
-"│                Other operations             │                                             │\n"
-"╞═════════════════════════════════════════════╡                                             │\n"
-"│  Close                                  [0] │                                             │\n"
+"│  Add Transport                         [71] │  Close                                  [0] │\n" //Construtor │ Bool "certeza?"
+"│  Delete Transport                      [72] │                                             │\n" //ID
+"│  Detail Transport                      [73] │                                             │\n" //ID
+"│  Show Transport                        [74] │                                             │\n" // Open new sort page
 "╘═════════════════════════════════════════════╧═════════════════════════════════════════════╛\n"
 "                                                                                             \n";
+=============================================================================
+ "╞═════════════════════════════════════════════╪
+ "│                   Ticket                    │
+ "╞═════════════════════════════════════════════╪
+ "│  Add Ticket                            [71] │
+ "│  Delete Ticket                         [72] │
+ "│  Detail Ticket                         [73] │
+ "│  Show Tickets                          [74] │
+ "│  Checkin                               [75] │
+
+
  */

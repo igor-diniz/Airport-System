@@ -29,6 +29,7 @@ private:
     void airportDeletion();
     void airportDetail();
     void showAirports();
+    void transportMenu();
 };
 
 

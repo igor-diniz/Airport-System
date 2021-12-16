@@ -1,13 +1,17 @@
 #include "LuggageCar.h"
 
-LuggageCar::LuggageCar(int c,int n,int m, Flight flight){
-    this-> c = c;
-    this-> n = n;
-    this-> m = m;
-    this-> flight = flight;
-    capacity = c * n * m;
+LuggageCar::LuggageCar(Airport airport, int numCarriages, int stacksPerCarriage, int luggagesPerStack){
+    this-> numCarriages = numCarriages;
+    this-> stacksPerCarriage = stacksPerCarriage;
+    this-> luggagesPerStack = luggagesPerStack;
+    this-> airport = airport;
+    capacity = numCarriages * stacksPerCarriage * luggagesPerStack;
     availability = capacity;
 
+}
+
+Airport LuggageCar::getAirport(const Airport &airport) const {
+    return airport;
 }
 
 list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)
@@ -17,11 +21,11 @@ list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)
     stack<Luggage> pilha;
     list<stack<Luggage>> carruagens;
 
-    while (luggageInCar.size() < c)
+    while (luggageInCar.size() < numCarriages)
     {
-        while(carruagens.size() < n)
+        while(carruagens.size() < stacksPerCarriage)
         {
-            while(pilha.size() < m)
+            while(pilha.size() < luggagesPerStack)
             {
                 pilha.push(luggageOutCar.back());
                 luggageOutCar.pop_back();

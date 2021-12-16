@@ -17,7 +17,7 @@ private:
     string type;
     list<Flight> flights;
     queue<Service> servicesToDo;
-    queue<Service> servicesDone; // não é melhor uma stack?
+    stack<Service> servicesDone;
 
 public:
     Plane() = default;

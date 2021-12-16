@@ -6,7 +6,7 @@
 //Detail: dá cout dos atributos de um item.
 //Select: abre outra tela para selecionar o que fazer com o item, por exemplo botar bagagem de flight em carrinhos.
 //Show: abre outra tela para escolher tipo de sort e ranges.
-
+/*
 "╒═══════════════════════════════════════════════════════════════════════════════════════════╕\n"
 "│            ____ ______ ____   ___     ____ ____   __     ____ _   __ ______ _____         │\n"
 "│           /  _// ____//  _/  /   |   /  _// __ \\ / /    /  _// | / // ____// ___/        │\n"
@@ -50,3 +50,4 @@
 "│  Close                                  [0] │                                             │\n"
 "╘═════════════════════════════════════════════╧═════════════════════════════════════════════╛\n"
 "                                                                                             \n";
+ */

@@ -14,7 +14,7 @@ Flight::Flight()
     luggagesOutCar = flightLuggages;
 }
 
-Flight::Flight(Date &arrival,Date &departure,Airport &destination,Airport &origin, int capacity)
+Flight::Flight(Date &departure,Date &arrival,Airport &origin,Airport &destination,int capacity)
 {
     id++;
     this->arrival = arrival;

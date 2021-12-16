@@ -6,6 +6,7 @@
 //ao aeroporto, horário.
 #include <list>
 #include "Time.h"
+#include <iostream>
 
 class Transport{
     char type;
@@ -26,6 +27,7 @@ public:
     void setTime(Time time);
     bool operator<(const Transport& transp) const;
     bool operator==(const Transport& transp) const;
+    friend std::ostream& operator<<(std::ostream& os , const Transport& transport);
 };
 
 

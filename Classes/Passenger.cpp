@@ -48,6 +48,8 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
     int id = flight.getCapacity() - flight.getAvailableSeats() + 1;
 
     ticket = Ticket(id, flight);
+    if(haslugg)
+        ticket.setLuggageIncluded();
 
     for(auto p : passengers)
     {
@@ -61,6 +63,5 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
         }
         flight.setAvailableSeats(flight.getAvailableSeats() - 1);
     }
-
     return true;
 }

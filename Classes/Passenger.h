@@ -27,5 +27,7 @@ public:
     Ticket getTicket() const;
     bool buyTicket(Flight &flight, bool haslugg);
     bool buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger, bool>> &passengers);
+
+    void Checkin(Ticket ticket);
 };
 #endif //TP1_AED_PASSENGER_H

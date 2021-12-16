@@ -1,13 +1,17 @@
 #include "LuggageCar.h"
 
-LuggageCar::LuggageCar(int c,int n,int m, Flight flight){
+LuggageCar::LuggageCar(Airport airport,int c,int n,int m){
     this-> c = c;
     this-> n = n;
     this-> m = m;
-    this-> flight = flight;
+    this-> airport = airport;
     capacity = c * n * m;
     availability = capacity;
 
+}
+
+Airport LuggageCar::getAirport(const Airport &airport) const {
+    return airport;
 }
 
 list<Luggage> LuggageCar::setLuggageInCar(list<Luggage> &luggageOutCar)

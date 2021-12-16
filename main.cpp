@@ -1,9 +1,11 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include <time.h>
-
+#include "Classes/App.h"
 int main(int argc, char* argv[]) {
-    testing::InitGoogleTest(&argc, argv);
+
+    App::menuPrincipal();
+    /*testing::InitGoogleTest(&argc, argv);
     std::cout << "TP1_AED" << std::endl;
-    return RUN_ALL_TESTS();
+    return RUN_ALL_TESTS();*/
 }

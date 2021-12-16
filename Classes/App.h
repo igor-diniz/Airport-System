@@ -20,9 +20,10 @@ public:
     App(const string& flightsFile,const string& passengersFile, const string& planesFile, const string& luggagesFile,
         const string& luggageCarFile, const string& servicesFile, const string& ticketsFile); //isso daqui vai ler dos TXT e botar nas listas e chamar o menu principal
 
-private:
-    void menuPrincipal(); //isso vai dar display das opções de CRUD dos elementos das listas e vai ter um switch pra cada caso
+        static void menuPrincipal(); //isso vai dar display das opções de CRUD dos elementos das listas e vai ter um switch pra cada caso
 
+private:
+    static void airportCreation();
 };
 
 

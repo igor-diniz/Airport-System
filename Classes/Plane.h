@@ -22,8 +22,7 @@ private:
 public:
     Plane() = default;
     enum SortPossibilites {ID,AVAILABLESEATS,ARRIVAL,DEPARTURE,DESTINATION,ORIGIN,CAPACITY};
-    Plane(int capacity,string registration,string type, list<Flight> &flights, queue<Service> & servicesToDo);
-    Plane(int capacity,string registration,string type, list<Flight> &flights);
+    Plane(int capacity,string registration,string type);
     void addFlight(Flight &flight); //adicionar 1 voo só
     void addFlight(list<Flight> &flights); //adiciona uma lista de voos
     void addService(Service &service);

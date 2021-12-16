@@ -23,12 +23,13 @@ void Ticket::setID(int id) {this->id = id;}
 
 int Ticket::getLuggageQuantity() const{return luggageQuantity;}
 
-void Ticket::setLuggageQuantity(int qntd, vector<Luggage> Luggages) {
-    getFlightAssocited().setLuggageTotal(-luggageQuantity);
+void Ticket::setLuggageQuantity(int qntd, list<Luggage> luggages) {
     luggageQuantity = qntd;
-    getFlightAssocited().setLuggageTotal(luggageQuantity);
-    for (auto L : Luggages){ticketLuggages.push_back(L);}
-    getFlightAssocited().addLuggageToVector(Luggages);
+    flightAssocieted.setLuggageTotal(luggageQuantity);
+    for (auto l : luggages){
+        ticketLuggages.push_back(l);
+    }
+    flightAssocieted.addLuggageToVector(luggages);
 }
 
 bool Ticket::operator==(const Ticket &t) const{

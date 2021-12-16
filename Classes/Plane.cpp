@@ -1,19 +1,11 @@
 #include "Plane.h"
 
-Plane::Plane(int capacity,string registration,string type, list<Flight> &flights){
+Plane::Plane(int capacity,string registration,string type){
     this->capacity = capacity;
     this->registration = registration;
     this->type = type;
-    this->flights = flights;
+    this->flights = list<Flight>(0);
     servicesToDo = queue<Service>();
-}
-
-Plane::Plane(int capacity, string registration, string type, list<Flight> &flights, queue<Service> &servicesToDo) {
-    this->capacity = capacity;
-    this->registration = registration;
-    this->type = type;
-    this->flights = flights;
-    this->servicesToDo = servicesToDo;
 }
 
 void Plane::addFlight(Flight &flight)

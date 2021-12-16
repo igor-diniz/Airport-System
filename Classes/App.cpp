@@ -86,7 +86,6 @@ void App::menuPrincipal()
             default:
                 cout << "not a possibilite" << endl;
         }
-        break;
     }
 }
 
@@ -94,11 +93,9 @@ void App::airportCreation()
 {
     string name,initials;
     cout << "give the Airport especifications : \n"
-            "Name: ";
-    getline(cin,name);
+            "Name: "; cin >> name;
     cout << "\n";
-    cout << "Initials: ";
-    getline(cin,initials);
+    cout << "Initials: "; cin >> initials;
     cout << "\n";
     Airport a(name,initials);
     if(name == "" || initials == "")
@@ -123,11 +120,9 @@ void App::airportDeletion()
 {
     string name,initials;
     cout << "What Airport should be deleted? "
-            "Name: ";
-    getline(cin,name);
+            "Name: ";"Name: "; cin >> name;
     cout << "\n";
-    cout << "Initials: ";
-    getline(cin,initials);
+    cout << "Initials: "; cin >> initials;
     cout << "\n";
     Airport a(name,initials);
     for(Airport b : airports)
@@ -159,7 +154,7 @@ void App::airportDetail()
         if(a == b)
         {
             cout << "Airport found, details: \n"
-            << &b;
+            << b;
         }
     }
     cout <<"Airport does not exist \n";
@@ -187,11 +182,10 @@ void App::showAirports()
     {
         string name,initials;
         cout << "type enter if you dont want to especify \n" <<
-        "Name: ";
-        getline(cin,name);
+        "Name: "; cin >> name;
         cout << "\n";
-        cout << "Initials: ";
-        getline(cin,initials);
+        cout << "Initials: "; cin >> initials;
+        cout << "\n";
         Airport a(name,initials);
 
         for(Airport b : airports)
@@ -222,7 +216,7 @@ void App::showAirports()
         }
     }
     if(aux.empty()) aux = airports; //in case the choice was "N"
-    switch(choice)
+    switch(sortChoice)
     {
         case 1:
             aux.sort(Airport_sort_nameasc);
@@ -242,7 +236,7 @@ void App::showAirports()
     }
     for(Airport b: aux)
     {
-        cout << &b << "\n";
+        cout << b << "\n";
     }
 
     cout << "type anything to go back";

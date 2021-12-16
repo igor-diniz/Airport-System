@@ -1,7 +1,4 @@
 #include "Airport.h"
-#ifndef SORT_FORMS
-#define SORT_FORMS
-
 
 bool Airport_sort_nameasc(const Airport& a1, const Airport& a2)
 {
@@ -22,5 +19,4 @@ bool Airport_sort_initialsdesc(const Airport& a1, const Airport& a2)
 {
     return a1.getInitials() > a2.getInitials();
 }
-#endif //SORT_FORMS
 

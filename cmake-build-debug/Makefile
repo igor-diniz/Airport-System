@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\duart\Documents\GitHub\TP1_AED
+CMAKE_SOURCE_DIR = C:\Users\jeffe\CLionProjects\TP1_AED
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -77,31 +77,31 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -120,20 +120,20 @@ list_install_components/fast: list_install_components
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	"D:\Arquivos de Programas (x86)\CLion 2020.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\CMakeFiles C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\duart\Documents\GitHub\TP1_AED\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\jeffe\CLionProjects\TP1_AED\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -441,30 +441,6 @@ Classes/Service.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/Service.cpp.s
 .PHONY : Classes/Service.cpp.s
 
-Classes/SortForms.obj: Classes/SortForms.cpp.obj
-.PHONY : Classes/SortForms.obj
-
-# target to build an object file
-Classes/SortForms.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/SortForms.cpp.obj
-.PHONY : Classes/SortForms.cpp.obj
-
-Classes/SortForms.i: Classes/SortForms.cpp.i
-.PHONY : Classes/SortForms.i
-
-# target to preprocess a source file
-Classes/SortForms.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/SortForms.cpp.i
-.PHONY : Classes/SortForms.cpp.i
-
-Classes/SortForms.s: Classes/SortForms.cpp.s
-.PHONY : Classes/SortForms.s
-
-# target to generate assembly for a file
-Classes/SortForms.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TP1_AED.dir\build.make CMakeFiles/TP1_AED.dir/Classes/SortForms.cpp.s
-.PHONY : Classes/SortForms.cpp.s
-
 Classes/Ticket.obj: Classes/Ticket.cpp.obj
 .PHONY : Classes/Ticket.obj
 
@@ -629,9 +605,6 @@ help:
 	@echo ... Classes/Service.obj
 	@echo ... Classes/Service.i
 	@echo ... Classes/Service.s
-	@echo ... Classes/SortForms.obj
-	@echo ... Classes/SortForms.i
-	@echo ... Classes/SortForms.s
 	@echo ... Classes/Ticket.obj
 	@echo ... Classes/Ticket.i
 	@echo ... Classes/Ticket.s

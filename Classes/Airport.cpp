@@ -42,10 +42,9 @@ void Airport::setName(string name)
 bool Airport::operator==(const Airport& a) const{
     return name == a.getName() && initials == a.getInitials();
 }
-
-ostream &Airport::operator<<(ostream &os) const
+ostream& operator<<(ostream& os , const Airport& air)
 {
-    os << "Name: " << name << '\n' << "Initials: " << initials;
+    os << "Name: " << air.getName() << '\n' << "Initials: " << air.getInitials();
     return os;
 }
 

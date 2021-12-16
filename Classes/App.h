@@ -18,6 +18,7 @@ private:
     list<Airport> airports;
 
 public:
+    App(){};
     App(const string& flightsFile,const string& passengersFile, const string& planesFile, const string& luggagesFile,
         const string& luggageCarFile, const string& servicesFile, const string& ticketsFile); //isso daqui vai ler dos TXT e botar nas listas e chamar o menu principal
 

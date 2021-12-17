@@ -69,3 +69,7 @@ void Passenger::Checkin(Ticket ticket){
     ticket.getFlightAssocited().addLuggageToQueue(ticket.getTicketLuggages());
     ticket.setCheckin();
 }
+
+void Passenger::setTicket(Ticket ticket){
+    this->ticket = ticket;
+}

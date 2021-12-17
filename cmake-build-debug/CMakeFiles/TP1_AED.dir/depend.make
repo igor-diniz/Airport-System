@@ -33,6 +33,7 @@ CMakeFiles/TP1_AED.dir/Classes/Flight.cpp.obj: \
  ../Classes/Flight.cpp \
  ../Classes/Flight.h \
  ../Classes/Luggage.h \
+ ../Classes/LuggageCar.h \
  ../Classes/Time.h \
  ../Classes/Transport.h
 CMakeFiles/TP1_AED.dir/Classes/Luggage.cpp.obj: \
@@ -52,6 +53,7 @@ CMakeFiles/TP1_AED.dir/Classes/Passenger.cpp.obj: \
  ../Classes/Date.h \
  ../Classes/Flight.h \
  ../Classes/Luggage.h \
+ ../Classes/LuggageCar.h \
  ../Classes/Passenger.cpp \
  ../Classes/Passenger.h \
  ../Classes/Ticket.h \
@@ -63,6 +65,7 @@ CMakeFiles/TP1_AED.dir/Classes/Plane.cpp.obj: \
  ../Classes/Date.h \
  ../Classes/Flight.h \
  ../Classes/Luggage.h \
+ ../Classes/LuggageCar.h \
  ../Classes/Plane.cpp \
  ../Classes/Plane.h \
  ../Classes/Service.h \
@@ -78,6 +81,7 @@ CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj: \
  ../Classes/Date.h \
  ../Classes/Flight.h \
  ../Classes/Luggage.h \
+ ../Classes/LuggageCar.h \
  ../Classes/Ticket.cpp \
  ../Classes/Ticket.h \
  ../Classes/Time.h \

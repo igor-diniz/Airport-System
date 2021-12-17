@@ -9,46 +9,7 @@ unsigned stringToInt(string str) //converte uma string para inteiro
 }
 
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
-    ifstream fileToOpen;
-    fileToOpen.open(passengersFile);
-
-    string name, passport, stringFlightID, date, airport, initials, capacityString, blankLine;
-    Date departure, arrival;
-    Airport origin, destination;
-    int capacity, flightId;
-
-    while(!fileToOpen.eof())
-    {
-        //passenger
-        getline(fileToOpen,name,',');
-        getline(fileToOpen,passport);
-        Passenger passenger = Passenger(name, passport);
-
-        //flightID
-        getline(fileToOpen,stringFlightID,',');
-        flightId = stringToInt(stringFlightID);
-
-        //departureDate
-        getline(fileToOpen,date,',' );
-        departure = Date(date);
-
-        //arrivalDate
-        getline(fileToOpen,date,',' );
-        arrival = Date(date);
-
-        //origin
-        getline(fileToOpen,airport,',' );
-        getline(fileToOpen,initials,',' );
-
-        //destination
-        origin = Airport(airport, initials);
-        getline(fileToOpen,capacityString);
-
-        //capacity
-        capacity = stringToInt(capacityString);
-        fileToOpen.get();
-
-    }
+    this->readPassengersFile(passengersFile);
 }
 
 
@@ -90,6 +51,60 @@ Transport getTransportinfos()
     cout << "\n";
     transp = Transport(type,distance,{hour,minute});
     return transp;
+}
+void App::readPassengersFile(const string& passengersFile){
+    ifstream fileToOpen;
+    fileToOpen.open(passengersFile);
+
+    if(!fileToOpen.is_open())
+        cout << "Cannot open this file" << endl;
+
+    string name, passport, airport, initials, date, durationStr, availableSeatsStr, ticketIdStr;
+    Date departure;
+    Time duration;
+    Airport origin, destination;
+    int availableSeats, ticketId;
+
+    while(!fileToOpen.eof())
+    {
+
+        //passenger
+        getline(fileToOpen,name,',');
+        getline(fileToOpen,passport);
+        Passenger passenger = Passenger(name, passport);
+
+        //ticketID
+        getline(fileToOpen, ticketIdStr, ',');
+        ticketId = stringToInt(ticketIdStr);
+
+        //departureDate
+        getline(fileToOpen,date,',' );
+        departure = Date(date);
+
+        //duration
+        getline(fileToOpen,durationStr,',' );
+        duration = Time(duration);
+
+        //origin
+        getline(fileToOpen,airport,',' );
+        getline(fileToOpen,initials,',' );
+        origin = Airport(airport, initials);
+
+        //destination
+        getline(fileToOpen,airport,',' );
+        getline(fileToOpen,initials,',' );
+        destination = Airport(airport, initials);
+
+        //availableSeats
+        getline(fileToOpen, availableSeatsStr);
+        availableSeats = stringToInt(availableSeatsStr);
+        fileToOpen.get();
+
+        Flight flight = Flight(departure, duration, origin, destination, availableSeats);
+        passenger.setTicket(Ticket(ticketId, flight));
+        passengers.push_back(passenger);
+    }
+
 }
 
 void App::menuPrincipal()

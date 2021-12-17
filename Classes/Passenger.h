@@ -20,6 +20,7 @@ public:
     Passenger(string name, string passport);
     void setName(string name);
     void setPassport(string passport);
+    void setTicket(Ticket ticket);
     string getName();
     string getPassport();
     bool getCheckin();

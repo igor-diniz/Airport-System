@@ -33,6 +33,12 @@ private:
     void transportDeletion(Airport &airport);
     void transportDetail(Airport &airport);
     void showTransports(Airport &airport);
+    void readPassengersFile(const string& passengersFile);
+    void readPlanesFile(const string& planesFile);
+    void readLuggageCarsFile(string& luggageCarsFile);
+    void readAirportsFile(string& airportsFile);
+
+
 };
 
 

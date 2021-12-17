@@ -36,6 +36,8 @@ public:
     void setType(string type);
     list<Flight> getFlights(SortPossibilites sortOrder = ID , bool descending = false);
     bool deleteFlight(int id);
+    bool operator == (const Plane &b);
+    friend ostream& operator<<(ostream& os , const Plane& plane);
 };
 
 

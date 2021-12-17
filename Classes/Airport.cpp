@@ -40,7 +40,7 @@ void Airport::setName(string name)
 }
 
 bool Airport::operator==(const Airport& a) const{
-    return name == a.getName() && initials == a.getInitials();
+    return initials == a.getInitials();
 }
 ostream& operator<<(ostream& os , const Airport& air)
 {

@@ -195,12 +195,12 @@ void App::airportCreation()
     cout << "\n";
     cout << "Initials: "; cin >> initials;
     cout << "\n";
-    Airport a(name,initials);
     if(name == "" || initials == "")
     {
         cout << "Invalid Airport with no specification\n";
         return;
     }
+    Airport a(name,initials);
     for(Airport &b: airports)
     {
         if(b == a)
@@ -227,12 +227,33 @@ void App::airportDeletion()
     {
         if(b == a)
         {
-            airports.remove(a);
+            airports.remove(b);
             cout << "Airport deleted \n";
             return;
         }
     }
     cout <<"Airport does not exist \n";
+    return;
+}
+
+void App::updateAirport(Airport &airport)
+{
+    string name,initials;
+    cout << "What should be the new characteristics? "
+            "Name: ";cin >> name;
+    cout << "\n";
+    cout << "Initials: "; cin >> initials;
+    cout << "\n";
+    Airport a(name,initials);
+    for(Airport &b: airports)
+    {
+        if(b == a)
+        {
+            cout <<"This Airport already exists \n";
+            return;
+        }
+    }
+    airport = a;
     return;
 }
 
@@ -254,12 +275,27 @@ void App::airportFind()
                  << "Name - Initials" << endl
                  << b << endl
                  << "Do you want to update it? Y/N" << endl;
-                //update();
+
+            char answer;
+            cin >> answer;
+            if(!cinGood()) return;
+            if(answer == 'y' || answer == 'Y')
+            {
+                updateAirport(b);
+                return;
+            }
         }
     }
-    cout <<"Airport does not exist \n"
-         <<"Do you want to creat it? Y/N" << endl;
-    //criar();
+    cout <<"Airport does not exist \n" << endl;
+    cout <<"Do you want to create it? (Y/N)" << endl;
+    char answer;
+    cin >> answer;
+    if(!cinGood()) return;
+    if(answer == 'y' || answer == 'Y')
+    {
+        airports.push_back(a);
+        cout << "Airport added!" << endl;
+    }
     return;
 }
 
@@ -411,7 +447,7 @@ void App::transportMenu()
                 transportDeletion(a);
                 break;
             case 3:
-                transportDetail(a);
+                transportFind(a);
                 break;
             case 4:
                 showTransports(a);
@@ -452,7 +488,7 @@ void App::transportDeletion(Airport &airport)
     return;
 }
 
-void App::transportDetail(Airport &airport)
+void App::transportFind(Airport &airport)
 {
     Transport transp = getTransportinfos();
     if (transp == Transport('o',0,{0,0})) return;
@@ -460,11 +496,31 @@ void App::transportDetail(Airport &airport)
     if((airport.getTransports().find(transp) == Transport('o',0,{0,0})))
     {
         cout << "This transport doesnt exists" << endl;
+        cout <<"Do you want to create it? (Y/N)" << endl;
+        char answer;
+        cin >> answer;
+        if(!cinGood()) return;
+        if(answer == 'y' || answer == 'Y')
+        {
+            airport.addTransport(transp);
+            cout << "Transport added!" << endl;
+        }
         return;
     }
     cout << "Transport found, details: " << endl
          << "Type - Distance - Time" << endl
-         << transp << endl;
+         << transp << endl
+         << "Do you want to update it? Y/N" << endl;
+
+    char answer;
+    cin >> answer;
+    if(!cinGood()) return;
+    if(answer == 'y' || answer == 'Y') {
+        cout << "New specifications: " << endl;
+        Transport t = getTransportinfos();
+        airport.addTransport(t);
+        return;
+    }
 }
 
 void App::showTransports(Airport &airport)
@@ -562,6 +618,131 @@ void App::showTransports(Airport &airport)
     cin >> choice;
     cin.clear();
     cin.ignore(INT_MAX,'\n');
+    return;
+}
+
+void App::planeCreation()
+{
+    string registration,type;
+    int capacity;
+    cout << "give the Plane specifications : \n"
+            "Registration: "; cin >> registration;
+    cout << "\n";
+    cout << "Type: "; cin >> type;
+    cout << "\n";
+    cout << "Capacity :"; cin >> capacity;
+    if(!cinGood()) return;
+    if(registration == "" || type == "" ||capacity <= 0)
+    {
+        cout << "Invalid Plane specifications \n";
+        return;
+    }
+    Plane a(capacity,registration,type);
+    for(Plane &b : planes)
+    {
+        if(b == a)
+        {
+            cout <<"This Plane already exists \n";
+            return;
+        }
+    }
+    planes.push_back(a);
+    cout << "Plane added \n";
+    return;
+}
+
+void App::planeDeletion()
+{
+    string registration,type;
+    int capacity;
+    cout << "give the Plane specifications : \n"
+            "Registration: "; cin >> registration;
+    cout << "\n";
+    cout << "Type: "; cin >> type;
+    cout << "\n";
+    cout << "Capacity :"; cin >> capacity;
+    if(!cinGood()) return;
+    Plane a(capacity,registration,type);
+    for(Plane &b : planes)
+    {
+        if(b == a)
+        {
+            planes.remove(b);
+            cout << "Plane deleted \n";
+            return;
+        }
+    }
+    cout <<"Plane does not exist \n";
+    return;
+}
+
+void App::updatePlane(Plane &plane)
+{
+    string registration,type;
+    int capacity;
+    cout << "What should be the new characteristics?: \n"
+            "Registration: "; cin >> registration;
+    cout << "\n";
+    cout << "Type: "; cin >> type;
+    cout << "\n";
+    cout << "Capacity :"; cin >> capacity;
+    if(!cinGood()) return;
+    if(registration == "" || type == "" ||capacity <= 0)
+    {
+        cout << "Invalid Plane specifications \n";
+        return;
+    }
+    Plane a(capacity,registration,type);
+    for(Plane &b : planes)
+    {
+        if(b == a)
+        {
+            cout <<"This Plane already exists \n";
+            return;
+        }
+    }
+    plane = a;
+    return;
+}
+
+void App::planeFind()
+{
+    string registration;
+    string type = "";
+    int capacity = 0;
+    cout << "The registration of the Plane to Find: \n"
+            "Registration: "; cin >> registration;
+    cout << "\n";
+    Plane a(capacity,registration,type);
+    for(Plane &b : planes)
+    {
+        if(b == a)
+        {
+            cout << "Plane found, details: \n"
+                 << "Registration - Type - Capacity" << endl
+                 << b << endl
+                 << "Do you want to update it? Y/N" << endl;
+
+            char answer;
+            cin >> answer;
+            if(!cinGood()) return;
+            if(answer == 'y' || answer == 'Y')
+            {
+                updatePlane(b);
+                return;
+            }
+        }
+    }
+    cout << "Plane does not exist" << endl;
+    cout <<"Do you want to create it? (Y/N)" << endl;
+    char answer;
+    cin >> answer;
+    if(!cinGood()) return;
+    if(answer == 'y' || answer == 'Y')
+    {
+        planes.push_back(a);
+        cout << "Plane added!" << endl;
+    }
     return;
 }
 

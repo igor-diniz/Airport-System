@@ -27,16 +27,22 @@ private:
     void airportCreation();
     void airportDeletion();
     void airportFind();
+    void updateAirport(Airport &airport);
     void showAirports();
     void transportMenu();
     void transportCreation(Airport &airport);
     void transportDeletion(Airport &airport);
-    void transportDetail(Airport &airport);
+    void transportFind(Airport &airport);
     void showTransports(Airport &airport);
     void readPassengersFile(const string& passengersFile);
     void readPlanesFile(const string& planesFile);
     void readLuggageCarsFile(string& luggageCarsFile);
     void readAirportsFile(string& airportsFile);
+    void planeCreation();
+    void planeDeletion();
+    void planeFind();
+    void updatePlane(Plane &plane);
+    void showPlanes();
 
 
 };

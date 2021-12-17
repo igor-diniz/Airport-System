@@ -133,8 +133,19 @@ string Plane::getType() const
     return type;
 }
 
+bool Plane::operator==(const Plane &b)
+{
+    return registration == b.getRegistration();
+}
+
 void Plane::setType(string type) {this->type = type;}
 
 void Plane::setCapacity(int capacity) {this->capacity = capacity;}
 
 void Plane::setRegistration(string registration) {this->registration = registration;}
+
+ostream& operator<<(ostream& os , const Plane& plane)
+{
+    os << plane.getRegistration() << " - " << plane.getType() << " - " << plane.getCapacity();
+    return os;
+}

@@ -3,6 +3,7 @@
 
 
 class Luggage {
+private:
     static int id;
 };
 

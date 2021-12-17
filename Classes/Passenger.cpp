@@ -23,7 +23,8 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg) {
     if(flight.getAvailableSeats() < 1)
         return false;
 
-    int id = flight.getCapacity() - flight.getAvailableSeats() + 1;
+    //ESSA LINHA TEM ERRO DE SEMANTICA
+    int id = flight.getAvailableSeats() - flight.getAvailableSeats() + 1; //IGOR VAI RESOLVER
 
     ticket = Ticket(id, flight);
 
@@ -40,12 +41,12 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
     if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;
 
+    int id = flight.getAvailableSeats() - flight.getAvailableSeats() + 1;
     flight.setAvailableSeats(flight.getAvailableSeats() - 1);
 
     //this->ticket(0, flight, this); //Maybe ID for Tickets doesn't make sense, the PDF doesn't specify anything
 
     //if (haslugg) ticket.setLuggageIncluded;
-    int id = flight.getCapacity() - flight.getAvailableSeats() + 1;
 
     ticket = Ticket(id, flight);
     if(haslugg)

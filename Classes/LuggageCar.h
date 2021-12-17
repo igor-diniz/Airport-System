@@ -2,8 +2,8 @@
 #define TP1_AED_LUGGAGECAR_H
 
 #include "Luggage.h"
-#include "Flight.h"
 #include <list>
+#include "Airport.h"
 
 class LuggageCar {
 private:

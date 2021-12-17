@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.cpp
+Transport.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
+list
+-
+Time.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
+iostream
+-
+

@@ -18,11 +18,12 @@ public:
     bool deleteTransport(Transport transport);
     const string getName() const;
     const string getInitials() const;
-    const BST<Transport> getTransports() const;
+    const BST<Transport>& getTransports() const;
     void setName(string name);
     void setInitials (string initials);
     Transport getClosestTransport() const;
     bool operator==(const Airport& a) const;
     friend ostream& operator<<(ostream& os , const Airport& air);
+
 };
 #endif

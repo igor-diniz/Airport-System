@@ -15,7 +15,7 @@ const string Airport::getName() const {
 const string Airport::getInitials() const {
     return initials;
 }
-const BST<Transport> Airport::getTransports() const {
+const BST<Transport>& Airport::getTransports() const {
     return transports;
 }
 

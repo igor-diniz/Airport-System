@@ -2,7 +2,7 @@
 #define TP1_AED_LUGGAGECAR_H
 
 #include "Luggage.h"
-#include "Flight.h"
+#include "Airport.h"
 #include <list>
 
 class LuggageCar {
@@ -17,7 +17,7 @@ public:
     LuggageCar(Airport airport,int numCarriages, int stacksPerCarriage, int luggagesPerStack);
     void setLuggageOutCar(list<Luggage> Luggages);
     Airport getAirport(const Airport& airport) const;
-    list<Luggage> setLuggageInCar(list<Luggage> &luggageOutCar);
+    queue<Luggage> setLuggageInCar(queue<Luggage> &luggageOutCar);
 };
 
 

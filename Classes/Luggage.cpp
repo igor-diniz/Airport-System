@@ -1,8 +1,10 @@
-//
-// Created by Ian on 28/11/2021.
-//
-
 #include "Luggage.h"
+
+int Luggage::id = 0;
+#include "Luggage.h"
+Luggage::Luggage(){
+    id++;
+}
 //Detail: dá cout dos atributos de um item.
 //Select: abre outra tela para selecionar o que fazer com o item, por exemplo botar bagagem de flight em carrinhos.
 //Show: abre outra tela para escolher tipo de sort e ranges.

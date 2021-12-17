@@ -69,7 +69,7 @@ bool cinGood()
     return true;
 }
 
-Transport& getTransportinfos()
+Transport getTransportinfos()
 {
     char type;
     float distance;
@@ -193,7 +193,7 @@ void App::airportCreation()
         cout << "Invalid Airport with no specification\n";
         return;
     }
-    for(Airport b: airports)
+    for(Airport &b: airports)
     {
         if(b == a)
         {
@@ -215,7 +215,7 @@ void App::airportDeletion()
     cout << "Initials: "; cin >> initials;
     cout << "\n";
     Airport a(name,initials);
-    for(Airport b : airports)
+    for(Airport &b : airports)
     {
         if(b == a)
         {
@@ -255,7 +255,7 @@ void App::showAirports()
     cout << "do you want to see specific Airports? Y/N \n";
     while(true) {
         cin >> choice;
-        if (cin.fail() || cin.peek() != '\n') {
+        if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
             cerr << endl << endl << "Invalid answer!\n";
@@ -270,14 +270,14 @@ void App::showAirports()
     if(choice == 'Y' || choice == 'y')
     {
         string name,initials;
-        cout << "type enter if you dont want to specify \n" <<
-        "Name: "; cin >> name;
+        cout << "type '0' if you dont want to specify \n" <<
+             "Name: "; cin >> name;
         cout << "\n";
         cout << "Initials: "; cin >> initials;
         cout << "\n";
         Airport a(name,initials);
 
-        for(Airport b : airports)
+        for(Airport &b : airports)
         {
             if(b.getName() == name || b.getInitials() == initials)
             {
@@ -325,7 +325,7 @@ void App::showAirports()
     }
     int counter = 1;
     cout << "Order - Name - Initials" << endl;
-    for(Airport b: aux)
+    for(Airport &b: aux)
     {
         cout << counter << " - " << b << "\n";
         counter ++;
@@ -340,85 +340,87 @@ void App::showAirports()
 
 void App::transportMenu()
 {
-        string name, initials;
-        cout << "From what Airport should we manage the transports? "
-                "Name: ";
-        cin >> name;
-        cout << "\n";
-        cout << "Initials: ";
-        cin >> initials;
-        cout << "\n";
-        Airport a(name, initials);
-        bool exists = false;
-        for (Airport b: airports) {
-            if (a == b) {
-                a = b;
-                exists = true;
+    string name, initials;
+    cout << "From what Airport should we manage the transports? "
+            "Name: ";
+    cin >> name;
+    cout << "\n";
+    cout << "Initials: ";
+    cin >> initials;
+    cout << "\n";
+    Airport a(name, initials);
+    bool exists = false;
+    for (Airport b: airports) {
+        if (a == b) {
+            a = b;
+            exists = true;
+            break;
+        }
+    }
+    if (!exists) {
+        cout << "The given Airport does not exist " << endl;
+        cout << "type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+    }
+    while(true) {
+        cout << "|==============================================|\n"
+                "|                   Transport                  |\n"
+                "|  Add Transport                          [1]  |\n"
+                "|  Delete Transport                       [2]  |\n"
+                "|  Detail Transport                       [3]  |\n"
+                "|  Show Transport                         [4]  |\n"
+                "|==============================================|\n";
+        cout << "\nchoose an option : ";
+        int choice;
+        while (true) {
+            cin >> choice;
+            if (cin.fail() || cin.peek() != '\n') {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cerr << endl << endl << "Invalid command!\n";
+                continue;
+            } else {
                 break;
             }
         }
-        if (!exists) {
-            cout << "The given Airport does not exist " << endl;
-            cout << "type anything to go back" << endl;
-            string choice;
-            cin >> choice;
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-            return;
+        switch (choice) {
+            case 0:
+                return;
+            case 1:
+                transportCreation(a);
+                break;
+            case 2:
+                transportDeletion(a);
+                break;
+            case 3:
+                transportDetail(a);
+                break;
+            case 4:
+                showTransports(a);
+                break;
+            default:
+                cout << "not a possibilite" << endl;
         }
-        while(true) {
-            cout << "|==============================================|\n"
-                    "|                   Transport                  |\n"
-                    "|  Add Transport                          [1]  |\n"
-                    "|  Delete Transport                       [2]  |\n"
-                    "|  Detail Transport                       [3]  |\n"
-                    "|  Show Transport                         [4]  |\n"
-                    "|==============================================|\n";
-            cout << "\nchoose an option : ";
-            int choice;
-            while (true) {
-                cin >> choice;
-                if (cin.fail() || cin.peek() != '\n') {
-                    cin.clear();
-                    cin.ignore(INT_MAX, '\n');
-                    cerr << endl << endl << "Invalid command!\n";
-                    continue;
-                } else {
-                    break;
-                }
-            }
-            switch (choice) {
-                case 0:
-                    return;
-                case 1:
-                    transportCreation(a);
-                    break;
-                case 2:
-                    transportDeletion(a);
-                    break;
-                case 3:
-                    transportDetail(a);
-                    break;
-                case 4:
-                    showTransports(a);
-                    break;
-                default:
-                    cout << "not a possibilite" << endl;
-            }
-        }
+    }
 }
 
 void App::transportCreation(Airport &airport)
 {
     Transport transp = getTransportinfos();
-    if (transp == Transport('o',0,{0,0})) return;
-    if(!(airport.getTransports().find(transp) == Transport('o',0,{0,0})))
+    Transport transpnotfound('o',0,{0,0});
+    if (transp == transpnotfound) return;
+    if(!(airport.getTransports().find(transp) == transpnotfound))
     {
         cout << "This transport already exists" << endl;
         return;
     }
-    airport.addTransport(transp);
+    if(airport.addTransport(transp))
     cout << "Transport added \n";
+    else cout << "Transport not added \n";
     return;
 }
 
@@ -447,11 +449,104 @@ void App::transportDetail(Airport &airport)
     }
     cout << "Transport found, details: " << endl
          << "Type - Distance - Time" << endl
-         << transp;
+         << transp << endl;
 }
 
 void App::showTransports(Airport &airport)
 {
-
+    char choice;
+    cout << "do you want to see specific Transports? Y/N \n";
+    while(true) {
+        cin >> choice;
+        if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid answer!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    list<Transport> aux;
+    if(choice == 'Y' || choice == 'y')
+    {
+        string name, initials;
+        cout << "type '0' if you dont want to specify \n";
+        Transport transport = getTransportinfos();
+        for (auto i = airport.getTransports().begin(); i != airport.getTransports().end(); i++)
+        {
+            if (transport.getTime() == (*i).getTime() || transport.getDistance() == (*i).getDistance() ||
+                transport.getType() == (*i).getType())
+            {
+                aux.push_back(*i);
+            }
+        }
+    }
+    else
+    {
+        for (iteratorBST<Transport> i = airport.getTransports().begin(); i != airport.getTransports().end(); i++)
+        {
+            aux.push_back(*i);
+        }
+    }
+    cout << "how do you want the transports to be sorted? \n"
+            "1 - type asc\n"
+            "2 - type desc\n"
+            "3 - time asc\n"
+            "4 - time desc\n"
+            "5 - distance asc\n"
+            "6 - distance desc\n";
+    int sortChoice;
+    while(true) {
+        cin >> sortChoice;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    switch(sortChoice)
+    {
+        case 1:
+            aux.sort(transport_sort_typeasc);
+            break;
+        case 2:
+            aux.sort(transport_sort_typedesc);
+            break;
+        case 3:
+            aux.sort(transport_sort_timeasc);
+            break;
+        case 4:
+            aux.sort(transport_sort_timedesc);
+            break;
+        case 5:
+            aux.sort(transport_sort_distanceasc);
+            break;
+        case 6:
+            aux.sort(transport_sort_distancedesc);
+            break;
+        default:
+            cerr << endl << endl << "Invalid choice!\n";
+            return;
+    }
+    int counter = 1;
+    cout << "Order - Type - Distance - Time" << endl;
+    for(Transport &b: aux)
+    {
+        cout << counter << " - " << b << "\n";
+        counter ++;
+    }
+    cout << "type anything to go back";
+    cin >> choice;
+    cin.clear();
+    cin.ignore(INT_MAX,'\n');
+    return;
 }
 

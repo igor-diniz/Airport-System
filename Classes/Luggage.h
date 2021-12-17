@@ -3,7 +3,7 @@
 
 
 class Luggage {
-    int id = 0; //ToDo
+    static int id;
 };
 
 

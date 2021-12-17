@@ -1,5 +1,30 @@
 #include "Date.h"
+#include <sstream>
+unsigned stringToInt(string str) //converte uma string para inteiro
+{
+    unsigned int number;
+    stringstream convert_string(str);
+    convert_string >> number;
+    return number;
+}
+
 Date::Date(int y, int m, int d):year(y),month(m),day(d){}
+
+Date::Date(string date){
+    stringstream ssDay, ssMonth, ssYear;
+    string day, month, year;
+
+    ssDay << date[8] << date[9];
+    ssDay >> day;
+    ssDay << date[5] << date[6];
+    ssDay >> month;
+    ssDay << date[0] << date[1] << date[2] << date[3];
+    ssDay >> year;
+
+    this->year = stringToInt(year);
+    this->month = stringToInt(month);
+    this->day = stringToInt(day);
+}
 
 int Date::getYear() const {return year;}
 

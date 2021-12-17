@@ -1,5 +1,7 @@
 #ifndef TP1_AED_DATE_H
 #define TP1_AED_DATE_H
+#include <string>
+using namespace std;
 
 class Date
 {
@@ -10,6 +12,7 @@ private:
 public:
     Date(){};
     Date(int y, int m , int d);
+    Date(string date); // "YYYY/MM/DD" format
     int getYear() const;
     int getMonth() const;
     int getDay() const;

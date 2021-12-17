@@ -4,6 +4,10 @@
 #include "LuggageCar.h"
 #include "Passenger.h"
 #include "Plane.h"
+#include "Airport.h"
+#include "Date.h"
+#include <fstream>
+#include <sstream>
 
 class App {
 
@@ -15,8 +19,7 @@ private:
 
 public:
     App(){};
-    App(const string& flightsFile,const string& passengersFile, const string& planesFile, const string& luggagesFile,
-        const string& luggageCarFile, const string& servicesFile, const string& ticketsFile); //isso daqui vai ler dos TXT e botar nas listas e chamar o menu principal
+    App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile); //isso daqui vai ler dos TXT e botar nas listas e chamar o menu principal
 
         void menuPrincipal(); //isso vai dar display das opções de CRUD dos elementos das listas e vai ter um switch pra cada caso
 

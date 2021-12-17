@@ -1,5 +1,56 @@
 #include "App.h"
 #include "SortForms.cpp"
+unsigned stringToInt(string str) //converte uma string para inteiro
+{
+    unsigned int number;
+    stringstream convert_string(str);
+    convert_string >> number;
+    return number;
+}
+
+App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
+    ifstream fileToOpen;
+    fileToOpen.open(passengersFile);
+
+    string name, passport, stringFlightID, date, airport, initials, capacityString, blankLine;
+    Date departure, arrival;
+    Airport origin, destination;
+    int capacity, flightId;
+
+    while(!fileToOpen.eof())
+    {
+        //passenger
+        getline(fileToOpen,name,',');
+        getline(fileToOpen,passport);
+        Passenger passenger = Passenger(name, passport);
+
+        //flightID
+        getline(fileToOpen,stringFlightID,',');
+        flightId = stringToInt(stringFlightID);
+
+        //departureDate
+        getline(fileToOpen,date,',' );
+        departure = Date(date);
+
+        //arrivalDate
+        getline(fileToOpen,date,',' );
+        arrival = Date(date);
+
+        //origin
+        getline(fileToOpen,airport,',' );
+        getline(fileToOpen,initials,',' );
+
+        //destination
+        origin = Airport(airport, initials);
+        getline(fileToOpen,capacityString);
+
+        //capacity
+        capacity = stringToInt(capacityString);
+        fileToOpen.get();
+
+    }
+}
+
 
 bool cinGood()
 {

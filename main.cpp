@@ -5,8 +5,8 @@
 int main(int argc, char* argv[]) {
 
     App a;
+    a = App("Passengers.txt","","","Airports.txt");
     a.menuPrincipal();
-    //a = App("Passengers.txt","","","");
     //App::menuPrincipal();
     /*testing::InitGoogleTest(&argc, argv);
     std::cout << "TP1_AED" << std::endl;

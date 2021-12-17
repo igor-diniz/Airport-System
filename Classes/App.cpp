@@ -10,6 +10,9 @@ unsigned stringToInt(string str) //converte uma string para inteiro
 
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
     this->readPassengersFile(passengersFile);
+    //this->readPlanesFile(planesFile);
+    //this->readLuggageCarsFile(luggageCarsFile);
+    this->readAirportsFile(airportsFile);
 }
 
 
@@ -19,7 +22,7 @@ bool cinGood()
     {
         cin.clear();
         cin.ignore(INT_MAX, '\n');
-        cerr << endl << endl << "Invalid Input! \n";
+        cout << endl << endl << "Invalid Input! \n";
         cout << "type anything to go back" << endl;
         string choice;
         cin >> choice;
@@ -58,53 +61,100 @@ void App::readPassengersFile(const string& passengersFile){
 
     if(!fileToOpen.is_open())
         cout << "Cannot open this file" << endl;
-
-    string name, passport, airport, initials, date, durationStr, availableSeatsStr, ticketIdStr;
-    Date departure;
-    Time duration;
-    Airport origin, destination;
-    int availableSeats, ticketId;
-
-    while(!fileToOpen.eof())
+    else
     {
+        string name, passport, airport, initials, date, durationStr, availableSeatsStr, ticketIdStr;
+        Date departure;
+        Time duration;
+        Airport origin, destination;
+        int availableSeats, ticketId;
 
-        //passenger
-        getline(fileToOpen,name,',');
-        getline(fileToOpen,passport);
-        Passenger passenger = Passenger(name, passport);
+        while(!fileToOpen.eof())
+        {
 
-        //ticketID
-        getline(fileToOpen, ticketIdStr, ',');
-        ticketId = stringToInt(ticketIdStr);
+            //passenger
+            getline(fileToOpen,name,',');
+            getline(fileToOpen,passport);
+            Passenger passenger = Passenger(name, passport);
 
-        //departureDate
-        getline(fileToOpen,date,',' );
-        departure = Date(date);
+            //ticketID
+            getline(fileToOpen, ticketIdStr, ',');
+            ticketId = stringToInt(ticketIdStr);
 
-        //duration
-        getline(fileToOpen,durationStr,',' );
-        duration = Time(duration);
+            //departureDate
+            getline(fileToOpen,date,',' );
+            departure = Date(date);
 
-        //origin
-        getline(fileToOpen,airport,',' );
-        getline(fileToOpen,initials,',' );
-        origin = Airport(airport, initials);
+            //duration
+            getline(fileToOpen,durationStr,',' );
+            duration = Time(duration);
 
-        //destination
-        getline(fileToOpen,airport,',' );
-        getline(fileToOpen,initials,',' );
-        destination = Airport(airport, initials);
+            //origin
+            getline(fileToOpen,airport,',' );
+            getline(fileToOpen,initials,',' );
+            origin = Airport(airport, initials);
 
-        //availableSeats
-        getline(fileToOpen, availableSeatsStr);
-        availableSeats = stringToInt(availableSeatsStr);
-        fileToOpen.get();
+            //destination
+            getline(fileToOpen,airport,',' );
+            getline(fileToOpen,initials,',' );
+            destination = Airport(airport, initials);
 
-        Flight flight = Flight(departure, duration, origin, destination, availableSeats);
-        passenger.setTicket(Ticket(ticketId, flight));
-        passengers.push_back(passenger);
+            //availableSeats
+            getline(fileToOpen, availableSeatsStr);
+            availableSeats = stringToInt(availableSeatsStr);
+            fileToOpen.get();
+
+            Flight flight = Flight(departure, duration, origin, destination, availableSeats);
+            passenger.setTicket(Ticket(ticketId, flight));
+            passengers.push_back(passenger);
+        }
+        fileToOpen.close();
     }
+}
 
+void App::readAirportsFile(const string& airportsFile){
+    ifstream fileToOpen;
+    fileToOpen.open(airportsFile);
+
+    if(!fileToOpen.is_open())
+        cout << endl << "Cannot open this file" << endl;
+    else
+    {
+        string name, initials, time, distance;
+        char transportType;
+        int transportDistance;
+        Time waitingTime;
+        Transport transport;
+        Airport airport;
+
+        while(!fileToOpen.eof())
+        {
+
+            //airportName
+            getline(fileToOpen,name,',');
+            getline(fileToOpen,initials);
+            airport = Airport(name, initials);
+
+            while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
+            {
+                //transportType
+                fileToOpen.get(transportType); fileToOpen.get();
+
+                //transportDistance
+                getline(fileToOpen, distance, ',');
+                transportDistance = stringToInt(distance);
+
+                //waitingTime
+                getline(fileToOpen, time);
+                waitingTime = Time(time);
+            }
+            fileToOpen.get();
+            transport = Transport(transportType,transportDistance,waitingTime);
+            airport.addTransport(transport);
+            airports.push_back(airport);
+        }
+        fileToOpen.close();
+    }
 }
 
 void App::menuPrincipal()

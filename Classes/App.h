@@ -36,8 +36,8 @@ private:
     void showTransports(Airport &airport);
     void readPassengersFile(const string& passengersFile);
     void readPlanesFile(const string& planesFile);
-    void readLuggageCarsFile(string& luggageCarsFile);
-    void readAirportsFile(string& airportsFile);
+    void readLuggageCarsFile(const string& luggageCarsFile);
+    void readAirportsFile(const string& airportsFile);
     void planeCreation();
     void planeDeletion();
     void planeFind();

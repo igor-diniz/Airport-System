@@ -7,10 +7,6 @@ string Passenger::getName() {return name;}
 
 string Passenger::getPassport() {return passport;}
 
-bool Passenger::getCheckin() {return checkin;}
-
-void Passenger::setCheckin() {this->checkin = true;}
-
 void Passenger::setName(string name) {this->name = name;}
 
 void Passenger::setPassport(string passport) {this->passport = passport; }

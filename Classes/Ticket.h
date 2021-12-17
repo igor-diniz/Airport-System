@@ -4,11 +4,10 @@
 #include <list>
 #include "Flight.h"
 #include "Luggage.h"
-//#include "Passenger.h"
 
 class Ticket {
 private:
-    int id; //esse "id" é o equivalente ao assento do mlk???????? se for melhor trocar o nome
+    int id;
     Flight flightAssocieted;
     //Passenger passengerAssocieted;
     bool checkin = false;

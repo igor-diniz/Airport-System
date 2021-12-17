@@ -2,8 +2,6 @@
 #define TP1_AED_PASSENGER_H
 
 #include <string>
-#include <vector>
-#include "Flight.h"
 #include "Ticket.h"
 #include <list>
 
@@ -12,8 +10,7 @@ using namespace std;
 class Passenger {
 private:
     string name, passport;
-    bool checkin = false;
-    Ticket ticket;
+    Ticket ticket; //isso deveria ser lista de tickets
 
 public:
     Passenger() = default;

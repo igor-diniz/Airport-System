@@ -4,6 +4,9 @@
 
 class Luggage {
     static int id;
+
+public:
+    Luggage();
 };
 
 

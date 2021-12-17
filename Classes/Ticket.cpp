@@ -25,11 +25,11 @@ int Ticket::getLuggageQuantity() const{return luggageQuantity;}
 
 void Ticket::setLuggageQuantity(int qntd, list<Luggage> luggages) {
     luggageQuantity = qntd;
-    flightAssocieted.setLuggageTotal(luggageQuantity);
+    //flightAssocieted.setLuggageTotal(luggageQuantity);
     for (auto l : luggages){
         ticketLuggages.push_back(l);
     }
-    flightAssocieted.addLuggageToVector(luggages);
+    flightAssocieted.addLuggageToQueue(luggages);
 }
 
 bool Ticket::operator==(const Ticket &t) const{

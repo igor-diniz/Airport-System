@@ -1,7 +1,7 @@
 #include "Luggage.h"
 
 int Luggage::id = 0;
-#include "Luggage.h"
+
 Luggage::Luggage(){
     id++;
 }

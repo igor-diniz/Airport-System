@@ -36,7 +36,7 @@ public:
     //Plane getPlaneAssocieted() const;
     bool operator == (const Flight& flight);
     int getLuggageTotal();
-    void setLuggageTotal(int qntd);
+    //void setLuggageTotal(int qntd);
     void addLuggageToQueue(list<Luggage> Luggages);
     void setLuggagesOutCar(list<Luggage> &alista);
     bool operator==(const Flight &f) const;

@@ -21,7 +21,7 @@ private:
 
 public:
     Flight();
-    Flight(Date &departure,Date &arrival,Airport &origin,Airport &destination,Time duration,int availableSeats);
+    Flight(Date &departure,Time duration,Airport &origin,Airport &destination,int availableSeats);
     int getId() const;
     Airport getDestination() const;
     Airport getOrigin() const;

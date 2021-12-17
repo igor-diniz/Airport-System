@@ -12,7 +12,7 @@ Flight::Flight()
     list<Luggage> luggagesOutCar;
 }
 
-Flight::Flight(Date &departure,Date &arrival,Airport &origin,Airport &destination,Time duration,int availableSeats)
+Flight::Flight(Date &departure,Time duration,Airport &origin,Airport &destination,int availableSeats)
 {
     id++;
     this->availableSeats = availableSeats;

@@ -12,17 +12,16 @@ class Flight {
 private:
     static int id;
     int availableSeats;
-    Date arrival,departure;
+    Date departure;
+    Time duration;
     Airport destination, origin;
     //Plane planeAssociated;
-    int capacity;
-    int luggageTotal = 0;
     queue<Luggage> flightLuggages;
     queue<Luggage> luggagesOutCar;
 
 public:
     Flight();
-    Flight(Date &departure,Date &arrival,Airport &origin,Airport &destination,int capacity);
+    Flight(Date &departure,Date &arrival,Airport &origin,Airport &destination,Time duration,int availableSeats);
     int getId() const;
     Airport getDestination() const;
     Airport getOrigin() const;
@@ -40,7 +39,6 @@ public:
     void setLuggageTotal(int qntd);
     void addLuggageToQueue(list<Luggage> Luggages);
     void setLuggagesOutCar(list<Luggage> &alista);
-    int getCapacity() const;
     bool operator==(const Flight &f) const;
 
     void luggagesToCar(LuggageCar Car);

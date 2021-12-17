@@ -166,7 +166,7 @@ void App::menuPrincipal()
                 airportDeletion();
                 break;
             case 13:
-                airportDetail();
+                airportFind();
                 break;
             case 14:
                 showAirports();
@@ -236,7 +236,7 @@ void App::airportDeletion()
     return;
 }
 
-void App::airportDetail()
+void App::airportFind()
 {
     string name,initials;
     cout << "The details of what Airport should be shown? "
@@ -252,10 +252,15 @@ void App::airportDetail()
         {
             cout << "Airport found, details: \n"
                  << "Name - Initials" << endl
-                 << b;
+                 << b << endl
+                 << "Do you want to update it? Y/N" << endl;
+                //update();
         }
     }
-    cout <<"Airport does not exist \n";
+    cout <<"Airport does not exist \n"
+         <<"Do you want to creat it? Y/N" << endl;
+    //criar();
+    return;
 }
 
 void App::showAirports()

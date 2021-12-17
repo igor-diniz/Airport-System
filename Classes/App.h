@@ -26,7 +26,7 @@ public:
 private:
     void airportCreation();
     void airportDeletion();
-    void airportDetail();
+    void airportFind();
     void showAirports();
     void transportMenu();
     void transportCreation(Airport &airport);

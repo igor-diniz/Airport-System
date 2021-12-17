@@ -112,41 +112,34 @@ void App::menuPrincipal()
     while(true) {
         cout << "|===========================================================================================|\n"
                 "|            ____ ______ ____   ___     ____ ____   __     ____ _   __ ______ _____         |\n"
-                "|           /  _// ____//  _/  /   |   /  _// __ \\ / /    /  _// | / // ____// ___/        |\n"
-                "|           / / / __/   / /   / /| |   / / / /_/ // /     / / /  |/ // __/   \\__ \\        |\n"
+                "|           /  _// ____//  _/  /   |   /  _// __ \  / /    /  _// | / // ____// ___/        |\n"
+                "|           / / / __/   / /   / /| |   / / / /_/ // /     / / /  |/ // __/    \__\          |\n"
                 "|         _/ / / /___ _/ /   / ___ | _/ / / _, _// /___ _/ / / /|  // /___  ___/ /          |\n"
                 "|        /___//_____//___/  /_/  |_|/___//_/ |_|/_____//___//_/ |_//_____/ /____/           |\n"
                 "|                                                                                           |\n"
                 "|===========================================================================================|\n"
-                "|                  Airports                   |                  Transport                  |\n"
+                "|                  Airports                   |                 Luggage Car                 |\n"
                 "|=============================================|=============================================|\n"
-                "|  Add Airport                           [11] |  Add Transport                         [21] |\n" //Construtor │ Construtor
-                "|  Delete Airport                        [12] |  Delete Transport                      [22] |\n" //ID │ ID
-                "|  Detail Airport                        [13] |  Detail Transport                      [23] |\n" //ID │ ID
-                "|  Show Airports                         [14] |  Show Transport                        [24] |\n"
-                "|  Transports                            [15] |  Show Transport                        [24] |\n" // Open new sort page │ Open new sort page
+                "|  Add Airport                           [11] |  Add Luggage Car                       [21] |\n"
+                "|  Remove Airport                        [12] |  Remove Luggage Car                    [22] |\n"
+                "|  Detail Airport                        [13] |  Detail Luggage Car                    [23] |\n"
+                "|  Show Airports                         [14] |  Show Luggage Car                      [24] |\n"
+                "|  Transports                            [15] |                                             |\n"
                 "|=============================================|=============================================|\n"
-                "|                 Luggage Car                 |                  Passenger                  |\n"
+                "|                    Plane                    |                  Passenger                  |\n"
                 "|=============================================|=============================================|\n"
-                "|  Add Luggage Car                       [31] |  Add Passenger                         [41] |\n" //Construtor │ Construtor
-                "|  Delete Luggage Car                    [32] |  Delete Passenger                      [42] |\n" //ID │ ID
-                "|  Detail Luggage Car                    [33] |  Detail Passenger                      [43] |\n" //ID │ ID
-                "|  Show Luggage Cars                     [34] |  Show Passengers                       [44] |\n" // Open new sort page │ Open new sort page
-                "|                                             |  Tickets                               [45] |\n" // null │ Open new Ticket page
-                "|=============================================|=============================================|\n"
-                "|                    Plane                    |                   Service                   |\n"
-                "|===========================================================================================|\n"
-                "|  Add Plane                             [51] |  Add Service                           [61] |\n" //Construtor │ Construtor
-                "|  Delete Plane                          [52] |  Delete Service                        [62] |\n" //ID │ ID
-                "|  Detail Plane                          [53] |  Detail Service                        [63] |\n" //ID │ ID
-                "|  Show Planes                           [54] |  Show Services                         [64] |\n" // Open new sort page │ Open new sort page
-                "|  Flights                               [55] |                                             |\n" // null │ Open new Flights page
+                "|  Add Plane                             [31] |  Add Passenger                         [41] |\n"
+                "|  Remove Plane                          [32] |  Remove Passenger                      [42] |\n"
+                "|  Detail Plane                          [33] |  Detail Passenger                      [43] |\n"
+                "|  Show Plane                            [34] |  Show Passengers                       [44] |\n"
+                "|  Flights                               [35] |  Tickets                               [45] |\n"
+                "|  Services                              [36] |                                             |\n"
                 "|=============================================|=============================================|\n"
                 "|               Other operations              |                                              \n"
                 "|=============================================|                                              \n"
                 "|  Close                                  [0] |                                              \n"
-                "|===========================================================================================|\n"
-                "                                                                                             \n";
+                "|  Save                                   [1] |                                              \n"
+                "|===========================================================================================|\n";
         cout << "\nchoose an option : ";
         int choice;
         while(true) {
@@ -252,6 +245,7 @@ void App::airportDetail()
     cout << "Initials: "; cin >> initials;
     cout << "\n";
     Airport a(name,initials);
+    cout << "Searching... \n";
     for(Airport &b : airports)
     {
         if(a == b)
@@ -457,6 +451,7 @@ void App::transportDetail(Airport &airport)
 {
     Transport transp = getTransportinfos();
     if (transp == Transport('o',0,{0,0})) return;
+    cout << "Searching... \n";
     if((airport.getTransports().find(transp) == Transport('o',0,{0,0})))
     {
         cout << "This transport doesnt exists" << endl;

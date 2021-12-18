@@ -27,7 +27,6 @@ public:
     void addFlight(list<Flight> &flights); //adiciona uma lista de voos
     void addService(Service &service);
     void addService(queue<Service> &services);
-    Date getLasService();
     void deleteService();
     int getCapacity() const;
     void setCapacity(int capacity);

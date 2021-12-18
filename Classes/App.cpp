@@ -288,7 +288,7 @@ void App::airportFind()
         if(a == airport)
         {
             cout << "Airport found, details:" << endl
-                 << a << endl
+                 << airport << endl
                  << "Do you want to update it? Y/N" << endl;
 
             char answer;
@@ -296,10 +296,9 @@ void App::airportFind()
             if(!cinGood()) return;
             if(answer == 'y' || answer == 'Y')
             {
-                updateAirport(a);
+                updateAirport(airport);
                 return;
             }
-            return;
         }
     }
     cout <<"Airport does not exist." << endl;
@@ -429,12 +428,13 @@ void App::showAirports()
 
 void App::transportMenu()
 {
-    string initials;
-    cout << "From what Airport should we manage the transports?\n";
+    string name, initials;
+    cout << "From what Airport should we manage the transports?\n"
+            "Name:";cin.get(); getline(cin, name);
     cout << "Initials: ";
     cin >> initials;
     cout << "\n";
-    Airport a("", initials);
+    Airport a(name, initials);
     bool exists = false;
     for (Airport& b: airports) {
         if (a == b) {
@@ -490,7 +490,7 @@ void App::transportMenu()
                 showTransports(a);
                 break;
             default:
-                cout << "not a possibility" << endl;
+                cout << "not a possibilite" << endl;
         }
     }
 }
@@ -929,7 +929,7 @@ void App::showPlanes()
 
 void App::flightMenu() {
     string registration;
-    cout << "From what Plane should we manage the flights? \n"
+    cout << "From what Plane should we manage the transports? \n"
          << "Registration: ";
     cin >> registration;
     cout << "\n";
@@ -994,7 +994,6 @@ void App::flightMenu() {
                 break;
             default:
                 cout << "not a possibilite" << endl;
-                break;
         }
     }
 }
@@ -1467,112 +1466,6 @@ void App::getLuggageToCar(Plane &plane)
     }
     cout << "There are no more luggages out of the car for this flight" << endl;
     return;
-}
-
-void App::serviceMenu()
-{
-    string registration;
-    cout << "From what Plane should we manage the Services? \n"
-         << "Registration: ";
-    cin >> registration;
-    cout << "\n";
-    Plane a(0, registration, "");
-    bool exists = false;
-    for (Plane &b: planes) {
-        if (a == b) {
-            a = b;
-            exists = true;
-            break;
-        }
-    }
-    if (!exists) {
-        cout << "The given Plane does not exist " << endl;
-        cout << "type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
-        return;
-    }
-    while (true)
-    {
-        cout<< "|==============================================|\n"
-               "|                   Service                    |\n"
-               "|  Add Service                            [1]  |\n"
-               "|  Remove Service                         [2]  |\n"
-               "|  Detail Service                         [3]  |\n"
-               "|  Show Service                           [4]  |\n"
-               "|  Return                                 [0]  |\n"
-               "|==============================================|\n";
-        cout << "\nchoose an option : ";
-        int choice;
-        while (true) {
-            cin >> choice;
-            if (cin.fail() || cin.peek() != '\n') {
-                cin.clear();
-                cin.ignore(INT_MAX, '\n');
-                cout << endl << endl << "Invalid command!\n";
-                continue;
-            } else {
-                break;
-            }
-        }
-        switch (choice)
-        {
-            case 0:
-                return;
-            case 1:
-                serviceCreation(a);
-                break;
-            case 2:
-                //serviceDeletion(a);
-                break;
-            case 3:
-                //serviceFind(a);
-                break;
-            case 4:
-                //showServices(a);
-                break;
-            default:
-                cout << "not a possibilite" << endl;
-                break;
-        }
-    }
-}
-
-void App::serviceCreation(Plane &plane)
-{
-    char serviceType;
-    Date date;
-    int day,month,year;
-    string accountable;
-
-    cout << "give the Service specifications : \n"
-         << "serviceType (m/l): "; cin >> serviceType;    cout << "\n";
-         if(serviceType != 'm' && serviceType != 'M' && serviceType != 'l' && serviceType != 'L') {
-             cout << "Invalid service type!" << endl;
-             return;
-         }
-    if(!cinGood()) return;
-    cout << "accountable: "; cin >> accountable;
-    cout << "\n";
-    cout << "year :"; cin >> year;
-    if(!cinGood()) return;
-    cout << "\n";
-    cout << "month :"; cin >> month;
-    if(!cinGood()) return;
-    cout << "\n";
-    cout << "day :"; cin >> day;
-
-    date = Date(year,month,day);
-    if(!(date < plane.getLasService()))
-    {
-        cout << "Services need to be created in chronological order!\n";
-        return;
-    }
-    Service service(serviceType,{year,month,day},accountable);
-    cout << "Service added! \n";
-    plane.addService(service);
 }
 
 

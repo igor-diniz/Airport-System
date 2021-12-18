@@ -138,11 +138,6 @@ bool Plane::operator==(const Plane &b)
     return registration == b.getRegistration();
 }
 
-Date Plane::getLasService()
-{
-    return servicesToDo.back().getDate();
-}
-
 void Plane::setType(string type) {this->type = type;}
 
 void Plane::setCapacity(int capacity) {this->capacity = capacity;}

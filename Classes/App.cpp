@@ -282,7 +282,6 @@ void App::airportFind()
 
     Airport airport("",initials);
     cout << "Searching..." << endl;
-
     for(Airport &a : airports)
     {
         if(a == airport)
@@ -459,7 +458,7 @@ void App::transportMenu()
                 "|  Remove Transport                       [2]  |\n"
                 "|  Detail Transport                       [3]  |\n"
                 "|  Show Transport                         [4]  |\n"
-                "|  Go Back                                [0]  |\n"
+                "|  Return                                 [0]  |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;
@@ -817,7 +816,6 @@ void App::updatePlane(Plane &plane)
         cout << "Invalid Plane specifications \n";
         return;
     }
-    cout << "Searching..." << endl;
     Plane a(capacity,registration,type);
     for(Plane &b : planes)
     {
@@ -961,7 +959,7 @@ void App::flightMenu() {
                 "|  Detail Flight                          [3]  |\n"
                 "|  Show Flights                           [4]  |\n"
                 "|  Get Luggage To Car                     [5]  |\n"
-                "|  Go Back                                [0]  |\n"
+                "|  Return                                [0]  |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;
@@ -1735,7 +1733,6 @@ void App::updatePassenger(Passenger &passenger)
         cout << "Invalid Passenger specifications \n";
         return;
     }
-    cout << "Searching..." << endl;
     Passenger a(name,passport);
     for(Passenger &b : passengers)
     {
@@ -1748,4 +1745,189 @@ void App::updatePassenger(Passenger &passenger)
     passenger = a;
     return;
 }
+
+void App::TicketMenu()
+{
+    /*
+    int id;
+    Date departure;
+    int day,month,year;
+    Airport origin;
+    string initials;
+    cout << "What flight shall the managed ticked refer to?\n"
+    cout << "Origin Airport (initials): "; cin >> initials;
+    if(!checkAirportExists(initials,origin))
+    {
+        string choice;
+        cout << "Airport does not exist!" << endl;
+        cout << "type anything to go back";
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX,'\n');
+        return;
+    }
+    cout << endl;
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    origin = Airport("",initials);
+    Flight flight = Flight(departure,origin);
+    cout << "\n";
+    bool exists = false
+    for (Plane &b: planes) {
+        for(Flight &c: b.getFlights()){
+            if (c == flight) {
+                flight = c;
+                exists = true;
+                break;
+            }
+        }
+    }
+    if (!exists) {
+        cout << "The given flight does not exist " << endl;
+        cout << "Type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;*/
+    string passport;
+    cout << "From what Passenger should we manage the tickets? \n"
+         << "Passport: ";
+    cin >> passport;
+    cout << "\n";
+    Passenger a("", passport);
+    bool exists = false;
+    for (Passenger &b: passengers) {
+        if (a == b) {
+            a = b;
+            exists = true;
+            break;
+        }
+    }
+    if (!exists) {
+        cout << "The given Passenger does not exist " << endl;
+        cout << "Type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+    }
+    }
+
+    while(true) {
+        cout <<  "|==============================================|\n"
+                 "|                   Tickets                    |\n"
+                 "|  Add Ticket                             [1]  |\n"
+                 "|  Remove Ticket                          [2]  |\n"
+                 "|  Detail Ticket                          [3]  |\n"
+                 "|  Show Tickets                           [4]  |\n"
+                 "|  Checkin                                [5]  |\n"
+                 "|  Return                                 [0]  |\n"
+                 "|==============================================|\n"
+        cout << "\n Please choose an option: ";
+        int choice;
+        while (true) {
+            cin >> choice;
+            if (cin.fail() || cin.peek() != '\n') {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << endl << endl << "Invalid command!\n";
+                continue;
+            } else {
+                break;
+            }
+        }
+        switch (choice) {
+            case 0:
+                return;
+            case 1:
+                ticketCreation(flight);
+                break;
+            case 2:
+                ticketDeletion(flight);
+                break;
+            case 3:
+                ticketFind(flight);
+                break;
+            case 4:
+                showTicket(flight);
+                break;
+            default:
+                cout << "not a possibilite" << endl;
+        }
+    }
+}
+void App::ticketCreation()
+{
+    int id;
+    Date departure;
+    int day,month,year;
+    Airport origin;
+    string initials;
+    cout << "What flight shall the managed ticked refer to?\n"
+    cout << "Origin Airport (initials): "; cin >> initials;
+    if(!checkAirportExists(initials,origin))
+    {
+        string choice;
+        cout << "Airport does not exist!" << endl;
+        cout << "type anything to go back";
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX,'\n');
+        return;
+    }
+    cout << endl;
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    origin = Airport("",initials);
+    Flight flight = Flight(departure,origin);
+    cout << "\n";
+    bool exists = false
+    for (Plane &b: planes) {
+        for(Flight &c: b.getFlights()){
+            if (c == flight) {
+                flight = c;
+                exists = true;
+                break;
+            }
+        }
+    }
+    if (!exists) {
+        cout << "The given flight does not exist " << endl;
+        cout << "Type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+
+    for(Flight b: plane.getFlights())
+    {
+        if(b.equals(flight))
+        {
+            cout << "This flight already exists" << endl;
+            return;
+        }
+    }
+    plane.addFlight(flight);
+    cout << "Flight added \n";
+}
+
 

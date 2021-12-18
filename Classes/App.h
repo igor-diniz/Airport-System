@@ -31,6 +31,7 @@ public:
     void transportCreation(Airport &airport);
     void transportDeletion(Airport &airport);
     void transportFind(Airport &airport);
+    void updateTransport(Transport &transport, Airport &airport);
     void showTransports(Airport &airport);
     void luggageCarCreation(){}; //TODO
     void luggageCarDeletion(){}; //TODO
@@ -49,7 +50,7 @@ public:
     void showPassengers(){};//TODO
     void ticketMenu(){};//TODO
     void flightCreation(Plane &plane);
-    void flightDeletion(Plane &plane;
+    void flightDeletion(Plane &plane);
     void flightFind(Plane &plane);
     void showFlights(Plane &plane);
 

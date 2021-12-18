@@ -276,11 +276,11 @@ void App::airportDeletion()
 
 void App::airportFind()
 {
-    string name,initials;
+    string initials;
     cout << "Enter details of what Airport should be shown:" << endl;
     cout << "Initials: "; cin >> initials; cout << endl;
 
-    Airport airport(name,initials);
+    Airport airport("",initials);
     cout << "Searching..." << endl;
 
     for(Airport &a : airports)
@@ -309,6 +309,9 @@ void App::airportFind()
 
     if(answer == 'y' || answer == 'Y')
     {
+        string name;
+        cout << "give the Airport name: "; cin.get(); getline(cin, name); //missing information since we searched using only the key
+        airport.setName(name);
         airports.push_back(airport);
         cout << "Airport added!" << endl;
     }
@@ -318,22 +321,23 @@ void App::airportFind()
 void App::updateAirport(Airport &airport)
 {
     string name,initials;
-    cout << "What should be the new characteristics?" << endl
-         << "Name:"; cin.get(); getline(cin,name);
-    cout << "Initials: "; cin >> initials; cout << endl;
-
-    Airport airportUpdated(name,initials);
-    for(Airport &a: airports)
+    cout << "What should be the new characteristics? (type 0 to not change)" << endl
+         << "Initials: "; cin >> initials; cout << endl;
+    if(initials != "0")
     {
-        if(a == airportUpdated)
+        Airport airportCheck("",initials);
+        for(Airport &a: airports)
         {
-            cout <<"This Airport already exists" << endl;
-            return;
+            if(a == airportCheck)
+            {
+                cout <<"This Airport already exists" << endl;
+                return;
+            }
         }
+        airport.setInitials(initials);
     }
-    airports.remove(airport);
-    airport = airportUpdated;
-    airports.push_back(airport);
+     cout<< "Name:"; cin.get(); getline(cin,name);
+         if(name != "0") airport.setName(name);
     cout << "Airport Updated" << endl;
     return;
 }
@@ -549,11 +553,45 @@ void App::transportFind(Airport &airport)
     cin >> answer;
     if(!cinGood()) return;
     if(answer == 'y' || answer == 'Y') {
-        cout << "New specifications: " << endl;
-        Transport t = getTransportInfos();
-        airport.addTransport(t);
+        updateTransport(transp,airport);
         return;
     }
+}
+
+void App::updateTransport(Transport &transport, Airport& airport)
+{
+    char type;
+    float distance;
+    Time time = transport.getTime();
+    int hour,minute;
+    Transport checkTransport = transport;
+
+    cout << "What should be the new characteristics? (type 0 to not change)" << endl;
+            "Type: "; cin >> type;
+    if (!cinGood()) return;
+    if(type != '0') checkTransport.setType(type);
+    cout << "\n";
+    cout << "Distance: "; cin >> distance;
+    if (!cinGood()) return;
+    if (distance != 0) checkTransport.setDistance(distance);
+    cout << "\n";
+    cout << "Hour: "; cin >> hour;
+    if (!cinGood()) return;
+    if(hour != 0) time.setHour(hour);
+    cout << "\n";
+    cout << "Minute: "; cin >> minute;
+    if (!cinGood()) return;
+    if(minute != 0) time.setMinute(minute);
+    cout << "\n";
+    checkTransport.setTime(time);
+    if(airport.getTransports().find(checkTransport) == Transport ('o',0,{0,0}))
+    {
+        transport = checkTransport;
+        cout << "Transport updated!" << endl;
+        return;
+    }
+    cout << "Transport already exists!" << endl;
+    return;
 }
 
 void App::showTransports(Airport &airport)
@@ -711,12 +749,11 @@ void App::planeDeletion()
 void App::planeFind()
 {
     string registration;
-    string type = "";
-    int capacity = 0;
+
     cout << "The registration of the Plane to Find: \n"
             "Registration: "; cin >> registration;
     cout << "\n";
-    Plane a(capacity,registration,type);
+    Plane a(0,registration,"");
     for(Plane &b : planes)
     {
         if(b == a)
@@ -743,6 +780,20 @@ void App::planeFind()
     if(!cinGood()) return;
     if(answer == 'y' || answer == 'Y')
     {
+        string type;
+        int capacity;
+        cout << "give the Plane specifications: ";
+        cout << "Type: "; cin >> type;
+        cout << "\n";
+        cout << "Capacity :"; cin >> capacity;
+        if(!cinGood()) return;
+        if(registration == "" || type == "" ||capacity <= 0)
+        {
+            cout << "Invalid Plane specifications \n";
+            return;
+        }
+        a.setType(type);
+        a.setCapacity(capacity);
         planes.push_back(a);
         cout << "Plane added!" << endl;
     }
@@ -936,10 +987,11 @@ void App::flightMenu() {
                 flightFind(a);
                 break;
             case 4:
-                showFlights(a);
+                //showFlights(a);
                 break;
             case 5:
                 //getLuggageToCar();
+                break;
             default:
                 cout << "not a possibilite" << endl;
         }

@@ -49,7 +49,6 @@ Airport& Airport::operator=(const Airport& airport){
     return *this;
 }
 
-
 ostream& operator<<(ostream& os , const Airport& air)
 {
     os << air.getName() << " - " << air.getInitials();

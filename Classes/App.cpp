@@ -11,10 +11,10 @@ unsigned App::stringToInt(string str) //converte uma string para inteiro
 }
 
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
-    this->readPassengersFile(passengersFile);
+    readPassengersFile(passengersFile);
     //this->readPlanesFile(planesFile);
     //this->readLuggageCarsFile(luggageCarsFile);
-    this->readAirportsFile(airportsFile);
+    readAirportsFile(airportsFile);
 }
 
 bool cinGood()
@@ -164,7 +164,7 @@ vector<int> App::possibleChoices() {
     return options;
 }
 
-int App::menuPrincipal()
+int App::mainMenu()
 {
     cout << "|===========================================================================================|\n"
             "|            ____ ______ ____   ___     ____ ____   __     ____ _   __ ______ _____         |\n"
@@ -425,10 +425,8 @@ void App::showAirports()
 void App::transportMenu()
 {
     string name, initials;
-    cout << "From what Airport should we manage the transports? "
-            "Name: ";
-    cin >> name;
-    cout << "\n";
+    cout << "From what Airport should we manage the transports?\n"
+            "Name:";cin.get(); getline(cin, name);
     cout << "Initials: ";
     cin >> initials;
     cout << "\n";
@@ -465,7 +463,7 @@ void App::transportMenu()
             if (cin.fail() || cin.peek() != '\n') {
                 cin.clear();
                 cin.ignore(INT_MAX, '\n');
-                cerr << endl << endl << "Invalid command!\n";
+                cout << endl << endl << "Invalid command!\n";
                 continue;
             } else {
                 break;

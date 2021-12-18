@@ -225,11 +225,24 @@ void App::menuPrincipal()
                 transportMenu();
                 break;
             case 21:
-                //chama o menu dos
                 break;
             case 22:
                 break;
             case 23:
+                break;
+            case 24:
+                break;
+            case 31:
+                planeCreation();
+                break;
+            case 32:
+                planeDeletion();
+                break;
+            case 33:
+                planeFind();
+                break;
+            case 34:
+                showPlanes();
                 break;
             default:
                 cout << "not a possibilite" << endl;
@@ -385,6 +398,7 @@ void App::showAirports()
             }
         }
     }
+    else aux = airports; //in case the choice was "N"
     cout << "how do you want the Airports to be sorted? \n"
             "1 - name asc\n"
             "2 - name desc\n"
@@ -404,7 +418,6 @@ void App::showAirports()
             break;
         }
     }
-    if(aux.empty()) aux = airports; //in case the choice was "N"
     switch(sortChoice)
     {
         case 1:
@@ -676,7 +689,7 @@ void App::planeCreation()
     string registration,type;
     int capacity;
     cout << "give the Plane specifications : \n"
-            "Registration: "; cin >> registration;
+         << "Registration: "; cin >> registration;
     cout << "\n";
     cout << "Type: "; cin >> type;
     cout << "\n";
@@ -793,6 +806,104 @@ void App::planeFind()
         planes.push_back(a);
         cout << "Plane added!" << endl;
     }
+    return;
+}
+
+void App::showPlanes()
+{
+    char choice;
+    cout << "do you want to see specific Planes? Y/N \n";
+    while(true) {
+        cin >> choice;
+        if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    list<Plane> aux;
+    if(choice == 'Y' || choice == 'y')
+    {
+        string registration,type;
+        int capacity;
+        cout << "type '0' if you dont want to specify \n"
+        << "Registration: "; cin >> registration;
+        cout << "\n";
+        cout << "Type: "; cin >> type;
+        cout << "\n";
+        cout << "Capacity :"; cin >> capacity;
+
+        for(Plane &b : planes)
+        {
+            if(b.getRegistration() == registration || b.getCapacity() == capacity || b.getType() == type)
+            {
+                aux.push_back(b);
+            }
+        }
+    }
+    else aux = planes;
+    cout << "how do you want the Planes to be sorted? \n"
+    << "1 - Registration asc\n"
+    << "2 - Registration desc\n"
+    << "3 - Capacity asc\n"
+    << "4 - Capacity desc\n"
+    << "5 - Type asc\n"
+    << "6 - Type desc\n";
+    int sortChoice;
+    while(true) {
+        cin >> sortChoice;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    switch(sortChoice)
+    {
+        case 1:
+            aux.sort(plane_sort_regiasc);
+            break;
+        case 2:
+            aux.sort(plane_sort_regidesc);
+            break;
+        case 3:
+            aux.sort(plane_sort_capacityasc);
+            break;
+        case 4:
+            aux.sort(plane_sort_capacitydesc);
+            break;
+        case 5:
+            aux.sort(plane_sort_typeasc);
+            break;
+        case 6:
+            aux.sort(plane_sort_typedesc);
+            break;
+        default:
+            cerr << endl << endl << "Invalid choice!\n";
+            return;
+    }
+    int counter = 1;
+    cout << "Order - Registration - Type - Capacity" << endl;
+    for(Plane &b: aux)
+    {
+        cout << counter << " - " << b << "\n";
+        counter ++;
+    }
+
+    cout << "type anything to go back";
+    cin >> choice;
+    cin.clear();
+    cin.ignore(INT_MAX,'\n');
     return;
 }
 

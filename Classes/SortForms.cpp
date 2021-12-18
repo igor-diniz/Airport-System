@@ -50,3 +50,33 @@ bool transport_sort_distancedesc(const Transport& t1, const Transport& t2)
     return t1.getDistance() > t2.getDistance();
 }
 
+bool plane_sort_regiasc(const Plane& p1, const Plane& p2)
+{
+    return p1.getRegistration() < p2.getRegistration();
+}
+
+bool plane_sort_regidesc(const Plane& p1, const Plane& p2)
+{
+    return p1.getRegistration() > p2.getRegistration();
+}
+
+bool plane_sort_capacityasc(const Plane& p1, const Plane& p2)
+{
+    return p1.getCapacity() < p2.getCapacity();
+}
+
+bool plane_sort_capacitydesc(const Plane& p1, const Plane& p2)
+{
+    return p1.getCapacity() > p2.getCapacity();
+}
+
+bool plane_sort_typeasc(const Plane& p1, const Plane& p2)
+{
+    return p1.getType() < p2.getType();
+}
+
+bool plane_sort_typedesc(const Plane& p1, const Plane& p2)
+{
+    return p1.getType() > p2.getType();
+}
+

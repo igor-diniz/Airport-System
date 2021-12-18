@@ -429,13 +429,12 @@ void App::showAirports()
 
 void App::transportMenu()
 {
-    string name, initials;
-    cout << "From what Airport should we manage the transports?\n"
-            "Name:";cin.get(); getline(cin, name);
+    string initials;
+    cout << "From what Airport should we manage the transports?\n";
     cout << "Initials: ";
     cin >> initials;
     cout << "\n";
-    Airport a(name, initials);
+    Airport a("", initials);
     bool exists = false;
     for (Airport& b: airports) {
         if (a == b) {
@@ -491,7 +490,7 @@ void App::transportMenu()
                 showTransports(a);
                 break;
             default:
-                cout << "not a possibilite" << endl;
+                cout << "not a possibility" << endl;
         }
     }
 }
@@ -1526,13 +1525,13 @@ void App::serviceMenu()
                 serviceCreation(a);
                 break;
             case 2:
-                serviceDeletion(a);
+                //serviceDeletion(a);
                 break;
             case 3:
-                serviceFind(a);
+                //serviceFind(a);
                 break;
             case 4:
-                showServices(a);
+                //showServices(a);
                 break;
             default:
                 cout << "not a possibilite" << endl;
@@ -1572,9 +1571,8 @@ void App::serviceCreation(Plane &plane)
         return;
     }
     Service service(serviceType,{year,month,day},accountable);
+    cout << "Service added! \n";
     plane.addService(service);
-
-
 }
 
 

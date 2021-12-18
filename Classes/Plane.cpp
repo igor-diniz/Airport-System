@@ -138,6 +138,16 @@ bool Plane::operator==(const Plane &b)
     return registration == b.getRegistration();
 }
 
+queue<Service> Plane::getServicesToDo()
+{
+    return servicesToDo;
+}
+
+stack<Service> Plane::getServicesDone()
+{
+    return servicesDone;
+}
+
 void Plane::setType(string type) {this->type = type;}
 
 void Plane::setCapacity(int capacity) {this->capacity = capacity;}

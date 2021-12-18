@@ -20,6 +20,7 @@ public:
     void setServiceType(char type);
     void setAccountable(string accountable);
     bool operator< (Service &s); //sort pelas datas, se forem igual pelo nome do accountable
+    friend ostream& operator<<(ostream& os , const Service& service);
 };
 
 

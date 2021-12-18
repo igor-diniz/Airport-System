@@ -3,9 +3,9 @@
 
 Passenger::Passenger(string name, string passport) : ticket(0, Flight()) { this->name = name; this->passport = passport;}
 
-string Passenger::getName() {return name;}
+string Passenger::getName() const {return name;}
 
-string Passenger::getPassport() {return passport;}
+string Passenger::getPassport() const {return passport;}
 
 void Passenger::setName(string name) {this->name = name;}
 
@@ -69,4 +69,14 @@ void Passenger::Checkin(Ticket ticket){
 
 void Passenger::setTicket(Ticket ticket){
     this->ticket = ticket;
+}
+
+bool Passenger::operator == (const Passenger &b){
+    return passport == b.getPassport();
+};
+
+ostream& operator<<(ostream& os , const Passenger& passenger)
+{
+    os << passenger.getName() << " - " << passenger.getPassport();
+    return os;
 }

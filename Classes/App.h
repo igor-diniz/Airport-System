@@ -44,9 +44,9 @@ public:
     void showPlanes();
     void flightMenu();
     void serviceMenu(){};//TODO
-    void passengerCreation(){};//TODO
-    void passengerDeletion(){};//TODO
-    void passengerFind(){};//TODO
+    ;//TODO
+    ;//TODO
+    ;//TODO
     void showPassengers(){};//TODO
     void ticketMenu(){};//TODO
     void flightCreation(Plane &plane);
@@ -56,6 +56,10 @@ public:
     void showFlights(Plane &plane);
     bool checkAirportExists(string initials,Airport& airport);
     void getLuggageToCar(Plane &plane);
+    void passengerCreation();
+    void passengerDeletion();
+    void passengerFind();
+    void updatePassenger(Passenger &passenger);
 
 
 private:
@@ -65,6 +69,8 @@ private:
     void readPassengersFile(const string& passengersFile);
     void readPlanesFile(const string& planesFile);
     void readLuggageCarsFile(const string& luggageCarsFile);
+
+
 };
 
 

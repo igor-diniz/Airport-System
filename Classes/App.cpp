@@ -168,7 +168,7 @@ vector<int> App::possibleChoices() {
 int App::mainMenu()
 {
     cout << "|===========================================================================================|\n"
-            "|            ____ ______ ____   ___     ____ ____   __     ____ _   __ ______ _____         |\n"
+            "|            ____ ______ ____   ___     ____ ____    __     ____ _   __ ______ _____        |\n"
             "|           /  _// ____//  _/  /   |   /  _// __ |  / /    /  _// | / // ____// ___/        |\n"
             "|           / / / __/   / /   / /| |   / / / /_/ // /     / / /  |/ // __/    |__|          |\n"
             "|         _/ / / /___ _/ /   / ___ | _/ / / _, _// /___ _/ / / /|  // /___  ___/ /          |\n"
@@ -196,7 +196,7 @@ int App::mainMenu()
             "|=============================================|                                              \n"
             "|  Exit                                   [0] |                                              \n"
             "|  Save                                   [1] |                                              \n"
-            "|===========================================================================================|\n";
+            "|=============================================|\n";
 
     while(true) {
         cout << endl;
@@ -256,7 +256,7 @@ void App::airportCreation()
 void App::airportDeletion()
 {
     string name,initials;
-    cout << "What Airport should be deleted?" << endl;
+    cout << "What Airport should be removed" << endl;
     cout << "Name:"; cin.get(); getline(cin, name);
     cout << "Initials: "; cin >> initials; cout << endl;
 
@@ -266,7 +266,7 @@ void App::airportDeletion()
         if(a == airport)
         {
             airports.remove(a);
-            cout << "Airport deleted" << endl;
+            cout << "Airport removed" << endl;
             return;
         }
     }
@@ -521,7 +521,7 @@ void App::transportDeletion(Airport &airport)
         return;
     }
     airport.deleteTransport(transp);
-    cout << "Transport deleted \n";
+    cout << "Transport removed \n";
     return;
 }
 
@@ -738,7 +738,7 @@ void App::planeDeletion()
         if(b == a)
         {
             planes.remove(b);
-            cout << "Plane deleted \n";
+            cout << "Plane removed \n";
             return;
         }
     }
@@ -754,6 +754,7 @@ void App::planeFind()
             "Registration: "; cin >> registration;
     cout << "\n";
     Plane a(0,registration,"");
+    cout << "Searching..." << endl;
     for(Plane &b : planes)
     {
         if(b == a)
@@ -816,6 +817,7 @@ void App::updatePlane(Plane &plane)
         cout << "Invalid Plane specifications \n";
         return;
     }
+    cout << "Searching..." << endl;
     Plane a(capacity,registration,type);
     for(Plane &b : planes)
     {
@@ -1082,7 +1084,7 @@ void App::flightDeletion(Plane &plane)
         if(b.equals(flight))
         {
             plane.deleteFlight(b.getId());
-            cout << "Flight deleted \n";
+            cout << "Flight removed \n";
             return;
         }
     }
@@ -1134,6 +1136,7 @@ void App::flightFind(Plane &plane)
     departure = Date(year,month,day);
     origin = Airport("",initials);
     Flight flight = Flight(departure,origin);
+    cout << "Searching..." << endl;
 
     for(Flight& b: plane.getFlights())
     {
@@ -1468,4 +1471,133 @@ void App::getLuggageToCar(Plane &plane)
     return;
 }
 
+void App::passengerCreation()
+{
+    //não cria lista de tickets
+    string name,passport;
+    cout << "give the Passenger specifications : \n"
+         << "name: "; cin >> name;    cout << "\n";
+    cout << "passport: "; cin >> passport;
+    cout << "\n";
+    if(!cinGood()) return;
+    if(name == "" || passport == "")
+    {
+        cout << "Invalid Passenger specifications \n";
+        return;
+    }
+    Passenger a(name,passport);
+    for(Passenger &b : passengers)
+    {
+        if(b == a)
+        {
+            cout <<"This Plane already exists \n";
+            return;
+        }
+    }
+    passengers.push_back(a);
+    cout << "Passenger added! \n";
+    return;
+}
+
+void App::passengerDeletion()
+{
+    string name,passport;
+    cout << "give the Passenger specifications : \n"
+            "Name "; cin >> name;
+    cout << "\n";
+    cout << "Passport: "; cin >> passport;
+    cout << "\n";
+    if(!cinGood()) return;
+    Passenger a(name,passport);
+    for(Passenger &b : passengers)
+    {
+        if(b == a)
+        {
+            passengers.remove(b);
+            cout << "Passenger removed \n";
+            return;
+        }
+    }
+    cout <<"Passenger does not exist \n";
+    return;
+}
+
+void App::passengerFind()
+{
+    string passport;
+
+    cout << "Please insert the passport of the passenger to find: \n"
+            "Passport: "; cin >> passport;
+    cout << "\n";
+    Passenger a("",passport);
+    cout << "Searching..." << endl;
+    for(Passenger &b : passengers)
+    {
+        if(b == a)
+        {
+            cout << "Passenger found, details: \n"
+                 << "Name - Passport" << endl << b << endl
+                 << "Do you want to update it? Y/N" << endl;
+
+            char answer;
+            cin >> answer;
+            if(!cinGood()) return;
+            if(answer == 'y' || answer == 'Y')
+            {
+                updatePassenger(b);
+                return;
+            }
+        }
+    }
+    cout << "Passenger does not exist" << endl;
+    cout <<"Do you want to create it? (Y/N)" << endl;
+    char answer;
+    cin >> answer;
+    if(!cinGood()) return;
+    if(answer == 'y' || answer == 'Y')
+    {
+        string name;
+        cout << "give the remaining Passenger specifications: ";
+        cout << "Name: "; cin >> name;
+        cout << "\n";
+        if(!cinGood()) return;
+        if(name == "" || passport == "")
+        {
+            cout << "Invalid Passenger specifications \n";
+            return;
+        }
+        a.setName(name);
+        passengers.push_back(a);
+        cout << "Plane added!" << endl;
+    }
+    return;
+}
+
+void App::updatePassenger(Passenger &passenger)
+{
+    string name,passport;
+    cout << "What should be the new characteristics?: \n"
+            "Name: "; cin >> name;
+    cout << "\n";
+    cout << "Passport: "; cin >> passport;
+    cout << "\n";
+    if(!cinGood()) return;
+    if(name == "" || passport == "")
+    {
+        cout << "Invalid Passenger specifications \n";
+        return;
+    }
+    cout << "Searching..." << endl;
+    Passenger a(name,passport);
+    for(Passenger &b : passengers)
+    {
+        if(b == a)
+        {
+            cout <<"This Passenger already exists \n";
+            return;
+        }
+    }
+    passenger = a;
+    return;
+}
 

@@ -528,10 +528,6 @@ cxxabi.h
 acxx_demangle.h
 -
 
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Airport.cpp
-Airport.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Airport.h
-
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Airport.h
 list
 -
@@ -574,20 +570,8 @@ stack
 queue
 -
 
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Date.cpp
-Date.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Date.h
-sstream
--
-
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Date.h
 string
--
-
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Flight.cpp
-Flight.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Flight.h
-queue
 -
 
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Flight.h
@@ -600,15 +584,7 @@ C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Date.h
 LuggageCar.h
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/LuggageCar.h
 
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Luggage.cpp
-Luggage.h
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Luggage.h
-
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Luggage.h
-
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/LuggageCar.cpp
-LuggageCar.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/LuggageCar.h
 
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/LuggageCar.h
 Luggage.h
@@ -616,12 +592,6 @@ C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Luggage.h
 Airport.h
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Airport.h
 list
--
-
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Passenger.cpp
-Passenger.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Passenger.h
-vector
 -
 
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Passenger.h
@@ -631,10 +601,6 @@ Ticket.h
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Ticket.h
 list
 -
-
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Plane.cpp
-Plane.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Plane.h
 
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Plane.h
 Flight.h
@@ -650,10 +616,6 @@ C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Service.h
 exception
 -
 
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Service.cpp
-Service.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Service.h
-
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Service.h
 string
 -
@@ -661,12 +623,6 @@ Date.h
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Date.h
 
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/SortForms.cpp
-
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Ticket.cpp
-Ticket.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Ticket.h
-Flight.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Flight.h
 
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Ticket.h
 list
@@ -676,19 +632,9 @@ C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Flight.h
 Luggage.h
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Luggage.h
 
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Time.cpp
-Time.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Time.h
-sstream
--
-
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Time.h
 string
 -
-
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Transport.cpp
-Transport.h
-C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Transport.h
 
 C:/Users/duart/Documents/GitHub/TP1_AED/Classes/Transport.h
 list

@@ -28,6 +28,8 @@ public:
     void addService(Service &service);
     void addService(queue<Service> &services);
     void deleteService();
+    queue<Service> getServicesToDo();
+    stack<Service> getServicesDone();
     int getCapacity() const;
     void setCapacity(int capacity);
     string getRegistration() const;

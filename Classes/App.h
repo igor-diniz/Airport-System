@@ -43,7 +43,7 @@ public:
     void updatePlane(Plane &plane);
     void showPlanes();
     void flightMenu();
-    void serviceMenu(){};//TODO
+    void serviceMenu();
     void passengerCreation(){};//TODO
     void passengerDeletion(){};//TODO
     void passengerFind(){};//TODO
@@ -56,6 +56,10 @@ public:
     void showFlights(Plane &plane);
     bool checkAirportExists(string initials,Airport& airport);
     void getLuggageToCar(Plane &plane);
+    void serviceCreation(Plane &plane);
+    void serviceDeletion(Plane &plane);
+    void serviceFind(Plane &plane);
+    void showServices(Plane &plane);
 
 
 private:

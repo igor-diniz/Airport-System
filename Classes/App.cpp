@@ -990,7 +990,7 @@ void App::flightMenu() {
                 showFlights(a);
                 break;
             case 5:
-                //getLuggageToCar();
+                getLuggageToCar(a);
                 break;
             default:
                 cout << "not a possibilite" << endl;
@@ -1416,4 +1416,56 @@ void App::showFlights(Plane &plane)
     cin.ignore(INT_MAX,'\n');
     return;
 }
+
+void App::getLuggageToCar(Plane &plane)
+{
+    int flightId;
+    cout << "From what fly should the luggages be processed? ";
+    cout << "ID: "; cin >> flightId;
+    if(!cinGood()) return;
+    bool exists = false;
+    Flight flight;
+    for(Flight& f: plane.getFlights())
+    {
+        if(f.getId() == flightId)
+        {
+            exists = true;
+            flight = f;
+            break;
+        }
+    }
+    if(!exists)
+    {
+        cout << "This Flight does not exist!";
+        return;
+    }
+    int LuggageId;
+    cout << "Give the Car ID: "; cin >> LuggageId;
+    if(!cinGood()) return;
+    exists = false;
+    LuggageCar luggageCar;
+    for(LuggageCar& lug: luggageCars)
+    {
+        if(lug.getId() == LuggageId)
+        {
+            exists = true;
+            luggageCar = lug;
+            break;
+        }
+    }
+    if(!exists)
+    {
+        cout << "This Luggage Car does not exist!";
+        return;
+    }
+    flight.luggagesToCar(luggageCar);
+    if(flight.getLuggagesOutCar().size() > 0)
+    {
+        cout << "all ok, but there are still Luggages left to be processed" << endl;
+        return;
+    }
+    cout << "There are no more luggages out of the car for this flight" << endl;
+    return;
+}
+
 

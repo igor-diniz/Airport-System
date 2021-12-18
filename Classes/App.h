@@ -55,6 +55,7 @@ public:
     void updateFlight(Flight& flight,Plane &plane);
     void showFlights(Plane &plane);
     bool checkAirportExists(string initials,Airport& airport);
+    void getLuggageToCar(Plane &plane);
 
 
 private:

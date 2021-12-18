@@ -1,9 +1,10 @@
 #include "Flight.h"
 #include <queue>
-int Flight::id = 0;
+int Flight::nextid = 0;
 Flight::Flight()
 {
     id++;
+    id = nextid;
     availableSeats = 0;
     duration = Time();
     departure = Date();
@@ -16,6 +17,7 @@ Flight::Flight()
 Flight::Flight(Date &departure,Time duration,Airport &origin,Airport &destination,int availableSeats)
 {
     id++;
+    id = nextid;
     this->availableSeats = availableSeats;
     this->duration = duration;
     this->departure = departure;
@@ -69,13 +71,18 @@ void Flight::setDuration(Time duration) {this->duration = duration;}
 
 void Flight::setOrigin(Airport airport) {origin = airport;}
 
-//int Flight::getLuggageTotal() {return luggageTotal;}
+queue<Luggage> Flight::getLuggagesOutCar() const
+{
+    return luggagesOutCar;
+}
+
+//nt Flight::getLuggageTotal() {return luggageTotal;}
 
 //void Flight::setLuggageTotal(int qntd) {luggageTotal += qntd;}
 
 void Flight::addLuggageToQueue(list<Luggage> Luggages) {for(auto L:Luggages){flightLuggages.push(L);luggagesOutCar.push(L);}}
 
-void Flight::luggagesToCar(LuggageCar Car) {
+void Flight::luggagesToCar(LuggageCar& Car) {
     luggagesOutCar = Car.setLuggageInCar(luggagesOutCar);
 }
 
@@ -99,6 +106,7 @@ bool Flight::equals(const Flight &flight) const
 Flight::Flight(Date &departure, Airport &origin)
 {
     id++;
+    id = nextid;
     this->departure = departure;
     this->origin = origin;
 }

@@ -1,6 +1,8 @@
 #include "LuggageCar.h"
-
+int LuggageCar::nextid = 0;
 LuggageCar::LuggageCar(Airport airport, int numCarriages, int stacksPerCarriage, int luggagesPerStack){
+    nextid++;
+    id = nextid;
     this-> numCarriages = numCarriages;
     this-> stacksPerCarriage = stacksPerCarriage;
     this-> luggagesPerStack = luggagesPerStack;
@@ -58,3 +60,7 @@ queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
 }
 void addLuggages()
 {}
+
+int LuggageCar::getId() {
+    return id;
+}

@@ -10,7 +10,8 @@
 //caracterizado, no mínimo, por: numero de voo, data de partida, duração do voo, origem, destino.
 class Flight {
 private:
-    static int id;
+    static int nextid;
+    int id;
     int availableSeats;
     Date departure;
     Time duration;
@@ -32,6 +33,7 @@ public:
     void setDestination(Airport airport);
     void setOrigin(Airport airport);
     void setAvailableSeats(int availableSeats);
+    queue<Luggage> getLuggagesOutCar() const ;
     //Plane getPlaneAssocieted() const;
     void setDuration(Time duration);
     bool equals (const Flight& flight) const;
@@ -42,7 +44,7 @@ public:
     bool operator==(const Flight &f) const;
     Time getDuration() const;
     friend ostream& operator<<(ostream& os , const Flight& fli);
-    void luggagesToCar(LuggageCar Car);
+    void luggagesToCar(LuggageCar& Car);
 };
 
 

@@ -7,13 +7,15 @@
 
 class LuggageCar {
 private:
+    static int nextid;
+    int id;
     int numCarriages, stacksPerCarriage, luggagesPerStack;
     Airport airport;
     list<list<stack<Luggage>>> luggageInCar;
-    list<stack<Luggage>> carruagens;
-    stack<Luggage> pilhas;
     int capacity, availability;
 public:
+    int getId();
+    LuggageCar(){};
     LuggageCar(Airport airport,int numCarriages, int stacksPerCarriage, int luggagesPerStack);
     void setLuggageOutCar(list<Luggage> Luggages);
     Airport getAirport(const Airport& airport) const;

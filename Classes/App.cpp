@@ -159,6 +159,7 @@ void App::readAirportsFile(const string& airportsFile){
         fileToOpen.close();
     }
 }
+
 vector<int> App::possibleChoices() {
     vector<int> options = {0,1,11,12,13,14,15,21,22,23,24,31,32,33,34,35,36,41,42,43,44,45};
     return options;
@@ -209,8 +210,8 @@ int App::mainMenu()
             cout << "Invalid input!" << endl;
             continue;
         }
-
-        vector<int>::iterator value = find(possibleChoices().begin(), possibleChoices().end(), choice);
+        vector<int> values = possibleChoices();
+        vector<int>::iterator value = find(values.begin(), values.end(), choice);
         bool choiceIsValid = false;
         if (value != possibleChoices().end())
             choiceIsValid = true;
@@ -273,34 +274,10 @@ void App::airportDeletion()
     return;
 }
 
-void App::updateAirport(Airport &airport)
-{
-    string name,initials;
-    cout << "What should be the new characteristics?" << endl
-         << "Name:"; cin.get(); getline(cin,name);
-    cout << "Initials: "; cin >> initials; cout << endl;
-
-    Airport airportUpdated(name,initials);
-    for(Airport &a: airports)
-    {
-        if(a == airportUpdated)
-        {
-            cout <<"This Airport already exists" << endl;
-            return;
-        }
-    }
-    airports.remove(airport);
-    airport = airportUpdated;
-    airports.push_back(airport);
-    cout << "Airport Updated" << endl;
-    return;
-}
-
 void App::airportFind()
 {
     string name,initials;
     cout << "Enter details of what Airport should be shown:" << endl;
-    cout << "Name:"; cin.get(); getline(cin,name);
     cout << "Initials: "; cin >> initials; cout << endl;
 
     Airport airport(name,initials);
@@ -335,6 +312,29 @@ void App::airportFind()
         airports.push_back(airport);
         cout << "Airport added!" << endl;
     }
+    return;
+}
+
+void App::updateAirport(Airport &airport)
+{
+    string name,initials;
+    cout << "What should be the new characteristics?" << endl
+         << "Name:"; cin.get(); getline(cin,name);
+    cout << "Initials: "; cin >> initials; cout << endl;
+
+    Airport airportUpdated(name,initials);
+    for(Airport &a: airports)
+    {
+        if(a == airportUpdated)
+        {
+            cout <<"This Airport already exists" << endl;
+            return;
+        }
+    }
+    airports.remove(airport);
+    airport = airportUpdated;
+    airports.push_back(airport);
+    cout << "Airport Updated" << endl;
     return;
 }
 
@@ -707,35 +707,6 @@ void App::planeDeletion()
     return;
 }
 
-void App::updatePlane(Plane &plane)
-{
-    string registration,type;
-    int capacity;
-    cout << "What should be the new characteristics?: \n"
-            "Registration: "; cin >> registration;
-    cout << "\n";
-    cout << "Type: "; cin >> type;
-    cout << "\n";
-    cout << "Capacity :"; cin >> capacity;
-    if(!cinGood()) return;
-    if(registration == "" || type == "" ||capacity <= 0)
-    {
-        cout << "Invalid Plane specifications \n";
-        return;
-    }
-    Plane a(capacity,registration,type);
-    for(Plane &b : planes)
-    {
-        if(b == a)
-        {
-            cout <<"This Plane already exists \n";
-            return;
-        }
-    }
-    plane = a;
-    return;
-}
-
 void App::planeFind()
 {
     string registration;
@@ -776,6 +747,36 @@ void App::planeFind()
     }
     return;
 }
+
+void App::updatePlane(Plane &plane)
+{
+    string registration,type;
+    int capacity;
+    cout << "What should be the new characteristics?: \n"
+            "Registration: "; cin >> registration;
+    cout << "\n";
+    cout << "Type: "; cin >> type;
+    cout << "\n";
+    cout << "Capacity :"; cin >> capacity;
+    if(!cinGood()) return;
+    if(registration == "" || type == "" ||capacity <= 0)
+    {
+        cout << "Invalid Plane specifications \n";
+        return;
+    }
+    Plane a(capacity,registration,type);
+    for(Plane &b : planes)
+    {
+        if(b == a)
+        {
+            cout <<"This Plane already exists \n";
+            return;
+        }
+    }
+    plane = a;
+    return;
+}
+
 void App::showPlanes()
 {
     char choice;

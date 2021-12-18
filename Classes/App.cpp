@@ -282,7 +282,6 @@ void App::airportFind()
 
     Airport airport("",initials);
     cout << "Searching..." << endl;
-
     for(Airport &a : airports)
     {
         if(a == airport)
@@ -459,7 +458,7 @@ void App::transportMenu()
                 "|  Remove Transport                       [2]  |\n"
                 "|  Detail Transport                       [3]  |\n"
                 "|  Show Transport                         [4]  |\n"
-                "|  Go Back                                [0]  |\n"
+                "|  Return                                 [0]  |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;
@@ -817,7 +816,6 @@ void App::updatePlane(Plane &plane)
         cout << "Invalid Plane specifications \n";
         return;
     }
-    cout << "Searching..." << endl;
     Plane a(capacity,registration,type);
     for(Plane &b : planes)
     {
@@ -961,7 +959,7 @@ void App::flightMenu() {
                 "|  Detail Flight                          [3]  |\n"
                 "|  Show Flights                           [4]  |\n"
                 "|  Get Luggage To Car                     [5]  |\n"
-                "|  Go Back                                [0]  |\n"
+                "|  Return                                [0]  |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;
@@ -1587,7 +1585,6 @@ void App::updatePassenger(Passenger &passenger)
         cout << "Invalid Passenger specifications \n";
         return;
     }
-    cout << "Searching..." << endl;
     Passenger a(name,passport);
     for(Passenger &b : passengers)
     {

@@ -43,10 +43,11 @@ public:
     void updatePlane(Plane &plane);
     void showPlanes();
     void flightMenu();
-    void serviceMenu(){};//TODO
-    ;//TODO
-    ;//TODO
-    ;//TODO
+    void serviceMenu();
+    void serviceCreation(Plane &plane);
+    void serviceDeletion(Plane& plane);
+    void showServicesToDo(Plane& plane);
+    void showServicesDone(Plane& plane);
     void showPassengers(){};//TODO
     void ticketMenu(){};//TODO
     void flightCreation(Plane &plane);
@@ -60,6 +61,7 @@ public:
     void passengerDeletion();
     void passengerFind();
     void updatePassenger(Passenger &passenger);
+
 
 
 private:

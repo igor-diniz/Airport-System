@@ -1469,6 +1469,154 @@ void App::getLuggageToCar(Plane &plane)
     return;
 }
 
+void App::serviceMenu()
+{
+    string registration;
+    cout << "From what Plane should we manage the Services? \n"
+         << "Registration: ";
+    cin >> registration;
+    cout << "\n";
+    Plane a(0, registration, "");
+    bool exists = false;
+    for (Plane &b: planes) {
+        if (a == b) {
+            a = b;
+            exists = true;
+            break;
+        }
+    }
+    if (!exists) {
+        cout << "The given Plane does not exist " << endl;
+        cout << "type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+    }
+    while (true)
+    {
+        cout<< "|==============================================|\n"
+               "|                   Service                    |\n"
+               "|  Add Service                            [1]  |\n"
+               "|  Remove Oldest Service                  [2]  |\n"
+               "|  Show Services To Do                    [3]  |\n"
+               "|  Show Service Done                      [4]  |\n"
+               "|  Return                                 [0]  |\n"
+               "|==============================================|\n";
+        cout << "\nchoose an option : ";
+        int choice;
+        while (true) {
+            cin >> choice;
+            if (cin.fail() || cin.peek() != '\n') {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << endl << endl << "Invalid command!\n";
+                continue;
+            } else {
+                break;
+            }
+        }
+        switch (choice)
+        {
+            case 0:
+                return;
+            case 1:
+                serviceCreation(a);
+                break;
+            case 2:
+                serviceDeletion(a);
+                break;
+            case 3:
+                showServicesToDo(a);
+                break;
+            case 4:
+                showServicesDone(a);
+                break;
+            default:
+                cout << "not a possibilite" << endl;
+                break;
+        }
+    }
+}
+
+void App::serviceCreation(Plane &plane)
+{
+    char serviceType;
+    Date date;
+    int day,month,year;
+    string accountable;
+
+    cout << "give the Service specifications : \n"
+         << "serviceType (m/l): "; cin >> serviceType;    cout << "\n";
+    if(serviceType != 'm' && serviceType != 'M' && serviceType != 'l' && serviceType != 'L') {
+        cout << "Invalid service type!" << endl;
+        return;
+    }
+    if(!cinGood()) return;
+    cout << "accountable: "; cin >> accountable;
+    cout << "\n";
+    cout << "year :"; cin >> year;
+    if(!cinGood()) return;
+    cout << "\n";
+    cout << "month :"; cin >> month;
+    if(!cinGood()) return;
+    cout << "\n";
+    cout << "day :"; cin >> day;
+
+    date = Date(year,month,day);
+    if(plane.getServicesToDo().empty())
+    {
+        Service service(serviceType,{year,month,day},accountable);
+        cout << "Service added! \n";
+        plane.addService(service);
+        return;
+    }
+    if(date < plane.getServicesToDo().back().getDate())
+    {
+        cout << "Services need to be created in chronological order!\n";
+        return;
+    }
+    Service service(serviceType,{year,month,day},accountable);
+    cout << "Service added! \n";
+    plane.addService(service);
+}
+
+void App::serviceDeletion(Plane &plane)
+{
+    if(plane.getServicesToDo().empty())
+    {
+        cout << "No services to do in this plane" << endl;
+        return;
+    }
+    plane.deleteService();
+    cout << "oldest service deleted" << endl;
+}
+
+void App::showServicesToDo(Plane &plane)
+{
+    int order = 1;
+    queue<Service> services = plane.getServicesToDo();
+    cout << "Order - Date - Accountable - ServiceType\n";
+    while(!services.empty())
+    {
+        cout << services.front() << endl;
+        services.pop();
+    }
+}
+
+void App::showServicesDone(Plane &plane)
+{
+    int order = 1;
+    stack<Service> services = plane.getServicesDone();
+    cout << "Order - Date - Accountable - ServiceType\n";
+    while(!services.empty())
+    {
+        cout << services.top() << endl;
+        services.pop();
+    }
+}
+
 void App::passengerCreation()
 {
     //não cria lista de tickets

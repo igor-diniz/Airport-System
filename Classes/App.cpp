@@ -432,7 +432,7 @@ void App::transportMenu()
     cout << "\n";
     Airport a(name, initials);
     bool exists = false;
-    for (Airport b: airports) {
+    for (Airport& b: airports) {
         if (a == b) {
             a = b;
             exists = true;
@@ -452,9 +452,10 @@ void App::transportMenu()
         cout << "|==============================================|\n"
                 "|                   Transport                  |\n"
                 "|  Add Transport                          [1]  |\n"
-                "|  Delete Transport                       [2]  |\n"
+                "|  Remove Transport                       [2]  |\n"
                 "|  Detail Transport                       [3]  |\n"
                 "|  Show Transport                         [4]  |\n"
+                "|  Go Back                                [0]  |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;
@@ -873,5 +874,199 @@ void App::showPlanes()
     cin.clear();
     cin.ignore(INT_MAX,'\n');
     return;
+}
+
+void App::flightMenu() {
+    string registration;
+    cout << "From what Plane should we manage the transports? \n"
+         << "Registration: ";
+    cin >> registration;
+    cout << "\n";
+    Plane a(0, registration, "");
+    bool exists = false;
+    for (Plane &b: planes) {
+        if (a == b) {
+            a = b;
+            exists = true;
+            break;
+        }
+    }
+    if (!exists) {
+        cout << "The given Plane does not exist " << endl;
+        cout << "type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+    }
+    while (true) {
+        cout << "|==============================================|\n"
+                "|                   Flights                    |\n"
+                "|  Add Flight                             [1]  |\n"
+                "|  Remove Flight                          [2]  |\n"
+                "|  Detail Flight                          [3]  |\n"
+                "|  Show Flights                           [4]  |\n"
+                "|  Get Luggage To Car                     [5]  |\n"
+                "|  Go Back                                [0]  |\n"
+                "|==============================================|\n";
+        cout << "\nchoose an option : ";
+        int choice;
+        while (true) {
+            cin >> choice;
+            if (cin.fail() || cin.peek() != '\n') {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << endl << endl << "Invalid command!\n";
+                continue;
+            } else {
+                break;
+            }
+        }
+        switch (choice) {
+            case 0:
+                return;
+            case 1:
+                flightCreation(a);
+                break;
+            case 2:
+                flightDeletion(a);
+                break;
+            case 3:
+                flightFind(a);
+                break;
+            case 4:
+                showFlights(a);
+                break;
+            case 5:
+                //getLuggageToCar();
+            default:
+                cout << "not a possibilite" << endl;
+        }
+    }
+}
+
+void App::flightCreation(Plane &plane)
+{
+    Date departure;
+    int day,month,year;
+    Time duration;
+    int hour,minute;
+    Airport origin, destination;
+    string initials;
+    int availableSeats = plane.getCapacity();
+
+    cout << "Give the flight specifications: \n"
+            "Origin Airport (initials): "; cin >> initials;
+    origin = Airport("",initials);
+    cout << "\n";
+    cout << "Destination Airport (initials): "; cin >> initials;
+    destination = Airport("",initials);
+    cout << "\n";
+    cout << "Hour: "; cin >> hour;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Minute: "; cin >> minute;
+    if (!cinGood()) return;
+    duration = Time(hour,minute);
+    cout << "\n";
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    Flight flight(departure,duration,origin,destination,availableSeats);
+
+    for(Flight b: plane.getFlights())
+    {
+        if(b.equals(flight))
+        {
+            cout << "This flight already exists" << endl;
+            return;
+        }
+    }
+    plane.addFlight(flight);
+    cout << "Flight added \n";
+}
+
+void App::flightDeletion(Plane &plane)
+{
+    Date departure;
+    int day,month,year;
+    Airport origin;
+    string initials;
+    cout << "Give the flight specifications: \n"
+            "Origin Airport (initials): "; cin >> initials;
+            cout << endl;
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    origin = Airport("",initials);
+    Flight flight = Flight(departure,origin);
+    for(Flight& b: plane.getFlights())
+    {
+        if(b.equals(flight))
+        {
+            plane.deleteFlight(b.getId());
+            cout << "Flight deleted \n";
+            return;
+        }
+    }
+    cout << "This flight doesnt exists" << endl;
+    return;
+}
+
+void App::flightFind(Plane &plane)
+{
+    Date departure;
+    int day,month,year;
+    Airport origin;
+    string initials;
+    cout << "Give the flight specifications: \n"
+            "Origin Airport (initials): "; cin >> initials;
+    cout << endl;
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    origin = Airport("",initials);
+    Flight flight = Flight(departure,origin);
+
+    for(Flight& b: plane.getFlights())
+    {
+        if(b.equals(flight))
+        {
+            cout << "Flight found, details: " << endl
+               << "Id - DepartureDate - Duration - Origin - Destination - AvailableSeats" << endl
+               << flight << endl
+               << "Do you want to update it? Y/N" << endl;
+            char answer;
+            cin >> answer;
+            if(!cinGood()) return;
+            if(answer == 'y' || answer == 'Y')
+            {
+                //flightUpdate();
+            }
+            return;
+        }
+    }
 }
 

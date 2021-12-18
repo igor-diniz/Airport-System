@@ -41,13 +41,17 @@ public:
     void planeFind();
     void updatePlane(Plane &plane);
     void showPlanes();
-    void flightMenu(){};//TODO
+    void flightMenu();
     void serviceMenu(){};//TODO
     void passengerCreation(){};//TODO
     void passengerDeletion(){};//TODO
     void passengerFind(){};//TODO
     void showPassengers(){};//TODO
     void ticketMenu(){};//TODO
+    void flightCreation(Plane &plane);
+    void flightDeletion(Plane &plane;
+    void flightFind(Plane &plane);
+    void showFlights(Plane &plane);
 
 
 private:

@@ -39,3 +39,8 @@ bool Time::operator<(const Time &t1) const
     return minute < t1.getMinute();
 
 }
+ostream& operator<<(ostream& os , const Time& time)
+{
+    os << time.getHour() << ":" << time.getMinute();
+    return os;
+}

@@ -22,5 +22,6 @@ public:
     bool operator < (const Date& d1) const;
     bool operator != (const Date& d1) const;
     bool operator == (const Date& d1) const;
+    friend ostream& operator<<(ostream& os , const Date& date);
 };
 #endif //TP1_AED_DATE_H

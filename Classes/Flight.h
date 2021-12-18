@@ -21,6 +21,7 @@ private:
 
 public:
     Flight();
+    Flight(Date &departure,Airport &origin); //just with the key
     Flight(Date &departure,Time duration,Airport &origin,Airport &destination,int availableSeats);
     int getId() const;
     Airport getDestination() const;
@@ -34,13 +35,14 @@ public:
     void setOrigin(Airport airport);
     void setAvailableSeats(int availableSeats);
     //Plane getPlaneAssocieted() const;
-    bool operator == (const Flight& flight);
+    bool equals (const Flight& flight) const;
     int getLuggageTotal();
     //void setLuggageTotal(int qntd);
     void addLuggageToQueue(list<Luggage> Luggages);
     void setLuggagesOutCar(list<Luggage> &alista);
     bool operator==(const Flight &f) const;
-
+    Time getDuration() const;
+    friend ostream& operator<<(ostream& os , const Flight& fli);
     void luggagesToCar(LuggageCar Car);
 };
 

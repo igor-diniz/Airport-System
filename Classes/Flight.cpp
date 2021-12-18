@@ -55,7 +55,7 @@ void Flight::setAvailableSeats(int availableSeats){
 //}
 
 
-bool Flight::operator==(const Flight &flight)
+bool Flight::operator==(const Flight &flight) const
 {
     return id == flight.getId();
 }
@@ -76,7 +76,7 @@ void Flight::luggagesToCar(LuggageCar Car) {
     luggagesOutCar = Car.setLuggageInCar(luggagesOutCar);
 }
 
-bool Flight::operator==(const Flight &f) const{
+/*bool Flight::operator==(const Flight &f) const{
     return (
     id == f.getId() &&
     availableSeats == f.getAvailableSeats() &&
@@ -84,5 +84,24 @@ bool Flight::operator==(const Flight &f) const{
     destination == f.getDestination() &&
     origin == f.getOrigin()
     );
+}*/
+
+Time Flight::getDuration() const {return duration;}
+
+bool Flight::equals(const Flight &flight) const
+{
+    return departure == flight.getDepartureDate() && origin == flight.getOrigin();
+}
+
+Flight::Flight(Date &departure, Airport &origin)
+{
+    this->departure = departure;
+    this->origin = origin;
+}
+
+ostream& operator<<(ostream& os , const Flight& fli)
+{
+    os << fli.getId() << " - " << fli.getDepartureDate() << " - " << fli.getDuration() << " - " << fli.getOrigin() << " - " << fli.getDestination() << " - " << fli.getAvailableSeats();
+    return os;
 }
 

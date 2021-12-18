@@ -55,4 +55,9 @@ bool Date::operator == (const Date& d1) const{
     day == d1.getDay()
     );
 }
+ostream& operator<<(ostream& os , const Date& date)
+{
+    os << date.getDay() <<"/" << date.getMonth() << "/" << date.getYear();
+    return os;
+}
 

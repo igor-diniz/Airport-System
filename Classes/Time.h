@@ -17,6 +17,7 @@ public:
     void setMinute(int minute);
     bool operator < (const Time& t1) const;
     bool operator == (const Time& t1) const;
+    friend ostream& operator<<(ostream& os , const Time& time);
 };
 
 

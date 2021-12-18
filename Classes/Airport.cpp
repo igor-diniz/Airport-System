@@ -43,15 +43,20 @@ bool Airport::operator==(const Airport& airport) const{
     return initials == airport.getInitials();
 }
 
-Airport& Airport::operator=(const Airport& airport){
+/*Airport& Airport::operator=(const Airport& airport){
     name = airport.getName();
     initials = airport.getInitials();
     return *this;
 }
-
+*/
 ostream& operator<<(ostream& os , const Airport& air)
 {
     os << air.getName() << " - " << air.getInitials();
     return os;
+}
+
+bool Airport::operator<(const Airport &airport) const
+{
+    return name < airport.getName();
 }
 

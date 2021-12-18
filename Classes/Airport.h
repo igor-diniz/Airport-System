@@ -23,7 +23,8 @@ public:
     void setInitials (string initials);
     Transport getClosestTransport() const;
     bool operator==(const Airport& airport) const;
-    Airport& operator=(const Airport& airport);
+    bool operator <(const Airport& airport) const;
+    //Airport& operator=(const Airport& airport);
     friend ostream& operator<<(ostream& os , const Airport& air);
 
 };

@@ -3,6 +3,7 @@
 int Flight::id = 0;
 Flight::Flight()
 {
+    id++;
     availableSeats = 0;
     duration = Time();
     departure = Date();
@@ -97,6 +98,7 @@ bool Flight::equals(const Flight &flight) const
 
 Flight::Flight(Date &departure, Airport &origin)
 {
+    id++;
     this->departure = departure;
     this->origin = origin;
 }

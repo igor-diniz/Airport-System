@@ -79,4 +79,52 @@ bool sortPlaneByTypeDesc(const Plane& p1, const Plane& p2)
     return p1.getType() > p2.getType();
 }
 
+bool sortFlightByDepAsc(const Flight& f1, const Flight& f2)
+{
+    return f1.getDepartureDate() < f2.getDepartureDate();
+}
 
+bool sortFlightByDepDesc(const Flight& f1, const Flight& f2)
+{
+    return !(f1.getDepartureDate() < f2.getDepartureDate());
+}
+
+bool sortFlightByDurationAsc(const Flight& f1, const Flight& f2)
+{
+    return f1.getDuration() < f2.getDuration();
+}
+
+bool sortFlightByDurationDesc(const Flight& f1, const Flight& f2)
+{
+    return !(f1.getDuration() < f2.getDuration());
+}
+
+bool sortFlightByOriginAsc(const Flight& f1, const Flight& f2)
+{
+    return f1.getOrigin() < f2.getOrigin();
+}
+
+bool sortFlightByOriginDesc(const Flight& f1, const Flight& f2)
+{
+    return !(f1.getOrigin() < f2.getOrigin());
+}
+
+bool sortFlightByAvailableAsc(const Flight& f1, const Flight& f2)
+{
+    return f1.getAvailableSeats() < f2.getAvailableSeats();
+}
+
+bool sortFlightByAvailableDesc(const Flight& f1, const Flight& f2)
+{
+    return f1.getAvailableSeats() > f2.getAvailableSeats();
+}
+
+bool sortFlightByDestinationAsc(const Flight& f1, const Flight& f2)
+{
+    return f1.getDestination() < f2.getDestination();
+}
+
+bool sortFlightByDestinationDesc(const Flight& f1, const Flight& f2)
+{
+    return !(f1.getDestination() < f2.getDestination());
+}

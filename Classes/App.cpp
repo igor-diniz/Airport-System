@@ -213,7 +213,7 @@ int App::mainMenu()
         vector<int> values = possibleChoices();
         vector<int>::iterator value = find(values.begin(), values.end(), choice);
         bool choiceIsValid = false;
-        if (value != possibleChoices().end())
+        if (value != values.end())
             choiceIsValid = true;
 
         if (!choiceIsValid) {
@@ -566,8 +566,8 @@ void App::updateTransport(Transport &transport, Airport& airport)
     int hour,minute;
     Transport checkTransport = transport;
 
-    cout << "What should be the new characteristics? (type 0 to not change)" << endl;
-            "Type: "; cin >> type;
+    cout << "What should be the new characteristics? (type 0 to not change)" << endl
+    <<  "Type: "; cin >> type;
     if (!cinGood()) return;
     if(type != '0') checkTransport.setType(type);
     cout << "\n";
@@ -1011,9 +1011,11 @@ void App::flightCreation(Plane &plane)
     cout << "Give the flight specifications: \n"
             "Origin Airport (initials): "; cin >> initials;
     origin = Airport("",initials);
+    checkAirportExists(initials,origin);
     cout << "\n";
     cout << "Destination Airport (initials): "; cin >> initials;
     destination = Airport("",initials);
+    checkAirportExists(initials,destination);
     cout << "\n";
     cout << "Hour: "; cin >> hour;
     if (!cinGood()) return;
@@ -1080,6 +1082,19 @@ void App::flightDeletion(Plane &plane)
     return;
 }
 
+bool App::checkAirportExists(string initials, Airport& airport) //se existir coloca o aeroporto em airport
+{
+    for(Airport& air: airports)
+    {
+        if(air.getInitials() == initials)
+        {
+            airport = air;
+            return true;
+        }
+    }
+    return false;
+}
+
 void App::flightFind(Plane &plane)
 {
     Date departure;
@@ -1088,6 +1103,16 @@ void App::flightFind(Plane &plane)
     string initials;
     cout << "Give the flight specifications: \n"
             "Origin Airport (initials): "; cin >> initials;
+            if(!checkAirportExists(initials,origin))
+            {
+                string choice;
+                cout << "Airport does not exist!" << endl;
+                cout << "type anything to go back";
+                cin >> choice;
+                cin.clear();
+                cin.ignore(INT_MAX,'\n');
+                return;
+            }
     cout << endl;
     cout << "Day: "; cin >> day;
     if (!cinGood()) return;
@@ -1115,9 +1140,223 @@ void App::flightFind(Plane &plane)
             if(!cinGood()) return;
             if(answer == 'y' || answer == 'Y')
             {
-                //flightUpdate();
+                updateFlight(flight,plane);
+                return;
             }
             return;
+        }
+    }
+    cout << "Flight does not exist" << endl;
+    cout <<"Do you want to create it? (Y/N)" << endl;
+    char answer;
+    cin >> answer;
+    if(!cinGood()) return;
+    if(answer == 'y' || answer == 'Y')
+    {
+        Time duration;
+        int hour,minute;
+        Airport destination;
+        int availableSeats = plane.getCapacity();
+        cout << "give the remaining Flight specifications: ";
+        cout << "destination: (initials)"; cin >> initials;
+        cout << "\n";
+        if(!checkAirportExists(initials,destination))
+        {
+            string choice;
+            cout << "Airport does not exist!" << endl;
+            cout << "type anything to go back";
+            cin >> choice;
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            return;
+        }
+        cout << "Hour: "; cin >> hour;
+        if (!cinGood()) return;
+        cout << "\n";
+        cout << "Minute: "; cin >> minute;
+        if (!cinGood()) return;
+        duration = Time(hour,minute);
+        cout << "\n";
+
+        flight.setDestination(destination);
+        flight.setAvailableSeats(availableSeats);
+        flight.setDuration(duration);
+        plane.addFlight(flight);
+        cout << "Flight added!" << endl;
+        return;
+    }
+}
+
+void App::updateFlight(Flight& flight,Plane &plane)
+{
+    Date departure;
+    int day,month,year;
+    Time duration;
+    int hour,minute;
+    Airport origin, destination;
+    string initials;
+    Flight checkFlight = flight;
+
+    cout << "What should be the new characteristics? (type 0 to not change)"
+            "Origin Airport (initials): "; cin >> initials;
+            if(initials != "0")
+            {
+                origin = Airport("", initials);
+                if(!checkAirportExists(initials, origin)) {
+                    cout << "This Airport does not exist" << endl;
+                    return;
+                }
+                checkFlight.setOrigin(origin);
+            }
+    cout << "\n";
+    cout << "Destination Airport (initials): "; cin >> initials;
+    if(initials != "0")
+    {
+        destination = Airport("",initials);
+        if(!checkAirportExists(initials,destination)){
+            cout << "This Airport does not exist" << endl;
+            return;
+        }
+        checkFlight.setDestination(destination);
+    }
+    cout << "\n";
+    cout << "Hour: "; cin >> hour;
+    if (!cinGood()) return;
+    if(hour != 0) duration.setHour(hour);
+    cout << "\n";
+    cout << "Minute: "; cin >> minute;
+    if (!cinGood()) return;
+    if(minute != 0) duration.setMinute(minute);
+    duration = Time(hour,minute);
+    cout << "\n";
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    if(day != 0) departure.setDay(day);
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    if(month != 0) departure.setMonth(month);
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    if(year != 0) departure.setYear(year);
+    cout << "\n";
+    departure = Date(year,month,day);
+    for(Flight& flight : plane.getFlights())
+    {
+        if(flight.equals(checkFlight))
+        {
+            cout << "Flight already exists" << endl;
+            return;
+        }
+    }
+    flight = checkFlight;
+    cout << "Flight Updated!" << endl;
+    return;
+
+}
+
+void App::showFlights(Plane &plane) {
+    {
+        char choice;
+        cout << "do you want to see specific Flights? Y/N \n";
+        while (true) {
+            cin >> choice;
+            if (cin.fail() || cin.peek() != '\n' ||
+                (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cerr << endl << endl << "Invalid answer!\n";
+                continue;
+            } else {
+                break;
+            }
+        }
+        list<Flight> aux;
+        if (choice == 'Y' || choice == 'y') {
+            cout << "type '0' if you dont want to specify \n";
+            Date departure;
+            int day, month, year;
+            Time duration;
+            int hour, minute;
+            Airport origin, destination;
+            string initials;
+
+            cout << "What should be the new characteristics? (type 0 to not change)"
+                    "Origin Airport (initials): ";
+            cin >> initials;
+            if (initials != "0") {
+                origin = Airport("", initials);
+            }
+            cout << "\n";
+            cout << "Destination Airport (initials): ";
+            cin >> initials;
+            if (initials != "0") {
+                destination = Airport("", initials);
+            }
+            cout << "\n";
+            cout << "Hour: ";
+            cin >> hour;
+            if (!cinGood()) return;
+            if (hour != 0) duration.setHour(hour);
+            cout << "\n";
+            cout << "Minute: ";
+            cin >> minute;
+            if (!cinGood()) return;
+            if (minute != 0) duration.setMinute(minute);
+            duration = Time(hour, minute);
+            cout << "\n";
+            cout << "Day: ";
+            cin >> day;
+            if (!cinGood()) return;
+            if (day != 0) departure.setDay(day);
+            cout << "\n";
+            cout << "Month: ";
+            cin >> month;
+            if (!cinGood()) return;
+            if (month != 0) departure.setMonth(month);
+            cout << "\n";
+            cout << "Year: ";
+            cin >> year;
+            if (!cinGood()) return;
+            if (year != 0) departure.setYear(year);
+            cout << "\n";
+            departure = Date(year, month, day);
+
+            for (Flight &flight: plane.getFlights()) {
+                if (flight.getDestination() == destination || flight.getOrigin() == origin ||
+                    flight.getDuration() == duration || flight.getDepartureDate() == departure)
+                    aux.push_back(flight);
+            }
+        }
+        else
+        {
+            aux = plane.getFlights();
+        }
+        cout << "how do you want the transports to be sorted? \n"
+                "1 - departure asc\n"
+                "2 - departure desc\n"
+                "3 - duration asc\n"
+                "4 - duration desc\n"
+                "5 - origin asc\n"
+                "6 - origin desc\n"
+                "7 - available seats asc\n"
+                "8 - available seats desc\n";
+        int sortChoice;
+        while (true) {
+            cin >> sortChoice;
+            if (cin.fail() || cin.peek() != '\n') {
+                cin.clear();
+                cin.ignore(INT_MAX, '\n');
+                cout << endl << endl << "Invalid command!\n";
+                continue;
+            } else {
+                break;
+            }
+        }
+        switch (sortChoice)
+        {
+
         }
     }
 }

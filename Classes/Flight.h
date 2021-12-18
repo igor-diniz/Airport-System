@@ -26,15 +26,14 @@ public:
     int getId() const;
     Airport getDestination() const;
     Airport getOrigin() const;
-    Date getArrivalDate() const;
     Date getDepartureDate() const;
     int getAvailableSeats() const;
-    void setArrival(Date date);
     void setDeparture(Date date);
     void setDestination(Airport airport);
     void setOrigin(Airport airport);
     void setAvailableSeats(int availableSeats);
     //Plane getPlaneAssocieted() const;
+    void setDuration(Time duration);
     bool equals (const Flight& flight) const;
     int getLuggageTotal();
     //void setLuggageTotal(int qntd);

@@ -64,6 +64,8 @@ void Flight::setDeparture(Date date) {departure = date;}
 
 void Flight::setDestination(Airport airport) {destination = airport;}
 
+void Flight::setDuration(Time duration) {this->duration = duration;}
+
 void Flight::setOrigin(Airport airport) {origin = airport;}
 
 //int Flight::getLuggageTotal() {return luggageTotal;}
@@ -104,4 +106,5 @@ ostream& operator<<(ostream& os , const Flight& fli)
     os << fli.getId() << " - " << fli.getDepartureDate() << " - " << fli.getDuration() << " - " << fli.getOrigin() << " - " << fli.getDestination() << " - " << fli.getAvailableSeats();
     return os;
 }
+
 

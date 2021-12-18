@@ -52,7 +52,9 @@ public:
     void flightCreation(Plane &plane);
     void flightDeletion(Plane &plane);
     void flightFind(Plane &plane);
+    void updateFlight(Flight& flight,Plane &plane);
     void showFlights(Plane &plane);
+    bool checkAirportExists(string initials,Airport& airport);
 
 
 private:

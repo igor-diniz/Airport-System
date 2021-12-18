@@ -574,6 +574,12 @@ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
 string
 -
 
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.cpp
+Flight.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
+queue
+-
+
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
 Airport.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Airport.h
@@ -594,6 +600,12 @@ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Airport.h
 list
 -
 
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Passenger.cpp
+Passenger.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Passenger.h
+vector
+-
+
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Passenger.h
 string
 -
@@ -601,6 +613,10 @@ Ticket.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.h
 list
 -
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.cpp
+Plane.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Plane.h
 Flight.h
@@ -623,6 +639,12 @@ Date.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/SortForms.cpp
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.cpp
+Ticket.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.h
+Flight.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Ticket.h
 list

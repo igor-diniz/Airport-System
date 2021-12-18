@@ -7,6 +7,7 @@
 
 class Ticket {
 private:
+    static int nextid;
     int id;
     Flight flightAssocieted;
     //Passenger passengerAssocieted;
@@ -16,7 +17,7 @@ private:
     list<Luggage> ticketLuggages;
 
 public:
-    Ticket(int id, Flight flightAssocieted);
+    Ticket(Flight flightAssocieted);
     int getID() const;
     void setID(int id);
     Flight getFlightAssocited() const;

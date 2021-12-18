@@ -1,6 +1,8 @@
 #include "App.h"
 #include "SortForms.cpp"
-unsigned stringToInt(string str) //converte uma string para inteiro
+#include <algorithm>
+
+unsigned App::stringToInt(string str) //converte uma string para inteiro
 {
     unsigned int number;
     stringstream convert_string(str);
@@ -15,7 +17,6 @@ App::App(const string& passengersFile, const string& planesFile, const string& l
     this->readAirportsFile(airportsFile);
 }
 
-
 bool cinGood()
 {
     if (cin.fail() || cin.peek() != '\n')
@@ -23,7 +24,7 @@ bool cinGood()
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         cout << endl << endl << "Invalid Input! \n";
-        cout << "type anything to go back" << endl;
+        cout << "Type '0' to go back: ";
         string choice;
         cin >> choice;
         cin.clear();
@@ -33,13 +34,14 @@ bool cinGood()
     return true;
 }
 
-Transport getTransportinfos()
+Transport getTransportInfos()
 {
     char type;
     float distance;
     int hour,minute;
+
     Transport transp('o',0,{0,0}); //not found
-    cout << "give the Transport specifications : \n"
+    cout << "Give the Transport specifications: \n"
             "Type: "; cin >> type;
     if (!cinGood()) return transp;
     cout << "\n";
@@ -55,6 +57,7 @@ Transport getTransportinfos()
     transp = Transport(type,distance,{hour,minute});
     return transp;
 }
+
 void App::readPassengersFile(const string& passengersFile){
     ifstream fileToOpen;
     fileToOpen.open(passengersFile);
@@ -156,174 +159,159 @@ void App::readAirportsFile(const string& airportsFile){
         fileToOpen.close();
     }
 }
+vector<int> App::possibleChoices() {
+    vector<int> options = {0,1,11,12,13,14,15,21,22,23,24,31,32,33,34,35,36,41,42,43,44,45};
+    return options;
+}
 
-void App::menuPrincipal()
+int App::menuPrincipal()
 {
+    cout << "|===========================================================================================|\n"
+            "|            ____ ______ ____   ___     ____ ____   __     ____ _   __ ______ _____         |\n"
+            "|           /  _// ____//  _/  /   |   /  _// __ |  / /    /  _// | / // ____// ___/        |\n"
+            "|           / / / __/   / /   / /| |   / / / /_/ // /     / / /  |/ // __/    |__|          |\n"
+            "|         _/ / / /___ _/ /   / ___ | _/ / / _, _// /___ _/ / / /|  // /___  ___/ /          |\n"
+            "|        /___//_____//___/  /_/  |_|/___//_/ |_|/_____//___//_/ |_//_____/ /____/           |\n"
+            "|                                                                                           |\n"
+            "|===========================================================================================|\n"
+            "|                  Airports                   |                 Luggage Car                 |\n"
+            "|=============================================|=============================================|\n"
+            "|  Add Airport                           [11] |  Add Luggage Car                       [21] |\n"
+            "|  Remove Airport                        [12] |  Remove Luggage Car                    [22] |\n"
+            "|  Detail Airport                        [13] |  Detail Luggage Car                    [23] |\n"
+            "|  Show Airports                         [14] |  Show Luggage Car                      [24] |\n"
+            "|  Transports                            [15] |                                             |\n"
+            "|=============================================|=============================================|\n"
+            "|                    Plane                    |                  Passenger                  |\n"
+            "|=============================================|=============================================|\n"
+            "|  Add Plane                             [31] |  Add Passenger                         [41] |\n"
+            "|  Remove Plane                          [32] |  Remove Passenger                      [42] |\n"
+            "|  Detail Plane                          [33] |  Detail Passenger                      [43] |\n"
+            "|  Show Plane                            [34] |  Show Passengers                       [44] |\n"
+            "|  Flights                               [35] |  Tickets                               [45] |\n"
+            "|  Services                              [36] |                                             |\n"
+            "|=============================================|=============================================|\n"
+            "|               Other operations              |                                              \n"
+            "|=============================================|                                              \n"
+            "|  Close                                  [0] |                                              \n"
+            "|  Save                                   [1] |                                              \n"
+            "|===========================================================================================|\n";
+
     while(true) {
-        cout << "|===========================================================================================|\n"
-                "|            ____ ______ ____   ___     ____ ____   __     ____ _   __ ______ _____         |\n"
-                "|           /  _// ____//  _/  /   |   /  _// __ \  / /    /  _// | / // ____// ___/        |\n"
-                "|           / / / __/   / /   / /| |   / / / /_/ // /     / / /  |/ // __/    \__\          |\n"
-                "|         _/ / / /___ _/ /   / ___ | _/ / / _, _// /___ _/ / / /|  // /___  ___/ /          |\n"
-                "|        /___//_____//___/  /_/  |_|/___//_/ |_|/_____//___//_/ |_//_____/ /____/           |\n"
-                "|                                                                                           |\n"
-                "|===========================================================================================|\n"
-                "|                  Airports                   |                 Luggage Car                 |\n"
-                "|=============================================|=============================================|\n"
-                "|  Add Airport                           [11] |  Add Luggage Car                       [21] |\n"
-                "|  Remove Airport                        [12] |  Remove Luggage Car                    [22] |\n"
-                "|  Detail Airport                        [13] |  Detail Luggage Car                    [23] |\n"
-                "|  Show Airports                         [14] |  Show Luggage Car                      [24] |\n"
-                "|  Transports                            [15] |                                             |\n"
-                "|=============================================|=============================================|\n"
-                "|                    Plane                    |                  Passenger                  |\n"
-                "|=============================================|=============================================|\n"
-                "|  Add Plane                             [31] |  Add Passenger                         [41] |\n"
-                "|  Remove Plane                          [32] |  Remove Passenger                      [42] |\n"
-                "|  Detail Plane                          [33] |  Detail Passenger                      [43] |\n"
-                "|  Show Plane                            [34] |  Show Passengers                       [44] |\n"
-                "|  Flights                               [35] |  Tickets                               [45] |\n"
-                "|  Services                              [36] |                                             |\n"
-                "|=============================================|=============================================|\n"
-                "|               Other operations              |                                              \n"
-                "|=============================================|                                              \n"
-                "|  Close                                  [0] |                                              \n"
-                "|  Save                                   [1] |                                              \n"
-                "|===========================================================================================|\n";
-        cout << "\nchoose an option : ";
+        cout << endl;
+        cout << "Choose an option:";
         int choice;
-        while(true) {
-            cin >> choice;
-            if (cin.fail() || cin.peek() != '\n') {
-                cin.clear();
-                cin.ignore(INT_MAX,'\n');
-                cerr << endl << endl << "Invalid input!\n";
-                continue;
-            }
-            else
-            {
-                break;
-            }
+
+        cin >> choice;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX, '\n');
+            cout << "Invalid input!" << endl;
+            continue;
         }
 
-        switch (choice) {
-            case 0:
-                exit(0);
-            case 11:
-                airportCreation();
-                break;
-            case 12:
-                airportDeletion();
-                break;
-            case 13:
-                airportFind();
-                break;
-            case 14:
-                showAirports();
-                break;
-            case 15:
-                transportMenu();
-                break;
-            case 21:
-                //chama o menu dos
-                break;
-            case 22:
-                break;
-            case 23:
-                break;
-            default:
-                cout << "not a possibilite" << endl;
+        vector<int>::iterator value = find(possibleChoices().begin(), possibleChoices().end(), choice);
+        bool choiceIsValid = false;
+        if (value != possibleChoices().end())
+            choiceIsValid = true;
+
+        if (!choiceIsValid) {
+            cout << "Invalid choice!" << endl;
+            continue;
         }
+        return choice;
     }
 }
 
 void App::airportCreation()
 {
     string name,initials;
-    cout << "give the Airport specifications : \n"
-            "Name: "; cin >> name;
-    cout << "\n";
-    cout << "Initials: "; cin >> initials;
-    cout << "\n";
+    cout << "Give the Airport specifications:" << endl;
+    cout << "Name:"; cin.get(); //necessary because '\n' keep in buffer
+    getline(cin, name);
+    cout << "Initials:"; cin >> initials;
+    cout << endl;
+
     if(name == "" || initials == "")
     {
-        cout << "Invalid Airport with no specification\n";
+        cout << "Invalid Airport with no specification" << endl;
         return;
     }
-    Airport a(name,initials);
-    for(Airport &b: airports)
+
+    Airport airport(name,initials);
+    for(Airport &a: airports)
     {
-        if(b == a)
+        if(a == airport)
         {
-            cout <<"This Airport already exists \n";
+            cout <<"This Airport already exists" << endl;
             return;
         }
     }
-    airports.push_back(a);
-    cout << "Airport added \n";
+    airports.push_back(airport);
+    cout << "Airport added" << endl << endl;
     return;
 }
 
 void App::airportDeletion()
 {
     string name,initials;
-    cout << "What Airport should be deleted? "
-            "Name: ";"Name: "; cin >> name;
-    cout << "\n";
-    cout << "Initials: "; cin >> initials;
-    cout << "\n";
-    Airport a(name,initials);
-    for(Airport &b : airports)
+    cout << "What Airport should be deleted?" << endl;
+    cout << "Name:"; cin.get(); getline(cin, name);
+    cout << "Initials: "; cin >> initials; cout << endl;
+
+    Airport airport(name,initials);
+    for(Airport &a : airports)
     {
-        if(b == a)
+        if(a == airport)
         {
-            airports.remove(b);
-            cout << "Airport deleted \n";
+            airports.remove(a);
+            cout << "Airport deleted" << endl;
             return;
         }
     }
-    cout <<"Airport does not exist \n";
+    cout <<"Airport does not exist" << endl;
     return;
 }
 
 void App::updateAirport(Airport &airport)
 {
     string name,initials;
-    cout << "What should be the new characteristics? "
-            "Name: ";cin >> name;
-    cout << "\n";
-    cout << "Initials: "; cin >> initials;
-    cout << "\n";
-    Airport a(name,initials);
-    for(Airport &b: airports)
+    cout << "What should be the new characteristics?" << endl
+         << "Name:"; cin.get(); getline(cin,name);
+    cout << "Initials: "; cin >> initials; cout << endl;
+
+    Airport airportUpdated(name,initials);
+    for(Airport &a: airports)
     {
-        if(b == a)
+        if(a == airportUpdated)
         {
-            cout <<"This Airport already exists \n";
+            cout <<"This Airport already exists" << endl;
             return;
         }
     }
-    airport = a;
+    airports.remove(airport);
+    airport = airportUpdated;
+    airports.push_back(airport);
+    cout << "Airport Updated" << endl;
     return;
 }
 
 void App::airportFind()
 {
     string name,initials;
-    cout << "The details of what Airport should be shown? "
-            "Name: ";cin >> name;
-    cout << "\n";
-    cout << "Initials: "; cin >> initials;
-    cout << "\n";
-    Airport a(name,initials);
-    cout << "Searching... \n";
-    for(Airport &b : airports)
+    cout << "Enter details of what Airport should be shown:" << endl;
+    cout << "Name:"; cin.get(); getline(cin,name);
+    cout << "Initials: "; cin >> initials; cout << endl;
+
+    Airport airport(name,initials);
+    cout << "Searching..." << endl;
+
+    for(Airport &a : airports)
     {
-        if(a == b)
+        if(a == airport)
         {
-            cout << "Airport found, details: \n"
-                 << "Name - Initials" << endl
-                 << b << endl
+            cout << "Airport found, details:" << endl
+                 << airport << endl
                  << "Do you want to update it? Y/N" << endl;
 
             char answer;
@@ -331,19 +319,20 @@ void App::airportFind()
             if(!cinGood()) return;
             if(answer == 'y' || answer == 'Y')
             {
-                updateAirport(b);
+                updateAirport(airport);
                 return;
             }
         }
     }
-    cout <<"Airport does not exist \n" << endl;
+    cout <<"Airport does not exist." << endl;
     cout <<"Do you want to create it? (Y/N)" << endl;
     char answer;
     cin >> answer;
     if(!cinGood()) return;
+
     if(answer == 'y' || answer == 'Y')
     {
-        airports.push_back(a);
+        airports.push_back(airport);
         cout << "Airport added!" << endl;
     }
     return;
@@ -352,7 +341,7 @@ void App::airportFind()
 void App::showAirports()
 {
     char choice;
-    cout << "do you want to see specific Airports? Y/N \n";
+    cout << "Do you want to see specific Airports? Y/N \n";
     while(true) {
         cin >> choice;
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
@@ -361,35 +350,33 @@ void App::showAirports()
             cerr << endl << endl << "Invalid answer!\n";
             continue;
         }
-        else
-        {
-            break;
-        }
+        break;
     }
+
     list<Airport> aux;
     if(choice == 'Y' || choice == 'y')
     {
         string name,initials;
-        cout << "type '0' if you dont want to specify \n" <<
-             "Name: "; cin >> name;
-        cout << "\n";
-        cout << "Initials: "; cin >> initials;
-        cout << "\n";
-        Airport a(name,initials);
+        cout << "Name:"; cin.get(); getline(cin,name);
+        cout << "Initials: "; cin >> initials; cout << endl;
 
-        for(Airport &b : airports)
+        Airport airport(name,initials);
+
+        for(Airport &a : airports)
         {
-            if(b.getName() == name || b.getInitials() == initials)
+            if(a.getName() == name || a.getInitials() == initials)
             {
-                aux.push_back(b);
+                aux.push_back(a);
             }
         }
     }
-    cout << "how do you want the Airports to be sorted? \n"
-            "1 - name asc\n"
-            "2 - name desc\n"
-            "3 - initials asc\n"
-            "4 - initials desc\n";
+
+    else aux = airports; //in case the choice was "N"
+    cout << "How do you want to sort the Airports? \n"
+            "1 - Name ascending\n"
+            "2 - Name descending\n"
+            "3 - Initials ascending\n"
+            "4 - Initials descending\n";
     int sortChoice;
     while(true) {
         cin >> sortChoice;
@@ -399,25 +386,22 @@ void App::showAirports()
             cerr << endl << endl << "Invalid choice!\n";
             continue;
         }
-        else
-        {
-            break;
-        }
+        break;
     }
-    if(aux.empty()) aux = airports; //in case the choice was "N"
+
     switch(sortChoice)
     {
         case 1:
-            aux.sort(Airport_sort_nameasc);
+            aux.sort(sortAirportByNameAsc);
             break;
         case 2:
-            aux.sort(Airport_sort_namedesc);
+            aux.sort(sortAirportByNameDesc);
             break;
         case 3:
-            aux.sort(Airport_sort_initialsasc);
+            aux.sort(sortAirportByInitialsAsc);
             break;
         case 4:
-            aux.sort(Airport_sort_initialsdesc);
+            aux.sort(sortAirportByInitialsDesc);
             break;
         default:
             cerr << endl << endl << "Invalid choice!\n";
@@ -510,7 +494,7 @@ void App::transportMenu()
 
 void App::transportCreation(Airport &airport)
 {
-    Transport transp = getTransportinfos();
+    Transport transp = getTransportInfos();
     Transport transpnotfound('o',0,{0,0});
     if (transp == transpnotfound) return;
     if(!(airport.getTransports().find(transp) == transpnotfound))
@@ -526,7 +510,7 @@ void App::transportCreation(Airport &airport)
 
 void App::transportDeletion(Airport &airport)
 {
-    Transport transp = getTransportinfos();
+    Transport transp = getTransportInfos();
     if (transp == Transport('o',0,{0,0})) return;
     if((airport.getTransports().find(transp) == Transport('o',0,{0,0})))
     {
@@ -540,7 +524,7 @@ void App::transportDeletion(Airport &airport)
 
 void App::transportFind(Airport &airport)
 {
-    Transport transp = getTransportinfos();
+    Transport transp = getTransportInfos();
     if (transp == Transport('o',0,{0,0})) return;
     cout << "Searching... \n";
     if((airport.getTransports().find(transp) == Transport('o',0,{0,0})))
@@ -567,7 +551,7 @@ void App::transportFind(Airport &airport)
     if(!cinGood()) return;
     if(answer == 'y' || answer == 'Y') {
         cout << "New specifications: " << endl;
-        Transport t = getTransportinfos();
+        Transport t = getTransportInfos();
         airport.addTransport(t);
         return;
     }
@@ -595,7 +579,7 @@ void App::showTransports(Airport &airport)
     {
         string name, initials;
         cout << "type '0' if you dont want to specify \n";
-        Transport transport = getTransportinfos();
+        Transport transport = getTransportInfos();
         for (auto i = airport.getTransports().begin(); i != airport.getTransports().end(); i++)
         {
             if (transport.getTime() == (*i).getTime() || transport.getDistance() == (*i).getDistance() ||
@@ -636,22 +620,22 @@ void App::showTransports(Airport &airport)
     switch(sortChoice)
     {
         case 1:
-            aux.sort(transport_sort_typeasc);
+            aux.sort(sortTransportByTypeAsc);
             break;
         case 2:
-            aux.sort(transport_sort_typedesc);
+            aux.sort(sortTransportByTypeDesc);
             break;
         case 3:
-            aux.sort(transport_sort_timeasc);
+            aux.sort(sortTransportByTimeAsc);
             break;
         case 4:
-            aux.sort(transport_sort_timedesc);
+            aux.sort(sortTransportByTimeDesc);
             break;
         case 5:
-            aux.sort(transport_sort_distanceasc);
+            aux.sort(sortTransportByDistanceAsc);
             break;
         case 6:
-            aux.sort(transport_sort_distancedesc);
+            aux.sort(sortTransportByDistanceDesc);
             break;
         default:
             cerr << endl << endl << "Invalid choice!\n";
@@ -676,8 +660,7 @@ void App::planeCreation()
     string registration,type;
     int capacity;
     cout << "give the Plane specifications : \n"
-            "Registration: "; cin >> registration;
-    cout << "\n";
+         << "Registration: "; cin >> registration;    cout << "\n";
     cout << "Type: "; cin >> type;
     cout << "\n";
     cout << "Capacity :"; cin >> capacity;
@@ -793,6 +776,103 @@ void App::planeFind()
         planes.push_back(a);
         cout << "Plane added!" << endl;
     }
+    return;
+}
+void App::showPlanes()
+{
+    char choice;
+    cout << "do you want to see specific Planes? Y/N \n";
+    while(true) {
+        cin >> choice;
+        if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    list<Plane> aux;
+    if(choice == 'Y' || choice == 'y')
+    {
+        string registration,type;
+        int capacity;
+        cout << "type '0' if you dont want to specify \n"
+             << "Registration: "; cin >> registration;
+        cout << "\n";
+        cout << "Type: "; cin >> type;
+        cout << "\n";
+        cout << "Capacity :"; cin >> capacity;
+
+        for(Plane &b : planes)
+        {
+            if(b.getRegistration() == registration || b.getCapacity() == capacity || b.getType() == type)
+            {
+                aux.push_back(b);
+            }
+        }
+    }
+    else aux = planes;
+    cout << "how do you want the Planes to be sorted? \n"
+         << "1 - Registration asc\n"
+         << "2 - Registration desc\n"
+         << "3 - Capacity asc\n"
+         << "4 - Capacity desc\n"
+         << "5 - Type asc\n"
+         << "6 - Type desc\n";
+    int sortChoice;
+    while(true) {
+        cin >> sortChoice;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    switch(sortChoice)
+    {
+        case 1:
+            aux.sort(sortPlaneByRegAsc);
+            break;
+        case 2:
+            aux.sort(sortPlaneByRegDesc);
+            break;
+        case 3:
+            aux.sort(sortPlaneByCapacityAsc);
+            break;
+        case 4:
+            aux.sort(sortPlaneByCapacityDesc);
+            break;
+        case 5:
+            aux.sort(sortPlaneByTypeAsc);
+            break;
+        case 6:
+            aux.sort(sortPlaneByTypeDesc);
+            break;
+        default:
+            cerr << endl << endl << "Invalid choice!\n";
+            return;
+    }
+    int counter = 1;
+    cout << "Order - Registration - Type - Capacity" << endl;
+    for(Plane &b: aux)
+    {
+        cout << counter << " - " << b << "\n";
+        counter ++;
+    }
+
+    cout << "type anything to go back";
+    cin >> choice;
+    cin.clear();
+    cin.ignore(INT_MAX,'\n');
     return;
 }
 

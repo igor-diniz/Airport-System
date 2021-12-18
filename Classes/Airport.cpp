@@ -9,10 +9,10 @@ bool Airport::addTransport(Transport transport){
     //listTransp.push_back(transport);
     return transports.insert(transport);
 }
-const string Airport::getName() const {
+string Airport::getName() const {
     return name;
 }
-const string Airport::getInitials() const {
+string Airport::getInitials() const {
     return initials;
 }
 const BST<Transport>& Airport::getTransports() const {
@@ -39,9 +39,17 @@ void Airport::setName(string name)
     this->name = name;
 }
 
-bool Airport::operator==(const Airport& a) const{
-    return initials == a.getInitials();
+bool Airport::operator==(const Airport& airport) const{
+    return initials == airport.getInitials() && name == airport.getName();
 }
+
+Airport& Airport::operator=(const Airport& airport){
+    name = airport.getName();
+    initials = airport.getInitials();
+    return *this;
+}
+
+
 ostream& operator<<(ostream& os , const Airport& air)
 {
     os << air.getName() << " - " << air.getInitials();

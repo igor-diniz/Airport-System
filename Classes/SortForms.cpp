@@ -1,52 +1,82 @@
-#include "Airport.h"
 
-bool Airport_sort_nameasc(const Airport& a1, const Airport& a2)
+bool sortAirportByNameAsc(const Airport& a1, const Airport& a2)
 {
     return a1.getName() < a2.getName();
 }
 
-bool Airport_sort_namedesc(const Airport& a1, const Airport& a2)
+bool sortAirportByNameDesc(const Airport& a1, const Airport& a2)
 {
     return a1.getName() > a2.getName();
 }
 
-bool Airport_sort_initialsasc(const Airport& a1, const Airport& a2)
+bool sortAirportByInitialsAsc(const Airport& a1, const Airport& a2)
 {
     return a1.getInitials() < a2.getInitials();
 }
 
-bool Airport_sort_initialsdesc(const Airport& a1, const Airport& a2)
+bool sortAirportByInitialsDesc(const Airport& a1, const Airport& a2)
 {
     return a1.getInitials() > a2.getInitials();
 }
 
-bool transport_sort_typeasc(const Transport& t1, const Transport& t2)
+bool sortTransportByTypeAsc(const Transport& t1, const Transport& t2)
 {
     return t1.getType() < t2.getType();
 }
 
-bool transport_sort_typedesc(const Transport& t1, const Transport& t2)
+bool sortTransportByTypeDesc(const Transport& t1, const Transport& t2)
 {
     return t1.getType() > t2.getType();
 }
 
-bool transport_sort_timeasc(const Transport& t1, const Transport& t2)
+bool sortTransportByTimeAsc(const Transport& t1, const Transport& t2)
 {
     return t1.getTime() < t2.getTime();
 }
 
-bool transport_sort_timedesc(const Transport& t1, const Transport& t2)
+bool sortTransportByTimeDesc(const Transport& t1, const Transport& t2)
 {
     return !(t1.getTime() < t2.getTime());
 }
 
-bool transport_sort_distanceasc(const Transport& t1, const Transport& t2)
+bool sortTransportByDistanceAsc(const Transport& t1, const Transport& t2)
 {
     return t1.getDistance() < t2.getDistance();
 }
 
-bool transport_sort_distancedesc(const Transport& t1, const Transport& t2)
+bool sortTransportByDistanceDesc(const Transport& t1, const Transport& t2)
 {
     return t1.getDistance() > t2.getDistance();
 }
+
+bool sortPlaneByRegAsc(const Plane& p1, const Plane& p2)
+{
+    return p1.getRegistration() < p2.getRegistration();
+}
+
+bool sortPlaneByRegDesc(const Plane& p1, const Plane& p2)
+{
+    return p1.getRegistration() > p2.getRegistration();
+}
+
+bool sortPlaneByCapacityAsc(const Plane& p1, const Plane& p2)
+{
+    return p1.getCapacity() < p2.getCapacity();
+}
+
+bool sortPlaneByCapacityDesc(const Plane& p1, const Plane& p2)
+{
+    return p1.getCapacity() > p2.getCapacity();
+}
+
+bool sortPlaneByTypeAsc(const Plane& p1, const Plane& p2)
+{
+    return p1.getType() < p2.getType();
+}
+
+bool sortPlaneByTypeDesc(const Plane& p1, const Plane& p2)
+{
+    return p1.getType() > p2.getType();
+}
+
 

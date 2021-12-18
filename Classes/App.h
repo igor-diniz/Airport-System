@@ -19,11 +19,9 @@ private:
 
 public:
     App(){};
-    App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile); //isso daqui vai ler dos TXT e botar nas listas e chamar o menu principal
-
-        void menuPrincipal(); //isso vai dar display das opções de CRUD dos elementos das listas e vai ter um switch pra cada caso
-
-private:
+    App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile);
+    int menuPrincipal();
+    void save(){}; //TODO
     void airportCreation();
     void airportDeletion();
     void airportFind();
@@ -34,17 +32,31 @@ private:
     void transportDeletion(Airport &airport);
     void transportFind(Airport &airport);
     void showTransports(Airport &airport);
-    void readPassengersFile(const string& passengersFile);
-    void readPlanesFile(const string& planesFile);
-    void readLuggageCarsFile(const string& luggageCarsFile);
-    void readAirportsFile(const string& airportsFile);
+    void luggageCarCreation(){}; //TODO
+    void luggageCarDeletion(){}; //TODO
+    void luggageCarFind(){}; //TODO
+    void showluggageCars(){};//TODO
     void planeCreation();
     void planeDeletion();
     void planeFind();
     void updatePlane(Plane &plane);
     void showPlanes();
+    void flightMenu(){};//TODO
+    void serviceMenu(){};//TODO
+    void passengerCreation(){};//TODO
+    void passengerDeletion(){};//TODO
+    void passengerFind(){};//TODO
+    void showPassengers(){};//TODO
+    void ticketMenu(){};//TODO
 
 
+private:
+    vector<int> possibleChoices();
+    unsigned stringToInt(string str);
+    void readAirportsFile(const string& airportsFile);
+    void readPassengersFile(const string& passengersFile);
+    void readPlanesFile(const string& planesFile);
+    void readLuggageCarsFile(const string& luggageCarsFile);
 };
 
 

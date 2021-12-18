@@ -71,6 +71,7 @@ private:
     void readLuggageCarsFile(const string& luggageCarsFile);
 
 
+    void TicketMenu();
 };
 
 

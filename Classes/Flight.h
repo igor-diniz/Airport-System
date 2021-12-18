@@ -45,6 +45,8 @@ public:
     Time getDuration() const;
     friend ostream& operator<<(ostream& os , const Flight& fli);
     void luggagesToCar(LuggageCar& Car);
+
+    void reduceAvailableSeats();
 };
 
 

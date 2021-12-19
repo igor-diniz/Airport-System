@@ -12,7 +12,7 @@ unsigned App::stringToInt(string str) //converte uma string para inteiro
 
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
     //readPassengersFile(passengersFile);
-    this->readPlanesFile(planesFile);
+    readPlanesFile(planesFile);
     //this->readLuggageCarsFile(luggageCarsFile);
     readAirportsFile(airportsFile);
 }
@@ -254,6 +254,7 @@ void App::readPlanesFile(const string &planesFile) {
                 break;
             }
         }
+        planes.push_back(plane);
     }
     fileToOpen.close();
 }

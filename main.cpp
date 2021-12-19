@@ -3,6 +3,6 @@
 #include "Classes/App.h"
 
 int main() {
-    App app("Passengers.txt","","","Airports.txt");
+    App app("Passengers.txt","Planes.txt","","Airports.txt");
     app.mainMenu();
 }

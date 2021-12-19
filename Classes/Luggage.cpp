@@ -91,4 +91,29 @@ bool Luggage::operator==(const Luggage &luggage)
  "|  Return                                 [0]  |\n"
  "|==============================================|\n"
 
+ "|=================================================================|\n"
+ "|        _       __ ______ __    ______ ____   __  ___ ______     |\n"
+ "|       | |     / // ____// /   / ____// __ \ /  |/  // ____/     |\n"
+ "|       | | /| / // __/  / /   / /    / / / // /|_/ // __/        |\n"
+ "|       | |/ |/ // /___ / /___/ /___ / /_/ // /  / // /___        |\n"
+ "|       |__/|__//_____//_____/\____/ \____//_/  /_//_____/        |\n"
+ "|=================================================================|\n"
+ "|  Login as a client                                          [0] |\n"
+ "|  Login as a IEI Worker                                      [1] |\n"
+ "|=================================================================|\n"
+
+ case 0
+ cout << "Please type your passport" << endl;
+ string passport;
+ cin >> passport;
+
+ case 1
+ cout << "Please type the super secret company password" << endl;
+ string password;
+ cin >> passport;
+ if (password != "password") {cout << "Wrong password, please try again" << endl;}
+
+
+
+
  */

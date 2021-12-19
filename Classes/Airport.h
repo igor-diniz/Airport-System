@@ -25,7 +25,7 @@ public:
     /// \param transport the transport that will be deleted to the transport BST
     ///
     bool deleteTransport(Transport transport);
-    
+
     string getName() const;
 
     string getInitials() const;
@@ -35,7 +35,9 @@ public:
     void setName(string name);
 
     void setInitials (string initials);
-
+    ///
+    /// \param airport checks if the Airport initials are equal to the parameter airport initials
+    ///
     bool operator==(const Airport& airport) const;
     ///
     /// \param airport checks if the Airport name is < then the parameter airport name

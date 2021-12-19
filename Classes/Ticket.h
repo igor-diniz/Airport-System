@@ -12,8 +12,6 @@ private:
     Flight flightAssocieted;
     //Passenger passengerAssocieted;
     bool checkin = false;
-    bool luggageIncluded = false;
-    int luggageQuantity = 0;
     list<Luggage> ticketLuggages;
 
 public:
@@ -26,6 +24,7 @@ public:
     bool getLuggageStatus() const;
     void setLuggageIncluded();
     int getLuggageQuantity() const;
+    void addLuggage(Luggage luggage);
     void setLuggageQuantity(int qntd, list<Luggage> Luggages);
     bool operator==(const Ticket &t) const;
     void setCheckin();

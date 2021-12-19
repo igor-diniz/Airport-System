@@ -1,9 +1,20 @@
 #include "Luggage.h"
 
-int Luggage::id = 0;
+int Luggage::nextId = 1;
 
 Luggage::Luggage(){
-    id++;
+    nextId++;
+    id = nextId;
+}
+
+int Luggage::getId() const
+{
+    return id;
+}
+
+bool Luggage::operator==(const Luggage &luggage)
+{
+    return id == luggage.getId();
 }
 //Detail: dá cout dos atributos de um item.
 //Select: abre outra tela para selecionar o que fazer com o item, por exemplo botar bagagem de flight em carrinhos.

@@ -13,31 +13,22 @@ Flight Ticket::getFlightAssocited() const{return flightAssocieted;}
 
 int Ticket::getID() const{return id;}
 
-bool Ticket::getLuggageStatus() const{return luggageIncluded;}
-
-void Ticket::setLuggageIncluded() {luggageIncluded = true;}
-
 void Ticket::setFlightAssociated(Flight flight) { flightAssocieted = flight;}
 
 void Ticket::setID(int id) {this->id = id;}
 
-int Ticket::getLuggageQuantity() const{return luggageQuantity;}
-
-void Ticket::setLuggageQuantity(int qntd, list<Luggage> luggages) {
-    luggageQuantity = qntd;
-    //flightAssocieted.setLuggageTotal(luggageQuantity);
-    for (auto l : luggages){
-        ticketLuggages.push_back(l);
-    }
-    flightAssocieted.addLuggageToQueue(luggages);
-}
+int Ticket::getLuggageQuantity() const{return ticketLuggages.size();}
 
 bool Ticket::operator==(const Ticket &t) const{
-    return (id == t.getID() && flightAssocieted == t.getFlightAssocited()
-    && luggageIncluded == t.getLuggageStatus() && ticketLuggages.size() == t.getLuggageQuantity());
+    return id == t.getID();
 }
 
 void Ticket::setCheckin() {checkin = true;}
+
+void Ticket::addLuggage(Luggage luggage)
+{
+    ticketLuggages.push_back(luggage);
+}
 
 bool Ticket::getCheckin() const {return checkin;}
 

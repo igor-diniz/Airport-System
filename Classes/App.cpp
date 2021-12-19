@@ -1061,6 +1061,17 @@ void App::luggageCarFind()
                 {
                     luggageCar1.setAirport(airport);
                     cout << "Luggage car updated to new airport!" << endl;
+                    cout << "should the Luggages be cleared from the car?" << endl;
+                    cin >> answer;
+                    if(!cinGood()) return;
+                    if(answer == 'y'||answer == 'Y')
+                    {
+                        luggageCar1.clear();
+                    }
+                    else if(answer != 'N' && answer != 'n')
+                    {
+                        cout << "invalid character! considered as a 'N'" << endl;
+                    }
                 }
             }
         }
@@ -2173,7 +2184,6 @@ void App::showServicesDone(Plane &plane)
 
 void App::passengerCreation()
 {
-    //não cria lista de tickets
     string name,passport;
     cout << "give the Passenger specifications : \n"
          << "name: "; cin >> name;    cout << "\n";

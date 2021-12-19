@@ -7,7 +7,7 @@ Service::Service(char serviceType, Date date, string accountable)
 {
     this->serviceType = serviceType;
     this->date = date;
-    this->accountable = accountable; //responsável
+    this->accountable = accountable;
 }
 char Service::getServiceType() const {return serviceType;}
 

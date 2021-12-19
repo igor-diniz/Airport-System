@@ -76,9 +76,9 @@ string Plane::getType() const
     return type;
 }
 
-bool Plane::operator==(const Plane &b)
+bool Plane::operator==(const Plane &plane)
 {
-    return registration == b.getRegistration();
+    return registration == plane.getRegistration();
 }
 
 queue<Service> Plane::getServicesToDo()

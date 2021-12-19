@@ -4,11 +4,14 @@
 
 class Luggage {
 private:
-    static int nextId;
-    int id;
+    static int nextId; ///incrementor for next luggage creation
+    int id; ///actual luggage id
 public:
     Luggage();
     int getId() const;
+    ///
+    /// \param luggage luggages are compared by ID
+    ///
     bool operator==(const Luggage& luggage);
 };
 

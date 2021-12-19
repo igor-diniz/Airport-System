@@ -81,20 +81,24 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_class" href="class_time.html">Time</a>(){};</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_class" href="class_time.html">Time</a>(<span class="keywordtype">int</span> hour, <span class="keywordtype">int</span> minutes = 0);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_class" href="class_time.html">Time</a>(<span class="keywordtype">string</span> time); <span class="comment">// &quot;HH:MM&quot; format</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">int</span> getHour() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">int</span> getMinute() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> setHour(<span class="keywordtype">int</span> hour);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">void</span> setMinute(<span class="keywordtype">int</span> minute);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">bool</span> operator &lt; (<span class="keyword">const</span> <a class="code hl_class" href="class_time.html">Time</a>&amp; t1) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">bool</span> operator == (<span class="keyword">const</span> <a class="code hl_class" href="class_time.html">Time</a>&amp; t1) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">friend</span> ostream&amp; operator&lt;&lt;(ostream&amp; os , <span class="keyword">const</span> <a class="code hl_class" href="class_time.html">Time</a>&amp; time);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif </span><span class="comment">//CMAKECACHE_TXT_TIME_H</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="class_time.html">Time</a>(<span class="keywordtype">int</span> hour, <span class="keywordtype">int</span> minutes = 0);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_class" href="class_time.html">Time</a>(<span class="keywordtype">string</span> time); </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_time.html#aacb846812dccbf244d52e0f237ad0026">getHour</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">int</span> getMinute() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> setHour(<span class="keywordtype">int</span> hour);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> setMinute(<span class="keywordtype">int</span> minute);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_time.html#a1dadbfba75264ebcb54af6f83a2b2bcd">operator &lt; </a>(<span class="keyword">const</span> <a class="code hl_class" href="class_time.html">Time</a>&amp; t1) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_time.html#a557052e5647d3eceb1f1c756485e2906">operator == </a>(<span class="keyword">const</span> <a class="code hl_class" href="class_time.html">Time</a>&amp; t1) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">friend</span> ostream&amp; <a class="code hl_friend" href="class_time.html#a1030d33220cad368b7b8640250cd6970">operator&lt;&lt;</a>(ostream&amp; os , <span class="keyword">const</span> <a class="code hl_class" href="class_time.html">Time</a>&amp; time);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">//CMAKECACHE_TXT_TIME_H</span></div>
 <div class="ttc" id="aclass_time_html"><div class="ttname"><a href="class_time.html">Time</a></div><div class="ttdef"><b>Definition:</b> Time.h:6</div></div>
+<div class="ttc" id="aclass_time_html_a1030d33220cad368b7b8640250cd6970"><div class="ttname"><a href="class_time.html#a1030d33220cad368b7b8640250cd6970">Time::operator&lt;&lt;</a></div><div class="ttdeci">friend ostream &amp; operator&lt;&lt;(ostream &amp;os, const Time &amp;time)</div><div class="ttdef"><b>Definition:</b> Time.cpp:35</div></div>
+<div class="ttc" id="aclass_time_html_a1dadbfba75264ebcb54af6f83a2b2bcd"><div class="ttname"><a href="class_time.html#a1dadbfba75264ebcb54af6f83a2b2bcd">Time::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const Time &amp;t1) const</div><div class="ttdef"><b>Definition:</b> Time.cpp:29</div></div>
+<div class="ttc" id="aclass_time_html_a557052e5647d3eceb1f1c756485e2906"><div class="ttname"><a href="class_time.html#a557052e5647d3eceb1f1c756485e2906">Time::operator==</a></div><div class="ttdeci">bool operator==(const Time &amp;t1) const</div><div class="ttdef"><b>Definition:</b> Time.cpp:24</div></div>
+<div class="ttc" id="aclass_time_html_aacb846812dccbf244d52e0f237ad0026"><div class="ttname"><a href="class_time.html#aacb846812dccbf244d52e0f237ad0026">Time::getHour</a></div><div class="ttdeci">int getHour() const</div><div class="ttdoc">&quot;HH:MM&quot; format</div><div class="ttdef"><b>Definition:</b> Time.cpp:22</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

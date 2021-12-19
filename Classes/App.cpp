@@ -272,34 +272,6 @@ void App::readPlanesFile(const string &planesFile) {
     fileToOpen.close();
 }
 
-void readLuggageCarsFile(const string& luggageCarsFile){
-    ifstream fileToOpen;
-    fileToOpen.open(luggageCarsFile);
-
-    if(!fileToOpen.is_open())
-        cout << "Cannot open luggageCars file." << endl;
-
-    else
-    {
-        string strLuggageCar, strLuggage;
-        LuggageCar luggageCar;
-        Luggage luggage;
-        while(!fileToOpen.eof())
-        {
-           getline(fileToOpen, strLuggageCar);
-           luggageCar = LuggageCar(strLuggageCar);
-
-           while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
-           {
-               getline(fileToOpen, strLuggage);
-               luggage = Luggage(strLuggage);
-           }
-        }
-    }
-}
-
-
-
 vector<int> App::possibleChoices() {
     vector<int> options = {0,1,11,12,13,14,15,21,22,23,24,31,32,33,34,35,36,41,42,43,44,45};
     return options;
@@ -402,7 +374,7 @@ void App::airportCreation()
 
     if(name == "" || initials == "")
     {
-        cout << "Invalid Airport with no specification" << endl;
+        cout << "Invalid Airport specifications" << endl;
         return;
     }
 
@@ -416,14 +388,14 @@ void App::airportCreation()
         }
     }
     airports.push_back(airport);
-    cout << "Airport added" << endl << endl;
+    cout << "Airport added!" << endl << endl;
     return;
 }
 
 void App::airportDeletion()
 {
     string name,initials;
-    cout << "What Airport should be removed" << endl;
+    cout << "Enter details of what Airport should be removed" << endl;
     cout << "Name:"; cin.get(); getline(cin, name);
     cout << "Initials: "; cin >> initials; cout << endl;
 
@@ -433,7 +405,7 @@ void App::airportDeletion()
         if(a == airport)
         {
             airports.remove(a);
-            cout << "Airport removed" << endl;
+            cout << "Airport removed!" << endl;
             return;
         }
     }
@@ -455,7 +427,7 @@ void App::airportFind()
         {
             cout << "Airport found, details:" << endl
                  << airport << endl
-                 << "Do you want to update it? Y/N" << endl;
+                 << "Do you want to update it? (Y/N)" << endl;
 
             char answer;
             cin >> answer;
@@ -468,7 +440,7 @@ void App::airportFind()
             else if(answer == 'n' || answer == 'N') return;
             else
             {
-                cout << "invalid character! considered as a 'N'" << endl;
+                cout << "Invalid character! Considered as a 'N'" << endl;
                 return;
             }
         }
@@ -490,7 +462,7 @@ void App::airportFind()
     else if(answer == 'n' || answer == 'N') return;
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         return;
     }
 }
@@ -522,7 +494,7 @@ void App::updateAirport(Airport &airport)
 void App::showAirports()
 {
     char choice;
-    cout << "Do you want to see specific Airports? Y/N \n";
+    cout << "Do you want to see specific Airports? (Y/N) \n";
     while(true) {
         cin >> choice;
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
@@ -554,7 +526,7 @@ void App::showAirports()
     else if(choice == 'n' || choice == 'N') aux = airports;
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         aux = airports;;
     }
 
@@ -688,7 +660,7 @@ void App::transportCreation(Airport &airport)
         return;
     }
     if(airport.addTransport(transp))
-    cout << "Transport added \n";
+    cout << "Transport added! \n";
     else cout << "Transport not added \n";
     return;
 }
@@ -714,7 +686,7 @@ void App::transportFind(Airport &airport)
     cout << "Searching... \n";
     if((airport.getTransports().find(transp) == Transport('o',0,{0,0})))
     {
-        cout << "This transport doesnt exists" << endl;
+        cout << "This transport does not exists" << endl;
         cout <<"Do you want to create it? (Y/N)" << endl;
         char answer;
         cin >> answer;
@@ -727,14 +699,14 @@ void App::transportFind(Airport &airport)
         else if(answer == 'n' || answer == 'N') return;
         else
         {
-            cout << "invalid character! considered as a 'N'" << endl;
+            cout << "Invalid character! Considered as a 'N'" << endl;
             return;
         }
     }
     cout << "Transport found, details: " << endl
          << "Type - Distance - Time" << endl
          << transp << endl
-         << "Do you want to update it? Y/N" << endl;
+         << "Do you want to update it? (Y/N)" << endl;
 
     char answer;
     cin >> answer;
@@ -746,7 +718,7 @@ void App::transportFind(Airport &airport)
     else if(answer == 'n' || answer == 'N') return;
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         return;
     }
 }
@@ -783,14 +755,14 @@ void App::updateTransport(Transport &transport, Airport& airport)
         cout << "Transport updated!" << endl;
         return;
     }
-    cout << "Transport already exists!" << endl;
+    cout << "Transport already exists" << endl;
     return;
 }
 
 void App::showTransports(Airport &airport)
 {
     char choice;
-    cout << "do you want to see specific Transports? Y/N \n";
+    cout << "Do you want to see specific Transports? (Y/N) \n";
     while(true) {
         cin >> choice;
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
@@ -808,7 +780,7 @@ void App::showTransports(Airport &airport)
     if(choice == 'Y' || choice == 'y')
     {
         string name, initials;
-        cout << "type '0' if you dont want to specify \n";
+        cout << "Type '0' if you dont want to specify \n";
         Transport transport = getTransportInfos();
         for (auto i = airport.getTransports().begin(); i != airport.getTransports().end(); i++)
         {
@@ -821,7 +793,7 @@ void App::showTransports(Airport &airport)
     }
     else if(choice != 'n' && choice != 'N')
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         return;
     }
     else
@@ -831,13 +803,13 @@ void App::showTransports(Airport &airport)
             aux.push_back(*i);
         }
     }
-    cout << "how do you want the transports to be sorted? \n"
-            "1 - type asc\n"
-            "2 - type desc\n"
-            "3 - time asc\n"
-            "4 - time desc\n"
-            "5 - distance asc\n"
-            "6 - distance desc\n";
+    cout << "How do you want the transports to be sorted? \n"
+            "1 - type ascendant \n"
+            "2 - type descendant\n"
+            "3 - time ascendant\n"
+            "4 - time descendant\n"
+            "5 - distance ascendant\n"
+            "6 - distance descendant\n";
     int sortChoice;
     while(true) {
         cin >> sortChoice;
@@ -883,7 +855,7 @@ void App::showTransports(Airport &airport)
         cout << counter << " - " << b << "\n";
         counter ++;
     }
-    cout << "type anything to go back";
+    cout << "Type anything to go back";
     cin >> choice;
     cin.clear();
     cin.ignore(INT_MAX,'\n');
@@ -923,19 +895,19 @@ void App::luggageCarCreation()
     if(!cinGood()) return;
     if(numCarriages < 0)
     {
-        cout << "cant create car with negative number" << endl;
+        cout << "Can not create car with negative number" << endl;
     }
     cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
     if(!cinGood()) return;
     if(stacksPerCarriage < 0)
     {
-        cout << "cant create car with negative number" << endl;
+        cout << "Can not create car with negative number" << endl;
     }
-    cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+    cout << "How many suitcases per stack? "; cin >> luggagesPerStack;
     if(!cinGood()) return;
     if(luggagesPerStack < 0)
     {
-        cout << "cant create car with negative number" << endl;
+        cout << "Can not create car with negative number" << endl;
     }
     LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
     luggageCars.push_back(luggageCar);
@@ -972,11 +944,11 @@ void App::luggageCarDeletion()
     {
         cout << "Airport does not exist!" << endl;
     }
-    cout << "How many carriages: "; cin >> numCarriages;
+    cout << "How many carriages? "; cin >> numCarriages;
     if(!cinGood()) return;
-    cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+    cout << "How many stacks per carriage? "; cin >> stacksPerCarriage;
     if(!cinGood()) return;
-    cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+    cout << "How many suitcases per stack? "; cin >> luggagesPerStack;
     if(!cinGood()) return;
     LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
     if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
@@ -1017,11 +989,11 @@ void App::luggageCarFind()
     {
         cout << "Airport does not exist!" << endl;
     }
-    cout << "How many carriages: "; cin >> numCarriages;
+    cout << "How many carriages? "; cin >> numCarriages;
     if(!cinGood()) return;
-    cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+    cout << "How many stacks per carriage? "; cin >> stacksPerCarriage;
     if(!cinGood()) return;
-    cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+    cout << "How many suitcases per stack? "; cin >> luggagesPerStack;
     if(!cinGood()) return;
     LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
     if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
@@ -1042,14 +1014,14 @@ void App::luggageCarFind()
         }
         else
         {
-            cout << "invalid character! considered as a 'N'" << endl;
+            cout << "Invalid character! Considered as a 'N'" << endl;
             return;
         }
     }
     cout << "Luggage car found, details: " << endl
          << "Id" << " - " << "Airport" << " - " << "NumCarriages" << " - " << "NumStacks"  << " - " << "NumLuggagesPerStack" << endl
          << luggageCar << endl
-         << "Do you want to update it? Y/N" << endl;
+         << "Do you want to update it? (Y/N)" << endl;
 
     char answer;
     cin >> answer;
@@ -1057,12 +1029,12 @@ void App::luggageCarFind()
     if(answer == 'y' || answer == 'Y')
     {
         Airport airport1;
-        cout << "What should be the new Airport of the Car: "
+        cout << "What should be the new airport of the car: "
         << "Initials: "; cin >> initials;
 
         if(initials == "")
         {
-            cout << "Invalid Airport with no specification" << endl;
+            cout << "Invalid airport with no specification" << endl;
             return;
         }
 
@@ -1088,7 +1060,7 @@ void App::luggageCarFind()
                 {
                     luggageCar1.setAirport(airport);
                     cout << "Luggage car updated to new airport!" << endl;
-                    cout << "should the Luggages be cleared from the car?" << endl;
+                    cout << "Should the suitcases be cleared from the car?" << endl;
                     cin >> answer;
                     if(!cinGood()) return;
                     if(answer == 'y'||answer == 'Y')
@@ -1097,7 +1069,7 @@ void App::luggageCarFind()
                     }
                     else if(answer != 'N' && answer != 'n')
                     {
-                        cout << "invalid character! considered as a 'N'" << endl;
+                        cout << "Invalid character! Considered as a 'N'" << endl;
                     }
                 }
             }
@@ -1109,7 +1081,7 @@ void App::luggageCarFind()
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         return;
     }
 }
@@ -1117,7 +1089,7 @@ void App::luggageCarFind()
 void App::showluggageCars()
 {
     char choice;
-    cout << "do you want to see specific Luggage cars? Y/N \n";
+    cout << "Do you want to see specific Luggage cars? (Y/N) \n";
     while(true) {
         cin >> choice;
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
@@ -1134,7 +1106,7 @@ void App::showluggageCars()
     list<LuggageCar> aux;
     if(choice == 'Y' || choice == 'y')
     {
-        cout << "type '0' if you dont want to specify \n";
+        cout << "Type '0' if you dont want to specify \n";
         Airport airport;
         int numCarriages, stacksPerCarriage, luggagesPerStack;
         string initials;
@@ -1142,13 +1114,13 @@ void App::showluggageCars()
         cout << "Initials:"; cin >> initials;
         if(initials == "0") initials = "";
         cout << endl;
-        cout << "How many carriages: "; cin >> numCarriages;
+        cout << "How many carriages? "; cin >> numCarriages;
         if(!cinGood()) return;
         if(numCarriages == 0) numCarriages = -1;
-        cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+        cout << "How many stacks per carriage? "; cin >> stacksPerCarriage;
         if(!cinGood()) return;
         if(stacksPerCarriage == 0) stacksPerCarriage = -1;
-        cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+        cout << "How many suitcases per stack? "; cin >> luggagesPerStack;
         if(!cinGood()) return;
         if(luggagesPerStack == 0) luggagesPerStack = -1;
         LuggageCar lug(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
@@ -1165,18 +1137,18 @@ void App::showluggageCars()
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         aux = luggageCars;
     }
-    cout << "how do you want the Luggage cars to be sorted? \n"
-            "1 - Airport asc\n"
-            "2 - Airport desc\n"
-            "3 - Carriages asc\n"
-            "4 - Carriages desc\n"
-            "5 - Stacks asc\n"
-            "6 - Stacks desc\n"
-            "7 - Luggages p/stack asc\n"
-            "8 - Luggages p/stack desc\n";
+    cout << "How do you want the Luggage cars to be sorted? \n"
+            "1 - Airport ascendant\n"
+            "2 - Airport descendant\n"
+            "3 - Carriages ascendant\n"
+            "4 - Carriages descendant\n"
+            "5 - Stacks ascendant\n"
+            "6 - Stacks descendant\n"
+            "7 - Suitcases per stack ascendant\n"
+            "8 - Suitcases per stack descendant\n";
     int sortChoice;
     while(true) {
         cin >> sortChoice;
@@ -1228,7 +1200,7 @@ void App::showluggageCars()
         cout << counter << " - " << b << "\n";
         counter ++;
     }
-    cout << "type anything to go back";
+    cout << "Type anything to go back";
     cin >> choice;
     cin.clear();
     cin.ignore(INT_MAX,'\n');
@@ -1240,7 +1212,7 @@ void App::planeCreation()
 {
     string registration,type;
     int capacity;
-    cout << "give the Plane specifications : \n"
+    cout << "Give the Plane specifications : \n"
          << "Registration: "; cin >> registration;    cout << "\n";
     cout << "Type: "; cin >> type;
     cout << "\n";
@@ -1256,12 +1228,12 @@ void App::planeCreation()
     {
         if(b == a)
         {
-            cout <<"This Plane already exists \n";
+            cout <<"This Plane already exists! \n";
             return;
         }
     }
     planes.push_back(a);
-    cout << "Plane added \n";
+    cout << "Plane added! \n";
     return;
 }
 
@@ -1269,7 +1241,7 @@ void App::planeDeletion()
 {
     string registration,type;
     int capacity;
-    cout << "give the Plane specifications : \n"
+    cout << "Give the Plane specifications : \n"
             "Registration: "; cin >> registration;
     cout << "\n";
     cout << "Type: "; cin >> type;
@@ -1282,11 +1254,11 @@ void App::planeDeletion()
         if(b == a)
         {
             planes.remove(b);
-            cout << "Plane removed \n";
+            cout << "Plane removed! \n";
             return;
         }
     }
-    cout <<"Plane does not exist \n";
+    cout <<"Plane does not exist! \n";
     return;
 }
 
@@ -1306,7 +1278,7 @@ void App::planeFind()
             cout << "Plane found, details: \n"
                  << "Registration - Type - Capacity" << endl
                  << b << endl
-                 << "Do you want to update it? Y/N" << endl;
+                 << "Do you want to update it? (Y/N)" << endl;
 
             char answer;
             cin >> answer;
@@ -1322,7 +1294,7 @@ void App::planeFind()
             }
             else
             {
-                cout << "invalid character! considered as a 'N'" << endl;
+                cout << "Invalid character! Considered as a 'N'" << endl;
                 return;
             }
         }
@@ -1336,14 +1308,14 @@ void App::planeFind()
     {
         string type;
         int capacity;
-        cout << "give the Plane specifications: ";
+        cout << "Give the Plane specifications: ";
         cout << "Type: "; cin >> type;
         cout << "\n";
         cout << "Capacity :"; cin >> capacity;
         if(!cinGood()) return;
         if(registration == "" || type == "" ||capacity <= 0)
         {
-            cout << "Invalid Plane specifications \n";
+            cout << "Invalid plane specifications \n";
             return;
         }
         a.setType(type);
@@ -1357,7 +1329,7 @@ void App::planeFind()
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         return;
     }
     return;
@@ -1376,7 +1348,7 @@ void App::updatePlane(Plane &plane)
     if(!cinGood()) return;
     if(registration == "" || type == "" ||capacity <= 0)
     {
-        cout << "Invalid Plane specifications \n";
+        cout << "Invalid Plane specifications! \n";
         return;
     }
     Plane a(capacity,registration,type);
@@ -1384,7 +1356,7 @@ void App::updatePlane(Plane &plane)
     {
         if(b == a)
         {
-            cout <<"This Plane already exists \n";
+            cout <<"This Plane already exists! \n";
             return;
         }
     }
@@ -1395,7 +1367,7 @@ void App::updatePlane(Plane &plane)
 void App::showPlanes()
 {
     char choice;
-    cout << "do you want to see specific Planes? Y/N \n";
+    cout << "Do you want to see specific Planes? Y/N \n";
     while(true) {
         cin >> choice;
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
@@ -1414,7 +1386,7 @@ void App::showPlanes()
     {
         string registration,type;
         int capacity;
-        cout << "type '0' if you dont want to specify \n"
+        cout << "Type '0' if you dont want to specify \n"
              << "Registration: "; cin >> registration;
         cout << "\n";
         cout << "Type: "; cin >> type;
@@ -1435,16 +1407,16 @@ void App::showPlanes()
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         aux = planes;
     }
-    cout << "how do you want the Planes to be sorted? \n"
-         << "1 - Registration asc\n"
-         << "2 - Registration desc\n"
-         << "3 - Capacity asc\n"
-         << "4 - Capacity desc\n"
-         << "5 - Type asc\n"
-         << "6 - Type desc\n";
+    cout << "How do you want the Planes to be sorted? \n"
+         << "1 - Registration ascendant\n"
+         << "2 - Registration descendant\n"
+         << "3 - Capacity ascendant\n"
+         << "4 - Capacity descendant\n"
+         << "5 - Type ascendant\n"
+         << "6 - Type descendant\n";
     int sortChoice;
     while(true) {
         cin >> sortChoice;
@@ -1491,7 +1463,7 @@ void App::showPlanes()
         counter ++;
     }
 
-    cout << "type anything to go back";
+    cout << "Type anything to go back";
     cin >> choice;
     cin.clear();
     cin.ignore(INT_MAX,'\n');
@@ -1515,7 +1487,7 @@ void App::flightMenu() {
     }
     if (!exists) {
         cout << "The given Plane does not exist " << endl;
-        cout << "type anything to go back" << endl;
+        cout << "Type anything to go back" << endl;
         string choice;
         cin >> choice;
         cin.clear();
@@ -1564,7 +1536,7 @@ void App::flightMenu() {
                 getLuggageToCar(a);
                 break;
             default:
-                cout << "not a possibilite" << endl;
+                cout << "Not a possibility!" << endl;
         }
     }
 }
@@ -1619,12 +1591,12 @@ void App::flightCreation(Plane &plane)
     {
         if(b.equals(flight))
         {
-            cout << "This flight already exists" << endl;
+            cout << "This flight already exists!" << endl;
             return;
         }
     }
     plane.addFlight(flight);
-    cout << "Flight added \n";
+    cout << "Flight added! \n";
 }
 
 void App::flightDeletion(Plane &plane)
@@ -1653,15 +1625,15 @@ void App::flightDeletion(Plane &plane)
         if(b.equals(flight))
         {
             plane.deleteFlight(b.getId());
-            cout << "Flight removed \n";
+            cout << "Flight removed! \n";
             return;
         }
     }
-    cout << "This flight doesnt exists" << endl;
+    cout << "This flight doesnt exists!" << endl;
     return;
 }
 
-bool App::checkAirportExists(string initials, Airport& airport) //se existir coloca o aeroporto em airport
+bool App::checkAirportExists(string initials, Airport& airport)
 {
     for(Airport& air: airports)
     {
@@ -1686,7 +1658,7 @@ void App::flightFind(Plane &plane)
             {
                 string choice;
                 cout << "Airport does not exist!" << endl;
-                cout << "type anything to go back";
+                cout << "Type anything to go back";
                 cin >> choice;
                 cin.clear();
                 cin.ignore(INT_MAX,'\n');
@@ -1714,7 +1686,7 @@ void App::flightFind(Plane &plane)
             cout << "Flight found, details: " << endl
                << "Id - DepartureDate - Duration - Origin - Destination - AvailableSeats" << endl
                << flight << endl
-               << "Do you want to update it? Y/N" << endl;
+               << "Do you want to update it? (Y/N)" << endl;
             char answer;
             cin >> answer;
             if(!cinGood()) return;
@@ -1729,7 +1701,7 @@ void App::flightFind(Plane &plane)
             }
             else
             {
-                cout << "invalid character! considered as a 'N'" << endl;
+                cout << "Invalid character! Considered as a 'N'" << endl;
                 return;
             }
             return;
@@ -1746,14 +1718,14 @@ void App::flightFind(Plane &plane)
         int hour,minute;
         Airport destination;
         int availableSeats = plane.getCapacity();
-        cout << "give the remaining Flight specifications: ";
-        cout << "destination: (initials)"; cin >> initials;
+        cout << "Give the remaining flight specifications: ";
+        cout << "Destination: (initials)"; cin >> initials;
         cout << "\n";
         if(!checkAirportExists(initials,destination))
         {
             string choice;
             cout << "Airport does not exist!" << endl;
-            cout << "type anything to go back";
+            cout << "Type anything to go back";
             cin >> choice;
             cin.clear();
             cin.ignore(INT_MAX,'\n');
@@ -1780,7 +1752,7 @@ void App::flightFind(Plane &plane)
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         return;
     }
 }
@@ -1849,7 +1821,7 @@ void App::updateFlight(Flight& flight,Plane &plane)
         }
     }
     flight = checkFlight;
-    cout << "Flight Updated!" << endl;
+    cout << "Flight updated!" << endl;
     return;
 
 }
@@ -1857,7 +1829,7 @@ void App::updateFlight(Flight& flight,Plane &plane)
 void App::showFlights(Plane &plane)
 {
     char choice;
-    cout << "do you want to see specific Flights? Y/N \n";
+    cout << "Do you want to see specific Flights? Y/N \n";
     while (true) {
         cin >> choice;
         if (cin.fail() || cin.peek() != '\n' ||
@@ -1879,7 +1851,7 @@ void App::showFlights(Plane &plane)
         Airport origin, destination;
         string initials;
 
-        cout << "type '0' if you dont want to specify \n"
+        cout << "Type '0' if you dont want to specify \n"
              << "Origin Airport (initials): ";
         cin >> initials;
         if (initials != "0") {
@@ -1932,20 +1904,20 @@ void App::showFlights(Plane &plane)
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         aux = plane.getFlights();
     }
-    cout << "how do you want the transports to be sorted? \n"
-            "1 - departure asc\n"
-            "2 - departure desc\n"
-            "3 - duration asc\n"
-            "4 - duration desc\n"
-            "5 - origin asc\n"
-            "6 - origin desc\n"
-            "7 - destination asc\n"
-            "8 - destination desc\n"
-            "9 - available seats asc\n"
-            "10 - available seats desc\n";
+    cout << "How do you want the transports to be sorted? \n"
+            "1 - departure ascendant\n"
+            "2 - departure descendant\n"
+            "3 - duration ascendant\n"
+            "4 - duration descendant\n"
+            "5 - origin ascendant\n"
+            "6 - origin descendant\n"
+            "7 - destination ascendant\n"
+            "8 - destination descendant\n"
+            "9 - available seats ascendant\n"
+            "10 - available seats descendant\n";
 
     int sortChoice;
     while (true) {
@@ -2003,7 +1975,7 @@ void App::showFlights(Plane &plane)
         counter ++;
     }
 
-    cout << "type anything to go back";
+    cout << "Type anything to go back";
     cin >> choice;
     cin.clear();
     cin.ignore(INT_MAX,'\n');
@@ -2013,7 +1985,7 @@ void App::showFlights(Plane &plane)
 void App::getLuggageToCar(Plane &plane)
 {
     int flightId;
-    cout << "From what fly should the luggages be processed? ";
+    cout << "From what fly should the luggage be processed? ";
     cout << "ID: "; cin >> flightId;
     if(!cinGood()) return;
     bool exists = false;
@@ -2029,7 +2001,7 @@ void App::getLuggageToCar(Plane &plane)
     }
     if(!exists)
     {
-        cout << "This Flight does not exist!";
+        cout << "This flight does not exist!";
         return;
     }
     int LuggageId;
@@ -2048,16 +2020,16 @@ void App::getLuggageToCar(Plane &plane)
     }
     if(!exists)
     {
-        cout << "This Luggage Car does not exist!";
+        cout << "This luggage lar does not exist!";
         return;
     }
     flight.luggagesToCar(luggageCar);
     if(flight.getLuggagesOutCar().size() > 0)
     {
-        cout << "all ok, but there are still Luggages left to be processed" << endl;
+        cout << "Luggage processed, but there is still unprocessed luggage" << endl;
         return;
     }
-    cout << "There are no more luggages out of the car for this flight" << endl;
+    cout << "There is no more unprocessed luggage for this flight" << endl;
     return;
 }
 
@@ -2078,8 +2050,8 @@ void App::serviceMenu()
         }
     }
     if (!exists) {
-        cout << "The given Plane does not exist " << endl;
-        cout << "type anything to go back" << endl;
+        cout << "The given Plane does not exist! " << endl;
+        cout << "Type anything to go back" << endl;
         string choice;
         cin >> choice;
         cin.clear();
@@ -2126,7 +2098,7 @@ void App::serviceMenu()
                 showServicesDone(a);
                 break;
             default:
-                cout << "not a possibilite" << endl;
+                cout << "Not a possibility!" << endl;
                 break;
         }
     }
@@ -2139,7 +2111,7 @@ void App::serviceCreation(Plane &plane)
     int day,month,year;
     string accountable;
 
-    cout << "give the Service specifications : \n"
+    cout << "Give the Service specifications: \n"
          << "serviceType (m/l): "; cin >> serviceType;    cout << "\n";
     if(serviceType != 'm' && serviceType != 'M' && serviceType != 'l' && serviceType != 'L') {
         cout << "Invalid service type!" << endl;
@@ -2178,11 +2150,11 @@ void App::serviceDeletion(Plane &plane)
 {
     if(plane.getServicesToDo().empty())
     {
-        cout << "No services to do in this plane" << endl;
+        cout << "No services to do in this plane!" << endl;
         return;
     }
     plane.popService();
-    cout << "oldest service deleted" << endl;
+    cout << "Oldest service deleted!" << endl;
 }
 
 void App::showServicesToDo(Plane &plane)
@@ -2212,14 +2184,14 @@ void App::showServicesDone(Plane &plane)
 void App::passengerCreation()
 {
     string name,passport;
-    cout << "give the Passenger specifications : \n"
+    cout << "Give the Passenger specifications: \n"
          << "name: "; cin >> name;    cout << "\n";
     cout << "passport: "; cin >> passport;
     cout << "\n";
     if(!cinGood()) return;
     if(name == "" || passport == "")
     {
-        cout << "Invalid Passenger specifications \n";
+        cout << "Invalid Passenger specifications! \n";
         return;
     }
     Passenger a(name,passport);
@@ -2227,7 +2199,7 @@ void App::passengerCreation()
     {
         if(b == a)
         {
-            cout <<"This Plane already exists \n";
+            cout <<"This Plane already exists! \n";
             return;
         }
     }
@@ -2239,7 +2211,7 @@ void App::passengerCreation()
 void App::passengerDeletion()
 {
     string name,passport;
-    cout << "give the Passenger specifications : \n"
+    cout << "Give the Passenger specifications: \n"
             "Name "; cin >> name;
     cout << "\n";
     cout << "Passport: "; cin >> passport;
@@ -2251,11 +2223,11 @@ void App::passengerDeletion()
         if(b == a)
         {
             passengers.remove(b);
-            cout << "Passenger removed \n";
+            cout << "Passenger removed! \n";
             return;
         }
     }
-    cout <<"Passenger does not exist \n";
+    cout <<"Passenger does not exist! \n";
     return;
 }
 
@@ -2274,7 +2246,7 @@ void App::passengerFind()
         {
             cout << "Passenger found, details: \n"
                  << "Name - Passport" << endl << b << endl
-                 << "Do you want to update it? Y/N" << endl;
+                 << "Do you want to update it? (Y/N)" << endl;
 
             char answer;
             cin >> answer;
@@ -2290,7 +2262,7 @@ void App::passengerFind()
             }
             else
             {
-                cout << "invalid character! considered as a 'N'" << endl;
+                cout << "Invalid character! Considered as a 'N'" << endl;
                 return;
             }
         }
@@ -2303,13 +2275,13 @@ void App::passengerFind()
     if(answer == 'y' || answer == 'Y')
     {
         string name;
-        cout << "give the remaining Passenger specifications: ";
+        cout << "Give the remaining Passenger specifications: ";
         cout << "Name: "; cin >> name;
         cout << "\n";
         if(!cinGood()) return;
         if(name == "" || passport == "")
         {
-            cout << "Invalid Passenger specifications \n";
+            cout << "Invalid Passenger specifications! \n";
             return;
         }
         a.setName(name);
@@ -2322,7 +2294,7 @@ void App::passengerFind()
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         return;
     }
 }
@@ -2338,7 +2310,7 @@ void App::updatePassenger(Passenger &passenger)
     if(!cinGood()) return;
     if(name == "" || passport == "")
     {
-        cout << "Invalid Passenger specifications \n";
+        cout << "Invalid Passenger specifications! \n";
         return;
     }
     Passenger a(name,passport);
@@ -2346,7 +2318,7 @@ void App::updatePassenger(Passenger &passenger)
     {
         if(b == a)
         {
-            cout <<"This Passenger already exists \n";
+            cout <<"This Passenger already exists! \n";
             return;
         }
     }
@@ -2357,7 +2329,7 @@ void App::updatePassenger(Passenger &passenger)
 void App::showPassengers()
 {
     char choice;
-    cout << "Do you want to see specific Passengers? Y/N \n";
+    cout << "Do you want to see specific passengers? (Y/N) \n";
     while(true) {
         cin >> choice;
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
@@ -2373,7 +2345,7 @@ void App::showPassengers()
     if(choice == 'Y' || choice == 'y')
     {
         string name,passport;
-        cout << "type '0' if you dont want to specify \n";
+        cout << "Type '0' if you dont want to specify \n";
         cout << "Name:"; cin.get(); getline(cin,name);
         cout << "Passport: "; cin >> passport; cout << endl;
 
@@ -2391,10 +2363,10 @@ void App::showPassengers()
     }
     else
     {
-        cout << "invalid character! considered as a 'N'" << endl;
+        cout << "Invalid character! Considered as a 'N'" << endl;
         aux = passengers;
     }
-    cout << "how do you want the Passengers to be sorted? \n"
+    cout << "How do you want the Passengers to be sorted? \n"
          << "1 - Name asc\n"
          << "2 - Name desc\n"
          << "3 - Passport asc\n"
@@ -2437,7 +2409,7 @@ void App::showPassengers()
         cout << counter << " - " << b << "\n";
         counter ++;
     }
-    cout << "type anything to go back";
+    cout << "Type anything to go back";
     cin >> choice;
     cin.clear();
     cin.ignore(INT_MAX,'\n');
@@ -2446,7 +2418,7 @@ void App::showPassengers()
 
 void App::ticketMenu() {
     string passport;
-    cout << "From what Passenger should we manage the tickets? \n"
+    cout << "From what passenger should we manage the tickets? \n"
          << "Passport: ";
     cin >> passport;
     cout << "\n";
@@ -2507,7 +2479,7 @@ void App::ticketMenu() {
                 showTicket(passenger);
                 break;
             default:
-                cout << "not a possibilite" << endl;
+                cout << "Not a possibility!" << endl;
         }
     }
 }
@@ -2572,12 +2544,12 @@ void App::ticketCreation(Passenger& passenger)
     {
         if(b == a)
         {
-            cout <<"This ticket already exists \n";
+            cout <<"This ticket already exists! \n";
             return;
         }
     }
     int numBag;
-    cout << "How many luggages is the passenger taking to the flight?"<< endl;
+    cout << "How many suitcases is the passenger taking as luggage to the flight?"<< endl;
     cin >> numBag;
     for(numBag != 0; numBag--;){
         Luggage l = Luggage();
@@ -2585,12 +2557,12 @@ void App::ticketCreation(Passenger& passenger)
     }
     passenger.addTicket(a);
     if(!passenger.addTicket(a)){
-        cout << "This flight has no seats remaining" <<endl;
+        cout << "This flight has no seats remaining!" <<endl;
         return;
     }
     cout << "Ticket created!" << endl;
     while(true) {
-        cout << "Do you want to buy another ticket for the same flight?(Y/N)" << endl;
+        cout << "Do you want to buy another ticket for the same flight? (Y/N)" << endl;
         char answer;
         cin >> answer;
         if (!cinGood()) return;
@@ -2615,12 +2587,12 @@ void App::ticketCreation(Passenger& passenger)
                     {
                         if(b == t)
                         {
-                            cout <<"This ticket already exists \n";
+                            cout <<"This ticket already exists! \n";
                             return;
                         }
                     }
 
-                    cout << "How many luggages is it tacking?" << endl;
+                    cout << "How many suitcases is the passenger taking as luggage to the flight?" << endl;
 
                     cin >> numBag;
                     for(numBag != 0; numBag--;){
@@ -2629,17 +2601,17 @@ void App::ticketCreation(Passenger& passenger)
                     }
                     a.addTicket(t);
                     if(!a.addTicket(t)){
-                        cout << "This flight has no seats remaining" <<endl;
+                        cout << "This flight has no seats remaining!" <<endl;
                         return;
                     }
                     cout << "Ticket created!" << endl;
                 }
             }
-            cout << "Passenger does not exist" << endl;
+            cout << "Passenger does not exist!" << endl;
         }
         else
         {
-            cout << "invalid character! considered as a 'N'" << endl;
+            cout << "Invalid character! Considered as a 'N'" << endl;
             break;
         }
     }
@@ -2658,7 +2630,7 @@ void App::ticketDeletion(Passenger& passenger)
     {
         string choice;
         cout << "Airport does not exist!" << endl;
-        cout << "type anything to go back";
+        cout << "Type anything to go back";
         cin >> choice;
         cin.clear();
         cin.ignore(INT_MAX,'\n');
@@ -2691,7 +2663,7 @@ void App::ticketDeletion(Passenger& passenger)
         }
     }
     if (!exists) {
-        cout << "The given flight does not exist " << endl;
+        cout << "The given flight does not exist!" << endl;
         cout << "Type anything to go back" << endl;
         string choice;
         cin >> choice;
@@ -2708,7 +2680,7 @@ void App::ticketDeletion(Passenger& passenger)
             cout << "Ticket deleted!" << endl;
             return;
         }
-        cout << "Ticket not found" << endl;
+        cout << "Ticket not found!" << endl;
         return;
     }
 }
@@ -2759,7 +2731,7 @@ void App::ticketFind(Passenger& passenger){
             }
         }
         if (!exists) {
-            cout << "The given flight does not exist " << endl;
+            cout << "The given flight does not exist!" << endl;
             cout << "Type anything to go back" << endl;
             string choice;
             cin >> choice;
@@ -2798,7 +2770,7 @@ void App::ticketFind(Passenger& passenger){
             else if (answer == 'y' || answer == 'Y'){
                 Ticket a = Ticket(flight);
                 int numBag;
-                cout << "How many luggages is the passenger taking to the flight?"<< endl;
+                cout << "How many suitcases is the passenger taking as luggage to the flight?"<< endl;
                 cin >> numBag;
                 for(numBag != 0; numBag--;){
                     Luggage l = Luggage();
@@ -2806,14 +2778,14 @@ void App::ticketFind(Passenger& passenger){
                 }
                 passenger.addTicket(a);
                 if(!passenger.addTicket(a)){
-                    cout << "This flight has no seats remaining" <<endl;
+                    cout << "This flight has no seats remaining!" <<endl;
                     return;
                 }
                 cout << "Ticket created!" << endl;
             }
             else
             {
-                cout << "invalid character! considered as a 'N'" << endl;
+                cout << "Invalid character! Considered as a 'N'" << endl;
                 break;
             }
             //return;
@@ -2823,7 +2795,7 @@ void App::ticketFind(Passenger& passenger){
 
 void App::updateTicket(Ticket& ticket){
     int newLug;
-    cout << "Are you adding or removing luggages? (A/R)" << endl;
+    cout << "Are you adding or removing luggage? (A/R)" << endl;
     char answer;
     cin >> answer;
     if (!cinGood()) return;
@@ -2836,11 +2808,11 @@ void App::updateTicket(Ticket& ticket){
         }
     }
     else if (answer == 'r' || answer == 'R') {
-        if(ticket.getTicketLuggages().empty()){cout << "This tickets has no luggages to remove"; return;}
+        if(ticket.getTicketLuggages().empty()){cout << "This tickets has no luggage to remove"; return;}
         cout << "How many?" << endl;
         cin >> newLug;
         for(newLug != 0; newLug--;){
-            if(ticket.getTicketLuggages().empty()){cout << "This tickets has no luggages left to remove";}
+            if(ticket.getTicketLuggages().empty()){cout << "This tickets has no luggage left to remove";}
             ticket.removeLuggage();
         }
     }
@@ -2849,11 +2821,10 @@ void App::updateTicket(Ticket& ticket){
 
 void App::showTicket(Passenger& passenger)
 {
-    //m faz sentido ele espeficicar nada do ticket pq o ticket so tem flight e n se pode um passageiro ter 2 ticket do msmo flight
     list<Ticket> aux = passenger.getTickets();
-    cout << "how do you want the Tickets to be sorted? \n"
-         << "1 - Flight asc\n"
-         << "2 - Flight desc\n";
+    cout << "How do you want the tickets to be sorted? \n"
+         << "1 - Flight ascendant\n"
+         << "2 - Flight descendant\n";
     int sortChoice;
     while(true) {
         cin >> sortChoice;
@@ -2888,7 +2859,7 @@ void App::showTicket(Passenger& passenger)
     }
 
     string choice;
-    cout << "type anything to go back";
+    cout << "Type anything to go back";
     cin >> choice;
     cin.clear();
     cin.ignore(INT_MAX,'\n');
@@ -2909,7 +2880,7 @@ void App::checkin(Passenger& passenger)
     {
         string choice;
         cout << "Airport does not exist!" << endl;
-        cout << "type anything to go back";
+        cout << "Type anything to go back";
         cin >> choice;
         cin.clear();
         cin.ignore(INT_MAX,'\n');
@@ -2957,7 +2928,7 @@ void App::checkin(Passenger& passenger)
         {
             cout << "Ticket found!" << endl;
             t.setCheckin();
-            cout << "Checkin completed" <<endl;
+            cout << "Checkin completed!" <<endl;
             }
         }
 }

@@ -58,7 +58,7 @@ Transport getTransportInfos()
     return transp;
 }
 
-void App::readPassengersFile(const string& passengersFile){
+/*void App::readPassengersFile(const string& passengersFile){
     ifstream fileToOpen;
     fileToOpen.open(passengersFile);
 
@@ -114,7 +114,7 @@ void App::readPassengersFile(const string& passengersFile){
         fileToOpen.close();
     }
 }
-
+*/
 void App::readAirportsFile(const string& airportsFile){
     ifstream fileToOpen;
     fileToOpen.open(airportsFile);

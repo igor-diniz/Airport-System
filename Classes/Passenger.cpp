@@ -1,7 +1,7 @@
 #include "Passenger.h"
 #include <vector>
 
-Passenger::Passenger(string name, string passport) : ticket(0, Flight()) { this->name = name; this->passport = passport;}
+Passenger::Passenger(string name, string passport){ this->name = name; this->passport = passport;}
 
 string Passenger::getName() const {return name;}
 
@@ -11,29 +11,21 @@ void Passenger::setName(string name) {this->name = name;}
 
 void Passenger::setPassport(string passport) {this->passport = passport; }
 
-Ticket Passenger::getTicket() const{
-    return ticket;
+list<Ticket> Passenger::getTickets() const{
+    return tickets;
 }
 
 bool Passenger::buyTicket(Flight &flight, bool haslugg) {
     if(flight.getAvailableSeats() < 1)
         return false;
-
-    //ESSA LINHA TEM ERRO DE SEMANTICA
-    int id = flight.getAvailableSeats() - flight.getAvailableSeats() + 1; //IGOR VAI RESOLVER
-
-    ticket = Ticket(id, flight);
-
-    if(haslugg)
-        ticket.setLuggageIncluded();
-
+    Ticket ticket(flight);
+    if(haslugg) ticket.setLuggageIncluded();
+    tickets.push_back(ticket);
     flight.setAvailableSeats(flight.getAvailableSeats() - 1);
     return true;
-
-
 }
 
-bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers) {
+/*bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers) {
     if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;
 
@@ -61,14 +53,14 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passen
         flight.setAvailableSeats(flight.getAvailableSeats() - 1);
     }
     return true;
-}
+}*/
 void Passenger::Checkin(Ticket ticket){
     ticket.getFlightAssocited().addLuggageToQueue(ticket.getTicketLuggages());
     ticket.setCheckin();
 }
 
-void Passenger::setTicket(Ticket ticket){
-    this->ticket = ticket;
+void Passenger::setTickets(list<Ticket> tickets){
+    this->tickets = tickets;
 }
 
 bool Passenger::operator == (const Passenger &b){

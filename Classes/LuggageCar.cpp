@@ -10,7 +10,7 @@ LuggageCar::LuggageCar(Airport airport, int numCarriages, int stacksPerCarriage,
     availability = numCarriages * stacksPerCarriage * luggagesPerStack;
 }
 
-Airport LuggageCar::getAirport(const Airport &airport) const {
+Airport LuggageCar::getAirport() const {
     return airport;
 }
 
@@ -48,6 +48,27 @@ queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
     return luggageOutCar;
 }
 
-int LuggageCar::getId() {
+void LuggageCar::setAirport(Airport &airport1)
+{
+    this->airport = airport1;
+}
+
+int LuggageCar::getNumCarriages() const {return numCarriages;}
+
+int LuggageCar::getNumStacks() const {return stacksPerCarriage;}
+
+int LuggageCar::getNumLuggagesPerStack() const {return luggagesPerStack;}
+
+int LuggageCar::getId() const{
     return id;
+}
+bool LuggageCar::operator==(const LuggageCar &luggageCar)
+{
+    return airport == luggageCar.getAirport() && numCarriages == luggageCar.getNumCarriages() && stacksPerCarriage == luggageCar.getNumStacks()
+    && luggagesPerStack == luggageCar.getNumLuggagesPerStack();
+}
+ostream& operator<<(ostream& os , const LuggageCar& luggageCar)
+{
+    cout << luggageCar.getId() << " - " << luggageCar.getAirport()  << " - " << luggageCar.getNumCarriages() << " - " << luggageCar.getNumStacks()  << " - " << luggageCar.getNumLuggagesPerStack();
+    return os;
 }

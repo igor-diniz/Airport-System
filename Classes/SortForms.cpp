@@ -158,3 +158,44 @@ bool sortTicketByFlightDesc(const Ticket& t1, const Ticket& t2)
 {
     return t1.getFlightAssocited().getId() > t2.getFlightAssocited().getId();
 }
+
+bool sortCarsByAirportAsc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return l1.getAirport() < l2.getAirport();
+}
+
+bool sortCarsByAirportDesc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return !(l1.getAirport() < l2.getAirport());
+}
+
+bool sortCarsByCarriageAsc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return l1.getNumCarriages() < l2.getNumCarriages();
+}
+
+bool sortCarsByCarriageDesc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return l1.getNumCarriages() > l2.getNumCarriages();
+}
+
+bool sortCarsByStacksAsc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return l1.getNumStacks() < l2.getNumStacks();
+}
+
+bool sortCarsByStacksDesc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return l1.getNumStacks() > l2.getNumStacks();
+}
+
+
+bool sortCarsByLuggagesStackAsc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return l1.getNumLuggagesPerStack() < l2.getNumLuggagesPerStack();
+}
+
+bool sortCarsByLuggagesStackDesc(const LuggageCar& l1, const LuggageCar& l2)
+{
+    return l1.getNumLuggagesPerStack() > l2.getNumLuggagesPerStack();
+}

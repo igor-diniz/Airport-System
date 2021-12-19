@@ -14,12 +14,18 @@ private:
     list<list<stack<Luggage>>> luggageInCar;
     int availability;
 public:
-    int getId();
+    int getId() const;
     LuggageCar(){};
     LuggageCar(Airport airport,int numCarriages, int stacksPerCarriage, int luggagesPerStack);
     void setLuggageOutCar(list<Luggage> Luggages);
-    Airport getAirport(const Airport& airport) const;
+    void setAirport(Airport& airport1);
+    Airport getAirport() const;
+    int getNumCarriages() const;
+    int getNumStacks() const;
+    int getNumLuggagesPerStack() const;
+    bool operator ==(const LuggageCar& luggageCar);
     queue<Luggage> setLuggageInCar(queue<Luggage> &luggageOutCar);
+    friend ostream& operator<<(ostream& os , const LuggageCar& luggageCar);
 };
 
 

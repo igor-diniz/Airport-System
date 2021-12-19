@@ -33,10 +33,10 @@ public:
     void transportFind(Airport &airport);
     void updateTransport(Transport &transport, Airport &airport);
     void showTransports(Airport &airport);
-    void luggageCarCreation(){}; //TODO
-    void luggageCarDeletion(){}; //TODO
-    void luggageCarFind(){}; //TODO
-    void showluggageCars(){};//TODO
+    void luggageCarCreation();
+    void luggageCarDeletion();
+    void luggageCarFind();
+    void showluggageCars();
     void planeCreation();
     void planeDeletion();
     void planeFind();

@@ -424,6 +424,12 @@ void App::airportFind()
                 updateAirport(airport);
                 return;
             }
+            else if(answer == 'n' || answer == 'N') return;
+            else
+            {
+                cout << "invalid character! considered as a 'N'" << endl;
+                return;
+            }
         }
     }
     cout <<"Airport does not exist." << endl;
@@ -440,7 +446,12 @@ void App::airportFind()
         airports.push_back(airport);
         cout << "Airport added!" << endl;
     }
-    return;
+    else if(answer == 'n' || answer == 'N') return;
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        return;
+    }
 }
 
 void App::updateAirport(Airport &airport)
@@ -499,8 +510,13 @@ void App::showAirports()
             }
         }
     }
+    else if(choice == 'n' || choice == 'N') aux = airports;
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        aux = airports;;
+    }
 
-    else aux = airports; //in case the choice was "N"
     cout << "How do you want to sort the Airports? \n"
             "1 - Name ascending\n"
             "2 - Name descending\n"
@@ -667,7 +683,12 @@ void App::transportFind(Airport &airport)
             airport.addTransport(transp);
             cout << "Transport added!" << endl;
         }
-        return;
+        else if(answer == 'n' || answer == 'N') return;
+        else
+        {
+            cout << "invalid character! considered as a 'N'" << endl;
+            return;
+        }
     }
     cout << "Transport found, details: " << endl
          << "Type - Distance - Time" << endl
@@ -679,6 +700,12 @@ void App::transportFind(Airport &airport)
     if(!cinGood()) return;
     if(answer == 'y' || answer == 'Y') {
         updateTransport(transp,airport);
+        return;
+    }
+    else if(answer == 'n' || answer == 'N') return;
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
         return;
     }
 }
@@ -751,6 +778,11 @@ void App::showTransports(Airport &airport)
             }
         }
     }
+    else if(choice != 'n' && choice != 'N')
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        return;
+    }
     else
     {
         for (iteratorBST<Transport> i = airport.getTransports().begin(); i != airport.getTransports().end(); i++)
@@ -815,6 +847,341 @@ void App::showTransports(Airport &airport)
     cin.clear();
     cin.ignore(INT_MAX,'\n');
     return;
+}
+
+void App::luggageCarCreation()
+{
+    Airport airport;
+    int numCarriages, stacksPerCarriage, luggagesPerStack;
+    string initials;
+    cout << "To what airport is this car associated?" << endl;
+    cout << "Initials:"; cin >> initials;
+    cout << endl;
+
+    if(initials == "")
+    {
+        cout << "Invalid Airport with no specification" << endl;
+        return;
+    }
+
+    airport = Airport("",initials);
+    bool exists = false;
+    for(Airport &a: airports)
+    {
+        if(a == airport)
+        {
+            airport = a;
+            exists = true;
+        }
+    }
+    if(!exists)
+    {
+        cout << "Airport does not exist!" << endl;
+    }
+    cout << "How many carriages: "; cin >> numCarriages;
+    if(!cinGood()) return;
+    if(numCarriages < 0)
+    {
+        cout << "cant create car with negative number" << endl;
+    }
+    cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+    if(!cinGood()) return;
+    if(stacksPerCarriage < 0)
+    {
+        cout << "cant create car with negative number" << endl;
+    }
+    cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+    if(!cinGood()) return;
+    if(luggagesPerStack < 0)
+    {
+        cout << "cant create car with negative number" << endl;
+    }
+    LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
+    luggageCars.push_back(luggageCar);
+    cout << "Luggage Car added!" << endl;
+    return;
+}
+
+void App::luggageCarDeletion()
+{
+    Airport airport;
+    int numCarriages, stacksPerCarriage, luggagesPerStack;
+    string initials;
+    cout << "To what airport is this car associated?" << endl;
+    cout << "Initials:"; cin >> initials;
+    cout << endl;
+
+    if(initials == "")
+    {
+        cout << "Invalid Airport with no specification" << endl;
+        return;
+    }
+
+    airport = Airport("",initials);
+    bool exists = false;
+    for(Airport &a: airports)
+    {
+        if(a == airport)
+        {
+            airport = a;
+            exists = true;
+        }
+    }
+    if(!exists)
+    {
+        cout << "Airport does not exist!" << endl;
+    }
+    cout << "How many carriages: "; cin >> numCarriages;
+    if(!cinGood()) return;
+    cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+    if(!cinGood()) return;
+    cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+    if(!cinGood()) return;
+    LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
+    if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
+    {
+        cout << "This luggage car does not exist!" << endl;
+        return;
+    }
+    luggageCars.remove(luggageCar);
+    cout << "Luggage removed!" << endl;
+}
+
+void App::luggageCarFind()
+{
+    Airport airport;
+    int numCarriages, stacksPerCarriage, luggagesPerStack;
+    string initials;
+    cout << "To what airport is this car associated?" << endl;
+    cout << "Initials:"; cin >> initials;
+    cout << endl;
+
+    if(initials == "")
+    {
+        cout << "Invalid Airport with no specification" << endl;
+        return;
+    }
+
+    airport = Airport("",initials);
+    bool exists = false;
+    for(Airport &a: airports)
+    {
+        if(a == airport)
+        {
+            airport = a;
+            exists = true;
+        }
+    }
+    if(!exists)
+    {
+        cout << "Airport does not exist!" << endl;
+    }
+    cout << "How many carriages: "; cin >> numCarriages;
+    if(!cinGood()) return;
+    cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+    if(!cinGood()) return;
+    cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+    if(!cinGood()) return;
+    LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
+    if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
+    {
+        char answer;
+        cout << "This luggage car does not exist!" << endl;
+        cout << "Do you want to create it? (Y/N)"; cin >> answer;
+        if(!cinGood()) return;
+        if(answer == 'y' || answer == 'Y')
+        {
+            luggageCars.push_back(luggageCar);
+            cout << "Luggage car created!" << endl;
+            return;
+        }
+        else if(answer == 'N' || answer == 'n')
+        {
+            return;
+        }
+        else
+        {
+            cout << "invalid character! considered as a 'N'" << endl;
+            return;
+        }
+    }
+    cout << "Luggage car found, details: " << endl
+         << "Id" << " - " << "Airport" << " - " << "NumCarriages" << " - " << "NumStacks"  << " - " << "NumLuggagesPerStack" << endl
+         << luggageCar << endl
+         << "Do you want to update it? Y/N" << endl;
+
+    char answer;
+    cin >> answer;
+    if(!cinGood()) return;
+    if(answer == 'y' || answer == 'Y')
+    {
+        Airport airport1;
+        cout << "What should be the new Airport of the Car: "
+        << "Initials: "; cin >> initials;
+
+        if(initials == "")
+        {
+            cout << "Invalid Airport with no specification" << endl;
+            return;
+        }
+
+        airport = Airport("",initials);
+        bool exists = false;
+        for(Airport &a: airports)
+        {
+            if(a == airport)
+            {
+                airport = a;
+                exists = true;
+            }
+        }
+        if(!exists)
+        {
+            cout << "Airport does not exist!" << endl;
+        }
+        else
+        {
+            for(LuggageCar& luggageCar1 : luggageCars)
+            {
+                if(luggageCar == luggageCar1)
+                {
+                    luggageCar1.setAirport(airport);
+                    cout << "Luggage car updated to new airport!" << endl;
+                }
+            }
+        }
+    }
+    else if(answer == 'N' || answer == 'n')
+    {
+        return;
+    }
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        return;
+    }
+}
+
+void App::showluggageCars()
+{
+    char choice;
+    cout << "do you want to see specific Luggage cars? Y/N \n";
+    while(true) {
+        cin >> choice;
+        if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid answer!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    list<LuggageCar> aux;
+    if(choice == 'Y' || choice == 'y')
+    {
+        cout << "type '0' if you dont want to specify \n";
+        Airport airport;
+        int numCarriages, stacksPerCarriage, luggagesPerStack;
+        string initials;
+        cout << "To what airport is this car associated?" << endl;
+        cout << "Initials:"; cin >> initials;
+        if(initials == "0") initials = "";
+        cout << endl;
+        cout << "How many carriages: "; cin >> numCarriages;
+        if(!cinGood()) return;
+        if(numCarriages == 0) numCarriages = -1;
+        cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+        if(!cinGood()) return;
+        if(stacksPerCarriage == 0) stacksPerCarriage = -1;
+        cout << "How many luggages per stack: "; cin >> luggagesPerStack;
+        if(!cinGood()) return;
+        if(luggagesPerStack == 0) luggagesPerStack = -1;
+        LuggageCar lug(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
+        for(LuggageCar& luggageCar : luggageCars)
+        {
+            if(luggageCar.getAirport() == lug.getAirport() || lug.getNumStacks() == luggageCar.getNumStacks() || lug.getNumLuggagesPerStack() == luggageCar.getNumLuggagesPerStack()
+            || lug.getNumCarriages() == luggageCar.getNumCarriages())
+                aux.push_back(luggageCar);
+        }
+    }
+    else if(choice == 'N' || choice == 'n')
+    {
+        aux = luggageCars;
+    }
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        aux = luggageCars;
+    }
+    cout << "how do you want the Luggage cars to be sorted? \n"
+            "1 - Airport asc\n"
+            "2 - Airport desc\n"
+            "3 - Carriages asc\n"
+            "4 - Carriages desc\n"
+            "5 - Stacks asc\n"
+            "6 - Stacks desc\n"
+            "7 - Luggages p/stack asc\n"
+            "8 - Luggages p/stack desc\n";
+    int sortChoice;
+    while(true) {
+        cin >> sortChoice;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    switch(sortChoice)
+    {
+        case 1:
+            aux.sort(sortCarsByAirportAsc);
+            break;
+        case 2:
+            aux.sort(sortCarsByAirportDesc);
+            break;
+        case 3:
+            aux.sort(sortCarsByCarriageAsc);
+            break;
+        case 4:
+            aux.sort(sortCarsByCarriageDesc);
+            break;
+        case 5:
+            aux.sort(sortCarsByStacksAsc);
+            break;
+        case 6:
+            aux.sort(sortCarsByStacksDesc);
+            break;
+        case 7:
+            aux.sort(sortCarsByLuggagesStackAsc);
+            break;
+        case 8:
+            aux.sort(sortCarsByLuggagesStackDesc);
+            break;
+        default:
+            cerr << endl << endl << "Invalid choice!\n";
+            return;
+    }
+    int counter = 1;
+    cout << "Order" << " - "<< "Id" << " - " << "Airport" << " - " << "NumCarriages" << " - " << "NumStacks"  << " - " << "NumLuggagesPerStack" << endl;
+    for(LuggageCar &b: aux)
+    {
+        cout << counter << " - " << b << "\n";
+        counter ++;
+    }
+    cout << "type anything to go back";
+    cin >> choice;
+    cin.clear();
+    cin.ignore(INT_MAX,'\n');
+    return;
+
 }
 
 void App::planeCreation()
@@ -897,6 +1264,15 @@ void App::planeFind()
                 updatePlane(b);
                 return;
             }
+            else if(answer == 'N' || answer == 'n')
+            {
+                return;
+            }
+            else
+            {
+                cout << "invalid character! considered as a 'N'" << endl;
+                return;
+            }
         }
     }
     cout << "Plane does not exist" << endl;
@@ -922,6 +1298,15 @@ void App::planeFind()
         a.setCapacity(capacity);
         planes.push_back(a);
         cout << "Plane added!" << endl;
+    }
+    else if(answer == 'N' || answer == 'n')
+    {
+        return;
+    }
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        return;
     }
     return;
 }
@@ -992,7 +1377,15 @@ void App::showPlanes()
             }
         }
     }
-    else aux = planes;
+    else if(choice == 'N' || choice == 'n')
+    {
+        aux = planes;
+    }
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        aux = planes;
+    }
     cout << "how do you want the Planes to be sorted? \n"
          << "1 - Registration asc\n"
          << "2 - Registration desc\n"
@@ -1278,6 +1671,15 @@ void App::flightFind(Plane &plane)
                 updateFlight(flight,plane);
                 return;
             }
+            else if(answer == 'N' || answer == 'n')
+            {
+                return;
+            }
+            else
+            {
+                cout << "invalid character! considered as a 'N'" << endl;
+                return;
+            }
             return;
         }
     }
@@ -1318,6 +1720,15 @@ void App::flightFind(Plane &plane)
         flight.setDuration(duration);
         plane.addFlight(flight);
         cout << "Flight added!" << endl;
+        return;
+    }
+    else if(answer == 'N' || answer == 'n')
+    {
+        return;
+    }
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
         return;
     }
 }
@@ -1463,8 +1874,13 @@ void App::showFlights(Plane &plane)
                 aux.push_back(flight);
         }
     }
+    else if(choice == 'N' || choice == 'n')
+    {
+        aux = plane.getFlights();
+    }
     else
     {
+        cout << "invalid character! considered as a 'N'" << endl;
         aux = plane.getFlights();
     }
     cout << "how do you want the transports to be sorted? \n"
@@ -1817,6 +2233,15 @@ void App::passengerFind()
                 updatePassenger(b);
                 return;
             }
+            else if(answer == 'N' || answer == 'n')
+            {
+                return;
+            }
+            else
+            {
+                cout << "invalid character! considered as a 'N'" << endl;
+                return;
+            }
         }
     }
     cout << "Passenger does not exist" << endl;
@@ -1840,7 +2265,15 @@ void App::passengerFind()
         passengers.push_back(a);
         cout << "Plane added!" << endl;
     }
-    return;
+    else if(answer == 'N' || answer == 'n')
+    {
+        return;
+    }
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        return;
+    }
 }
 
 void App::updatePassenger(Passenger &passenger)
@@ -1901,7 +2334,15 @@ void App::showPassengers()
             }
         }
     }
-    else aux = passengers; //in case the choice was "N"
+    else if(choice == 'N' || choice == 'n')
+    {
+        aux = passengers;;
+    }
+    else
+    {
+        cout << "invalid character! considered as a 'N'" << endl;
+        aux = passengers;
+    }
     cout << "how do you want the Passengers to be sorted? \n"
          << "1 - Name asc\n"
          << "2 - Name desc\n"
@@ -2102,7 +2543,8 @@ void App::ticketCreation(Passenger& passenger)
         char answer;
         cin >> answer;
         if (!cinGood()) return;
-        if (answer == 'n' || answer == 'N') {
+        if(answer == 'N' || answer == 'n')
+        {
             break;
         }
         else if (answer == 'y' || answer == 'Y') {
@@ -2143,6 +2585,11 @@ void App::ticketCreation(Passenger& passenger)
                 }
             }
             cout << "Passenger does not exist" << endl;
+        }
+        else
+        {
+            cout << "invalid character! considered as a 'N'" << endl;
+            break;
         }
     }
 }
@@ -2282,8 +2729,13 @@ void App::ticketFind(Passenger& passenger){
                 cin >> answer;
                 if (!cinGood()) return;
                 if (answer == 'n' || answer == 'N') {break;}
-                if (answer == 'y' || answer == 'Y'){
+                else if (answer == 'y' || answer == 'Y'){
                     updateTicket(t);
+                }
+                else
+                {
+                    cout << "invalid character! considered as a 'N'" << endl;
+                    break;
                 }
             }
             cout << "Ticket not found" << endl;
@@ -2292,7 +2744,7 @@ void App::ticketFind(Passenger& passenger){
             cin >> answer;
             if (!cinGood()) return;
             if (answer == 'n' || answer == 'N') {break;}
-            if (answer == 'y' || answer == 'Y'){
+            else if (answer == 'y' || answer == 'Y'){
                 Ticket a = Ticket(flight);
                 int numBag;
                 cout << "How many luggages is the passenger taking to the flight?"<< endl;
@@ -2308,7 +2760,12 @@ void App::ticketFind(Passenger& passenger){
                 }
                 cout << "Ticket created!" << endl;
             }
-            return;
+            else
+            {
+                cout << "invalid character! considered as a 'N'" << endl;
+                break;
+            }
+            //return;
         }
     }
 }

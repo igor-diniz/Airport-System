@@ -29,7 +29,7 @@ public:
     bool operator==(const Ticket &t) const;
     void setCheckin();
     bool getCheckin() const;
-
+    friend ostream& operator<<(ostream& os , const Ticket& ticket);
     list<Luggage> getTicketLuggages();
 };
 

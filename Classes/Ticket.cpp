@@ -1,5 +1,6 @@
 #include "Ticket.h"
 #include "Flight.h"
+#include "iostream"
 int Ticket::nextid = 0;
 Ticket::Ticket(Flight flightAssocieted){
     nextid++;
@@ -34,3 +35,9 @@ void Ticket::addLuggage(Luggage& luggage)
 bool Ticket::getCheckin() const {return checkin;}
 
 list<Luggage> Ticket::getTicketLuggages(){return ticketLuggages;}
+
+ostream& operator<<(ostream& os , const Ticket& ticket)
+{
+    os << ticket.getID() << " - " << ticket.getFlightAssocited();
+    return os;
+}

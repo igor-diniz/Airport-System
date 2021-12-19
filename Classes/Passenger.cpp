@@ -25,6 +25,11 @@ bool Passenger::buyTicket(Flight &flight, bool haslugg) {
     return true;
 }
 
+void Passenger::removeTicket(Ticket &ticket)
+{
+    tickets.remove(ticket);
+}
+
 /*bool Passenger::buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger,bool>> &passengers) {
     if (flight.getAvailableSeats() < passengers.size() + 1)
         return false;

@@ -18,6 +18,7 @@ public:
     void setName(string name);
     void setPassport(string passport);
     void setTickets(list<Ticket> tickets);
+    void removeTicket(Ticket& ticket);
     string getName() const;
     string getPassport() const;
     bool getCheckin();

@@ -1,5 +1,7 @@
 #include "Flight.h"
 #include <queue>
+#include <sstream>
+
 int Flight::nextid = 0;
 Flight::Flight()
 {
@@ -24,6 +26,36 @@ Flight::Flight(Date &departure,Time duration,Airport &origin,Airport &destinatio
     this->destination = destination;
     this->origin = origin;
 }
+
+Flight::Flight(string CSVflight){
+    stringstream ssFlight;
+    ssFlight << CSVflight;
+
+    string name, passport, airport, initials, date, durationStr, availableSeatsStr;
+
+    //departureDate
+    getline(ssFlight,date,',' );
+    departure = Date(date);
+
+    //duration
+    getline(ssFlight,durationStr,',' );
+    duration = Time(durationStr);
+
+    //origin
+    getline(ssFlight,airport,',' );
+    getline(ssFlight,initials,',' );
+    origin = Airport(airport, initials);
+
+    //destination
+    getline(ssFlight,airport,',' );
+    getline(ssFlight,initials,',' );
+    destination = Airport(airport, initials);
+
+    //availableSeats
+    getline(ssFlight, availableSeatsStr);
+    availableSeats = stoi(availableSeatsStr);
+}
+
 
 int Flight::getId() const {
     return id;

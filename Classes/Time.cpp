@@ -1,5 +1,7 @@
 #include "Time.h"
 #include <sstream>
+#include <iomanip>
+
 /*unsigned stringToInt(string str) //converte uma string para inteiro
 {
     unsigned int number;
@@ -41,6 +43,7 @@ bool Time::operator<(const Time &t1) const
 }
 ostream& operator<<(ostream& os , const Time& time)
 {
-    os << time.getHour() << ":" << time.getMinute();
+    os << setw(2) << setfill('0') << time.getHour() << ":" << setw(2) << setfill('0') << time.getMinute();
     return os;
 }
+

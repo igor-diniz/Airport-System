@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Transport.h"
 Transport::Transport(char type, float distance, Time time)
 {
@@ -6,6 +7,26 @@ Transport::Transport(char type, float distance, Time time)
     this->time = time;
     sort = TIME;
 }
+
+Transport::Transport(string CSVtransport){
+    stringstream ssTransport;
+    string strTime, strDistance;
+
+    ssTransport << CSVtransport;
+    //transportType
+    ssTransport.get(type); ssTransport.get();
+
+    //transportDistance
+    getline(ssTransport, strDistance, ',');
+    distance = stoi(strDistance);
+
+    //waitingTime
+    getline(ssTransport, strTime);
+    time = Time(strTime);
+    sort = TIME;
+}
+
+
 
 void Transport::setDistance(float distance) {this->distance = distance;}
 

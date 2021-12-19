@@ -1,5 +1,7 @@
 #include "Date.h"
 #include <sstream>
+#include <iomanip>
+
 unsigned stringDateToInt(string str) //converte uma string para inteiro
 {
     unsigned int number;
@@ -16,15 +18,16 @@ Date::Date(string date){
 
     ssDay << date[8] << date[9];
     ssDay >> day;
-    ssDay << date[5] << date[6];
-    ssDay >> month;
-    ssDay << date[0] << date[1] << date[2] << date[3];
-    ssDay >> year;
+    ssMonth << date[5] << date[6];
+    ssMonth >> month;
+    ssYear << date[0] << date[1] << date[2] << date[3];
+    ssYear >> year;
 
     this->year = stringDateToInt(year);
     this->month = stringDateToInt(month);
     this->day = stringDateToInt(day);
 }
+
 
 int Date::getYear() const {return year;}
 
@@ -57,7 +60,9 @@ bool Date::operator == (const Date& d1) const{
 }
 ostream& operator<<(ostream& os , const Date& date)
 {
-    os << date.getDay() <<"/" << date.getMonth() << "/" << date.getYear();
+    os << setw(4) << setfill('0') << date.getYear() <<"/"
+       << setw(2) << setfill('0') << date.getMonth() << "/"
+       << setw(2) << setfill('0') << date.getDay();
     return os;
 }
 

@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Plane.h"
 
 Plane::Plane(int capacity,string registration,string type){
@@ -7,6 +8,26 @@ Plane::Plane(int capacity,string registration,string type){
     this->flights = list<Flight>(0);
     servicesToDo = queue<Service>();
 }
+
+Plane::Plane(string CSVplane) {
+    stringstream ssPlane;
+    ssPlane << CSVplane;
+    //capacity
+    string strCapacity;
+    getline(ssPlane, strCapacity, ',');
+    capacity = stoi(strCapacity);
+
+    //registration
+    getline(ssPlane, registration, ',');
+
+    //type
+    getline(ssPlane, type);
+}
+
+void Plane::addOldService(Service &oldService){
+    servicesDone.push(oldService);
+}
+
 
 void Plane::addFlight(Flight &flight)
 {

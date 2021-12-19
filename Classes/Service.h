@@ -12,6 +12,7 @@ private:
     string accountable; //responsável
 
 public:
+    Service(string CSVservice);
     Service(char serviceType, Date date, string accountable);
     char getServiceType() const;
     Date getDate() const;

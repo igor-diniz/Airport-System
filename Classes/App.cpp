@@ -115,50 +115,149 @@ Transport getTransportInfos()
     }
 }
 */
+/*void App::readPassengersFile(const string& passengersFile){
+    ifstream fileToOpen;
+    fileToOpen.open(passengersFile);
+
+    if(!fileToOpen.is_open())
+        cout << "Cannot open Passengers file" << endl;
+    else
+    {
+        string name, passport, ticketIdStr, CSVflight;
+        int ticketId;
+
+        while(!fileToOpen.eof())
+        {
+            //passenger
+            getline(fileToOpen,name,',');
+            getline(fileToOpen,passport);
+            Passenger passenger = Passenger(name, passport);
+
+            //ticketID
+            getline(fileToOpen, ticketIdStr, ',');
+            ticketId = stringToInt(ticketIdStr);
+
+            //flight
+            getline(fileToOpen, CSVflight);
+            fileToOpen.get();
+            Flight flight = Flight(CSVflight);
+
+            //passenger.setTicket(Ticket(ticketId, flight));
+            passengers.push_back(passenger);
+        }
+        fileToOpen.close();
+    }
+}
+*/
 void App::readAirportsFile(const string& airportsFile){
     ifstream fileToOpen;
     fileToOpen.open(airportsFile);
 
     if(!fileToOpen.is_open())
-        cout << endl << "Cannot open this file" << endl;
+        cout << endl << "Cannot open Airports file" << endl;
     else
     {
-        string name, initials, time, distance;
-        char transportType;
-        int transportDistance;
-        Time waitingTime;
-        Transport transport;
-        Airport airport;
+        string name, initials, CSVtransport;
 
         while(!fileToOpen.eof())
         {
-
-            //airportName
+            //airport
             getline(fileToOpen,name,',');
             getline(fileToOpen,initials);
-            airport = Airport(name, initials);
+            Airport airport = Airport(name, initials);
 
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
-                //transportType
-                fileToOpen.get(transportType); fileToOpen.get();
-
-                //transportDistance
-                getline(fileToOpen, distance, ',');
-                transportDistance = stringToInt(distance);
-
-                //waitingTime
-                getline(fileToOpen, time);
-                waitingTime = Time(time);
+                //transports
+                getline(fileToOpen, CSVtransport);
+                Transport transport = Transport(CSVtransport);
+                airport.addTransport(transport);
             }
             fileToOpen.get();
-            transport = Transport(transportType,transportDistance,waitingTime);
-            airport.addTransport(transport);
             airports.push_back(airport);
         }
         fileToOpen.close();
     }
 }
+
+void App::readPlanesFile(const string &planesFile) {
+    ifstream fileToOpen;
+    fileToOpen.open(planesFile);
+
+    if(!fileToOpen.is_open())
+    {
+        cout << endl << "Cannot open Planes file" << endl;
+        return;
+    }
+
+    string CSVvalue, flag;
+
+    while(!fileToOpen.eof())
+    {
+        getline(fileToOpen, CSVvalue);
+        Plane plane = Plane(CSVvalue);
+        //cout << plane << endl;
+        getline(fileToOpen, CSVvalue);
+        flag = "FLIGHTS";
+
+        while(true)
+        {
+            switch (flag[0])
+            {
+                case ('F'):
+                    getline(fileToOpen, CSVvalue);
+                    if (CSVvalue == "NEW_SERVICES")
+                    {
+                        flag = "NEW_SERVICE";
+                        break;
+                    }
+
+                    else{
+                        Flight flight = Flight(CSVvalue);
+                        //cout << flight << endl;
+                        plane.addFlight(flight);
+                        break;
+                    }
+
+                case('N'):
+                    getline(fileToOpen, CSVvalue);
+
+                    if (CSVvalue == "OLD_SERVICES")
+                    {
+                        flag = "OLD_SERVICES";
+                        break;
+                    }
+
+                    else{
+                        Service newService = Service(CSVvalue);
+                        //cout << newService.getServiceType() << endl;
+                        plane.addService(newService);
+                        break;
+                    }
+
+
+                case('O'):
+                    if(fileToOpen.peek() == '\n') {
+                        flag = "PLANE";
+                        break;
+                    }
+                    getline(fileToOpen, CSVvalue);
+
+                    Service oldService = Service(CSVvalue);
+                    //cout << "OLD" << oldService.getServiceType() << endl;
+                    plane.addOldService(oldService);
+                    break;
+            }
+            if(fileToOpen.eof() || fileToOpen.peek() == '\n')
+            {
+                fileToOpen.get();
+                break;
+            }
+        }
+    }
+    fileToOpen.close();
+}
+
 
 vector<int> App::possibleChoices() {
     vector<int> options = {0,1,11,12,13,14,15,21,22,23,24,31,32,33,34,35,36,41,42,43,44,45};
@@ -1747,56 +1846,6 @@ void App::updatePassenger(Passenger &passenger)
 }
 
 void App::TicketMenu() {
-    /*
-    int id;
-    Date departure;
-    int day,month,year;
-    Airport origin;
-    string initials;
-    cout << "What flight shall the managed ticked refer to?\n"
-    cout << "Origin Airport (initials): "; cin >> initials;
-    if(!checkAirportExists(initials,origin))
-    {
-        string choice;
-        cout << "Airport does not exist!" << endl;
-        cout << "type anything to go back";
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX,'\n');
-        return;
-    }
-    cout << endl;
-    cout << "Day: "; cin >> day;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Month: "; cin >> month;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Year: "; cin >> year;
-    if (!cinGood()) return;
-    cout << "\n";
-    departure = Date(year,month,day);
-    origin = Airport("",initials);
-    Flight flight = Flight(departure,origin);
-    cout << "\n";
-    bool exists = false
-    for (Plane &b: planes) {
-        for(Flight &c: b.getFlights()){
-            if (c == flight) {
-                flight = c;
-                exists = true;
-                break;
-            }
-        }
-    }
-    if (!exists) {
-        cout << "The given flight does not exist " << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
-        return;*/
     string passport;
     cout << "From what Passenger should we manage the tickets? \n"
          << "Passport: ";
@@ -1863,6 +1912,7 @@ void App::TicketMenu() {
         }
     }
 }
+
 void App::ticketCreation(Passenger passenger)
 {
     string passport;
@@ -2057,6 +2107,7 @@ void App::ticketDeletion(Passenger passenger)
         return;
     }
 }
+
 void App::ticketFind(Passenger passenger){
     {
         int id;

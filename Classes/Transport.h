@@ -15,6 +15,7 @@ class Transport{
     Time time; //ainda tem q fazer isso aqui
     SortPossibilites sort;
 public:
+    Transport(string CSVtransport);
     Transport(){};
     Transport(char type,float distance,Time time);
     char getType() const;

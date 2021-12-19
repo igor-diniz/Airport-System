@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Service.h"
 #include "iostream"
 using namespace std;
@@ -15,6 +16,22 @@ Date Service::getDate() const {return date;}
 string Service::getAccountable() const {return accountable;}
 
 void Service::setAccountable(string accountable) {this->accountable = accountable;}
+
+Service::Service(string CSVservice){
+    stringstream ssService;
+    ssService << CSVservice;
+
+    //type
+    ssService.get(serviceType); ssService.get();
+
+    //date
+    string strDate;
+    getline(ssService, strDate,',');
+    date = strDate;
+
+    //accountable
+    getline(ssService, accountable);
+}
 
 void Service::setDate(Date date) {this->date = date;}
 

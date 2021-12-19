@@ -74,6 +74,8 @@ private:
 
 
     void TicketMenu();
+
+    void ticketCreation(Passenger passenger);
 };
 
 

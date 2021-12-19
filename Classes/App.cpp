@@ -1850,7 +1850,7 @@ void App::TicketMenu()
             case 0:
                 return;
             case 1:
-                ticketCreation(flight);
+                ticketCreation(passenger);
                 break;
             case 2:
                 ticketDeletion(flight);
@@ -1866,14 +1866,98 @@ void App::TicketMenu()
         }
     }
 
-void App::ticketCreation()
+void App::ticketCreation(Passenger passenger)
+{
+    list <Passenger> buyingPassengers;
+    buyingPassengers.push_back(passenger);
+    int id;
+    Date departure;
+    int day,month,year;
+    Airport origin;
+    string initials;
+    cout << "What flight shall the ticked be created for?\n";
+    cout << "Origin Airport (initials): "; cin >> initials;
+    if(!checkAirportExists(initials,origin))
+    {
+        string choice;
+        cout << "Airport does not exist!" << endl;
+        cout << "Type anything to go back";
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX,'\n');
+        return;
+    }
+    cout << endl;
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    origin = Airport("",initials);
+    Flight flight = Flight(departure,origin);
+    cout << "\n";
+    Plane plane;
+    bool exists = false;
+    for (Plane &b: planes) {
+        for(Flight &c: b.getFlights()){
+            if (c == flight) {
+                plane = b;
+                flight = c;
+                exists = true;
+                break;
+            }
+        }
+    }
+    if (!exists) {
+        cout << "The given flight does not exist " << endl;
+        cout << "Type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+    }
+    cout << "Do you want to buy extra tickets for the same flight?(Y/N)" << endl;
+    char answer;
+    cin >> answer;
+    if(!cinGood()) return;
+    if(answer == 'y' || answer == 'Y')
+    {
+        updatePassenger(b);
+        return;
+    }
+
+/*
+    //string registration,type;
+    //int capacity;
+    Ticket a = Ticket(flight);
+    for(Ticket &b : passenger.getTickets())
+    {
+        if(b == a)
+        {
+            cout <<"This Ticket already exists \n";
+            return;
+        }
+    }
+    passenger.addTicket(a);
+    cout << "Ticket added \n";
+    return;
+    */
+}
+
+void App::ticketCreation(Passenger passenger)
 {
     int id;
     Date departure;
     int day,month,year;
     Airport origin;
     string initials;
-    cout << "What flight shall the ticked be created for?\n"
+    cout << "What flight shall the ticked be deleted from?\n";
     cout << "Origin Airport (initials): "; cin >> initials;
     if(!checkAirportExists(initials,origin))
     {
@@ -1900,11 +1984,11 @@ void App::ticketCreation()
     Flight flight = Flight(departure,origin);
     cout << "\n";
     Plane plane;
-    bool exists = false
+    bool exists = false;
     for (Plane &b: planes) {
         for(Flight &c: b.getFlights()){
             if (c == flight) {
-                plane = b
+                plane = b;
                 flight = c;
                 exists = true;
                 break;
@@ -1924,15 +2008,14 @@ void App::ticketCreation()
     //string registration,type;
     //int capacity;
     Ticket a = Ticket(flight);
-    for(Passenger &b : passengers)
+    for(Ticket &b : passenger.getTickets())
     {
         if(b == a)
         {
-            cout <<"This Plane already exists \n";
-            return;
+            passenger.removeTicket(b);
         }
     }
-    planes.push_back(a);
+    passenger.addTicket(a);
     cout << "Plane added \n";
     return;
 }

@@ -26,6 +26,12 @@ bool Ticket::operator==(const Ticket &t) const{
 
 void Ticket::setCheckin() {checkin = true;}
 
+void Ticket::removeLuggage()
+{
+    if(!ticketLuggages.empty())
+    ticketLuggages.pop_front();
+}
+
 void Ticket::addLuggage(Luggage& luggage)
 {
     ticketLuggages.push_back(luggage);

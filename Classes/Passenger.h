@@ -23,7 +23,7 @@ public:
     string getPassport() const;
     bool getCheckin();
     void setCheckin();
-    bool buyTicket(Flight &flight, bool haslugg);
+    bool addTicket(Ticket &ticket);
     bool buyTicket(Flight &flight, bool haslugg, const vector<pair<Passenger, bool>> &passengers);
     bool operator == (const Passenger &b);
     void Checkin(Ticket ticket);

@@ -15,13 +15,11 @@ list<Ticket> Passenger::getTickets() const{
     return tickets;
 }
 
-bool Passenger::buyTicket(Flight &flight, bool haslugg) {
-    if(flight.getAvailableSeats() < 1)
+bool Passenger::addTicket(Ticket &ticket) {
+    if(ticket.getFlightAssocited().getAvailableSeats() < 1)
         return false;
-    Ticket ticket(flight);
-    if(haslugg) ticket.setLuggageIncluded();
     tickets.push_back(ticket);
-    flight.setAvailableSeats(flight.getAvailableSeats() - 1);
+    ticket.getFlightAssocited().setAvailableSeats(ticket.getFlightAssocited().getAvailableSeats() - 1);
     return true;
 }
 
@@ -59,10 +57,10 @@ void Passenger::removeTicket(Ticket &ticket)
     }
     return true;
 }*/
-void Passenger::Checkin(Ticket ticket){
+/*void Passenger::Checkin(Ticket ticket){
     ticket.getFlightAssocited().addLuggageToQueue(ticket.getTicketLuggages());
     ticket.setCheckin();
-}
+}*/
 
 void Passenger::setTickets(list<Ticket> tickets){
     this->tickets = tickets;

@@ -10,7 +10,7 @@ using namespace std;
 class Passenger {
 private:
     string name, passport;
-    list<Ticket> tickets;
+    list<Ticket> tickets; ///All tickets bought/added to this passenger
 
 public:
     Passenger() = default;

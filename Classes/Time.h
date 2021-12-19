@@ -10,7 +10,7 @@ class Time {
 public:
     Time(){};
     Time(int hour, int minutes = 0);
-    Time(string time); // "HH:MM" format
+    Time(string time); /// "HH:MM" format
     int getHour() const;
     int getMinute() const;
     void setHour(int hour);

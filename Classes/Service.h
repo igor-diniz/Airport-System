@@ -7,7 +7,7 @@ class Service {
 private:
     char serviceType;
     Date date;
-    string accountable;
+    string accountable; ///The worker that is responsible for the service
 
 public:
     explicit Service(string CSVservice);

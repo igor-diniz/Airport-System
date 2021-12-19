@@ -4,8 +4,8 @@
 
 class Luggage {
 private:
-    static int nextId;
-    int id;
+    static int nextId; ///incrementor for next luggage creation
+    int id; ///actual luggage id
 public:
     Luggage();
     int getId() const;

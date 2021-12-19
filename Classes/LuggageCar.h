@@ -7,12 +7,12 @@
 
 class LuggageCar {
 private:
-    static int nextid;
-    int id;
-    int numCarriages, stacksPerCarriage, luggagesPerStack;
+    static int nextid; ///incrementor for next luggage car creation
+    int id; ///actual luggage car id
+    int numCarriages, stacksPerCarriage, luggagesPerStack; ///respectively refers to the utterance's "c","n" and "m"
     Airport airport;
-    list<list<stack<Luggage>>> luggageInCar;
-    int availability;
+    list<list<stack<Luggage>>> luggageInCar; ///All the luggage already assigned to this car
+    int availability; ///All the empty "slots" left on the car
 public:
     int getId() const;
     LuggageCar(){};

@@ -12,8 +12,8 @@ class Plane{
 private:
     int capacity;
     string registration;
-    string type;
-    list<Flight> flights;
+    string type; ///The project utterance refers to this as "type", but the correct name would be "model"
+    list<Flight> flights; ///Aircraft flight plan
     queue<Service> servicesToDo;
     stack<Service> servicesDone;
 

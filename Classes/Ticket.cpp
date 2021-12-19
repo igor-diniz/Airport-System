@@ -38,7 +38,6 @@ void Ticket::removeLuggage()
 void Ticket::addLuggage(Luggage& luggage)
 {
     ticketLuggages.push_back(luggage);
-    //flightAssocieted.addLuggageToQueue(luggage);
 }
 
 bool Ticket::getCheckin() const {return checkin;}

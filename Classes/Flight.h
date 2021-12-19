@@ -11,14 +11,14 @@
 class Flight {
 private:
 
-    static int nextid;
-    int id;
-    int availableSeats;
+    static int nextid; ///Incrementor for next flight creation
+    int id; ///Actual flight id
+    int availableSeats; ///Total of empty seats on the flight
     Date departure;
-    Time duration;
+    Time duration; ///Flight duration
     Airport destination, origin;
-    queue<Luggage> flightLuggages;
-    queue<Luggage> luggagesOutCar;
+    queue<Luggage> flightLuggages; ///List of luggages that are going in the flight
+    queue<Luggage> luggagesOutCar; ///List of luggages that still need to be assigned to a car
 
 public:
     explicit Flight(string CSVflight);

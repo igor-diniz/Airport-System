@@ -1,9 +1,6 @@
 
 #ifndef TP1_AED_TRANSPORT_H
 #define TP1_AED_TRANSPORT_H
-//Um local
-//de transporte terrestre é caracterizado, no mínimo, por tipo de transporte (metro, autocarro, comboio), distância
-//ao aeroporto, horário.
 #include <list>
 #include "Time.h"
 #include <iostream>
@@ -11,7 +8,7 @@
 class Transport{
     char type;
     float distance;
-    Time time; //ainda tem q fazer isso aqui
+    Time time;
 public:
     explicit Transport(string CSVtransport);
     Transport(){};

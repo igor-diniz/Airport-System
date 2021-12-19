@@ -15,3 +15,5 @@ add_executable(TP1_AED main.cpp Classes/Plane.cpp Classes/Plane.h Classes/Flight
         Classes/Time.cpp Classes/Time.h Classes/App.cpp Classes/App.h)
 
 target_link_libraries(TP1_AED gtest gtest_main)
+
+#Doxygen Build have made with Doxygen Wizard

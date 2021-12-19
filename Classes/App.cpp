@@ -272,6 +272,33 @@ void App::readPlanesFile(const string &planesFile) {
     fileToOpen.close();
 }
 
+void readLuggageCarsFile(const string& luggageCarsFile){
+    ifstream fileToOpen;
+    fileToOpen.open(luggageCarsFile);
+
+    if(!fileToOpen.is_open())
+        cout << "Cannot open luggageCars file." << endl;
+
+    else
+    {
+        string strLuggageCar, strLuggage;
+        LuggageCar luggageCar;
+        Luggage luggage;
+        while(!fileToOpen.eof())
+        {
+           getline(fileToOpen, strLuggageCar);
+           luggageCar = LuggageCar(strLuggageCar);
+
+           while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
+           {
+               getline(fileToOpen, strLuggage);
+               luggage = Luggage(strLuggage);
+           }
+        }
+    }
+}
+
+
 
 vector<int> App::possibleChoices() {
     vector<int> options = {0,1,11,12,13,14,15,21,22,23,24,31,32,33,34,35,36,41,42,43,44,45};

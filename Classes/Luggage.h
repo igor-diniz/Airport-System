@@ -1,5 +1,8 @@
 #ifndef TP1_AED_LUGGAGE_H
 #define TP1_AED_LUGGAGE_H
+#include <string>
+
+using namespace std;
 
 
 class Luggage {
@@ -8,6 +11,7 @@ private:
     int id; ///actual luggage id
 public:
     Luggage();
+    Luggage(string CSVluggage);
     int getId() const;
     ///
     /// \param luggage luggages are compared by ID

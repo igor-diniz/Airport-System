@@ -7,6 +7,10 @@ Luggage::Luggage(){
     id = nextId;
 }
 
+Luggage::Luggage(string CSVluggage){
+    id = stoi(CSVluggage);
+}
+
 int Luggage::getId() const
 {
     return id;

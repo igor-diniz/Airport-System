@@ -1865,7 +1865,7 @@ void App::TicketMenu()
                 cout << "not a possibilite" << endl;
         }
     }
-}
+
 void App::ticketCreation()
 {
     int id;
@@ -1873,7 +1873,7 @@ void App::ticketCreation()
     int day,month,year;
     Airport origin;
     string initials;
-    cout << "What flight shall the managed ticked refer to?\n"
+    cout << "What flight shall the ticked be created for?\n"
     cout << "Origin Airport (initials): "; cin >> initials;
     if(!checkAirportExists(initials,origin))
     {
@@ -1899,10 +1899,12 @@ void App::ticketCreation()
     origin = Airport("",initials);
     Flight flight = Flight(departure,origin);
     cout << "\n";
+    Plane plane;
     bool exists = false
     for (Plane &b: planes) {
         for(Flight &c: b.getFlights()){
             if (c == flight) {
+                plane = b
                 flight = c;
                 exists = true;
                 break;
@@ -1917,17 +1919,22 @@ void App::ticketCreation()
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         return;
+    }
 
-    for(Flight b: plane.getFlights())
+    //string registration,type;
+    //int capacity;
+    Ticket a = Ticket(flight);
+    for(Passenger &b : passengers)
     {
-        if(b.equals(flight))
+        if(b == a)
         {
-            cout << "This flight already exists" << endl;
+            cout <<"This Plane already exists \n";
             return;
         }
     }
-    plane.addFlight(flight);
-    cout << "Flight added \n";
+    planes.push_back(a);
+    cout << "Plane added \n";
+    return;
 }
 
 

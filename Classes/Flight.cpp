@@ -52,6 +52,10 @@ void Flight::setAvailableSeats(int availableSeats){
     this->availableSeats = availableSeats;
 }
 
+void Flight::reduceAvailableSeats(){
+    availableSeats -= 1;
+}
+
 
 //Plane Flight::getPlaneAssocieted() const{
     //return planeAssociated;

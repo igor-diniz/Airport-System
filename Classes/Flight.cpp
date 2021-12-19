@@ -84,7 +84,10 @@ queue<Luggage> Flight::getLuggagesOutCar() const
 
 //void Flight::setLuggageTotal(int qntd) {luggageTotal += qntd;}
 
-void Flight::addLuggageToQueue(list<Luggage> Luggages) {for(auto L:Luggages){flightLuggages.push(L);luggagesOutCar.push(L);}}
+void Flight::addLuggageToQueue(Luggage luggages) {
+    flightLuggages.push(luggages);
+    luggagesOutCar.push(luggages);
+}
 
 void Flight::luggagesToCar(LuggageCar& Car) {
     luggagesOutCar = Car.setLuggageInCar(luggagesOutCar);

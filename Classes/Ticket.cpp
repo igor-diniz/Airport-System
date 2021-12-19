@@ -25,9 +25,10 @@ bool Ticket::operator==(const Ticket &t) const{
 
 void Ticket::setCheckin() {checkin = true;}
 
-void Ticket::addLuggage(Luggage luggage)
+void Ticket::addLuggage(Luggage& luggage)
 {
     ticketLuggages.push_back(luggage);
+    flightAssocieted.addLuggageToQueue(luggage);
 }
 
 bool Ticket::getCheckin() const {return checkin;}

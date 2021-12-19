@@ -39,7 +39,7 @@ public:
     bool equals (const Flight& flight) const;
     int getLuggageTotal();
     //void setLuggageTotal(int qntd);
-    void addLuggageToQueue(list<Luggage> Luggages);
+    void addLuggageToQueue(Luggage Luggages);
     void setLuggagesOutCar(list<Luggage> &alista);
     bool operator==(const Flight &f) const;
     Time getDuration() const;

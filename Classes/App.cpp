@@ -2171,7 +2171,6 @@ void App::showServicesDone(Plane &plane)
 
 void App::passengerCreation()
 {
-    //não cria lista de tickets
     string name,passport;
     cout << "give the Passenger specifications : \n"
          << "name: "; cin >> name;    cout << "\n";

@@ -9,6 +9,9 @@ private:
 public:
     Luggage();
     int getId() const;
+    ///
+    /// \param luggage luggages are compared by ID
+    ///
     bool operator==(const Luggage& luggage);
 };
 

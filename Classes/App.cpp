@@ -1048,6 +1048,17 @@ void App::luggageCarFind()
                 {
                     luggageCar1.setAirport(airport);
                     cout << "Luggage car updated to new airport!" << endl;
+                    cout << "should the Luggages be cleared from the car?" << endl;
+                    cin >> answer;
+                    if(!cinGood()) return;
+                    if(answer == 'y'||answer == 'Y')
+                    {
+                        luggageCar1.clear();
+                    }
+                    else if(answer != 'N' && answer != 'n')
+                    {
+                        cout << "invalid character! considered as a 'N'" << endl;
+                    }
                 }
             }
         }

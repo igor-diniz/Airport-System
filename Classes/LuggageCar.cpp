@@ -62,6 +62,16 @@ int LuggageCar::getNumLuggagesPerStack() const {return luggagesPerStack;}
 int LuggageCar::getId() const{
     return id;
 }
+
+void LuggageCar::clear()
+{
+    while(!luggageInCar.empty())
+    {
+        luggageInCar.pop_back();
+    }
+    availability = luggagesPerStack * stacksPerCarriage * numCarriages;
+}
+
 bool LuggageCar::operator==(const LuggageCar &luggageCar)
 {
     return airport == luggageCar.getAirport() && numCarriages == luggageCar.getNumCarriages() && stacksPerCarriage == luggageCar.getNumStacks()

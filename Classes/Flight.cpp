@@ -113,9 +113,9 @@ queue<Luggage> Flight::getLuggagesOutCar() const
     return luggagesOutCar;
 }
 
-void Flight::addLuggageToQueue(Luggage luggages) {
-    flightLuggages.push(luggages);
-    luggagesOutCar.push(luggages);
+void Flight::addLuggageToQueue(Luggage luggage) {
+    flightLuggages.push(luggage);
+    luggagesOutCar.push(luggage);
 }
 
 void Flight::luggagesToCar(LuggageCar& Car) {

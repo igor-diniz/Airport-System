@@ -19,11 +19,32 @@ private:
 
 public:
     Plane() = default;
+    ///
+    /// \param capacity the Plane capacity
+    /// \param registration the Plane registration (PRIMARY KEY)
+    /// \param type the Plane type (A310,B737,...)
     Plane(int capacity,string registration,string type);
+    ///
+    /// \param CSVplane Plane in string format
+    /// this constructor is used to get Plane read from file manipulation
+    ///
     explicit Plane(string CSVplane);
+    ///
+    /// \param flight Flight that will be added to the flights list
+    ///
     void addFlight(Flight &flight);
+    ///
+    /// \param service that will be added to the services to do list
+    ///
     void addService(Service &service);
+    ///
+    /// \param oldService Service that will be added to the services done stack
+    /// this method is mostly used by the read from file manipulation
+    ///
     void addOldService(Service &oldService);
+    ///
+    /// puts the first Service on the queue into the services done stack
+    ///
     void popService();
     queue<Service> getServicesToDo();
     stack<Service> getServicesDone();
@@ -34,8 +55,18 @@ public:
     string getType() const;
     void setType(string type);
     list<Flight> getFlights();
+    ///
+    /// \param id from the Flight to be deleted, returns true if it was successfully deleted
+    ///
     bool deleteFlight(int id);
-    bool operator == (const Plane &b);
+    ///
+    /// \param plane planes are compared by registration
+    ///
+    bool operator == (const Plane &plane);
+    ///
+    /// \param os
+    /// \param plane planes are showed in the form Registration - Type - Capacity
+    ///
     friend ostream& operator<<(ostream& os , const Plane& plane);
 
 };

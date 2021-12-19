@@ -27,8 +27,8 @@ void Passenger::removeTicket(Ticket &ticket)
     tickets.remove(ticket);
 }
 
-bool Passenger::operator == (const Passenger &b){
-    return passport == b.getPassport();
+bool Passenger::operator == (const Passenger &passenger){
+    return passport == passenger.getPassport();
 };
 
 ostream& operator<<(ostream& os , const Passenger& passenger)

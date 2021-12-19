@@ -67,7 +67,7 @@ public:
     ///
     /// \param os
     /// \param date a Date
-    /// the dates are show in the form year/month/day
+    /// the dates are showed in the form year/month/day
     /// \return
     friend ostream& operator<<(ostream& os , const Date& date);
 };

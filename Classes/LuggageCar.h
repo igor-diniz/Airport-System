@@ -16,15 +16,37 @@ private:
 public:
     int getId() const;
     LuggageCar(){};
+    ///
+    /// \param airport the Airport of the LuggageCar
+    /// \param numCarriages the max number of carriages the car handles
+    /// \param stacksPerCarriage the max number of stacks each carriage handles
+    /// \param luggagesPerStack the max number of luggages a stack can handle
+    ///
     LuggageCar(Airport airport,int numCarriages, int stacksPerCarriage, int luggagesPerStack);
-    void setLuggageOutCar(list<Luggage> Luggages);
     void setAirport(Airport& airport1);
     Airport getAirport() const;
     int getNumCarriages() const;
     int getNumStacks() const;
+    ///
+    /// makes the luggage In Car empty and updates the availability
+    ///
+    void clear();
     int getNumLuggagesPerStack() const;
+    ///
+    /// \param luggageCar
+    /// Luggage cars are the same if all attributes are equal except de ID
+    ///
     bool operator ==(const LuggageCar& luggageCar);
+    ///
+    /// \param luggageOutCar a Luggage queue
+    /// this will put all the luggages from luggageOutCar into the LuggageInCar of the car until the car is full
+    /// returns the remaining luggages in a queue
+    ///
     queue<Luggage> setLuggageInCar(queue<Luggage> &luggageOutCar);
+    ///
+    /// \param os
+    /// \param luggageCar Luggage cars are showed in the form ID - Airport - num Carriages - stacks per carriage - luggages per stack
+    /// \return
     friend ostream& operator<<(ostream& os , const LuggageCar& luggageCar);
 };
 

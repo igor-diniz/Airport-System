@@ -574,14 +574,6 @@ stack
 queue
 -
 
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.cpp
-Date.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
-sstream
--
-iomanip
--
-
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
 string
 -
@@ -603,6 +595,10 @@ Date.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
 LuggageCar.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/LuggageCar.h
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.cpp
+Luggage.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
 
@@ -682,9 +678,23 @@ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Flight.h
 Luggage.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
 
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.cpp
+Time.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
+sstream
+-
+iomanip
+-
+
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Time.h
 string
 -
+
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.cpp
+sstream
+-
+Transport.h
+C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Transport.h
 list

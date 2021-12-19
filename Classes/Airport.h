@@ -54,7 +54,7 @@ public:
     bool operator <(const Airport& airport) const;
     ///
     /// \param os
-    /// \param air Airport are show in the order name - initials
+    /// \param air Airport are showed in the order name - initials
     ///
     friend ostream& operator<<(ostream& os , const Airport& air);
 

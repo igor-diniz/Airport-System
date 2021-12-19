@@ -22,7 +22,12 @@ bool Ticket::operator==(const Ticket &t) const{
     return id == t.getID();
 }
 
-void Ticket::setCheckin() {checkin = true;}
+void Ticket::setCheckin() {
+    for(auto l: ticketLuggages){
+        flightAssocieted.addLuggageToQueue(l);
+    }
+    checkin = true;
+}
 
 void Ticket::removeLuggage()
 {
@@ -33,7 +38,7 @@ void Ticket::removeLuggage()
 void Ticket::addLuggage(Luggage& luggage)
 {
     ticketLuggages.push_back(luggage);
-    flightAssocieted.addLuggageToQueue(luggage);
+    //flightAssocieted.addLuggageToQueue(luggage);
 }
 
 bool Ticket::getCheckin() const {return checkin;}

@@ -77,6 +77,7 @@ private:
     void readPlanesFile(const string& planesFile);
     void readLuggageCarsFile(const string& luggageCarsFile);
 
+    void checkin(Passenger &passenger);
 };
 
 

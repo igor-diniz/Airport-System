@@ -2312,6 +2312,7 @@ void App::ticketFind(Passenger& passenger){
         }
     }
 }
+
 void App::updateTicket(Ticket& ticket){
     int newLug;
     cout << "Are you adding or removing luggages? (A/R)" << endl;
@@ -2386,5 +2387,72 @@ void App::showTicket(Passenger& passenger)
     return;
 
 }
+
+void App::checkin(Passenger& passenger)
+{
+    int id;
+    Date departure;
+    int day,month,year;
+    Airport origin;
+    string initials;
+    cout << "What flight shall the ticked be deleted from?\n";
+    cout << "Origin Airport (initials): "; cin >> initials;
+    if(!checkAirportExists(initials,origin))
+    {
+        string choice;
+        cout << "Airport does not exist!" << endl;
+        cout << "type anything to go back";
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX,'\n');
+        return;
+    }
+    cout << endl;
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    origin = Airport("",initials);
+    Flight flight = Flight(departure,origin);
+    cout << "\n";
+    Plane plane;
+    bool exists = false;
+    for (Plane &b: planes) {
+        for(Flight &c: b.getFlights()){
+            if (c == flight) {
+                plane = b;
+                flight = c;
+                exists = true;
+                break;
+            }
+        }
+    }
+    if (!exists) {
+        cout << "The given flight does not exist " << endl;
+        cout << "Type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+    }
+
+    for(Ticket &t : passenger.getTickets())
+    {
+        if(flight == t.getFlightAssocited())
+        {
+            cout << "Ticket found!" << endl;
+            t.setCheckin();
+            cout << "Checkin completed" <<endl;
+            }
+        }
+}
+
 
 

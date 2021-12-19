@@ -14,6 +14,7 @@ private:
     list<Luggage> ticketLuggages;
 
 public:
+    Ticket(){};
     explicit Ticket(Flight flightAssocieted);
     int getID() const;
     void setID(int id);

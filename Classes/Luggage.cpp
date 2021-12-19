@@ -1,6 +1,6 @@
 #include "Luggage.h"
 
-int Luggage::nextId = 1;
+int Luggage::nextId = 0;
 
 Luggage::Luggage(){
     nextId++;

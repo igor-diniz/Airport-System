@@ -21,7 +21,7 @@ private:
     queue<Luggage> luggagesOutCar;
 
 public:
-    explicit Flight(string CSVflight);
+    Flight(string CSVflight);
     Flight();
     Flight(Date &departure,Airport &origin); //just with the key
     Flight(Date &departure,Time duration,Airport &origin,Airport &destination,int availableSeats);

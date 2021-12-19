@@ -1,17 +1,10 @@
 #include "App.h"
 #include "SortForms.cpp"
 #include <algorithm>
-
-unsigned App::stringToInt(string str) //converte uma string para inteiro
-{
-    unsigned int number;
-    stringstream convert_string(str);
-    convert_string >> number;
-    return number;
-}
+#include <cassert>
 
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
-    //readPassengersFile(passengersFile);
+    readPassengersFile(passengersFile);
     readPlanesFile(planesFile);
     //this->readLuggageCarsFile(luggageCarsFile);
     readAirportsFile(airportsFile);
@@ -58,97 +51,101 @@ Transport getTransportInfos()
     return transp;
 }
 
-/*void App::readPassengersFile(const string& passengersFile){
+void App::readPassengersFile(const string &passengersFile) {
     ifstream fileToOpen;
     fileToOpen.open(passengersFile);
 
     if(!fileToOpen.is_open())
-        cout << "Cannot open this file" << endl;
-    else
     {
-        string name, passport, airport, initials, date, durationStr, availableSeatsStr, ticketIdStr;
-        Date departure;
-        Time duration;
-        Airport origin, destination;
-        int availableSeats, ticketId;
-
-        while(!fileToOpen.eof())
-        {
-
-            //passenger
-            getline(fileToOpen,name,',');
-            getline(fileToOpen,passport);
-            Passenger passenger = Passenger(name, passport);
-
-            //ticketID
-            getline(fileToOpen, ticketIdStr, ',');
-            ticketId = stringToInt(ticketIdStr);
-
-            //departureDate
-            getline(fileToOpen,date,',' );
-            departure = Date(date);
-
-            //duration
-            getline(fileToOpen,durationStr,',' );
-            duration = Time(duration);
-
-            //origin
-            getline(fileToOpen,airport,',' );
-            getline(fileToOpen,initials,',' );
-            origin = Airport(airport, initials);
-
-            //destination
-            getline(fileToOpen,airport,',' );
-            getline(fileToOpen,initials,',' );
-            destination = Airport(airport, initials);
-
-            //availableSeats
-            getline(fileToOpen, availableSeatsStr);
-            availableSeats = stringToInt(availableSeatsStr);
-            fileToOpen.get();
-
-            Flight flight = Flight(departure, duration, origin, destination, availableSeats);
-            passenger.setTicket(Ticket(ticketId, flight));
-            passengers.push_back(passenger);
-        }
-        fileToOpen.close();
+        cout << endl << "Cannot open Passengers file" << endl;
+        return;
     }
-}
-*/
-/*void App::readPassengersFile(const string& passengersFile){
-    ifstream fileToOpen;
-    fileToOpen.open(passengersFile);
 
-    if(!fileToOpen.is_open())
-        cout << "Cannot open Passengers file" << endl;
-    else
+    string name, passport, CSVvalue, flag;
+
+
+    while(!fileToOpen.eof())
     {
-        string name, passport, ticketIdStr, CSVflight;
-        int ticketId;
+        Ticket ticket;
+        //passenger
+        getline(fileToOpen,name,',');
+        getline(fileToOpen,passport);
+        Passenger passenger = Passenger(name, passport);
+        //cout << passenger << endl;
+        getline(fileToOpen, CSVvalue);
+        flag = "FLIGHT";
 
-        while(!fileToOpen.eof())
+        while(true)
         {
-            //passenger
-            getline(fileToOpen,name,',');
-            getline(fileToOpen,passport);
-            Passenger passenger = Passenger(name, passport);
+            switch (flag[0])
+            {
+                case ('F'):
+                    getline(fileToOpen, CSVvalue);
 
-            //ticketID
-            getline(fileToOpen, ticketIdStr, ',');
-            ticketId = stringToInt(ticketIdStr);
+                    if (CSVvalue == "LUGGAGES")
+                    {
+                        flag = "LUGGAGES";
+                        break;
+                    }
 
-            //flight
-            getline(fileToOpen, CSVflight);
-            fileToOpen.get();
-            Flight flight = Flight(CSVflight);
+                    else{
+                        Flight flight = Flight(CSVvalue);
+                        //cout << flight << endl;
+                        ticket = Ticket(flight);
+                        //cout << ticket << endl;
 
-            //passenger.setTicket(Ticket(ticketId, flight));
-            passengers.push_back(passenger);
+                        if(fileToOpen.peek() == '\n')
+                        {
+                            flag = "";
+                            break;
+                        }
+                        break;
+                    }
+
+                case('L'):
+
+                    getline(fileToOpen, CSVvalue);
+
+                    if (CSVvalue == "FLIGHT")
+                    {
+                        flag = "FLIGHT";
+                        passenger.addTicket(ticket);
+                        //cout << ticket << endl;
+                        break;
+                    }
+
+                    else{
+                        Luggage luggage = Luggage();
+                        assert(luggage.getId() == stoi(CSVvalue));
+                        //cout << luggage.getId() << endl;
+                        ticket.addLuggage(luggage);
+
+                        if(fileToOpen.peek() == '\n')
+                        {
+                            flag = "";
+                            break;
+                        }
+                        break;
+                    }
+            }
+            if(fileToOpen.eof() || fileToOpen.peek() == '\n')
+            {
+                fileToOpen.get();
+                passenger.addTicket(ticket);
+                //cout << ticket << endl;
+                break;
+            }
         }
-        fileToOpen.close();
+        passengers.push_back(passenger);
     }
+    /*for(Passenger p : passengers) {
+        cout << p << endl;
+        for (Ticket t: p.getTickets())
+            cout << t << endl;
+    }*/
+    fileToOpen.close();
 }
-*/
+
 void App::readAirportsFile(const string& airportsFile){
     ifstream fileToOpen;
     fileToOpen.open(airportsFile);
@@ -256,6 +253,22 @@ void App::readPlanesFile(const string &planesFile) {
         }
         planes.push_back(plane);
     }
+    /*queue<Service> std;
+    stack<Service> sd;
+    for(Plane p : planes) {
+        cout << endl << p << endl;
+        std = p.getServicesToDo();
+        sd = p.getServicesDone();
+        while(!std.empty()){
+            cout << std.front() << endl;
+            std.pop();
+        }
+        cout << "OLD" << endl;
+        while(!sd.empty()){
+            cout << sd.top() << endl;
+            sd.pop();
+        }
+    }*/
     fileToOpen.close();
 }
 
@@ -345,7 +358,7 @@ void App::mainMenu()
             case 44: showPassengers(); break;
             case 45: ticketMenu(); break;
             default:
-                cout << "invalid choice!";
+                cout << "Invalid choice!";
                 break;
         }
     }

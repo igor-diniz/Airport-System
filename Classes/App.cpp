@@ -1746,8 +1746,7 @@ void App::updatePassenger(Passenger &passenger)
     return;
 }
 
-void App::TicketMenu()
-{
+void App::TicketMenu() {
     /*
     int id;
     Date departure;
@@ -1821,18 +1820,16 @@ void App::TicketMenu()
         cin.ignore(INT_MAX, '\n');
         return;
     }
-    }
-
-    while(true) {
-        cout <<  "|==============================================|\n"
-                 "|                   Tickets                    |\n"
-                 "|  Add Ticket                             [1]  |\n"
-                 "|  Remove Ticket                          [2]  |\n"
-                 "|  Detail Ticket                          [3]  |\n"
-                 "|  Show Tickets                           [4]  |\n"
-                 "|  Checkin                                [5]  |\n"
-                 "|  Return                                 [0]  |\n"
-                 "|==============================================|\n"
+    while (true) {
+        cout << "|==============================================|\n"
+                "|                   Tickets                    |\n"
+                "|  Add Ticket                             [1]  |\n"
+                "|  Remove Ticket                          [2]  |\n"
+                "|  Detail Ticket                          [3]  |\n"
+                "|  Show Tickets                           [4]  |\n"
+                "|  Checkin                                [5]  |\n"
+                "|  Return                                 [0]  |\n"
+                "|==============================================|\n";
         cout << "\n Please choose an option: ";
         int choice;
         while (true) {
@@ -1865,7 +1862,7 @@ void App::TicketMenu()
                 cout << "not a possibilite" << endl;
         }
     }
-
+}
 void App::ticketCreation(Passenger passenger)
 {
     list <Passenger> buyingPassengers;

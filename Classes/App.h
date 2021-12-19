@@ -76,6 +76,16 @@ private:
     void TicketMenu();
 
     void ticketCreation(Passenger passenger);
+
+    void ticketRemove(Passenger passenger);
+
+    void ticketDeletion(Passenger passenger);
+
+    void ticketFind(Passenger passenger);
+
+    void showTicket(Passenger passenger);
+
+    void updateTicket(Ticket ticket);
 };
 
 

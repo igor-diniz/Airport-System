@@ -7,9 +7,7 @@ LuggageCar::LuggageCar(Airport airport, int numCarriages, int stacksPerCarriage,
     this-> stacksPerCarriage = stacksPerCarriage;
     this-> luggagesPerStack = luggagesPerStack;
     this-> airport = airport;
-    capacity = numCarriages * stacksPerCarriage * luggagesPerStack;
-    availability = capacity;
-
+    availability = numCarriages * stacksPerCarriage * luggagesPerStack;
 }
 
 Airport LuggageCar::getAirport(const Airport &airport) const {
@@ -17,7 +15,7 @@ Airport LuggageCar::getAirport(const Airport &airport) const {
 }
 
 queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
-{
+{ //colocar as malas do aviao no carrinho
     if (luggageOutCar.empty())  return luggageOutCar;
 
     stack<Luggage> pilha;
@@ -31,6 +29,11 @@ queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
             {
                 pilha.push(luggageOutCar.front());
                 luggageOutCar.pop();
+                availability--;
+                if (availability == 0)
+                {
+                    return luggageOutCar;
+                }
                 if (luggageOutCar.empty())
                 {
                     carruagens.push_back(pilha);
@@ -43,23 +46,7 @@ queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
         luggageInCar.push_back(carruagens);
     }
     return luggageOutCar;
-    /*for (auto carruagem: luggageInCar)
-    {
-        for (auto pilha: carruagem)
-        {
-            while (pilha.size() != m)
-            {
-                pilha.push(luggageOutCar.front());
-                luggageOutCar.pop_front();
-                availability -= 1;
-                if (luggageOutCar.empty()) return luggageOutCar; //isso ta retornando uma lista vazia
-            }
-        }
-    }
-    return luggageOutCar;*/
 }
-void addLuggages()
-{}
 
 int LuggageCar::getId() {
     return id;

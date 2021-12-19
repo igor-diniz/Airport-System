@@ -6,7 +6,6 @@ Airport::Airport(string name, string initials)
     this->initials = initials;
 }
 bool Airport::addTransport(Transport transport){
-    //listTransp.push_back(transport);
     return transports.insert(transport);
 }
 string Airport::getName() const {
@@ -24,11 +23,6 @@ bool Airport::deleteTransport(Transport transport)
     return transports.remove(transport);
 }
 
-Transport Airport::getClosestTransport() const //tlvz tenha q mudar o nome dessa classe se a gnt escolhelr mudar o sort o transport
-{
-    return transports.findMin();
-}
-
 void Airport::setInitials(string initials)
 {
     this->initials = initials;
@@ -43,12 +37,6 @@ bool Airport::operator==(const Airport& airport) const{
     return initials == airport.getInitials();
 }
 
-/*Airport& Airport::operator=(const Airport& airport){
-    name = airport.getName();
-    initials = airport.getInitials();
-    return *this;
-}
-*/
 ostream& operator<<(ostream& os , const Airport& air)
 {
     os << air.getName() << " - " << air.getInitials();

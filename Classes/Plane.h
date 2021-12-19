@@ -8,8 +8,6 @@
 #include "Service.h"
 #include <exception>
 using namespace std;
-//Um avião é caracterizado, no mínimo, por: matrícula, tipo ( A310, A320, A321, A330, A340, B737, B747, ...)
-//e capacidade. Um avião possui ainda um plano de voo, isto é, a lista de voos que realiza.
 class Plane{
 private:
     int capacity;
@@ -21,13 +19,12 @@ private:
 
 public:
     Plane() = default;
-    enum SortPossibilites {ID,AVAILABLESEATS,ARRIVAL,DEPARTURE,DESTINATION,ORIGIN,CAPACITY};
     Plane(int capacity,string registration,string type);
-    void addFlight(Flight &flight); //adicionar 1 voo só
-    void addFlight(list<Flight> &flights); //adiciona uma lista de voos
+    explicit Plane(string CSVplane);
+    void addFlight(Flight &flight);
     void addService(Service &service);
-    void addService(queue<Service> &services);
-    void deleteService();
+    void addOldService(Service &oldService);
+    void popService();
     queue<Service> getServicesToDo();
     stack<Service> getServicesDone();
     int getCapacity() const;
@@ -36,12 +33,10 @@ public:
     void setRegistration(string registration);
     string getType() const;
     void setType(string type);
-    list<Flight> getFlights(SortPossibilites sortOrder = ID , bool descending = false);
+    list<Flight> getFlights();
     bool deleteFlight(int id);
     bool operator == (const Plane &b);
     friend ostream& operator<<(ostream& os , const Plane& plane);
-    explicit Plane(string CSVplane);
-    void addOldService(Service &oldService);
 
 };
 

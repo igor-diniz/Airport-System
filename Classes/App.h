@@ -20,7 +20,7 @@ private:
 public:
     App(){};
     App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile);
-    int mainMenu();
+    void mainMenu();
     void save(){}; //TODO
     void airportCreation();
     void airportDeletion();

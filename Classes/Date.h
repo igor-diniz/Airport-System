@@ -12,7 +12,7 @@ private:
 public:
     Date(){};
     Date(int y, int m , int d);
-    Date(string date); // "YYYY/MM/DD" format
+    explicit Date(string date); // "YYYY/MM/DD" format
     int getYear() const;
     int getMonth() const;
     int getDay() const;

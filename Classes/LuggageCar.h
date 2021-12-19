@@ -12,7 +12,7 @@ private:
     int numCarriages, stacksPerCarriage, luggagesPerStack;
     Airport airport;
     list<list<stack<Luggage>>> luggageInCar;
-    int capacity, availability;
+    int availability;
 public:
     int getId();
     LuggageCar(){};

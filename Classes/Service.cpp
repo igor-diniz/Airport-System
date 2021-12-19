@@ -27,7 +27,7 @@ Service::Service(string CSVservice){
     //date
     string strDate;
     getline(ssService, strDate,',');
-    date = strDate;
+    date = Date(strDate);
 
     //accountable
     getline(ssService, accountable);

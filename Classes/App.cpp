@@ -12,7 +12,7 @@ unsigned App::stringToInt(string str) //converte uma string para inteiro
 
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
     //readPassengersFile(passengersFile);
-    //this->readPlanesFile(planesFile);
+    this->readPlanesFile(planesFile);
     //this->readLuggageCarsFile(luggageCarsFile);
     readAirportsFile(airportsFile);
 }
@@ -264,8 +264,9 @@ vector<int> App::possibleChoices() {
     return options;
 }
 
-int App::mainMenu()
+void App::mainMenu()
 {
+    while(true) {
     cout << "|===========================================================================================|\n"
             "|            ____ ______ ____   ___     ____ ____    __     ____ _   __ ______ _____        |\n"
             "|           /  _// ____//  _/  /   |   /  _// __ |  / /    /  _// | / // ____// ___/        |\n"
@@ -297,7 +298,6 @@ int App::mainMenu()
             "|  Save                                   [1] |                                              \n"
             "|=============================================|\n";
 
-    while(true) {
         cout << endl;
         cout << "Choose an option:";
         int choice;
@@ -319,7 +319,34 @@ int App::mainMenu()
             cout << "Invalid choice!" << endl;
             continue;
         }
-        return choice;
+        switch (choice)
+        {
+            case 0: exit(0);
+            case 1: save(); exit(0);
+            case 11: airportCreation(); break;
+            case 12: airportDeletion(); break;
+            case 13: airportFind(); break;
+            case 14: showAirports(); break;
+            case 15: transportMenu(); break;
+            case 21: luggageCarCreation(); break;
+            case 22: luggageCarDeletion(); break;
+            case 23: luggageCarFind(); break;
+            case 24: showluggageCars(); break;
+            case 31: planeCreation(); break;
+            case 32: planeDeletion(); break;
+            case 33: planeFind(); break;
+            case 34: showPlanes(); break;
+            case 35: flightMenu(); break;
+            case 36: serviceMenu(); break;
+            case 41: passengerCreation(); break;
+            case 42: passengerDeletion(); break;
+            case 43: passengerFind(); break;
+            case 44: showPassengers(); break;
+            case 45: ticketMenu(); break;
+            default:
+                cout << "invalid choice!";
+                break;
+        }
     }
 }
 
@@ -1686,7 +1713,7 @@ void App::serviceDeletion(Plane &plane)
         cout << "No services to do in this plane" << endl;
         return;
     }
-    plane.deleteService();
+    plane.popService();
     cout << "oldest service deleted" << endl;
 }
 

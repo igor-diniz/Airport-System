@@ -3,16 +3,14 @@
 #include <string>
 #include "Date.h"
 using namespace std;
-//a. Um serviço é caracterizado
-//por tipo de serviço (manutenção/limpeza), data e funcionário responsável.
 class Service {
 private:
     char serviceType;
     Date date;
-    string accountable; //responsável
+    string accountable;
 
 public:
-    Service(string CSVservice);
+    explicit Service(string CSVservice);
     Service(char serviceType, Date date, string accountable);
     char getServiceType() const;
     Date getDate() const;

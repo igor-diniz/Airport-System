@@ -1,16 +1,14 @@
 #include "Ticket.h"
-#include "Flight.h"
 #include "iostream"
 int Ticket::nextid = 0;
 Ticket::Ticket(Flight flightAssocieted){
     nextid++;
     id = nextid;
     this->flightAssocieted = flightAssocieted;
+    flightAssocieted.reduceAvailableSeats();
 }
 
 Flight Ticket::getFlightAssocited() const{return flightAssocieted;}
-
-//Passenger Ticket::getPassengerAssocieted() {return passengerAssocieted;}
 
 int Ticket::getID() const{return id;}
 

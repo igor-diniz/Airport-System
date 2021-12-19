@@ -6,8 +6,6 @@
 #include "BST.h"
 
 using namespace std;
-//Para cada aeroporto, a informação sobre os locais
-//de transporte terrestre (metro, comboio, autocarro) está guardada numa árvore binária de pesquisa.
 class Airport{
     string name, initials;
     BST<Transport> transports = BST<Transport>(Transport());
@@ -21,10 +19,8 @@ public:
     const BST<Transport>& getTransports() const;
     void setName(string name);
     void setInitials (string initials);
-    Transport getClosestTransport() const;
     bool operator==(const Airport& airport) const;
     bool operator <(const Airport& airport) const;
-    //Airport& operator=(const Airport& airport);
     friend ostream& operator<<(ostream& os , const Airport& air);
 
 };

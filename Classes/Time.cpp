@@ -1,15 +1,6 @@
 #include "Time.h"
 #include <sstream>
 #include <iomanip>
-
-/*unsigned stringToInt(string str) //converte uma string para inteiro
-{
-    unsigned int number;
-    stringstream convert_string(str);
-    convert_string >> number;
-    return number;
-}*/
-
 Time::Time(int hour, int minute):hour(hour),minute(minute){}
 
 Time::Time(string time){

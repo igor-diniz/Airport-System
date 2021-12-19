@@ -5,7 +5,6 @@ Transport::Transport(char type, float distance, Time time)
     this->type = type;
     this->distance = distance;
     this->time = time;
-    sort = TIME;
 }
 
 Transport::Transport(string CSVtransport){
@@ -23,7 +22,6 @@ Transport::Transport(string CSVtransport){
     //waitingTime
     getline(ssTransport, strTime);
     time = Time(strTime);
-    sort = TIME;
 }
 
 
@@ -40,12 +38,6 @@ float Transport::getDistance() const {return this->distance;}
 
 char Transport::getType() const {return this->type;}
 
-void Transport::setSortByDistance() {sort = DISTANCE;}
-
-void Transport::setSortByType() {sort = TYPE;}
-
-void Transport::setSortbyTime() {sort = TIME;}
-
 bool Transport::operator==(const Transport &transp) const
 {
     return (time == transp.getTime()) && (distance == transp.getDistance()) && (type == transp.getType());
@@ -53,8 +45,8 @@ bool Transport::operator==(const Transport &transp) const
 
 bool Transport::operator<(const Transport &transp) const
 {
-    if(distance != transp.getDistance()) return distance < transp.getDistance();
     if(!(time == transp.getTime())) return time < transp.getTime();
+    if(distance != transp.getDistance()) return distance < transp.getDistance();
     return type < transp.getType();
 }
 std::ostream& operator<<(std::ostream& os , const Transport& transport)

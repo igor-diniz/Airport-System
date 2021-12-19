@@ -128,3 +128,33 @@ bool sortFlightByDestinationDesc(const Flight& f1, const Flight& f2)
 {
     return !(f1.getDestination() < f2.getDestination());
 }
+
+bool sortPassengersByNameAsc(const Passenger& p1, const Passenger& p2)
+{
+    return p1.getName() < p2.getName();
+}
+
+bool sortPassengersByNameDesc(const Passenger& p1, const Passenger& p2)
+{
+    return p1.getName() > p2.getName();
+}
+
+bool sortPassengersByPassAsc(const Passenger& p1, const Passenger& p2)
+{
+    return p1.getPassport() < p2.getPassport();
+}
+
+bool sortPassengersByPassDesc(const Passenger& p1, const Passenger& p2)
+{
+    return p1.getPassport() > p2.getPassport();
+}
+
+bool sortTicketByFlightAsc(const Ticket& t1, const Ticket& t2)
+{
+    return t1.getFlightAssocited().getId() < t2.getFlightAssocited().getId();
+}
+
+bool sortTicketByFlightDesc(const Ticket& t1, const Ticket& t2)
+{
+    return t1.getFlightAssocited().getId() > t2.getFlightAssocited().getId();
+}

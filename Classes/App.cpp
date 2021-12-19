@@ -11,7 +11,7 @@ unsigned App::stringToInt(string str) //converte uma string para inteiro
 }
 
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
-    readPassengersFile(passengersFile);
+    //readPassengersFile(passengersFile);
     //this->readPlanesFile(planesFile);
     //this->readLuggageCarsFile(luggageCarsFile);
     readAirportsFile(airportsFile);
@@ -1366,7 +1366,6 @@ void App::updateFlight(Flight& flight,Plane &plane)
 
 void App::showFlights(Plane &plane)
 {
-
     char choice;
     cout << "do you want to see specific Flights? Y/N \n";
     while (true) {
@@ -1383,7 +1382,6 @@ void App::showFlights(Plane &plane)
     }
     list<Flight> aux;
     if (choice == 'Y' || choice == 'y') {
-        cout << "type '0' if you dont want to specify \n";
         Date departure;
         int day, month, year;
         Time duration;
@@ -1391,8 +1389,8 @@ void App::showFlights(Plane &plane)
         Airport origin, destination;
         string initials;
 
-        cout << "What should be the new characteristics? (type 0 to not change)"
-                "Origin Airport (initials): ";
+        cout << "type '0' if you dont want to specify \n"
+             << "Origin Airport (initials): ";
         cin >> initials;
         if (initials != "0") {
             origin = Airport("", initials);
@@ -1845,7 +1843,89 @@ void App::updatePassenger(Passenger &passenger)
     return;
 }
 
-void App::TicketMenu() {
+void App::showPassengers()
+{
+    char choice;
+    cout << "Do you want to see specific Passengers? Y/N \n";
+    while(true) {
+        cin >> choice;
+        if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid answer!\n";
+            continue;
+        }
+        break;
+    }
+
+    list<Passenger> aux;
+    if(choice == 'Y' || choice == 'y')
+    {
+        string name,passport;
+        cout << "type '0' if you dont want to specify \n";
+        cout << "Name:"; cin.get(); getline(cin,name);
+        cout << "Passport: "; cin >> passport; cout << endl;
+
+        for(Passenger &a : passengers)
+        {
+            if(a.getName() == name || a.getPassport() == passport)
+            {
+                aux.push_back(a);
+            }
+        }
+    }
+    else aux = passengers; //in case the choice was "N"
+    cout << "how do you want the Passengers to be sorted? \n"
+         << "1 - Name asc\n"
+         << "2 - Name desc\n"
+         << "3 - Passport asc\n"
+         << "4 - Passport desc\n";
+    int sortChoice;
+    while(true) {
+        cin >> sortChoice;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    switch(sortChoice) {
+        case 1:
+            aux.sort(sortPassengersByNameAsc);
+            break;
+        case 2:
+            aux.sort(sortPassengersByNameDesc);
+            break;
+        case 3:
+            aux.sort(sortPassengersByPassAsc);
+            break;
+        case 4:
+            aux.sort(sortPassengersByPassDesc);
+            break;
+        default:
+            cerr << endl << endl << "Invalid choice!\n";
+            return;
+    }
+    int counter = 1;
+    cout << "Order - Name - Passport" << endl;
+    for(Passenger &b: aux)
+    {
+        cout << counter << " - " << b << "\n";
+        counter ++;
+    }
+    cout << "type anything to go back";
+    cin >> choice;
+    cin.clear();
+    cin.ignore(INT_MAX,'\n');
+    return;
+}
+
+void App::ticketMenu() {
     string passport;
     cout << "From what Passenger should we manage the tickets? \n"
          << "Passport: ";
@@ -1913,7 +1993,7 @@ void App::TicketMenu() {
     }
 }
 
-void App::ticketCreation(Passenger passenger)
+void App::ticketCreation(Passenger& passenger)
 {
     string passport;
     int id;
@@ -2040,7 +2120,7 @@ void App::ticketCreation(Passenger passenger)
     }
 }
 
-void App::ticketDeletion(Passenger passenger)
+void App::ticketDeletion(Passenger& passenger)
 {
     int id;
     Date departure;
@@ -2108,7 +2188,7 @@ void App::ticketDeletion(Passenger passenger)
     }
 }
 
-void App::ticketFind(Passenger passenger){
+void App::ticketFind(Passenger& passenger){
     {
         int id;
         Date departure;
@@ -2205,8 +2285,7 @@ void App::ticketFind(Passenger passenger){
         }
     }
 }
-
-void App::updateTicket(Ticket ticket){
+void App::updateTicket(Ticket& ticket){
     int newLug;
     cout << "Are you adding or removing luggages? (A/R)" << endl;
     char answer;
@@ -2232,8 +2311,52 @@ void App::updateTicket(Ticket ticket){
     cout << "Ticket updated!" << endl;
 }
 
+void App::showTicket(Passenger& passenger)
+{
+    //m faz sentido ele espeficicar nada do ticket pq o ticket so tem flight e n se pode um passageiro ter 2 ticket do msmo flight
+    list<Ticket> aux = passenger.getTickets();
+    cout << "how do you want the Tickets to be sorted? \n"
+         << "1 - Flight asc\n"
+         << "2 - Flight desc\n";
+    int sortChoice;
+    while(true) {
+        cin >> sortChoice;
+        if (cin.fail() || cin.peek() != '\n') {
+            cin.clear();
+            cin.ignore(INT_MAX,'\n');
+            cerr << endl << endl << "Invalid choice!\n";
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+    switch(sortChoice) {
+        case 1:
+            aux.sort(sortTicketByFlightAsc);
+            break;
+        case 2:
+            aux.sort(sortTicketByFlightDesc);
+            break;
+        default:
+            cerr << endl << endl << "Invalid choice!\n";
+            return;
+    }
+    int counter = 1;
+    cout << "Order - Flight.Id - DepartureDate - Duration - Origin - Destination - AvailableSeats\" -" << endl;
+    for(Ticket &t: aux)
+    {
+        cout << counter << " - " << t << "\n";
+        counter ++;
+    }
 
-void App::showTicket(Passenger passenger){
+    string choice;
+    cout << "type anything to go back";
+    cin >> choice;
+    cin.clear();
+    cin.ignore(INT_MAX,'\n');
+    return;
 
 }
 

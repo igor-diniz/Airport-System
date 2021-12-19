@@ -40,7 +40,7 @@ public:
     bool deleteFlight(int id);
     bool operator == (const Plane &b);
     friend ostream& operator<<(ostream& os , const Plane& plane);
-    Plane(string CSVplane);
+    explicit Plane(string CSVplane);
     void addOldService(Service &oldService);
 
 };

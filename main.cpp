@@ -34,7 +34,9 @@ int main() {
             case 43: app.passengerFind(); break;
             case 44: app.showPassengers(); break;
             case 45: app.ticketMenu(); break;
-            default: exit(1);
+            default:
+                cout << "invalid choice!";
+                break;
         }
     }
 }

@@ -48,8 +48,6 @@ public:
     void serviceDeletion(Plane& plane);
     void showServicesToDo(Plane& plane);
     void showServicesDone(Plane& plane);
-    void showPassengers(){};//TODO
-    void ticketMenu(){};//TODO
     void flightCreation(Plane &plane);
     void flightDeletion(Plane &plane);
     void flightFind(Plane &plane);
@@ -60,7 +58,14 @@ public:
     void passengerCreation();
     void passengerDeletion();
     void passengerFind();
+    void showPassengers();
     void updatePassenger(Passenger &passenger);
+    void ticketMenu();
+    void ticketCreation(Passenger& passenger);
+    void ticketDeletion(Passenger& passenger);
+    void ticketFind(Passenger& passenger);
+    void showTicket(Passenger& passenger);
+    void updateTicket(Ticket& ticket);
 
 
 
@@ -72,20 +77,6 @@ private:
     void readPlanesFile(const string& planesFile);
     void readLuggageCarsFile(const string& luggageCarsFile);
 
-
-    void TicketMenu();
-
-    void ticketCreation(Passenger passenger);
-
-    void ticketRemove(Passenger passenger);
-
-    void ticketDeletion(Passenger passenger);
-
-    void ticketFind(Passenger passenger);
-
-    void showTicket(Passenger passenger);
-
-    void updateTicket(Ticket ticket);
 };
 
 

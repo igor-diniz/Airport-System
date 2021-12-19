@@ -31,6 +31,9 @@ public:
     void setType(char type);
     void setDistance(float distance);
     void setTime(Time time);
+    ///
+    /// \param transp the transport is compared by time, then by distance, then by type
+    ///
     bool operator<(const Transport& transp) const;
     ///
     /// \param transp checks if the Transport type, distance and time are equal to the equivalent transport parameters

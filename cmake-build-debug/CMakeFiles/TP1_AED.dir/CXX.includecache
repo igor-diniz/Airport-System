@@ -596,10 +596,6 @@ C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Date.h
 LuggageCar.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/LuggageCar.h
 
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.cpp
-Luggage.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
-
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Luggage.h
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/LuggageCar.cpp
@@ -647,14 +643,6 @@ Service.h
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
 exception
 -
-
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.cpp
-sstream
--
-Service.h
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
-iostream
-C:/Users/jeffe/CLionProjects/TP1_AED/Classes/iostream
 
 C:/Users/jeffe/CLionProjects/TP1_AED/Classes/Service.h
 string

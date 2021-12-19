@@ -90,14 +90,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setFlightAssociated</
 <tr class="memitem:a5e8aa3331a0650245ef8d0de80e366d3"><td class="memItemLeft" align="right" valign="top"><a id="a5e8aa3331a0650245ef8d0de80e366d3" name="a5e8aa3331a0650245ef8d0de80e366d3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getLuggageQuantity</b> () const</td></tr>
 <tr class="separator:a5e8aa3331a0650245ef8d0de80e366d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa016cdc22c8973a61f8f91d7aea159b2"><td class="memItemLeft" align="right" valign="top"><a id="aa016cdc22c8973a61f8f91d7aea159b2" name="aa016cdc22c8973a61f8f91d7aea159b2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addLuggage</b> (<a class="el" href="class_luggage.html">Luggage</a> &amp;luggage)</td></tr>
+<tr class="memitem:aa016cdc22c8973a61f8f91d7aea159b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ticket.html#aa016cdc22c8973a61f8f91d7aea159b2">addLuggage</a> (<a class="el" href="class_luggage.html">Luggage</a> &amp;luggage)</td></tr>
 <tr class="separator:aa016cdc22c8973a61f8f91d7aea159b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67a2e31987a6ca643a770f9a4667376e"><td class="memItemLeft" align="right" valign="top"><a id="a67a2e31987a6ca643a770f9a4667376e" name="a67a2e31987a6ca643a770f9a4667376e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>removeLuggage</b> ()</td></tr>
+<tr class="memitem:a67a2e31987a6ca643a770f9a4667376e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ticket.html#a67a2e31987a6ca643a770f9a4667376e">removeLuggage</a> ()</td></tr>
 <tr class="separator:a67a2e31987a6ca643a770f9a4667376e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29773fb586fe68efbee8644884464232"><td class="memItemLeft" align="right" valign="top"><a id="a29773fb586fe68efbee8644884464232" name="a29773fb586fe68efbee8644884464232"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="class_ticket.html">Ticket</a> &amp;t) const</td></tr>
+<tr class="memitem:a29773fb586fe68efbee8644884464232"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ticket.html#a29773fb586fe68efbee8644884464232">operator==</a> (const <a class="el" href="class_ticket.html">Ticket</a> &amp;t) const</td></tr>
 <tr class="separator:a29773fb586fe68efbee8644884464232"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0e55607f2446d7ebaa80acd0b460236"><td class="memItemLeft" align="right" valign="top"><a id="af0e55607f2446d7ebaa80acd0b460236" name="af0e55607f2446d7ebaa80acd0b460236"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setCheckin</b> ()</td></tr>
@@ -111,8 +108,7 @@ list&lt; <a class="el" href="class_luggage.html">Luggage</a> &gt;&#160;</td><td 
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a119bcad4cc27160c55aff5c0b0d26eb6"><td class="memItemLeft" align="right" valign="top"><a id="a119bcad4cc27160c55aff5c0b0d26eb6" name="a119bcad4cc27160c55aff5c0b0d26eb6"></a>
-ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (ostream &amp;os, const <a class="el" href="class_ticket.html">Ticket</a> &amp;ticket)</td></tr>
+<tr class="memitem:a119bcad4cc27160c55aff5c0b0d26eb6"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_ticket.html#a119bcad4cc27160c55aff5c0b0d26eb6">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_ticket.html">Ticket</a> &amp;ticket)</td></tr>
 <tr class="separator:a119bcad4cc27160c55aff5c0b0d26eb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -139,7 +135,128 @@ ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;
   </tr>
 </table>
 </div><div class="memdoc">
-<p >Luggages the passenger is taking on this flight This was created as a list of luggages instead of a simple int so that there was more control over the luggages location in case one specific needed to be found </p>
+<p >Luggages the passenger is taking on this flight This was created as a list of luggages instead of a simple int so that there was more control over the luggages location in case one specific needed to be found </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flightAssocieted</td><td>the flight this ticket refers to this constructor is used to get dates read from file manipulation </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa016cdc22c8973a61f8f91d7aea159b2" name="aa016cdc22c8973a61f8f91d7aea159b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa016cdc22c8973a61f8f91d7aea159b2">&#9670;&nbsp;</a></span>addLuggage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ticket::addLuggage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_luggage.html">Luggage</a> &amp;&#160;</td>
+          <td class="paramname"><em>luggage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">luggage</td><td>luggage to me added to ticketLuggages </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a29773fb586fe68efbee8644884464232" name="a29773fb586fe68efbee8644884464232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29773fb586fe68efbee8644884464232">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ticket::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_ticket.html">Ticket</a> &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>checks if the t first is equal to the ticket flight </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a67a2e31987a6ca643a770f9a4667376e" name="a67a2e31987a6ca643a770f9a4667376e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67a2e31987a6ca643a770f9a4667376e">&#9670;&nbsp;</a></span>removeLuggage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Ticket::removeLuggage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">luggage</td><td>luggage to me removed from ticketLuggages </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a119bcad4cc27160c55aff5c0b0d26eb6" name="a119bcad4cc27160c55aff5c0b0d26eb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119bcad4cc27160c55aff5c0b0d26eb6">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_ticket.html">Ticket</a> &amp;&#160;</td>
+          <td class="paramname"><em>ticket</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td></td></tr>
+    <tr><td class="paramname">t</td><td>Tickets are show in the order id - flightAssocieted - checkin - ticketLuggages </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

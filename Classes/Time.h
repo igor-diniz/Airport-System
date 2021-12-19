@@ -26,7 +26,10 @@ public:
     int getMinute() const;
     void setHour(int hour);
     void setMinute(int minute);
-    ///tocomment
+    ///
+    /// \param t1 a Time
+    /// returns if the Time is < then t1
+    ///
     bool operator < (const Time& t1) const;
     ///
     /// \param t1 checks if the time minute and hour are equal to the equivalent time parameters

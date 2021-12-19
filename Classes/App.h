@@ -22,6 +22,15 @@ public:
     App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile);
     void mainMenu();
     void save(){}; //TODO
+
+private:
+    vector<int> possibleChoices();
+    unsigned stringToInt(string str);
+    void readAirportsFile(const string& airportsFile);
+    void readPassengersFile(const string& passengersFile);
+    void readPlanesFile(const string& planesFile);
+    void readLuggageCarsFile(const string& luggageCarsFile);
+    void checkin(Passenger &passenger);
     void airportCreation();
     void airportDeletion();
     void airportFind();
@@ -66,18 +75,6 @@ public:
     void ticketFind(Passenger& passenger);
     void showTicket(Passenger& passenger);
     void updateTicket(Ticket& ticket);
-
-
-
-private:
-    vector<int> possibleChoices();
-    unsigned stringToInt(string str);
-    void readAirportsFile(const string& airportsFile);
-    void readPassengersFile(const string& passengersFile);
-    void readPlanesFile(const string& planesFile);
-    void readLuggageCarsFile(const string& luggageCarsFile);
-
-    void checkin(Passenger &passenger);
 };
 
 

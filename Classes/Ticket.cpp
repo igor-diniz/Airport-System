@@ -1,7 +1,7 @@
 #include "Ticket.h"
 #include "iostream"
 int Ticket::nextid = 0;
-Ticket::Ticket(Flight flightAssocieted){
+Ticket::Ticket(Flight& flightAssocieted){
     nextid++;
     id = nextid;
     this->flightAssocieted = flightAssocieted;
@@ -19,7 +19,7 @@ void Ticket::setID(int id) {this->id = id;}
 int Ticket::getLuggageQuantity() const{return ticketLuggages.size();}
 
 bool Ticket::operator==(const Ticket &t) const{
-    return id == t.getID();
+    return flightAssocieted == t.getFlightAssocited();
 }
 
 void Ticket::setCheckin() {

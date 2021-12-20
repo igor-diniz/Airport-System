@@ -20,7 +20,7 @@ public:
     /// \param flightAssocieted the flight this ticket refers to
     /// this constructor is used to get dates read from file manipulation
     ///
-    explicit Ticket(Flight flightAssocieted);
+    explicit Ticket(Flight& flightAssocieted);
     int getID() const;
     void setID(int id);
     Flight getFlightAssocited() const;
@@ -35,9 +35,9 @@ public:
     ///
     void removeLuggage();
     ///
-    /// \param t checks if the t first is equal to the ticket flight
+    /// \param ticket checks if tickets are associated with the same flight
     ///
-    bool operator==(const Ticket &t) const;
+    bool operator==(const Ticket &ticket) const;
     void setCheckin();
     bool getCheckin() const;
     ///

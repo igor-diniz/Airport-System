@@ -2504,7 +2504,6 @@ void App::ticketCreation(Passenger& passenger)
     if (!cinGood()) return;
     cout << "\n";
     departure = Date(year,month,day);
-    origin = Airport("",initials);
     Flight flight = Flight(departure,origin);
     cout << "\n";
     Plane plane;
@@ -2518,6 +2517,7 @@ void App::ticketCreation(Passenger& passenger)
                 break;
             }
         }
+        if(exists) break;
     }
     if (!exists) {
         cout << "The given flight does not exist " << endl;
@@ -2529,14 +2529,14 @@ void App::ticketCreation(Passenger& passenger)
         return;
     }
     Ticket a = Ticket(flight);
-    for(Ticket &b : passenger.getTickets())
+    /*for(Ticket &b : passenger.getTickets()) acho q n faz sentido checar se os ID são iguais se só nos temos acessos aos IDs
     {
         if(b == a)
         {
             cout <<"This ticket already exists \n";
             return;
         }
-    }
+    }*/
     int numBag;
     cout << "How many luggages is the passenger taking to the flight?"<< endl;
     cin >> numBag;
@@ -2544,7 +2544,6 @@ void App::ticketCreation(Passenger& passenger)
         Luggage l = Luggage();
         a.addLuggage(l);
     }
-    passenger.addTicket(a);
     if(!passenger.addTicket(a)){
         cout << "This flight has no seats remaining" <<endl;
         return;
@@ -2565,18 +2564,20 @@ void App::ticketCreation(Passenger& passenger)
             cout << "\n";
             Passenger a("",passport);
             cout << "Searching..." << endl;
+            exists = false;
             for(Passenger &b : passengers)
             {
                 if(b == a)
                 {
+                    exists = true;
                     a = b;
                     cout << "Passenger found!" << endl;
                     Ticket t = Ticket(flight);
-                    for(Ticket &b : passenger.getTickets())
+                    for(Ticket &ticket : b.getTickets())
                     {
-                        if(b == t)
+                        if(ticket == t)
                         {
-                            cout <<"This ticket already exists \n";
+                            cout <<"This ticket already exists \n"; //Passenger cant buy 2 tickets for the same flight.
                             return;
                         }
                     }
@@ -2588,14 +2589,15 @@ void App::ticketCreation(Passenger& passenger)
                         Luggage l = Luggage();
                         t.addLuggage(l);
                     }
-                    a.addTicket(t);
                     if(!a.addTicket(t)){
                         cout << "This flight has no seats remaining" <<endl;
                         return;
                     }
                     cout << "Ticket created!" << endl;
+                    break;
                 }
             }
+            if(!exists)
             cout << "Passenger does not exist" << endl;
         }
         else

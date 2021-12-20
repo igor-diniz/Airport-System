@@ -6,7 +6,7 @@
 App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
     readPassengersFile(passengersFile);
     readPlanesFile(planesFile);
-    //this->readLuggageCarsFile(luggageCarsFile);
+    readLuggageCarsFile(luggageCarsFile);
     readAirportsFile(airportsFile);
 }
 
@@ -272,7 +272,7 @@ void App::readPlanesFile(const string &planesFile) {
     fileToOpen.close();
 }
 
-void readLuggageCarsFile(const string& luggageCarsFile){
+void App::readLuggageCarsFile(const string& luggageCarsFile){
     ifstream fileToOpen;
     fileToOpen.open(luggageCarsFile);
 
@@ -288,15 +288,25 @@ void readLuggageCarsFile(const string& luggageCarsFile){
         {
             getline(fileToOpen, strLuggageCar);
             luggageCar = LuggageCar(strLuggageCar);
+            //cout << luggageCar << endl;
+            queue<Luggage> luggageOutCar;
 
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
                 getline(fileToOpen, strLuggage);
+                //cout << strLuggage << endl;
                 luggage = Luggage(strLuggage);
-
+                //cout << "---" << luggage.getId() << endl;
+                luggageOutCar.push(luggage);
             }
+            fileToOpen.get();
+            luggageCar.setLuggageInCar(luggageOutCar);
+            luggageCars.push_back(luggageCar);
         }
     }
+    /*for (LuggageCar l : luggageCars)
+        cout <<  l << endl;*/
+    fileToOpen.close();
 }
 
 vector<int> App::possibleChoices() {

@@ -1,29 +1,128 @@
 Igor Diniz,AB123456
-1,2020/12/26,05:55,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Pequim,PEK,200
+FLIGHT
+2022/12/26,05:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Pequim,PEK,200
 
 Ian Italo,CD345678
-2,2020/12/26,12:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Pequim,PEK,200
+FLIGHT
+2022/12/29,05:55,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Heathrow,LHR,210
+LUGGAGE
+1,2
+2,2
+3,2
+FLIGHT
+2022/04/04,01:50,Aeroporto Internacional de São Paulo,GRU,Aeroporto Internacional Tom Jobim,GIG,190
+LUGGAGE
+4,3
+5,3
+FLIGHT
+2022/05/05,01:50,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Sao Paulo,GRU,190
+LUGGAGE
+6,4
 
 Eduardo da Silva,EF567890
-3,2020/12/26,15:35,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Pequim,PEK,200
+FLIGHT
+2022/03/13,05:55,Aeroporto Internacional Heathrow,LHR,Aeroporto Internacional Tom Jobim,GIG,200
+LUGGAGE
+7,5
+8,5
 
 Ingrid Magalhaes,JF226644
-1,2021/05/13,09:25,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Heathrow,LHR,210
+FLIGHT
+2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+9,6
 
 Ana Lima,KK999999
-2,2021/05/13,06:15,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Heathrow,LHR,210
+FLIGHT
+2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+10,7
+11,7
 
 Manuel Teixeira,GB568971
-3,2021/05/13,11:00,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Heathrow,LHR,210
+FLIGHT
+2022/07/14,15:30,Aeroporto Internacional de Toquio,HND,Aeroporto Internacional de Sao Paulo,GRU,190
+LUGGAGE
+12,8
 
 Carla Teixeira,GB123456
-1,2021/02/04,10:00,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,200
+FLIGHT
+2022/02/04,06:00,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+13,9
 
 Leonardo Moura,PO888888
-2,2021/02/04,18:55,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,200
+FLIGHT
+2022/02/07,05:45,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,200
+LUGGAGE
+14,10
+FLIGHT
+2022/03/14,06:25,Aeroporto Internacional Hartsfield-Jackson,ATL,Aeroporto Internacional de Pequim,PEK,190
+LUGGAGE
+15,11
+FLIGHT
+2022/04/21,10:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Toquio,HND,190
+LUGGAGE
+16,12
 
 Neymar Junior,GB333333
-1,2021/02/04,02:00,Aeroporto Internacional de São Paulo,GRU,Aeroporto Internacional Tom Jobim,GIG,190
+FLIGHT
+2022/05/28,02:50,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional OHare,ORD,180
+LUGGAGE
+17,13
+18,13
+FLIGHT
+2022/06/03,16:00,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Hong Kong,HKG,170
+LUGGAGE
+19,14
+20,14
+FLIGHT
+2022/07/09,00:55,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Sao Paulo,GRU,165
+LUGGAGE
+21,15
+22,15
 
 Vinicius Correa,AM454545
-2,2021/02/04,02:00,Aeroporto Internacional de São Paulo,GRU,Aeroporto Internacional Tom Jobim,GIG,190
+FLIGHT
+2022/02/11,05:00,Aeroporto Internacional de Pequim,PEK,Aeroporto Internacional de Dubai,DXB,180
+LUGGAGE
+23,16
+
+Ana Beatriz,AB226644
+FLIGHT
+2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+24,17
+
+Jose Arthur,CD226644
+FLIGHT
+2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+25,18
+26,18
+27,18
+
+Amanda Sousa,JJ237744
+FLIGHT
+2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+28,19
+29,19
+30,19
+
+Bernardo Magalhaes,JF226934
+FLIGHT
+2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+31,20
+32,20
+33,20
+
+Matilde Soares,HG226644
+FLIGHT
+2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
+LUGGAGE
+34,21
+35,21
+36,21
+37,21

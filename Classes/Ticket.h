@@ -16,6 +16,7 @@ private:
                                   ///was more control over the luggages location in case one specific needed to be found
 
 public:
+    Ticket(){};
     ///
     /// \param flightAssocieted the flight this ticket refers to
     /// this constructor is used to get dates read from file manipulation

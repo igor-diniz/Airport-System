@@ -22,7 +22,7 @@ M,70,00:50
 C,2000,02:40
 A,30,00:22
 
-Aeroporto Internacional de Tóquio,HND
+Aeroporto Internacional de Toquio,HND
 M,70,00:07
 C,700,01:00
 A,70,00:05
@@ -42,7 +42,7 @@ A,50,00:15
 A,50,00:20
 A,50,00:25
 
-Aeroporto Internacional O’Hare,ORD
+Aeroporto Internacional OHare,ORD
 M,125,00:30
 M,125,00:35
 M,125,00:40
@@ -75,7 +75,7 @@ M,100,00:25
 C,1000,01:30
 A,30,00:10
 
-Aeroporto Internacional de São Paulo,GRU
+Aeroporto Internacional de Sao Paulo,GRU
 M,100,00:20
 C,1000,01:00
 A,30,00:05

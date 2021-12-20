@@ -1,21 +1,47 @@
+#include <sstream>
 #include "Luggage.h"
+#include <sstream>
 
-int Luggage::nextId = 1;
+int Luggage::nextId = 0;
 
-Luggage::Luggage(){
+Luggage::Luggage(int ticketId){
     nextId++;
-    id = nextId;
+    luggageId = nextId;
+    this->ticketId = ticketId;
+}
+
+Luggage::Luggage(string CSVluggage){
+    stringstream ssLuggage;
+    ssLuggage << CSVluggage;
+    string strLuggageId,strTicketId;
+    getline(ssLuggage, strLuggageId, ',');
+    getline(ssLuggage, strTicketId);
+    luggageId = stoi(strLuggageId);
+    ticketId = stoi(strTicketId);
 }
 
 int Luggage::getId() const
 {
-    return id;
+    return luggageId;
+}
+
+int Luggage::getTicketId() const
+{
+    return ticketId;
 }
 
 bool Luggage::operator==(const Luggage &luggage)
 {
-    return id == luggage.getId();
+    return luggageId == luggage.getId();
 }
+
+ostream& operator<<(ostream& os , const Luggage& luggage)
+{
+    os << "Luggage ID: " << luggage.getId() << endl;
+    os << "Ticket ID: " << luggage.getTicketId() << endl;
+    return os;
+}
+
 //Detail: dá cout dos atributos de um item.
 //Select: abre outra tela para selecionar o que fazer com o item, por exemplo botar bagagem de flight em carrinhos.
 //Show: abre outra tela para escolher tipo de sort e ranges.
@@ -90,5 +116,30 @@ bool Luggage::operator==(const Luggage &luggage)
  "|  Show Transport                         [4]  |\n"
  "|  Return                                 [0]  |\n"
  "|==============================================|\n"
+
+ "|=================================================================|\n"
+ "|        _       __ ______ __    ______ ____   __  ___ ______     |\n"
+ "|       | |     / // ____// /   / ____// __ \ /  |/  // ____/     |\n"
+ "|       | | /| / // __/  / /   / /    / / / // /|_/ // __/        |\n"
+ "|       | |/ |/ // /___ / /___/ /___ / /_/ // /  / // /___        |\n"
+ "|       |__/|__//_____//_____/\____/ \____//_/  /_//_____/        |\n"
+ "|=================================================================|\n"
+ "|  Login as a client                                          [0] |\n"
+ "|  Login as a IEI Worker                                      [1] |\n"
+ "|=================================================================|\n"
+
+ case 0
+ cout << "Please type your passport" << endl;
+ string passport;
+ cin >> passport;
+
+ case 1
+ cout << "Please type the super secret company password" << endl;
+ string password;
+ cin >> passport;
+ if (password != "password") {cout << "Wrong password, please try again" << endl;}
+
+
+
 
  */

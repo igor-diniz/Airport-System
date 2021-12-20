@@ -2517,7 +2517,6 @@ void App::ticketCreation(Passenger& passenger)
                 break;
             }
         }
-        if(exists) break;
     }
     if (!exists) {
         cout << "The given flight does not exist " << endl;
@@ -2529,7 +2528,7 @@ void App::ticketCreation(Passenger& passenger)
         return;
     }
     Ticket a = Ticket(flight);
-    /*for(Ticket &b : passenger.getTickets()) acho q n faz sentido checar se os ID são iguais se só nos temos acessos aos IDs
+    /*for(Ticket &b : passenger.getTickets())
     {
         if(b == a)
         {
@@ -2573,11 +2572,11 @@ void App::ticketCreation(Passenger& passenger)
                     a = b;
                     cout << "Passenger found!" << endl;
                     Ticket t = Ticket(flight);
-                    for(Ticket &ticket : b.getTickets())
+                    for(Ticket &ticket : a.getTickets())
                     {
                         if(ticket == t)
                         {
-                            cout <<"This ticket already exists \n"; //Passenger cant buy 2 tickets for the same flight.
+                            cout <<"This ticket already exists \n"; //A passenger cant buy ticket for the same flight twice.
                             return;
                         }
                     }
@@ -2767,7 +2766,6 @@ void App::ticketFind(Passenger& passenger){
                     Luggage l = Luggage();
                     a.addLuggage(l);
                 }
-                passenger.addTicket(a);
                 if(!passenger.addTicket(a)){
                     cout << "This flight has no seats remaining" <<endl;
                     return;

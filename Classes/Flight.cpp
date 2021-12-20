@@ -16,7 +16,7 @@ Flight::Flight()
 
 Flight::Flight(Date &departure,Time duration,Airport &origin,Airport &destination,int availableSeats)
 {
-    id++;
+    nextid++;
     id = nextid;
     this->availableSeats = availableSeats;
     this->duration = duration;
@@ -27,13 +27,15 @@ Flight::Flight(Date &departure,Time duration,Airport &origin,Airport &destinatio
 
 Flight::Flight(Date &departure, Airport &origin)
 {
-    id++;
+    nextid++;
     id = nextid;
     this->departure = departure;
     this->origin = origin;
 }
 
 Flight::Flight(string CSVflight){
+    nextid ++;
+    id = nextid;
     stringstream ssFlight;
     ssFlight << CSVflight;
 

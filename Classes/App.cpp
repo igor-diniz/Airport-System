@@ -576,11 +576,11 @@ void App::transportMenu()
     cout << "Initials: ";
     cin >> initials;
     cout << "\n";
-    Airport a(name, initials);
+    Airport* a = new Airport(name, initials);
     bool exists = false;
     for (Airport& b: airports) {
-        if (a == b) {
-            a = b;
+        if (*a == b) {
+            a = &b;
             exists = true;
             break;
         }
@@ -620,16 +620,16 @@ void App::transportMenu()
             case 0:
                 return;
             case 1:
-                transportCreation(a);
+                transportCreation(*a);
                 break;
             case 2:
-                transportDeletion(a);
+                transportDeletion(*a);
                 break;
             case 3:
-                transportFind(a);
+                transportFind(*a);
                 break;
             case 4:
-                showTransports(a);
+                showTransports(*a);
                 break;
             default:
                 cout << "not a possibilite" << endl;
@@ -852,7 +852,7 @@ void App::showTransports(Airport &airport)
 
 void App::luggageCarCreation()
 {
-    Airport airport;
+    Airport* airport;
     int numCarriages, stacksPerCarriage, luggagesPerStack;
     string initials;
     cout << "To what airport is this car associated?" << endl;
@@ -865,13 +865,13 @@ void App::luggageCarCreation()
         return;
     }
 
-    airport = Airport("",initials);
+    airport = new Airport("",initials);
     bool exists = false;
     for(Airport &a: airports)
     {
-        if(a == airport)
+        if(a == *airport)
         {
-            airport = a;
+            airport = &a;
             exists = true;
         }
     }
@@ -897,7 +897,7 @@ void App::luggageCarCreation()
     {
         cout << "cant create car with negative number" << endl;
     }
-    LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
+    LuggageCar luggageCar(*airport,numCarriages,stacksPerCarriage,luggagesPerStack);
     luggageCars.push_back(luggageCar);
     cout << "Luggage Car added!" << endl;
     return;
@@ -905,7 +905,7 @@ void App::luggageCarCreation()
 
 void App::luggageCarDeletion()
 {
-    Airport airport;
+    Airport* airport;
     int numCarriages, stacksPerCarriage, luggagesPerStack;
     string initials;
     cout << "To what airport is this car associated?" << endl;
@@ -918,13 +918,13 @@ void App::luggageCarDeletion()
         return;
     }
 
-    airport = Airport("",initials);
+    airport = new Airport("",initials);
     bool exists = false;
     for(Airport &a: airports)
     {
-        if(a == airport)
+        if(a == *airport)
         {
-            airport = a;
+            airport = &a;
             exists = true;
         }
     }
@@ -938,7 +938,7 @@ void App::luggageCarDeletion()
     if(!cinGood()) return;
     cout << "How many luggages per stack: "; cin >> luggagesPerStack;
     if(!cinGood()) return;
-    LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
+    LuggageCar luggageCar(*airport,numCarriages,stacksPerCarriage,luggagesPerStack);
     if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
     {
         cout << "This luggage car does not exist!" << endl;
@@ -950,7 +950,7 @@ void App::luggageCarDeletion()
 
 void App::luggageCarFind()
 {
-    Airport airport;
+    Airport* airport;
     int numCarriages, stacksPerCarriage, luggagesPerStack;
     string initials;
     cout << "To what airport is this car associated?" << endl;
@@ -963,13 +963,13 @@ void App::luggageCarFind()
         return;
     }
 
-    airport = Airport("",initials);
+    airport = new Airport("",initials);
     bool exists = false;
     for(Airport &a: airports)
     {
-        if(a == airport)
+        if(a == *airport)
         {
-            airport = a;
+            airport = &a;
             exists = true;
         }
     }
@@ -983,7 +983,7 @@ void App::luggageCarFind()
     if(!cinGood()) return;
     cout << "How many luggages per stack: "; cin >> luggagesPerStack;
     if(!cinGood()) return;
-    LuggageCar luggageCar(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
+    LuggageCar luggageCar(*airport,numCarriages,stacksPerCarriage,luggagesPerStack);
     if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
     {
         char answer;
@@ -1016,7 +1016,7 @@ void App::luggageCarFind()
     if(!cinGood()) return;
     if(answer == 'y' || answer == 'Y')
     {
-        Airport airport1;
+        Airport *airport1;
         cout << "What should be the new Airport of the Car: "
         << "Initials: "; cin >> initials;
 
@@ -1026,13 +1026,13 @@ void App::luggageCarFind()
             return;
         }
 
-        airport = Airport("",initials);
+        airport1 = new Airport("",initials);
         bool exists = false;
         for(Airport &a: airports)
         {
-            if(a == airport)
+            if(a == *airport1)
             {
-                airport = a;
+                airport1 = &a;
                 exists = true;
             }
         }
@@ -1046,7 +1046,7 @@ void App::luggageCarFind()
             {
                 if(luggageCar == luggageCar1)
                 {
-                    luggageCar1.setAirport(airport);
+                    luggageCar1.setAirport(*airport1);
                     cout << "Luggage car updated to new airport!" << endl;
                     cout << "should the Luggages be cleared from the car?" << endl;
                     cin >> answer;
@@ -1460,15 +1460,15 @@ void App::showPlanes()
 
 void App::flightMenu() {
     string registration;
-    cout << "From what Plane should we manage the transports? \n"
+    cout << "From what Plane should we manage the flights? \n"
          << "Registration: ";
     cin >> registration;
     cout << "\n";
-    Plane a(0, registration, "");
+    Plane* a = new Plane(0, registration, "");
     bool exists = false;
     for (Plane &b: planes) {
-        if (a == b) {
-            a = b;
+        if (*a == b) {
+            a = &b;
             exists = true;
             break;
         }
@@ -1509,19 +1509,19 @@ void App::flightMenu() {
             case 0:
                 return;
             case 1:
-                flightCreation(a);
+                flightCreation(*a);
                 break;
             case 2:
-                flightDeletion(a);
+                flightDeletion(*a);
                 break;
             case 3:
-                flightFind(a);
+                flightFind(*a);
                 break;
             case 4:
-                showFlights(a);
+                showFlights(*a);
                 break;
             case 5:
-                getLuggageToCar(a);
+                getLuggageToCar(*a);
                 break;
             default:
                 cout << "not a possibilite" << endl;
@@ -1977,13 +1977,13 @@ void App::getLuggageToCar(Plane &plane)
     cout << "ID: "; cin >> flightId;
     if(!cinGood()) return;
     bool exists = false;
-    Flight flight;
+    Flight* flight;
     for(Flight& f: plane.getFlights())
     {
         if(f.getId() == flightId)
         {
             exists = true;
-            flight = f;
+            flight = &f;
             break;
         }
     }
@@ -1996,13 +1996,13 @@ void App::getLuggageToCar(Plane &plane)
     cout << "Give the Car ID: "; cin >> LuggageId;
     if(!cinGood()) return;
     exists = false;
-    LuggageCar luggageCar;
+    LuggageCar* luggageCar;
     for(LuggageCar& lug: luggageCars)
     {
         if(lug.getId() == LuggageId)
         {
             exists = true;
-            luggageCar = lug;
+            luggageCar = &lug;
             break;
         }
     }
@@ -2011,8 +2011,8 @@ void App::getLuggageToCar(Plane &plane)
         cout << "This Luggage Car does not exist!";
         return;
     }
-    flight.luggagesToCar(luggageCar);
-    if(flight.getLuggagesOutCar().size() > 0)
+    (*flight).luggagesToCar(*luggageCar);
+    if((*flight).getLuggagesOutCar().size() > 0)
     {
         cout << "all ok, but there are still Luggages left to be processed" << endl;
         return;
@@ -2028,11 +2028,11 @@ void App::serviceMenu()
          << "Registration: ";
     cin >> registration;
     cout << "\n";
-    Plane a(0, registration, "");
+    Plane* a = new Plane(0, registration, "");
     bool exists = false;
     for (Plane &b: planes) {
-        if (a == b) {
-            a = b;
+        if (*a == b) {
+            a = &b;
             exists = true;
             break;
         }
@@ -2074,16 +2074,16 @@ void App::serviceMenu()
             case 0:
                 return;
             case 1:
-                serviceCreation(a);
+                serviceCreation(*a);
                 break;
             case 2:
-                serviceDeletion(a);
+                serviceDeletion(*a);
                 break;
             case 3:
-                showServicesToDo(a);
+                showServicesToDo(*a);
                 break;
             case 4:
-                showServicesDone(a);
+                showServicesDone(*a);
                 break;
             default:
                 cout << "not a possibilite" << endl;
@@ -2188,7 +2188,7 @@ void App::passengerCreation()
     {
         if(b == a)
         {
-            cout <<"This Plane already exists \n";
+            cout <<"This Passenger already exists \n";
             return;
         }
     }
@@ -2275,7 +2275,7 @@ void App::passengerFind()
         }
         a.setName(name);
         passengers.push_back(a);
-        cout << "Plane added!" << endl;
+        cout << "Passenger added!" << endl;
     }
     else if(answer == 'N' || answer == 'n')
     {
@@ -2291,7 +2291,7 @@ void App::passengerFind()
 void App::updatePassenger(Passenger &passenger)
 {
     string name,passport;
-    cout << "What should be the new characteristics?: \n"
+    cout << "What should be the new characteristics? (type 0 to not change): \n"
             "Name: "; cin >> name;
     cout << "\n";
     cout << "Passport: "; cin >> passport;
@@ -2303,6 +2303,8 @@ void App::updatePassenger(Passenger &passenger)
         return;
     }
     Passenger a(name,passport);
+    if(a.getName() == "0")a.setName(passenger.getName());
+    if(a.getPassport() == "0")a.setPassport(passenger.getPassport());
     for(Passenger &b : passengers)
     {
         if(b == a)
@@ -2411,11 +2413,11 @@ void App::ticketMenu() {
          << "Passport: ";
     cin >> passport;
     cout << "\n";
-    Passenger passenger("", passport);
+    Passenger* passenger = new Passenger("", passport);
     bool exists = false;
     for (Passenger &b: passengers) {
-        if (passenger == b) {
-            passenger = b;
+        if (*passenger == b) {
+            passenger = &b;
             exists = true;
             break;
         }
@@ -2456,16 +2458,16 @@ void App::ticketMenu() {
             case 0:
                 return;
             case 1:
-                ticketCreation(passenger);
+                ticketCreation(*passenger);
                 break;
             case 2:
-                ticketDeletion(passenger);
+                ticketDeletion(*passenger);
                 break;
             case 3:
-                ticketFind(passenger);
+                ticketFind(*passenger);
                 break;
             case 4:
-                showTicket(passenger);
+                showTicket(*passenger);
                 break;
             default:
                 cout << "not a possibilite" << endl;
@@ -2504,15 +2506,15 @@ void App::ticketCreation(Passenger& passenger)
     if (!cinGood()) return;
     cout << "\n";
     departure = Date(year,month,day);
-    Flight flight = Flight(departure,origin);
+    Flight* flight = new Flight(departure,origin);
     cout << "\n";
-    Plane plane;
+    Plane* plane;
     bool exists = false;
     for (Plane &b: planes) {
         for(Flight &c: b.getFlights()){
-            if (c == flight) {
-                plane = b;
-                flight = c;
+            if (c.equals(*flight)) {
+                plane = &b;
+                flight = &c;
                 exists = true;
                 break;
             }
@@ -2527,7 +2529,7 @@ void App::ticketCreation(Passenger& passenger)
         cin.ignore(INT_MAX, '\n');
         return;
     }
-    Ticket a = Ticket(flight);
+    Ticket a = Ticket(*flight);
     /*for(Ticket &b : passenger.getTickets())
     {
         if(b == a)
@@ -2561,18 +2563,18 @@ void App::ticketCreation(Passenger& passenger)
             cout << "What is the other passenger passport?" << endl;
             cin >> passport;
             cout << "\n";
-            Passenger a("",passport);
+            Passenger* a = new Passenger("",passport);
             cout << "Searching..." << endl;
             exists = false;
             for(Passenger &b : passengers)
             {
-                if(b == a)
+                if(b == *a)
                 {
                     exists = true;
-                    a = b;
+                    a = &b;
                     cout << "Passenger found!" << endl;
-                    Ticket t = Ticket(flight);
-                    for(Ticket &ticket : a.getTickets())
+                    Ticket t = Ticket(*flight);
+                    for(Ticket &ticket : a->getTickets())
                     {
                         if(ticket == t)
                         {
@@ -2588,7 +2590,7 @@ void App::ticketCreation(Passenger& passenger)
                         Luggage l = Luggage();
                         t.addLuggage(l);
                     }
-                    if(!a.addTicket(t)){
+                    if(!a->addTicket(t)){
                         cout << "This flight has no seats remaining" <<endl;
                         return;
                     }
@@ -2637,20 +2639,20 @@ void App::ticketDeletion(Passenger& passenger)
     if (!cinGood()) return;
     cout << "\n";
     departure = Date(year,month,day);
-    origin = Airport("",initials);
-    Flight flight = Flight(departure,origin);
+    Flight* flight = new Flight(departure,origin);
     cout << "\n";
-    Plane plane;
+    Plane* plane;
     bool exists = false;
     for (Plane &b: planes) {
         for(Flight &c: b.getFlights()){
-            if (c == flight) {
-                plane = b;
-                flight = c;
+            if (c.equals(*flight)) {
+                plane = &b;
+                flight = &c;
                 exists = true;
                 break;
             }
         }
+        if(exists) break;
     }
     if (!exists) {
         cout << "The given flight does not exist " << endl;
@@ -2664,7 +2666,7 @@ void App::ticketDeletion(Passenger& passenger)
 
     for(Ticket &t : passenger.getTickets())
     {
-        if(flight == t.getFlightAssocited())
+        if(*flight == t.getFlightAssocited())
         {
             passenger.removeTicket(t);
             cout << "Ticket deleted!" << endl;
@@ -2676,110 +2678,110 @@ void App::ticketDeletion(Passenger& passenger)
 }
 
 void App::ticketFind(Passenger& passenger){
-    {
-        int id;
-        Date departure;
-        int day,month,year;
-        Airport origin;
-        string initials;
-        cout << "What flight shall the ticked be deleted from?\n";
-        cout << "Origin Airport (initials): "; cin >> initials;
-        if(!checkAirportExists(initials,origin))
-        {
-            string choice;
-            cout << "Airport does not exist!" << endl;
-            cout << "type anything to go back";
-            cin >> choice;
-            cin.clear();
-            cin.ignore(INT_MAX,'\n');
-            return;
-        }
-        cout << endl;
-        cout << "Day: "; cin >> day;
-        if (!cinGood()) return;
-        cout << "\n";
-        cout << "Month: "; cin >> month;
-        if (!cinGood()) return;
-        cout << "\n";
-        cout << "Year: "; cin >> year;
-        if (!cinGood()) return;
-        cout << "\n";
-        departure = Date(year,month,day);
-        origin = Airport("",initials);
-        Flight flight = Flight(departure,origin);
-        cout << "\n";
-        Plane plane;
-        bool exists = false;
-        for (Plane &b: planes) {
-            for(Flight &c: b.getFlights()){
-                if (c == flight) {
-                    plane = b;
-                    flight = c;
-                    exists = true;
-                    break;
-                }
-            }
-        }
-        if (!exists) {
-            cout << "The given flight does not exist " << endl;
-            cout << "Type anything to go back" << endl;
-            string choice;
-            cin >> choice;
-            cin.clear();
-            cin.ignore(INT_MAX, '\n');
-            return;
-        }
 
-        for(Ticket &t : passenger.getTickets())
-        {
-            if(flight == t.getFlightAssocited())
-            {
-                cout << "Ticket found!" << endl;
-                cout << "Id - Flight" << endl;
-                cout << t << endl;
-                cout << "Do you want to update it? (Y/N)"<< endl;
-                char answer;
-                cin >> answer;
-                if (!cinGood()) return;
-                if (answer == 'n' || answer == 'N') {break;}
-                else if (answer == 'y' || answer == 'Y'){
-                    updateTicket(t);
-                }
-                else
-                {
-                    cout << "invalid character! considered as a 'N'" << endl;
-                    break;
-                }
+    int id;
+    Date departure;
+    int day,month,year;
+    Airport origin;
+    string initials;
+    cout << "What flight shall the ticked be deleted from?\n";
+    cout << "Origin Airport (initials): "; cin >> initials;
+    if(!checkAirportExists(initials,origin))
+    {
+        string choice;
+        cout << "Airport does not exist!" << endl;
+        cout << "type anything to go back";
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX,'\n');
+        return;
+    }
+    cout << endl;
+    cout << "Day: "; cin >> day;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Month: "; cin >> month;
+    if (!cinGood()) return;
+    cout << "\n";
+    cout << "Year: "; cin >> year;
+    if (!cinGood()) return;
+    cout << "\n";
+    departure = Date(year,month,day);
+    Flight* flight = new Flight(departure,origin);
+    cout << "\n";
+    Plane* plane;
+    bool exists = false;
+    for (Plane &b: planes) {
+        for(Flight &c: b.getFlights()){
+            if (c.equals(*flight)) {
+                plane = &b;
+                flight = &c;
+                exists = true;
+                break;
             }
-            cout << "Ticket not found" << endl;
-            cout << "Do you want to create it? (Y/N)"<< endl;
+        }
+        if(exists) break;
+    }
+    if (!exists) {
+        cout << "The given flight does not exist " << endl;
+        cout << "Type anything to go back" << endl;
+        string choice;
+        cin >> choice;
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        return;
+    }
+
+    for(Ticket &t : passenger.getTickets())
+    {
+        if(*flight == t.getFlightAssocited())
+        {
+            cout << "Ticket found!" << endl;
+            cout << "Id - Flight" << endl;
+            cout << t << endl;
+            cout << "Do you want to update it? (Y/N)"<< endl;
             char answer;
             cin >> answer;
             if (!cinGood()) return;
             if (answer == 'n' || answer == 'N') {break;}
             else if (answer == 'y' || answer == 'Y'){
-                Ticket a = Ticket(flight);
-                int numBag;
-                cout << "How many luggages is the passenger taking to the flight?"<< endl;
-                cin >> numBag;
-                for(numBag != 0; numBag--;){
-                    Luggage l = Luggage();
-                    a.addLuggage(l);
-                }
-                if(!passenger.addTicket(a)){
-                    cout << "This flight has no seats remaining" <<endl;
-                    return;
-                }
-                cout << "Ticket created!" << endl;
+                updateTicket(t);
             }
             else
             {
                 cout << "invalid character! considered as a 'N'" << endl;
                 break;
             }
-            //return;
         }
+        cout << "Ticket not found" << endl;
+        cout << "Do you want to create it? (Y/N)"<< endl;
+        char answer;
+        cin >> answer;
+        if (!cinGood()) return;
+        if (answer == 'n' || answer == 'N') {break;}
+        else if (answer == 'y' || answer == 'Y'){
+            Ticket a = Ticket(*flight);
+            int numBag;
+            cout << "How many luggages is the passenger taking to the flight?"<< endl;
+            cin >> numBag;
+            for(numBag != 0; numBag--;){
+                Luggage l = Luggage();
+                a.addLuggage(l);
+            }
+            if(!passenger.addTicket(a)){
+                cout << "This flight has no seats remaining" <<endl;
+                return;
+            }
+            cout << "Ticket created!" << endl;
+        }
+        else
+        {
+            cout << "invalid character! considered as a 'N'" << endl;
+            break;
+        }
+        //return;
     }
+
 }
 
 void App::updateTicket(Ticket& ticket){
@@ -2791,6 +2793,7 @@ void App::updateTicket(Ticket& ticket){
     if (answer == 'a' || answer == 'A') {
         cout << "How many?" << endl;
         cin >> newLug;
+        if (!cinGood()) return;
         for(newLug != 0; newLug--;){
             Luggage l = Luggage();
             ticket.addLuggage(l);
@@ -2800,6 +2803,7 @@ void App::updateTicket(Ticket& ticket){
         if(ticket.getTicketLuggages().empty()){cout << "This tickets has no luggages to remove"; return;}
         cout << "How many?" << endl;
         cin >> newLug;
+        if (!cinGood()) return;
         for(newLug != 0; newLug--;){
             if(ticket.getTicketLuggages().empty()){cout << "This tickets has no luggages left to remove";}
             ticket.removeLuggage();
@@ -2841,7 +2845,7 @@ void App::showTicket(Passenger& passenger)
             return;
     }
     int counter = 1;
-    cout << "Order - Flight.Id - DepartureDate - Duration - Origin - Destination - AvailableSeats\" -" << endl;
+    cout << "Order - Ticket.Id - Flight.Id - DepartureDate - Duration - Origin - Destination - AvailableSeats\" -" << endl;
     for(Ticket &t: aux)
     {
         cout << counter << " - " << t << "\n";
@@ -2887,20 +2891,19 @@ void App::checkin(Passenger& passenger)
     if (!cinGood()) return;
     cout << "\n";
     departure = Date(year,month,day);
-    origin = Airport("",initials);
-    Flight flight = Flight(departure,origin);
+    Flight* flight = new Flight(departure,origin);
     cout << "\n";
-    Plane plane;
+    Plane* plane;
     bool exists = false;
     for (Plane &b: planes) {
         for(Flight &c: b.getFlights()){
-            if (c == flight) {
-                plane = b;
-                flight = c;
+            if (c.equals(*flight)) {
+                plane = &b;
+                flight = &c;
                 exists = true;
                 break;
             }
-        }
+        } if(exists) break;
     }
     if (!exists) {
         cout << "The given flight does not exist " << endl;
@@ -2914,13 +2917,13 @@ void App::checkin(Passenger& passenger)
 
     for(Ticket &t : passenger.getTickets())
     {
-        if(flight == t.getFlightAssocited())
+        if(*flight == t.getFlightAssocited())
         {
             cout << "Ticket found!" << endl;
             t.setCheckin();
             cout << "Checkin completed" <<endl;
-            }
         }
+    }
 }
 
 

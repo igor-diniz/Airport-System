@@ -115,8 +115,8 @@ void App::readPassengersFile(const string &passengersFile) {
                     }
 
                     else{
-                        Luggage luggage = Luggage();
-                        assert(luggage.getId() == stoi(CSVvalue));
+                        Luggage luggage = Luggage(CSVvalue);
+                        //assert(luggage.getId() == stoi(CSVvalue));
                         //cout << luggage.getId() << endl;
                         ticket.addLuggage(luggage);
 
@@ -2589,7 +2589,7 @@ void App::ticketCreation(Passenger& passenger)
     cout << "How many suitcases is the passenger taking as luggage to the flight?"<< endl;
     cin >> numBag;
     for(numBag != 0; numBag--;){
-        Luggage l = Luggage();
+        Luggage l = Luggage(a.getID());
         a.addLuggage(l);
     }
     passenger.addTicket(a);
@@ -2633,7 +2633,7 @@ void App::ticketCreation(Passenger& passenger)
 
                     cin >> numBag;
                     for(numBag != 0; numBag--;){
-                        Luggage l = Luggage();
+                        Luggage l = Luggage(t.getID());
                         t.addLuggage(l);
                     }
                     a.addTicket(t);
@@ -2810,7 +2810,7 @@ void App::ticketFind(Passenger& passenger){
                 cout << "How many suitcases is the passenger taking as luggage to the flight?"<< endl;
                 cin >> numBag;
                 for(numBag != 0; numBag--;){
-                    Luggage l = Luggage();
+                    Luggage l = Luggage(a.getID());
                     a.addLuggage(l);
                 }
                 passenger.addTicket(a);
@@ -2840,7 +2840,7 @@ void App::updateTicket(Ticket& ticket){
         cout << "How many?" << endl;
         cin >> newLug;
         for(newLug != 0; newLug--;){
-            Luggage l = Luggage();
+            Luggage l = Luggage(ticket.getID());
             ticket.addLuggage(l);
         }
     }

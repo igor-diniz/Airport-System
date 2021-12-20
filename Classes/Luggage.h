@@ -10,6 +10,7 @@ private:
     static int nextId; ///incrementor for next luggage creation
     int luggageId, ticketId; ///current ticket id and luggage id
 public:
+    Luggage(){};
     Luggage(int ticketId);
     Luggage(string CSVluggage);
     int getTicketId() const;

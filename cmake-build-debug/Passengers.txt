@@ -5,99 +5,99 @@ FLIGHT
 Ian Italo,CD345678
 FLIGHT
 2022/12/29,05:55,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Heathrow,LHR,210
-LUGGAGES
+LUGGAGE
 1
 2
 3
 FLIGHT
 2022/04/04,01:50,Aeroporto Internacional de São Paulo,GRU,Aeroporto Internacional Tom Jobim,GIG,190
-LUGGAGES
+LUGGAGE
 4
 5
 FLIGHT
 2022/05/05,01:50,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Sao Paulo,GRU,190
-LUGGAGES
+LUGGAGE
 6
 
 Eduardo da Silva,EF567890
 FLIGHT
 2022/03/13,05:55,Aeroporto Internacional Heathrow,LHR,Aeroporto Internacional Tom Jobim,GIG,200
-LUGGAGES
+LUGGAGE
 7
 8
 
 Ingrid Magalhaes,JF226644
 FLIGHT
 2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 9
 
 Ana Lima,KK999999
 FLIGHT
 2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 10
 11
 
 Manuel Teixeira,GB568971
 FLIGHT
 2022/07/14,15:30,Aeroporto Internacional de Toquio,HND,Aeroporto Internacional de Sao Paulo,GRU,190
-LUGGAGES
+LUGGAGE
 12
 
 Carla Teixeira,GB123456
 FLIGHT
 2022/02/04,06:00,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 13
 
 Leonardo Moura,PO888888
 FLIGHT
 2022/02/07,05:45,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,200
-LUGGAGES
+LUGGAGE
 14
 FLIGHT
 2022/03/14,06:25,Aeroporto Internacional Hartsfield-Jackson,ATL,Aeroporto Internacional de Pequim,PEK,190
-LUGGAGES
+LUGGAGE
 15
 FLIGHT
 2022/04/21,10:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Toquio,HND,190
-LUGGAGES
+LUGGAGE
 16
 
 Neymar Junior,GB333333
 FLIGHT
 2022/05/28,02:50,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional OHare,ORD,180
-LUGGAGES
+LUGGAGE
 17
 18
 FLIGHT
 2022/06/03,16:00,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Hong Kong,HKG,170
-LUGGAGES
+LUGGAGE
 19
 20
 FLIGHT
 2022/07/09,00:55,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Sao Paulo,GRU,165
-LUGGAGES
+LUGGAGE
 21
 22
 
 Vinicius Correa,AM454545
 FLIGHT
 2022/02/11,05:00,Aeroporto Internacional de Pequim,PEK,Aeroporto Internacional de Dubai,DXB,180
-LUGGAGES
+LUGGAGE
 23
 
 Ana Beatriz,AB226644
 FLIGHT
 2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 24
 
 Jose Arthur,CD226644
 FLIGHT
 2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 25
 26
 27
@@ -105,7 +105,7 @@ LUGGAGES
 Amanda Sousa,JJ237744
 FLIGHT
 2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 28
 29
 30
@@ -113,7 +113,7 @@ LUGGAGES
 Bernardo Magalhaes,JF226934
 FLIGHT
 2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 31
 32
 33
@@ -121,7 +121,7 @@ LUGGAGES
 Matilde Soares,HG226644
 FLIGHT
 2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,150
-LUGGAGES
+LUGGAGE
 34
 35
 36

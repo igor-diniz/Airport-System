@@ -82,9 +82,9 @@ void App::readPassengersFile(const string &passengersFile) {
                 case ('F'):
                     getline(fileToOpen, CSVvalue);
 
-                    if (CSVvalue == "LUGGAGES")
+                    if (CSVvalue == "LUGGAGE")
                     {
-                        flag = "LUGGAGES";
+                        flag = "LUGGAGE";
                         break;
                     }
 

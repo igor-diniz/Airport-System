@@ -528,10 +528,6 @@ cxxabi.h
 acxx_demangle.h
 -
 
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Airport.cpp
-Airport.h
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Airport.h
-
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Airport.h
 list
 -
@@ -574,14 +570,6 @@ stack
 queue
 -
 
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Date.cpp
-Date.h
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Date.h
-sstream
--
-iomanip
--
-
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Date.h
 string
 -
@@ -604,22 +592,8 @@ C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Date.h
 LuggageCar.h
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/LuggageCar.h
 
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Luggage.cpp
-sstream
--
-Luggage.h
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Luggage.h
-sstream
--
-
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Luggage.h
 string
--
-
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/LuggageCar.cpp
-LuggageCar.h
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/LuggageCar.h
-sstream
 -
 
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/LuggageCar.h
@@ -666,14 +640,6 @@ C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Service.h
 exception
 -
 
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Service.cpp
-sstream
--
-Service.h
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Service.h
-iostream
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/iostream
-
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Service.h
 string
 -
@@ -686,7 +652,9 @@ C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Ticket.cpp
 Ticket.h
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Ticket.h
 iostream
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/iostream
+-
+sstream
+-
 
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Ticket.h
 list
@@ -696,23 +664,9 @@ C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Flight.h
 Luggage.h
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Luggage.h
 
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Time.cpp
-Time.h
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Time.h
-sstream
--
-iomanip
--
-
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Time.h
 string
 -
-
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Transport.cpp
-sstream
--
-Transport.h
-C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Transport.h
 
 C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Transport.h
 list

@@ -5,7 +5,7 @@ Plane::Plane(int capacity,string registration,string type){
     this->capacity = capacity;
     this->registration = registration;
     this->type = type;
-    this->flights = list<Flight>(0);
+    this->flightsId = list<int>(0);
     servicesToDo = queue<Service>();
 }
 
@@ -29,9 +29,9 @@ void Plane::addOldService(Service &oldService){
 }
 
 
-void Plane::addFlight(Flight &flight)
+void Plane::addFlight(int flightId)
 {
-    flights.push_back(flight);
+    flightsId.push_back(flightId);
 }
 
 void Plane::addService(Service &service) {
@@ -43,13 +43,13 @@ void Plane::popService() {
     servicesToDo.pop();
 }
 
-bool Plane::deleteFlight(int id)
+bool Plane::deleteFlight(int flightId)
 {
-    for (Flight a: flights)
+    for (int id : flightsId)
     {
-        if(a.getId() == id)
+        if(id == flightId)
         {
-            flights.remove(a);
+            flightsId.remove(id);
             return true;
         }
     }
@@ -61,9 +61,9 @@ int Plane::getCapacity() const
     return capacity;
 }
 
-list<Flight> Plane::getFlights()
+list<int> Plane::getFlightsId()
 {
-    return flights;
+    return flightsId;
 }
 
 string Plane::getRegistration() const

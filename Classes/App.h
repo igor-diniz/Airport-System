@@ -16,16 +16,17 @@ private:
     list<Plane> planes;
     list<LuggageCar> luggageCars;
     list<Airport> airports;
+    list<Flight> flights;
 
 public:
     App(){};
-    App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile);
+    App(const string& flightsFile, const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile);
     void mainMenu();
     void save(){}; //TODO
 
 private:
     vector<int> possibleChoices();
-    unsigned stringToInt(string str);
+    void readFlightsFile(const string &flightsFile);
     void readAirportsFile(const string& airportsFile);
     void readPassengersFile(const string& passengersFile);
     void readPlanesFile(const string& planesFile);

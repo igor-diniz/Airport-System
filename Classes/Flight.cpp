@@ -69,6 +69,11 @@ int Flight::getId() const {
     return id;
 }
 
+void Flight::setID(const int flightID){
+    id = flightID;
+}
+
+
 Date Flight::getDepartureDate() const
 {
     return departure;

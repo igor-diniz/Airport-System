@@ -43,6 +43,7 @@ public:
     ///
     Flight(Date &departure,Time duration,Airport &origin,Airport &destination,int availableSeats);
     int getId() const;
+    void setID(const int flightID);
     Airport getDestination() const;
     Airport getOrigin() const;
     Date getDepartureDate() const;

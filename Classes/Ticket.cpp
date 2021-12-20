@@ -1,11 +1,26 @@
 #include "Ticket.h"
-#include "iostream"
+#include <iostream>
+#include <sstream>
 int Ticket::nextid = 0;
 Ticket::Ticket(Flight& flightAssocieted){
     nextid++;
     id = nextid;
     this->flightAssocieted = flightAssocieted;
     flightAssocieted.reduceAvailableSeats();
+}
+
+Ticket::Ticket(string CSVticket)
+{
+    stringstream ssTicket;
+    string strTickeID, strFlightID;
+
+    ssTicket << CSVticket;
+
+    getline(ssTicket, strTickeID, ',');
+    getline(ssTicket, strFlightID);
+
+    id = stoi(strTickeID);
+    flightAssocieted.setID(stoi(strFlightID));
 }
 
 Flight Ticket::getFlightAssocited() const{return flightAssocieted;}

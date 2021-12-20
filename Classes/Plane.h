@@ -13,7 +13,7 @@ private:
     int capacity;
     string registration;
     string type; ///The project utterance refers to this as "type", but the correct name would be "model"
-    list<Flight> flights; ///Aircraft flight plan
+    list<int> flightsId; ///Aircraft flight plan
     queue<Service> servicesToDo;
     stack<Service> servicesDone;
 
@@ -32,7 +32,7 @@ public:
     ///
     /// \param flight Flight that will be added to the flights list
     ///
-    void addFlight(Flight &flight);
+    void addFlight(int flightId);
     ///
     /// \param service that will be added to the services to do list
     ///
@@ -54,11 +54,11 @@ public:
     void setRegistration(string registration);
     string getType() const;
     void setType(string type);
-    list<Flight> getFlights();
+    list<int> getFlightsId();
     ///
     /// \param id from the Flight to be deleted, returns true if it was successfully deleted
     ///
-    bool deleteFlight(int id);
+    bool deleteFlight(int flightId);
     ///
     /// \param plane planes are compared by registration
     ///

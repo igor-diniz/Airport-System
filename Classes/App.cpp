@@ -2,11 +2,12 @@
 #include "SortForms.cpp"
 #include <algorithm>
 
-App::App(const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
+App::App(const string& flightsFile, const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
+    //readFlightsFile(flightsFile);
     readPassengersFile(passengersFile);
+    readAirportsFile(airportsFile);
     readPlanesFile(planesFile);
     readLuggageCarsFile(luggageCarsFile);
-    readAirportsFile(airportsFile);
 }
 
 
@@ -73,13 +74,13 @@ void App::readPassengersFile(const string &passengersFile) {
         Passenger passenger = Passenger(name, passport);
         //cout << passenger << endl;
         getline(fileToOpen, CSVvalue);
-        flag = "FLIGHT";
+        flag = "TICKET";
 
         while(true)
         {
             switch (flag[0])
             {
-                case ('F'):
+                case ('T'):
                     getline(fileToOpen, CSVvalue);
 
                     if (CSVvalue == "LUGGAGE")
@@ -106,9 +107,9 @@ void App::readPassengersFile(const string &passengersFile) {
 
                     getline(fileToOpen, CSVvalue);
 
-                    if (CSVvalue == "FLIGHT")
+                    if (CSVvalue == "TICKET")
                     {
-                        flag = "FLIGHT";
+                        flag = "TICKET";
                         passenger.addTicket(ticket);
                         //cout << ticket << endl;
                         break;

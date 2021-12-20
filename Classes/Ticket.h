@@ -4,6 +4,7 @@
 #include <list>
 #include "Flight.h"
 #include "Luggage.h"
+using namespace std;
 
 class Ticket {
 private:
@@ -17,6 +18,7 @@ private:
 
 public:
     Ticket(){};
+    Ticket(string CSVticket);
     ///
     /// \param flightAssocieted the flight this ticket refers to
     /// this constructor is used to get dates read from file manipulation

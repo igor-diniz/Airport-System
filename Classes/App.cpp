@@ -12,8 +12,10 @@ App::App(const string& flightsFile, const string& passengersFile, const string& 
 
 void wait()
 {
-    cout << "Type 0 to go back" << endl;
-    cout << "Type 1 to exit" << endl;
+    cout << "|=============================================|\n"
+         << "|  Return                                 [0] |\n"
+         << "|  Exit                                   [1] |\n"
+         << "|=============================================|\n";
     string choice;
     cin >> choice;
     while(choice != "0" && choice != "1")
@@ -21,8 +23,10 @@ void wait()
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         cout << "Invalid answer!" << endl << endl;
-        cout << "Type 0 to go back" << endl;
-        cout << "Type 1 to exit" << endl;
+        cout << "|=============================================|\n"
+             << "|  Return                                 [0] |\n"
+             << "|  Exit                                   [1] |\n"
+             << "|=============================================|\n";
     }
     if(choice == "0") return;
     if(choice == "1") exit(0);
@@ -30,50 +34,37 @@ void wait()
 
 int binarySearchFlight(int id, int inicio, int fim, vector<Flight> flights)
 {
-    if(fim >= inicio)
-    {
-        int mid = inicio + (fim-1)/2;
 
-        if(flights[mid].getId() == id)
-        {
+    while (inicio <= fim) {
+        int mid = inicio + (fim - inicio) / 2;
+
+        if (flights[mid].getId() == id)
             return mid;
-        }
 
-        if(flights[mid].getId() > id)
-        {
-            return binarySearchFlight(id, inicio, mid - 1, flights);
-        }
+        if (flights[mid].getId() < id)
+            inicio = mid + 1;
 
-        return binarySearchFlight(id, mid + 1, fim, flights);
+        else
+            fim = mid - 1;
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 };
 
 int binarySearchLuggageCar(int id, int inicio, int fim, vector<LuggageCar> LuggageCar)
 {
-    if(fim >= inicio)
-    {
-        int mid = inicio + (fim-1)/2;
+    while (inicio <= fim) {
+        int mid = inicio + (fim - inicio) / 2;
 
-        if(LuggageCar[mid].getId() == id)
-        {
+        if (LuggageCar[mid].getId() == id)
             return mid;
-        }
 
-        if(LuggageCar[mid].getId() > id)
-        {
-            return binarySearchLuggageCar(id, inicio, mid - 1, LuggageCar);
-        }
+        if (LuggageCar[mid].getId() < id)
+            inicio = mid + 1;
 
-        return binarySearchLuggageCar(id, mid + 1, fim, LuggageCar);
+        else
+            fim = mid - 1;
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 };
 
 bool cinGood()

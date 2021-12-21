@@ -26,42 +26,122 @@ public:
 
 private:
     vector<int> possibleChoices();
+    ///
+    ///  reads the file no formato bla bla bla bla
+    ///
     void readFlightsFile(const string &flightsFile);
     void readAirportsFile(const string& airportsFile);
     void readPassengersFile(const string& passengersFile);
     void readPlanesFile(const string& planesFile);
     void readLuggageCarsFile(const string& luggageCarsFile);
     void checkin(Passenger &passenger);
+    ///
+    ///  creates an airport and adds it to the general airports list
+    ///
     void airportCreation();
+    ///
+    ///  removes an airport from the general airports list
+    ///
     void airportDeletion();
+    ///
+    ///  searches for a airport from the general airports list
+    ///  and gives the option to edit if found or to creat if not found
+    ///
     void airportFind();
     void updateAirport(Airport &airport);
+    ///
+    ///  prints the airports list, sorted and filtered by user inputs
+    ///
     void showAirports();
     void transportMenu();
+    ///
+    ///  \param airport creates a transport and adds it to the airport's transports list
+    ///
     void transportCreation(Airport &airport);
+    ///
+    ///  \param airport removes a transport from the airport's transports list
+    ///
     void transportDeletion(Airport &airport);
+    ///
+    ///  \param airport searches for a transport from the airport's transports list
+    ///  and gives the option to edit if found or to creat if not found
+    ///
     void transportFind(Airport &airport);
     void updateTransport(Transport &transport, Airport &airport);
+    ///
+    ///  prints the airport's transports list, sorted and filtered by user inputs
+    ///
     void showTransports(Airport &airport);
+    ///
+    ///  creates a luggage car and adds it to the general luggage cars list
+    ///
     void luggageCarCreation();
+    ///
+    ///  removes a luggage car from the general luggage cars list
+    ///
     void luggageCarDeletion();
+    ///
+    ///  searches for a luggage car from the general luggage car list
+    ///  and gives the option to edit if found or to creat if not found
+    ///
     void luggageCarFind();
+    ///
+    ///  prints the luggage car list, sorted and filtered by user inputs
+    ///
     void showluggageCars();
+    ///
+    ///  creates a plane and adds it to the general plane list
+    ///
     void planeCreation();
+    ///
+    ///  removes a plane and from the general plane list
+    ///
     void planeDeletion();
+    ///
+    ///  searches for a plane from the general plane list
+    ///  and gives the option to edit if found or to creat if not found
+    ///
     void planeFind();
     void updatePlane(Plane &plane);
+    ///
+    ///  prints the plane list, sorted and filtered by user inputs
+    ///
     void showPlanes();
     void flightMenu();
     void serviceMenu();
+    ///
+    ///  \param plane creates a service and adds it to the plane's services to do list
+    ///
     void serviceCreation(Plane &plane);
+    ///
+    ///  \param plane removes a service and from one of the plane's services to do list
+    ///
     void serviceDeletion(Plane& plane);
+    ///
+    ///  \param plane prints the plane's services to do list, sorted and filtered by user inputs
+    ///
     void showServicesToDo(Plane& plane);
+    ///
+    ///  \param plane prints the plane's services done list, sorted and filtered by user inputs
+    ///
     void showServicesDone(Plane& plane);
+    ///
+    ///  \param plane creates a flight and adds it to the general flights list and the plane's flights list
+    ///
     void flightCreation(Plane &plane);
+    ///
+    ///  \param plane removes a flight from the general flights list and the plane's flights list
+    ///
     void flightDeletion(Plane &plane);
+    ///
+    ///  \param plane searches for a flight from the general flights list and the plane's flights list
+    ///  and gives the option to edit if found or to creat if not found
+    ///
     void flightFind(Plane &plane);
     void updateFlight(Flight& flight,Plane &plane);
+    ///
+    ///  \param plane prints the plane's services to do list, sorted and filtered by user inputs
+    ///
     void showFlights(Plane &plane);
     bool checkAirportExists(string initials,Airport& airport);
     void getLuggageToCar(Plane &plane);
@@ -74,7 +154,7 @@ private:
     ///
     void passengerDeletion();
     ///
-    ///  searchs for a passenger and gives the option to edit if found or to creat if not found
+    ///  searches for a passenger and gives the option to edit if found or to creat if not found
     ///
     void passengerFind();
     ///
@@ -99,7 +179,7 @@ private:
     ///
     void ticketDeletion(Passenger& passenger);
     ///
-    ///  \param passenger searchs for a ticket from the passengers tickets
+    ///  \param passenger searches for a ticket from the passengers tickets
     ///  and gives the option to edit if found or to creat if not found
     ///
     void ticketFind(Passenger& passenger);

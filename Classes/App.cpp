@@ -199,8 +199,7 @@ void App::readPassengersFile() {
             continue;
         }
         //cout << passenger << endl;
-        getline(fileToOpen, CSVvalue);
-        flag = "TICKET";
+        getline(fileToOpen, flag);
 
         while(true)
         {

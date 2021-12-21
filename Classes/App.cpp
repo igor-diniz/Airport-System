@@ -11,11 +11,11 @@ App::App(const string& flightsFile, const string& passengersFile, const string& 
     this->luggageCarsFile = luggageCarsFile;
     this->airportsFile = airportsFile;
 
-    readFlightsFile(flightsFile);
-    readPassengersFile(passengersFile);
-    readAirportsFile(airportsFile);
-    readPlanesFile(planesFile);
-    readLuggageCarsFile(luggageCarsFile);
+    readFlightsFile();
+    readPassengersFile();
+    readAirportsFile();
+    readPlanesFile();
+    readLuggageCarsFile();
 }
 /*
 void wait()
@@ -118,7 +118,7 @@ Transport getTransportInfos()
     return transp;
 }
 
-void App::readFlightsFile(const string &flightsFile) {
+void App::readFlightsFile() {
     ifstream fileToOpen;
     fileToOpen.open(flightsFile);
 
@@ -170,7 +170,7 @@ void App::readFlightsFile(const string &flightsFile) {
     }
 }
 
-void App::readPassengersFile(const string &passengersFile) {
+void App::readPassengersFile() {
     ifstream fileToOpen;
     fileToOpen.open(passengersFile);
 
@@ -271,7 +271,7 @@ void App::readPassengersFile(const string &passengersFile) {
     fileToOpen.close();
 }
 
-void App::readAirportsFile(const string& airportsFile){
+void App::readAirportsFile(){
     ifstream fileToOpen;
     fileToOpen.open(airportsFile);
 
@@ -302,7 +302,7 @@ void App::readAirportsFile(const string& airportsFile){
     }
 }
 
-void App::readPlanesFile(const string &planesFile) {
+void App::readPlanesFile() {
     ifstream fileToOpen;
     fileToOpen.open(planesFile);
 
@@ -397,7 +397,7 @@ void App::readPlanesFile(const string &planesFile) {
     fileToOpen.close();
 }
 
-void App::readLuggageCarsFile(const string& luggageCarsFile){
+void App::readLuggageCarsFile(){
     ifstream fileToOpen;
     fileToOpen.open(luggageCarsFile);
 
@@ -1364,6 +1364,7 @@ void App::planeCreation()
     planes.push_back(a);
     cout << "Plane added! \n";
     wait();
+    return;
 }
 
 void App::planeDeletion()
@@ -1757,6 +1758,7 @@ void App::flightDeletion(Plane &plane)
     }
     cout << "This flight does not exist!" << endl;
     wait();
+    return;
 }
 
 bool App::checkAirportExists(string &initials, Airport& airport) //se existir coloca o aeroporto em airport
@@ -3102,7 +3104,8 @@ void App::saveAirports()
     ofstream fileToSave;
     fileToSave.open(airportsFile, ios::trunc);
 
-    if(!fileToSave.is_open()){
+    if(!fileToSave.is_open())
+    {
         cout << "Cannot open AirportsFile" << endl;
         return;
     }

@@ -12,20 +12,20 @@ LuggageCar::LuggageCar(Airport airport, int numCarriages, int stacksPerCarriage,
 }
 
 LuggageCar::LuggageCar(string CSVluggageCar){
-    nextid++;
-    id = nextid;
 
     stringstream ssLuggageCar;
     ssLuggageCar << CSVluggageCar;
 
-    string nameAirport, initials, nCarriages, stacks, nLuggage;
+    string strID, nameAirport, initials, nCarriages, stacks, nLuggage;
 
+    getline(ssLuggageCar, strID, ',');
     getline(ssLuggageCar, nameAirport, ',');
     getline(ssLuggageCar, initials, ',');
     getline(ssLuggageCar, nCarriages, ',');
     getline(ssLuggageCar, stacks, ',');
     getline(ssLuggageCar, nLuggage);
 
+    id = stoi(strID);
     airport = Airport(nameAirport, initials);
     numCarriages = stoi(nCarriages);
     stacksPerCarriage = stoi(stacks);

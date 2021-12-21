@@ -30,11 +30,11 @@ private:
     ///
     ///  reads the file no formato bla bla bla bla
     ///
-    void readFlightsFile(const string &flightsFile);
-    void readAirportsFile(const string& airportsFile);
-    void readPassengersFile(const string& passengersFile);
-    void readPlanesFile(const string& planesFile);
-    void readLuggageCarsFile(const string& luggageCarsFile);
+    void readFlightsFile();
+    void readAirportsFile();
+    void readPassengersFile();
+    void readPlanesFile();
+    void readLuggageCarsFile();
     ///
     ///  \param passenger updates de passenger's ticket checkin state and sends its luggage to the flights luggage lists
     ///

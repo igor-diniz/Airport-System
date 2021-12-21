@@ -1981,6 +1981,7 @@ void App::showFlights(Plane &plane)
         int hour, minute;
         Airport origin, destination;
         string initials;
+        int availableSeats;
 
         cout << "Type '0' if you do not want to specify \n"
              << "Origin airport (initials): ";
@@ -2310,9 +2311,9 @@ void App::showServicesToDo(Plane &plane)
     cout << "Order - Date - Accountable - ServiceType\n";
     while(!services.empty())
     {
-        cout << services.front() << endl;
-        wait();
+        cout << order << " - " << services.front() << endl;
         services.pop();
+        order++;
     }
     wait();
 }
@@ -2324,8 +2325,9 @@ void App::showServicesDone(Plane &plane)
     cout << "Order - Date - Accountable - ServiceType\n";
     while(!services.empty())
     {
-        cout << services.top() << endl;
+        cout << order << " - " << services.top() << endl;
         services.pop();
+        order++;
     }
     wait();
 }

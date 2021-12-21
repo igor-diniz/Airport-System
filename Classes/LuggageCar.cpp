@@ -26,7 +26,8 @@ LuggageCar::LuggageCar(string CSVluggageCar){
     getline(ssLuggageCar, nLuggage);
 
     id = stoi(strID);
-    nextid = id;
+    if(id >= nextid)
+        nextid = id;
     airport = Airport(nameAirport, initials);
     numCarriages = stoi(nCarriages);
     stacksPerCarriage = stoi(stacks);

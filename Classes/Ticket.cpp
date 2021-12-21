@@ -20,7 +20,8 @@ Ticket::Ticket(string CSVticket)
     getline(ssTicket, strFlightID);
 
     id = stoi(strTickeID);
-    nextid = id;
+    if(id >= nextid)
+        nextid = id;
     flightAssocieted.setID(stoi(strFlightID));
 }
 

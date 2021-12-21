@@ -169,33 +169,13 @@ bool sortCarsByAirportDesc(const LuggageCar& l1, const LuggageCar& l2)
     return !(l1.getAirport() < l2.getAirport());
 }
 
-bool sortCarsByCarriageAsc(const LuggageCar& l1, const LuggageCar& l2)
+bool sortCarsByIdAsc(const LuggageCar& l1, const LuggageCar& l2)
 {
-    return l1.getNumCarriages() < l2.getNumCarriages();
-}
-
-bool sortCarsByCarriageDesc(const LuggageCar& l1, const LuggageCar& l2)
-{
-    return l1.getNumCarriages() > l2.getNumCarriages();
-}
-
-bool sortCarsByStacksAsc(const LuggageCar& l1, const LuggageCar& l2)
-{
-    return l1.getNumStacks() < l2.getNumStacks();
-}
-
-bool sortCarsByStacksDesc(const LuggageCar& l1, const LuggageCar& l2)
-{
-    return l1.getNumStacks() > l2.getNumStacks();
+    return l1.getId() < l2.getId();
 }
 
 
-bool sortCarsByLuggagesStackAsc(const LuggageCar& l1, const LuggageCar& l2)
+bool sortCarsByIdDesc(const LuggageCar& l1, const LuggageCar& l2)
 {
-    return l1.getNumLuggagesPerStack() < l2.getNumLuggagesPerStack();
-}
-
-bool sortCarsByLuggagesStackDesc(const LuggageCar& l1, const LuggageCar& l2)
-{
-    return l1.getNumLuggagesPerStack() > l2.getNumLuggagesPerStack();
+    return l1.getId() > l2.getId();
 }

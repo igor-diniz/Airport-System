@@ -17,6 +17,7 @@ Luggage::Luggage(string CSVluggage){
     getline(ssLuggage, strLuggageId, ',');
     getline(ssLuggage, strTicketId);
     luggageId = stoi(strLuggageId);
+    if(luggageId >= nextid)
     nextid = luggageId;
     ticketId = stoi(strTicketId);
 }

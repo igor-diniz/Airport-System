@@ -23,6 +23,7 @@ public:
     /// \param capacity the Plane capacity
     /// \param registration the Plane registration (PRIMARY KEY)
     /// \param type the Plane type (A310,B737,...)
+    ///
     Plane(int capacity,string registration,string type);
     ///
     /// \param CSVplane Plane in string format

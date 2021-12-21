@@ -445,7 +445,6 @@ void App::readLuggageCarsFile(){
                 //cout << strLuggage << endl;
                 Luggage luggage = Luggage(strLuggage);
                 //cout << "---" << luggage.getId() << endl;
-                ;
             }
             fileToOpen.get();
             luggageCar.setLuggageInCar(luggageInCar);
@@ -695,7 +694,7 @@ void App::showAirports()
             cin.clear();
             cin.ignore(INT_MAX,'\n');
             wait();
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         break;
@@ -737,7 +736,7 @@ void App::showAirports()
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         break;
@@ -758,7 +757,7 @@ void App::showAirports()
             aux.sort(sortAirportByInitialsDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             wait();
             return;
     }
@@ -965,7 +964,7 @@ void App::showTransports(Airport &airport)
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         else
@@ -1016,7 +1015,7 @@ void App::showTransports(Airport &airport)
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1045,7 +1044,7 @@ void App::showTransports(Airport &airport)
             aux.sort(sortTransportByDistanceDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             wait();
             return;
     }
@@ -1240,7 +1239,7 @@ void App::showLuggageCars()
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         else
@@ -1293,19 +1292,15 @@ void App::showLuggageCars()
     cout << "How do you want the luggage cars to be sorted? \n"
             "1 - Airport ascending\n"
             "2 - Airport descending\n"
-            "3 - Carriages ascending\n"
-            "4 - Carriages descending\n"
-            "5 - Stacks ascending\n"
-            "6 - Stacks descending\n"
-            "7 - Suitcases p/stack ascending\n"
-            "8 - Suitcases p/stack descending\n";
+            "3 - ID ascending\n"
+            "4 - ID descending\n";
     int sortChoice;
     while(true) {
         cin >> sortChoice;
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1322,25 +1317,13 @@ void App::showLuggageCars()
             sort(aux.begin(),aux.end(),sortCarsByAirportDesc);
             break;
         case 3:
-            sort(aux.begin(),aux.end(),sortCarsByCarriageAsc);
+            sort(aux.begin(),aux.end(),sortCarsByIdAsc);
             break;
         case 4:
-            sort(aux.begin(),aux.end(),sortCarsByCarriageDesc);
-            break;
-        case 5:
-            sort(aux.begin(),aux.end(),sortCarsByStacksAsc);
-            break;
-        case 6:
-            sort(aux.begin(),aux.end(),sortCarsByStacksDesc);
-            break;
-        case 7:
-            sort(aux.begin(),aux.end(),sortCarsByLuggagesStackAsc);
-            break;
-        case 8:
-            sort(aux.begin(),aux.end(),sortCarsByLuggagesStackDesc);
+            sort(aux.begin(),aux.end(),sortCarsByIdDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             return;
     }
     int counter = 1;
@@ -1412,11 +1395,7 @@ void App::planeDeletion()
     cout << "Input the plane specifications : \n"
             "Registration: "; cin >> registration;
     cout << "\n";
-    cout << "Type: "; cin >> type;
-    cout << "\n";
-    cout << "Capacity :"; cin >> capacity;
-    if(!cinGood()) return;
-    Plane a(capacity,registration,type);
+    Plane a(0,registration,"");
     for(Plane &b : planes)
     {
         if(b == a)
@@ -1511,12 +1490,15 @@ void App::updatePlane(Plane &plane)
 {
     string registration,type;
     int capacity;
-    cout << "What should be the new specifications?: \n"
+    cout << "What should be the new specifications?: (type 0 to not change)\n"
             "Registration: "; cin >> registration;
+            if(registration == "0") registration = plane.getRegistration();
     cout << "\n";
     cout << "Type: "; cin >> type;
+    if(type == "0") type = plane.getType();
     cout << "\n";
     cout << "Capacity :"; cin >> capacity;
+    if (capacity == 0) capacity = plane.getCapacity();
     if(!cinGood()) return;
     if(registration.empty() || type.empty() ||capacity <= 0)
     {
@@ -1546,7 +1528,7 @@ void App::showPlanes()
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1597,7 +1579,7 @@ void App::showPlanes()
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1626,7 +1608,7 @@ void App::showPlanes()
             aux.sort(sortPlaneByTypeDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             return;
     }
     int counter = 1;
@@ -1665,10 +1647,10 @@ void App::flightMenu() {
                 "|                   Flights                    |\n"
                 "|  Add Flight                             [1]  |\n"
                 "|  Remove Flight                          [2]  |\n"
-                "|  Detail Flight                          [3]  |\n"
+                "|  Find Flight                            [3]  |\n"
                 "|  Show Flights                           [4]  |\n"
                 "|  Get Luggage To Car                     [5]  |\n"
-                "|  Return                                [0]   |\n"
+                "|  Return                                 [0]  |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;
@@ -1818,39 +1800,37 @@ void App::flightFind(Plane &plane)
     cout << "Input the flight id: \n"
             "Flight id: "; cin >> flightid;
     cout << endl;
-    Flight flight;
+    Flight* flight;
     cout << "Searching..." << endl;
 
-    for(Flight& flightSearched: flights)
+    int index = binarySearchFlight(flightid,0,flights.size()-1,flights);
+    if(index != -1)
     {
-        if(flightSearched.getId() == flightid)
+        flight = &flights[index];
+        cout << "Flight found, details: " << endl
+             << "Id - DepartureDate - Duration - Origin - Destination - AvailableSeats" << endl
+             << *flight << endl
+             << "Do you want to update it? (Y/N)" << endl;
+        char answer;
+        cin >> answer;
+        if(!cinGood()) return;
+        if(answer == 'y' || answer == 'Y')
         {
-            flight = flightSearched;
-            cout << "Flight found, details: " << endl
-               << "Id - DepartureDate - Duration - Origin - Destination - AvailableSeats" << endl
-               << flightSearched << endl
-               << "Do you want to update it? (Y/N)" << endl;
-            char answer;
-            cin >> answer;
-            if(!cinGood()) return;
-            if(answer == 'y' || answer == 'Y')
-            {
-                updateFlight(flightSearched,plane);
-                return;
-            }
-            else if(answer == 'N' || answer == 'n')
-            {
-                return;
-            }
-            else
-            {
-                cout << "Invalid character! Considered as a 'N'" << endl;
-                wait();
-                return;
-            }
+            updateFlight(*flight);
+            return;
+        }
+        else if(answer == 'N' || answer == 'n')
+        {
+            return;
+        }
+        else
+        {
+            cout << "Invalid character! Considered as a 'N'" << endl;
             wait();
             return;
         }
+        wait();
+        return;
     }
     cout << "Flight does not exist!" << endl;
     cout <<"Do you want to create it? (Y/N)" << endl;
@@ -1881,10 +1861,10 @@ void App::flightFind(Plane &plane)
         duration = Time(hour,minute);
         cout << "\n";
 
-        flight.setDestination(destination);
-        flight.setAvailableSeats(availableSeats);
-        flight.setDuration(duration);
-        plane.addFlight(flight.getId());
+        flight->setDestination(destination);
+        flight->setAvailableSeats(availableSeats);
+        flight->setDuration(duration);
+        plane.addFlight(flight->getId());
         cout << "Flight added!" << endl;
         wait();
         return;
@@ -1901,17 +1881,17 @@ void App::flightFind(Plane &plane)
     }
 }
 
-void App::updateFlight(Flight& flight,Plane &plane)
+void App::updateFlight(Flight& flight)
 {
     Date departure;
     int day,month,year;
     Time duration;
     int hour,minute;
-    Airport origin, destination;
+    Airport origin,destination;
     string initials;
     Flight checkFlight = flight;
 
-    cout << "What should be the new specifications? (type 0 to not change)"
+    cout << "What should be the new specifications? (type 0 to not change)" << endl <<
             "Origin Airport (initials): "; cin >> initials;
             if(initials != "0")
             {
@@ -1937,35 +1917,31 @@ void App::updateFlight(Flight& flight,Plane &plane)
     cout << "\n";
     cout << "Hour: "; cin >> hour;
     if (!cinGood()) return;
-    if(hour != 0) duration.setHour(hour);
+    if(hour == 0) duration.setHour(flight.getDuration().getHour());
+    else duration.setHour(hour);
     cout << "\n";
     cout << "Minute: "; cin >> minute;
     if (!cinGood()) return;
-    if(minute != 0) duration.setMinute(minute);
-    duration = Time(hour,minute);
+    if(minute == 0) duration.setMinute(flight.getDuration().getMinute());
+    else duration.setMinute(minute);
+    checkFlight.setDuration(duration);
     cout << "\n";
     cout << "Day: "; cin >> day;
     if (!cinGood()) return;
-    if(day != 0) departure.setDay(day);
+    if(day == 0) departure.setDay(flight.getDepartureDate().getDay());
+    else departure.setDay(day);
     cout << "\n";
     cout << "Month: "; cin >> month;
     if (!cinGood()) return;
-    if(month != 0) departure.setMonth(month);
+    if(month == 0) departure.setMonth(flight.getDepartureDate().getMonth());
+    else departure.setMonth(month);
     cout << "\n";
     cout << "Year: "; cin >> year;
     if (!cinGood()) return;
-    if(year != 0) departure.setYear(year);
+    if(year == 0) departure.setYear(flight.getDepartureDate().getYear());
+    else departure.setYear(year);
     cout << "\n";
-    departure = Date(year,month,day);
-    for(Flight& flightSearched : flights)
-    {
-        if(flight.getId() == flightSearched.getId())
-        {
-            cout << "Flight already exists!" << endl;
-            wait();
-            return;
-        }
-    }
+    checkFlight.setDeparture(departure);
     flight = checkFlight;
     cout << "Flight Updated!" << endl;
     wait();
@@ -1981,7 +1957,7 @@ void App::showFlights(Plane &plane)
             (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX, '\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         } else {
             break;
@@ -1995,6 +1971,7 @@ void App::showFlights(Plane &plane)
         int hour, minute;
         Airport origin, destination;
         string initials;
+        int availableSeats;
 
         cout << "Type '0' if you do not want to specify \n"
              << "Origin airport (initials): ";
@@ -2036,17 +2013,16 @@ void App::showFlights(Plane &plane)
         if (year != 0) departure.setYear(year);
         cout << "\n";
         departure = Date(year, month, day);
+        cout << "Available seats: ";
+        cin >> availableSeats;
+        if (!cinGood()) return;
+        if(availableSeats == 0) availableSeats = -1;
 
-        /*for (Flight &flight: plane.getFlightsId()) {
-            if (flight.getDestination() == destination || flight.getOrigin() == origin ||
-                flight.getDuration() == duration || flight.getDepartureDate() == departure)
-                aux.push_back(flight);
-        }*/
         for (int flightId: plane.getFlightsId()) {
             {
                 int index = binarySearchFlight(flightId, 0, flights.size() - 1, flights);
                 if (flights[index].getDestination() == destination || flights[index].getOrigin() == origin ||
-                        flights[index].getDuration() == duration || flights[index].getDepartureDate() == departure)
+                        flights[index].getDuration() == duration || flights[index].getDepartureDate() == departure || flights[index].getAvailableSeats() == availableSeats)
                     aux.push_back(flights[index]);
             }
         }
@@ -2326,9 +2302,9 @@ void App::showServicesToDo(Plane &plane)
     while(!services.empty())
     {
         cout << services.front() << endl;
-        wait();
         services.pop();
     }
+    wait();
 }
 
 void App::showServicesDone(Plane &plane)
@@ -2339,9 +2315,9 @@ void App::showServicesDone(Plane &plane)
     while(!services.empty())
     {
         cout << services.top() << endl;
-        wait();
         services.pop();
     }
+    wait();
 }
 
 void App::passengerCreation()
@@ -2508,7 +2484,7 @@ void App::showPassengers()
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         break;
@@ -2551,7 +2527,7 @@ void App::showPassengers()
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -2573,7 +2549,7 @@ void App::showPassengers()
             aux.sort(sortPassengersByPassDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             wait();
             return;
     }
@@ -2913,7 +2889,7 @@ void App::showTicket(Passenger& passenger)
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -2929,7 +2905,7 @@ void App::showTicket(Passenger& passenger)
             aux.sort(sortTicketByFlightDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             return;
     }
     int counter = 1;

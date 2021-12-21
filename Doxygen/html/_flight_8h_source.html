@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IEI Airport: Classes/Flight.h Source File</title>
+<title>IEI Airlines: Classes/Flight.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">IEI Airport<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">IEI Airlines<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">AED Project</div>
   </td>
@@ -77,59 +77,58 @@ $(function() {
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Luggage.h&quot;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Date.h&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;LuggageCar.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//#include &quot;Plane.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//Um voo é</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">//caracterizado, no mínimo, por: numero de voo, data de partida, duração do voo, origem, destino.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_flight.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="class_flight.html">Flight</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> nextid; </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">int</span> id; </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">int</span> availableSeats; </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="class_date.html">Date</a> departure;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_class" href="class_time.html">Time</a> duration; </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_class" href="class_airport.html">Airport</a> destination, origin;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    queue&lt;Luggage&gt; flightLuggages; </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    queue&lt;Luggage&gt; luggagesOutCar; </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_flight.html">Flight</a>(<span class="keywordtype">string</span> CSVflight);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_class" href="class_flight.html">Flight</a>();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="class_flight.html">Flight</a>(<a class="code hl_class" href="class_date.html">Date</a> &amp;departure,<a class="code hl_class" href="class_airport.html">Airport</a> &amp;origin); <span class="comment">//just with the key</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span>    <a class="code hl_class" href="class_flight.html">Flight</a>(<a class="code hl_class" href="class_date.html">Date</a> &amp;departure,<a class="code hl_class" href="class_time.html">Time</a> duration,<a class="code hl_class" href="class_airport.html">Airport</a> &amp;origin,<a class="code hl_class" href="class_airport.html">Airport</a> &amp;destination,<span class="keywordtype">int</span> availableSeats);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">int</span> getId() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_class" href="class_airport.html">Airport</a> getDestination() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_class" href="class_airport.html">Airport</a> getOrigin() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="class_date.html">Date</a> getDepartureDate() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">int</span> getAvailableSeats() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> setDeparture(<a class="code hl_class" href="class_date.html">Date</a> date);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> setDestination(<a class="code hl_class" href="class_airport.html">Airport</a> airport);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> setOrigin(<a class="code hl_class" href="class_airport.html">Airport</a> airport);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> setAvailableSeats(<span class="keywordtype">int</span> availableSeats);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    queue&lt;Luggage&gt; getLuggagesOutCar() <span class="keyword">const</span> ;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> setDuration(<a class="code hl_class" href="class_time.html">Time</a> duration);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_flight.html#ab3f3ce8df55fe8670fc148632e9f2297">equals</a> (<span class="keyword">const</span> <a class="code hl_class" href="class_flight.html">Flight</a>&amp; flight) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_flight.html#a4d2393d37610d5039afe3264034ff180">addLuggageToQueue</a>(<a class="code hl_class" href="class_luggage.html">Luggage</a> luggage);</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_flight.html#a804544196e573cd7282e62357b0be90e">operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_flight.html">Flight</a> &amp;f) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_class" href="class_time.html">Time</a> getDuration() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">friend</span> ostream&amp; <a class="code hl_friend" href="class_flight.html#a85dc3711fa0b1ab4679d1ce88db7deda">operator&lt;&lt;</a>(ostream&amp; os , <span class="keyword">const</span> <a class="code hl_class" href="class_flight.html">Flight</a>&amp; fli);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_flight.html#ab3964e598e07b572c25dc38c19e7fc09">luggagesToCar</a>(<a class="code hl_class" href="class_luggage_car.html">LuggageCar</a>&amp; Car);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_flight.html#a304ec77f5676027f4c7c4a71245f552f">reduceAvailableSeats</a>();</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>};</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_flight.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="class_flight.html">Flight</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> nextid; </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">int</span> id; </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">int</span> availableSeats; </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="class_date.html">Date</a> departure;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="class_time.html">Time</a> duration; </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_class" href="class_airport.html">Airport</a> destination, origin;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    queue&lt;Luggage&gt; flightLuggages; </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    queue&lt;Luggage&gt; luggagesOutCar; </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="class_flight.html">Flight</a>(<span class="keywordtype">string</span> CSVflight);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="class_flight.html">Flight</a>();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_class" href="class_flight.html">Flight</a>(<a class="code hl_class" href="class_date.html">Date</a> &amp;departure,<a class="code hl_class" href="class_airport.html">Airport</a> &amp;origin); <span class="comment">//just with the key</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment"></span>    <a class="code hl_class" href="class_flight.html">Flight</a>(<a class="code hl_class" href="class_date.html">Date</a> &amp;departure,<a class="code hl_class" href="class_time.html">Time</a> duration,<a class="code hl_class" href="class_airport.html">Airport</a> &amp;origin,<a class="code hl_class" href="class_airport.html">Airport</a> &amp;destination,<span class="keywordtype">int</span> availableSeats);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">int</span> getId() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> setID(<span class="keyword">const</span> <span class="keywordtype">int</span> flightID);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_class" href="class_airport.html">Airport</a> getDestination() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_class" href="class_airport.html">Airport</a> getOrigin() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_class" href="class_date.html">Date</a> getDepartureDate() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordtype">int</span> getAvailableSeats() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> setDeparture(<a class="code hl_class" href="class_date.html">Date</a> date);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> setDestination(<a class="code hl_class" href="class_airport.html">Airport</a>&amp; airport);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> setOrigin(<a class="code hl_class" href="class_airport.html">Airport</a>&amp; airport);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> setAvailableSeats(<span class="keywordtype">int</span> availableSeats);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    queue&lt;Luggage&gt; getLuggagesOutCar() <span class="keyword">const</span> ;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> setDuration(<a class="code hl_class" href="class_time.html">Time</a> duration);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_flight.html#ab3f3ce8df55fe8670fc148632e9f2297">equals</a> (<span class="keyword">const</span> <a class="code hl_class" href="class_flight.html">Flight</a>&amp; flight) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_flight.html#a4d2393d37610d5039afe3264034ff180">addLuggageToQueue</a>(<a class="code hl_class" href="class_luggage.html">Luggage</a> luggage);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_flight.html#a804544196e573cd7282e62357b0be90e">operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="class_flight.html">Flight</a> &amp;f) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <a class="code hl_class" href="class_time.html">Time</a> getDuration() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">friend</span> ostream&amp; <a class="code hl_friend" href="class_flight.html#a85dc3711fa0b1ab4679d1ce88db7deda">operator&lt;&lt;</a>(ostream&amp; os , <span class="keyword">const</span> <a class="code hl_class" href="class_flight.html">Flight</a>&amp; fli);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_flight.html#ab3964e598e07b572c25dc38c19e7fc09">luggagesToCar</a>(<a class="code hl_class" href="class_luggage_car.html">LuggageCar</a>&amp; Car);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_flight.html#a304ec77f5676027f4c7c4a71245f552f">reduceAvailableSeats</a>();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#endif </span><span class="comment">//TP1_AED_FLIGHT_H</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="preprocessor">#endif </span><span class="comment">//TP1_AED_FLIGHT_H</span></div>
 <div class="ttc" id="aclass_airport_html"><div class="ttname"><a href="class_airport.html">Airport</a></div><div class="ttdef"><b>Definition:</b> Airport.h:9</div></div>
 <div class="ttc" id="aclass_date_html"><div class="ttname"><a href="class_date.html">Date</a></div><div class="ttdef"><b>Definition:</b> Date.h:7</div></div>
-<div class="ttc" id="aclass_flight_html"><div class="ttname"><a href="class_flight.html">Flight</a></div><div class="ttdef"><b>Definition:</b> Flight.h:11</div></div>
-<div class="ttc" id="aclass_flight_html_a304ec77f5676027f4c7c4a71245f552f"><div class="ttname"><a href="class_flight.html#a304ec77f5676027f4c7c4a71245f552f">Flight::reduceAvailableSeats</a></div><div class="ttdeci">void reduceAvailableSeats()</div><div class="ttdef"><b>Definition:</b> Flight.cpp:93</div></div>
-<div class="ttc" id="aclass_flight_html_a4d2393d37610d5039afe3264034ff180"><div class="ttname"><a href="class_flight.html#a4d2393d37610d5039afe3264034ff180">Flight::addLuggageToQueue</a></div><div class="ttdeci">void addLuggageToQueue(Luggage luggage)</div><div class="ttdef"><b>Definition:</b> Flight.cpp:116</div></div>
-<div class="ttc" id="aclass_flight_html_a804544196e573cd7282e62357b0be90e"><div class="ttname"><a href="class_flight.html#a804544196e573cd7282e62357b0be90e">Flight::operator==</a></div><div class="ttdeci">bool operator==(const Flight &amp;f) const</div><div class="ttdef"><b>Definition:</b> Flight.cpp:98</div></div>
-<div class="ttc" id="aclass_flight_html_a85dc3711fa0b1ab4679d1ce88db7deda"><div class="ttname"><a href="class_flight.html#a85dc3711fa0b1ab4679d1ce88db7deda">Flight::operator&lt;&lt;</a></div><div class="ttdeci">friend ostream &amp; operator&lt;&lt;(ostream &amp;os, const Flight &amp;fli)</div><div class="ttdef"><b>Definition:</b> Flight.cpp:132</div></div>
-<div class="ttc" id="aclass_flight_html_ab3964e598e07b572c25dc38c19e7fc09"><div class="ttname"><a href="class_flight.html#ab3964e598e07b572c25dc38c19e7fc09">Flight::luggagesToCar</a></div><div class="ttdeci">void luggagesToCar(LuggageCar &amp;Car)</div><div class="ttdef"><b>Definition:</b> Flight.cpp:121</div></div>
-<div class="ttc" id="aclass_flight_html_ab3f3ce8df55fe8670fc148632e9f2297"><div class="ttname"><a href="class_flight.html#ab3f3ce8df55fe8670fc148632e9f2297">Flight::equals</a></div><div class="ttdeci">bool equals(const Flight &amp;flight) const</div><div class="ttdef"><b>Definition:</b> Flight.cpp:127</div></div>
-<div class="ttc" id="aclass_luggage_car_html"><div class="ttname"><a href="class_luggage_car.html">LuggageCar</a></div><div class="ttdef"><b>Definition:</b> LuggageCar.h:8</div></div>
-<div class="ttc" id="aclass_luggage_html"><div class="ttname"><a href="class_luggage.html">Luggage</a></div><div class="ttdef"><b>Definition:</b> Luggage.h:5</div></div>
+<div class="ttc" id="aclass_flight_html"><div class="ttname"><a href="class_flight.html">Flight</a></div><div class="ttdef"><b>Definition:</b> Flight.h:9</div></div>
+<div class="ttc" id="aclass_flight_html_a304ec77f5676027f4c7c4a71245f552f"><div class="ttname"><a href="class_flight.html#a304ec77f5676027f4c7c4a71245f552f">Flight::reduceAvailableSeats</a></div><div class="ttdeci">void reduceAvailableSeats()</div><div class="ttdef"><b>Definition:</b> Flight.cpp:105</div></div>
+<div class="ttc" id="aclass_flight_html_a4d2393d37610d5039afe3264034ff180"><div class="ttname"><a href="class_flight.html#a4d2393d37610d5039afe3264034ff180">Flight::addLuggageToQueue</a></div><div class="ttdeci">void addLuggageToQueue(Luggage luggage)</div><div class="ttdef"><b>Definition:</b> Flight.cpp:128</div></div>
+<div class="ttc" id="aclass_flight_html_a804544196e573cd7282e62357b0be90e"><div class="ttname"><a href="class_flight.html#a804544196e573cd7282e62357b0be90e">Flight::operator==</a></div><div class="ttdeci">bool operator==(const Flight &amp;f) const</div><div class="ttdef"><b>Definition:</b> Flight.cpp:110</div></div>
+<div class="ttc" id="aclass_flight_html_a85dc3711fa0b1ab4679d1ce88db7deda"><div class="ttname"><a href="class_flight.html#a85dc3711fa0b1ab4679d1ce88db7deda">Flight::operator&lt;&lt;</a></div><div class="ttdeci">friend ostream &amp; operator&lt;&lt;(ostream &amp;os, const Flight &amp;fli)</div><div class="ttdef"><b>Definition:</b> Flight.cpp:144</div></div>
+<div class="ttc" id="aclass_flight_html_ab3964e598e07b572c25dc38c19e7fc09"><div class="ttname"><a href="class_flight.html#ab3964e598e07b572c25dc38c19e7fc09">Flight::luggagesToCar</a></div><div class="ttdeci">void luggagesToCar(LuggageCar &amp;Car)</div><div class="ttdef"><b>Definition:</b> Flight.cpp:133</div></div>
+<div class="ttc" id="aclass_flight_html_ab3f3ce8df55fe8670fc148632e9f2297"><div class="ttname"><a href="class_flight.html#ab3f3ce8df55fe8670fc148632e9f2297">Flight::equals</a></div><div class="ttdeci">bool equals(const Flight &amp;flight) const</div><div class="ttdef"><b>Definition:</b> Flight.cpp:139</div></div>
+<div class="ttc" id="aclass_luggage_car_html"><div class="ttname"><a href="class_luggage_car.html">LuggageCar</a></div><div class="ttdef"><b>Definition:</b> LuggageCar.h:10</div></div>
+<div class="ttc" id="aclass_luggage_html"><div class="ttname"><a href="class_luggage.html">Luggage</a></div><div class="ttdef"><b>Definition:</b> Luggage.h:8</div></div>
 <div class="ttc" id="aclass_time_html"><div class="ttname"><a href="class_time.html">Time</a></div><div class="ttdef"><b>Definition:</b> Time.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

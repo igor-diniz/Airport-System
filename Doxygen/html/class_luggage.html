@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IEI Airport: Luggage Class Reference</title>
+<title>IEI Airlines: Luggage Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">IEI Airport<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">IEI Airlines<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">AED Project</div>
   </td>
@@ -65,6 +65,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_luggage-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Luggage Class Reference</div></div>
 </div><!--header-->
@@ -74,13 +75,27 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adc5c29282fae82cf4739e4437a5545ae"><td class="memItemLeft" align="right" valign="top"><a id="adc5c29282fae82cf4739e4437a5545ae" name="adc5c29282fae82cf4739e4437a5545ae"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Luggage</b> ()</td></tr>
-<tr class="memdesc:adc5c29282fae82cf4739e4437a5545ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">actual luggage id <br /></td></tr>
+<tr class="memdesc:adc5c29282fae82cf4739e4437a5545ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">current ticket id and luggage id <br /></td></tr>
 <tr class="separator:adc5c29282fae82cf4739e4437a5545ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17698efcce782bed2dfcefae50826b96"><td class="memItemLeft" align="right" valign="top"><a id="a17698efcce782bed2dfcefae50826b96" name="a17698efcce782bed2dfcefae50826b96"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Luggage</b> (int ticketId)</td></tr>
+<tr class="separator:a17698efcce782bed2dfcefae50826b96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa73d559b2e030cc77ff9399992686af"><td class="memItemLeft" align="right" valign="top"><a id="afa73d559b2e030cc77ff9399992686af" name="afa73d559b2e030cc77ff9399992686af"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Luggage</b> (string CSVluggage)</td></tr>
+<tr class="separator:afa73d559b2e030cc77ff9399992686af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60fbb9102ba65195956991a0a4eab78"><td class="memItemLeft" align="right" valign="top"><a id="ae60fbb9102ba65195956991a0a4eab78" name="ae60fbb9102ba65195956991a0a4eab78"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getTicketId</b> () const</td></tr>
+<tr class="separator:ae60fbb9102ba65195956991a0a4eab78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72849525edac1c054eb5aeffc23c5d2c"><td class="memItemLeft" align="right" valign="top"><a id="a72849525edac1c054eb5aeffc23c5d2c" name="a72849525edac1c054eb5aeffc23c5d2c"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
 <tr class="separator:a72849525edac1c054eb5aeffc23c5d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac665d22b886782e168d7e4728f9aed59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#ac665d22b886782e168d7e4728f9aed59">operator==</a> (const <a class="el" href="class_luggage.html">Luggage</a> &amp;luggage)</td></tr>
 <tr class="separator:ac665d22b886782e168d7e4728f9aed59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a6ef87bfdb64285a2858b5419ce489036"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_luggage.html#a6ef87bfdb64285a2858b5419ce489036">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="class_luggage.html">Luggage</a> &amp;luggage)</td></tr>
+<tr class="separator:a6ef87bfdb64285a2858b5419ce489036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac665d22b886782e168d7e4728f9aed59" name="ac665d22b886782e168d7e4728f9aed59"></a>
@@ -104,6 +119,51 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a6ef87bfdb64285a2858b5419ce489036" name="a6ef87bfdb64285a2858b5419ce489036"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ef87bfdb64285a2858b5419ce489036">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_luggage.html">Luggage</a> &amp;&#160;</td>
+          <td class="paramname"><em>luggage</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td></td></tr>
+    <tr><td class="paramname">luggage</td><td>luggage is showed in the form luggage id - associated ticket id </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

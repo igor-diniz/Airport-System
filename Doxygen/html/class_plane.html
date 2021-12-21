@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IEI Airport: Plane Class Reference</title>
+<title>IEI Airlines: Plane Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">IEI Airport<span id="projectnumber">&#160;1.0.0</span>
+   <div id="projectname">IEI Airlines<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">AED Project</div>
   </td>
@@ -77,8 +77,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a83688190ff69491e4598159d2c68bff5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add6a9f4a8acaccc1548ce764e373bde6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#add6a9f4a8acaccc1548ce764e373bde6">Plane</a> (string CSVplane)</td></tr>
 <tr class="separator:add6a9f4a8acaccc1548ce764e373bde6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b5fcee6d40fe7fb8aee13419953fdc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#a9b5fcee6d40fe7fb8aee13419953fdc6">addFlight</a> (<a class="el" href="class_flight.html">Flight</a> &amp;flight)</td></tr>
-<tr class="separator:a9b5fcee6d40fe7fb8aee13419953fdc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae578db649ec8aab7f01a4a67213fc4f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#ae578db649ec8aab7f01a4a67213fc4f9">addFlight</a> (int flightId)</td></tr>
+<tr class="separator:ae578db649ec8aab7f01a4a67213fc4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ac64d9ef95ac38213341f14f0c9553e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#a5ac64d9ef95ac38213341f14f0c9553e">addService</a> (<a class="el" href="class_service.html">Service</a> &amp;service)</td></tr>
 <tr class="separator:a5ac64d9ef95ac38213341f14f0c9553e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1f993d8bdf3b2ad7babc3973975bcb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#aa1f993d8bdf3b2ad7babc3973975bcb9">addOldService</a> (<a class="el" href="class_service.html">Service</a> &amp;oldService)</td></tr>
@@ -109,11 +109,11 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> () cons
 <tr class="memitem:aee43576e40d990bd6616aeb00a27b1fb"><td class="memItemLeft" align="right" valign="top"><a id="aee43576e40d990bd6616aeb00a27b1fb" name="aee43576e40d990bd6616aeb00a27b1fb"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setType</b> (string type)</td></tr>
 <tr class="separator:aee43576e40d990bd6616aeb00a27b1fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a181ba522c4fea0fc2ef987d168c734d5"><td class="memItemLeft" align="right" valign="top"><a id="a181ba522c4fea0fc2ef987d168c734d5" name="a181ba522c4fea0fc2ef987d168c734d5"></a>
-list&lt; <a class="el" href="class_flight.html">Flight</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getFlights</b> ()</td></tr>
-<tr class="separator:a181ba522c4fea0fc2ef987d168c734d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f9800538ef57df00070a0a2d924381b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#a1f9800538ef57df00070a0a2d924381b">deleteFlight</a> (int id)</td></tr>
-<tr class="separator:a1f9800538ef57df00070a0a2d924381b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fa09dca58ee1c6b708026ebf270a914"><td class="memItemLeft" align="right" valign="top"><a id="a8fa09dca58ee1c6b708026ebf270a914" name="a8fa09dca58ee1c6b708026ebf270a914"></a>
+list&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getFlightsId</b> ()</td></tr>
+<tr class="separator:a8fa09dca58ee1c6b708026ebf270a914"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b007db4520b5af0bf1209e0b67b69e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#ae0b007db4520b5af0bf1209e0b67b69e">deleteFlight</a> (int flightId)</td></tr>
+<tr class="separator:ae0b007db4520b5af0bf1209e0b67b69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac863742025af00cf7a4ccfdcb3059cb7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_plane.html#ac863742025af00cf7a4ccfdcb3059cb7">operator==</a> (const <a class="el" href="class_plane.html">Plane</a> &amp;plane)</td></tr>
 <tr class="separator:ac863742025af00cf7a4ccfdcb3059cb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -198,8 +198,8 @@ Friends</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9b5fcee6d40fe7fb8aee13419953fdc6" name="a9b5fcee6d40fe7fb8aee13419953fdc6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b5fcee6d40fe7fb8aee13419953fdc6">&#9670;&nbsp;</a></span>addFlight()</h2>
+<a id="ae578db649ec8aab7f01a4a67213fc4f9" name="ae578db649ec8aab7f01a4a67213fc4f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae578db649ec8aab7f01a4a67213fc4f9">&#9670;&nbsp;</a></span>addFlight()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -207,8 +207,8 @@ Friends</h2></td></tr>
         <tr>
           <td class="memname">void Plane::addFlight </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_flight.html">Flight</a> &amp;&#160;</td>
-          <td class="paramname"><em>flight</em></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>flightId</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -270,8 +270,8 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="a1f9800538ef57df00070a0a2d924381b" name="a1f9800538ef57df00070a0a2d924381b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f9800538ef57df00070a0a2d924381b">&#9670;&nbsp;</a></span>deleteFlight()</h2>
+<a id="ae0b007db4520b5af0bf1209e0b67b69e" name="ae0b007db4520b5af0bf1209e0b67b69e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b007db4520b5af0bf1209e0b67b69e">&#9670;&nbsp;</a></span>deleteFlight()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -280,7 +280,7 @@ Friends</h2></td></tr>
           <td class="memname">bool Plane::deleteFlight </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
+          <td class="paramname"><em>flightId</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

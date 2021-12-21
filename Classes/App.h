@@ -35,6 +35,9 @@ private:
     void readPassengersFile(const string& passengersFile);
     void readPlanesFile(const string& planesFile);
     void readLuggageCarsFile(const string& luggageCarsFile);
+    ///
+    ///  \param passenger updates de passenger's ticket checkin state and sends its luggage to the flights luggage lists
+    //
     void checkin(Passenger &passenger);
     ///
     ///  creates an airport and adds it to the general airports list

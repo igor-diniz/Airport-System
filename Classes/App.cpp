@@ -668,7 +668,7 @@ void App::showAirports()
             cin.clear();
             cin.ignore(INT_MAX,'\n');
             wait();
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         break;
@@ -710,7 +710,7 @@ void App::showAirports()
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         break;
@@ -731,7 +731,7 @@ void App::showAirports()
             aux.sort(sortAirportByInitialsDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             wait();
             return;
     }
@@ -938,7 +938,7 @@ void App::showTransports(Airport &airport)
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         else
@@ -989,7 +989,7 @@ void App::showTransports(Airport &airport)
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1018,7 +1018,7 @@ void App::showTransports(Airport &airport)
             aux.sort(sortTransportByDistanceDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             wait();
             return;
     }
@@ -1213,7 +1213,7 @@ void App::showLuggageCars()
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         else
@@ -1266,19 +1266,15 @@ void App::showLuggageCars()
     cout << "How do you want the luggage cars to be sorted? \n"
             "1 - Airport ascending\n"
             "2 - Airport descending\n"
-            "3 - Carriages ascending\n"
-            "4 - Carriages descending\n"
-            "5 - Stacks ascending\n"
-            "6 - Stacks descending\n"
-            "7 - Suitcases p/stack ascending\n"
-            "8 - Suitcases p/stack descending\n";
+            "3 - ID ascending\n"
+            "4 - ID descending\n";
     int sortChoice;
     while(true) {
         cin >> sortChoice;
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1295,25 +1291,13 @@ void App::showLuggageCars()
             sort(aux.begin(),aux.end(),sortCarsByAirportDesc);
             break;
         case 3:
-            sort(aux.begin(),aux.end(),sortCarsByCarriageAsc);
+            sort(aux.begin(),aux.end(),sortCarsByIdAsc);
             break;
         case 4:
-            sort(aux.begin(),aux.end(),sortCarsByCarriageDesc);
-            break;
-        case 5:
-            sort(aux.begin(),aux.end(),sortCarsByStacksAsc);
-            break;
-        case 6:
-            sort(aux.begin(),aux.end(),sortCarsByStacksDesc);
-            break;
-        case 7:
-            sort(aux.begin(),aux.end(),sortCarsByLuggagesStackAsc);
-            break;
-        case 8:
-            sort(aux.begin(),aux.end(),sortCarsByLuggagesStackDesc);
+            sort(aux.begin(),aux.end(),sortCarsByIdDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             return;
     }
     int counter = 1;
@@ -1385,11 +1369,7 @@ void App::planeDeletion()
     cout << "Input the plane specifications : \n"
             "Registration: "; cin >> registration;
     cout << "\n";
-    cout << "Type: "; cin >> type;
-    cout << "\n";
-    cout << "Capacity :"; cin >> capacity;
-    if(!cinGood()) return;
-    Plane a(capacity,registration,type);
+    Plane a(0,registration,"");
     for(Plane &b : planes)
     {
         if(b == a)
@@ -1484,12 +1464,15 @@ void App::updatePlane(Plane &plane)
 {
     string registration,type;
     int capacity;
-    cout << "What should be the new specifications?: \n"
+    cout << "What should be the new specifications?: (type 0 to not change)\n"
             "Registration: "; cin >> registration;
+            if(registration == "0") registration = plane.getRegistration();
     cout << "\n";
     cout << "Type: "; cin >> type;
+    if(type == "0") type = plane.getType();
     cout << "\n";
     cout << "Capacity :"; cin >> capacity;
+    if (capacity == 0) capacity = plane.getCapacity();
     if(!cinGood()) return;
     if(registration.empty() || type.empty() ||capacity <= 0)
     {
@@ -1519,7 +1502,7 @@ void App::showPlanes()
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1570,7 +1553,7 @@ void App::showPlanes()
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -1599,7 +1582,7 @@ void App::showPlanes()
             aux.sort(sortPlaneByTypeDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             return;
     }
     int counter = 1;
@@ -1954,7 +1937,7 @@ void App::showFlights(Plane &plane)
             (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX, '\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         } else {
             break;
@@ -2481,7 +2464,7 @@ void App::showPassengers()
         if (cin.fail() || cin.peek() != '\n' || (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid answer!\n";
+            cout << endl << endl << "Invalid answer!\n";
             continue;
         }
         break;
@@ -2524,7 +2507,7 @@ void App::showPassengers()
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -2546,7 +2529,7 @@ void App::showPassengers()
             aux.sort(sortPassengersByPassDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             wait();
             return;
     }
@@ -2886,7 +2869,7 @@ void App::showTicket(Passenger& passenger)
         if (cin.fail() || cin.peek() != '\n') {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             continue;
         }
         else
@@ -2902,7 +2885,7 @@ void App::showTicket(Passenger& passenger)
             aux.sort(sortTicketByFlightDesc);
             break;
         default:
-            cerr << endl << endl << "Invalid choice!\n";
+            cout << endl << endl << "Invalid choice!\n";
             return;
     }
     int counter = 1;

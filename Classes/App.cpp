@@ -12,15 +12,23 @@ App::App(const string& flightsFile, const string& passengersFile, const string& 
 
 void wait()
 {
-    cout << "Type anything to go back" << endl;
+    cout << "Type 0 to go back" << endl;
+    cout << "Type 1 to exit" << endl;
     string choice;
     cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX, '\n');
-    return;
+    while(choice != "0" && choice != "1")
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Invalid answer!" << endl << endl;
+        cout << "Type 0 to go back" << endl;
+        cout << "Type 1 to exit" << endl;
+    }
+    if(choice == "0") return;
+    if(choice == "1") exit(0);
 }
 
-int binary_search_flight(int id,int inicio, int fim,vector<Flight> flights)
+int binarySearchFlight(int id, int inicio, int fim, vector<Flight> flights)
 {
     if(fim >= inicio)
     {
@@ -33,10 +41,10 @@ int binary_search_flight(int id,int inicio, int fim,vector<Flight> flights)
 
         if(flights[mid].getId() > id)
         {
-            return binary_search_flight(id,inicio,mid -1,flights);
+            return binarySearchFlight(id, inicio, mid - 1, flights);
         }
 
-        return binary_search_flight(id,mid+1,fim,flights);
+        return binarySearchFlight(id, mid + 1, fim, flights);
     }
     else
     {
@@ -44,7 +52,7 @@ int binary_search_flight(int id,int inicio, int fim,vector<Flight> flights)
     }
 };
 
-int binary_search_LuggageCar(int id,int inicio, int fim,vector<LuggageCar> LuggageCar)
+int binarySearchLuggageCar(int id, int inicio, int fim, vector<LuggageCar> LuggageCar)
 {
     if(fim >= inicio)
     {
@@ -57,10 +65,10 @@ int binary_search_LuggageCar(int id,int inicio, int fim,vector<LuggageCar> Lugga
 
         if(LuggageCar[mid].getId() > id)
         {
-            return binary_search_LuggageCar(id,inicio,mid -1,LuggageCar);
+            return binarySearchLuggageCar(id, inicio, mid - 1, LuggageCar);
         }
 
-        return binary_search_LuggageCar(id,mid+1,fim,LuggageCar);
+        return binarySearchLuggageCar(id, mid + 1, fim, LuggageCar);
     }
     else
     {
@@ -1009,7 +1017,7 @@ void App::luggageCarDeletion()
     cout << "ID:"; cin >> id;
     cout << endl;
 
-    int index = binary_search_LuggageCar(id,0,luggageCars.size()-1,luggageCars);
+    int index = binarySearchLuggageCar(id, 0, luggageCars.size() - 1, luggageCars);
     if(index == -1)
     {
         cout << "This luggage car does not exist!" << endl;
@@ -1027,7 +1035,7 @@ void App::luggageCarFind()
     cout << "ID:"; cin >> id;
     cout << endl;
 
-    int index = binary_search_LuggageCar(id,0,luggageCars.size()-1,luggageCars);
+    int index = binarySearchLuggageCar(id, 0, luggageCars.size() - 1, luggageCars);
     if(index == -1)
     {
         char answer;
@@ -1236,8 +1244,20 @@ void App::showLuggageFromCar()
     int id;
     cout << "What luggage car shall the luggage be from" << endl;
     cout << "ID: "; cin >> id;
-
-
+    int index = binarySearchLuggageCar(id, 0, luggageCars.size() - 1, luggageCars);
+    if(index == -1)
+    {
+        cout << "This luggage car does not exist!" << endl;
+        wait();
+        return;
+    }
+    cout << "Luggage in this car: " << endl;
+    cout << "Luggage.ID - Ticket.ID";
+    for(Luggage lug:luggageCars[index].getLuggage())
+    {
+        cout << lug.getId() << " - " << lug.getTicketId() << endl;
+    }
+    wait();
 }
 
 void App::planeCreation()
@@ -1639,7 +1659,7 @@ void App::flightDeletion(Plane &plane)
         if(flightSearched.getId() == flightid)
         {
             plane.deleteFlight(flightSearched.getId());
-            int index = binary_search_flight(flightSearched.getId(),0,flights.size()-1,flights);
+            int index = binarySearchFlight(flightSearched.getId(), 0, flights.size() - 1, flights);
             flights.erase(flights.begin() + index);
             cout << "Flight removed! \n";
             return;
@@ -1895,7 +1915,7 @@ void App::showFlights(Plane &plane)
         }*/
         for (int flightId: plane.getFlightsId()) {
             {
-                int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+                int index = binarySearchFlight(flightId, 0, flights.size() - 1, flights);
                 if (flights[index].getDestination() == destination || flights[index].getOrigin() == origin ||
                         flights[index].getDuration() == duration || flights[index].getDepartureDate() == departure)
                     aux.push_back(flights[index]);
@@ -1906,7 +1926,7 @@ void App::showFlights(Plane &plane)
     {
         for(int flightId: plane.getFlightsId())
         {
-            int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+            int index = binarySearchFlight(flightId, 0, flights.size() - 1, flights);
             aux.push_back(flights[index]);
         }
     }
@@ -1915,7 +1935,7 @@ void App::showFlights(Plane &plane)
         cout << "Invalid character! Considered as a 'N'" << endl;
         for(int flightId: plane.getFlightsId())
         {
-            int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+            int index = binarySearchFlight(flightId, 0, flights.size() - 1, flights);
             aux.push_back(flights[index]);
         }
     }
@@ -1998,7 +2018,7 @@ void App::getLuggageToCar(Plane &plane)
     cout << "ID: "; cin >> flightId;
     if(!cinGood()) return;
     Flight* flight;
-    int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+    int index = binarySearchFlight(flightId, 0, flights.size() - 1, flights);
     if(index == -1)
     {
         cout << "This flight does not exist!";
@@ -2489,7 +2509,7 @@ void App::ticketCreation(Passenger& passenger)
     cout << "\n";
     bool exists = false;
     Flight* flight;
-    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    int index = binarySearchFlight(id, 0, flights.size() - 1, flights);
     if(index == -1)
     {
         cout << "The given flight does not exist!" << endl;
@@ -2589,7 +2609,7 @@ void App::ticketDeletion(Passenger& passenger)
     if(!cinGood()) return;
     cout << "\n";
     Flight* flight;
-    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    int index = binarySearchFlight(id, 0, flights.size() - 1, flights);
     if(index == -1)
     {
         cout << "The given flight does not exist!" << endl;
@@ -2621,7 +2641,7 @@ void App::ticketFind(Passenger& passenger){
     if(!cinGood()) return;
     cout << "\n";
     Flight* flight;
-    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    int index = binarySearchFlight(id, 0, flights.size() - 1, flights);
     if(index == -1)
     {
         cout << "The given flight does not exist!" << endl;
@@ -2766,7 +2786,7 @@ void App::checkin(Passenger& passenger)
     if(!cinGood()) return;
     cout << "\n";
     Flight* flight;
-    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    int index = binarySearchFlight(id, 0, flights.size() - 1, flights);
     if(index == -1)
     {
         cout << "The given flight does not exist!" << endl;

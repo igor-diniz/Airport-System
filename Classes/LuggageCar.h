@@ -29,6 +29,7 @@ public:
     void setAirport(Airport& airport1);
     Airport getAirport() const;
     int getNumCarriages() const;
+    list<Luggage> getLuggage() const;
     int getNumStacks() const;
     ///
     /// makes the luggage In Car empty and updates the availability

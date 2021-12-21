@@ -37,6 +37,25 @@ Airport LuggageCar::getAirport() const {
     return airport;
 }
 
+list<Luggage> LuggageCar::getLuggage() const
+{
+    list<list<stack<Luggage>>> aux = luggageInCar;
+    list<Luggage> listaaux;
+    for(list<stack<Luggage>> lista : luggageInCar)
+    {
+        for(stack<Luggage> stack : lista)
+        {
+            while(!stack.empty())
+            {
+                listaaux.push_back(stack.top());
+                stack.pop();
+            }
+        }
+    }
+    return listaaux;
+
+}
+
 queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
 { //colocar as malas do aviao no carrinho
     if (luggageOutCar.empty())  return luggageOutCar;

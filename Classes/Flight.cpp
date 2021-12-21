@@ -114,11 +114,11 @@ bool Flight::operator==(const Flight &flight) const
 
 void Flight::setDeparture(Date date) {departure = date;}
 
-void Flight::setDestination(Airport airport) {destination = airport;}
+void Flight::setDestination(Airport& airport) {destination = airport;}
 
 void Flight::setDuration(Time duration) {this->duration = duration;}
 
-void Flight::setOrigin(Airport airport) {origin = airport;}
+void Flight::setOrigin(Airport& airport) {origin = airport;}
 
 queue<Luggage> Flight::getLuggagesOutCar() const
 {

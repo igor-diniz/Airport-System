@@ -49,8 +49,8 @@ public:
     Date getDepartureDate() const;
     int getAvailableSeats() const;
     void setDeparture(Date date);
-    void setDestination(Airport airport);
-    void setOrigin(Airport airport);
+    void setDestination(Airport& airport);
+    void setOrigin(Airport& airport);
     void setAvailableSeats(int availableSeats);
     queue<Luggage> getLuggagesOutCar() const ;
     void setDuration(Time duration);

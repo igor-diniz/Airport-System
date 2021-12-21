@@ -208,9 +208,9 @@ private:
     ///
     void flightFind(Plane &plane);
     ///
-    ///  \param flight,plane allows the user to update a specific flight info
+    ///  \param flight allows the user to update a specific flight info
     ///
-    void updateFlight(Flight& flight,Plane &plane);
+    void updateFlight(Flight& flight);
     ///
     ///  \param plane prints the plane's services to do list, sorted and filtered by user inputs
     ///

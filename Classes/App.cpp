@@ -430,7 +430,6 @@ void App::readLuggageCarsFile(){
                 //cout << strLuggage << endl;
                 Luggage luggage = Luggage(strLuggage);
                 //cout << "---" << luggage.getId() << endl;
-                ;
             }
             fileToOpen.get();
             luggageCar.setLuggageInCar(luggageInCar);
@@ -1633,10 +1632,10 @@ void App::flightMenu() {
                 "|                   Flights                    |\n"
                 "|  Add Flight                             [1]  |\n"
                 "|  Remove Flight                          [2]  |\n"
-                "|  Detail Flight                          [3]  |\n"
+                "|  Find Flight                            [3]  |\n"
                 "|  Show Flights                           [4]  |\n"
                 "|  Get Luggage To Car                     [5]  |\n"
-                "|  Return                                [0]   |\n"
+                "|  Return                                 [0]  |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;
@@ -1786,39 +1785,37 @@ void App::flightFind(Plane &plane)
     cout << "Input the flight id: \n"
             "Flight id: "; cin >> flightid;
     cout << endl;
-    Flight flight;
+    Flight* flight;
     cout << "Searching..." << endl;
 
-    for(Flight& flightSearched: flights)
+    int index = binarySearchFlight(flightid,0,flights.size()-1,flights);
+    if(index != -1)
     {
-        if(flightSearched.getId() == flightid)
+        flight = &flights[index];
+        cout << "Flight found, details: " << endl
+             << "Id - DepartureDate - Duration - Origin - Destination - AvailableSeats" << endl
+             << *flight << endl
+             << "Do you want to update it? (Y/N)" << endl;
+        char answer;
+        cin >> answer;
+        if(!cinGood()) return;
+        if(answer == 'y' || answer == 'Y')
         {
-            flight = flightSearched;
-            cout << "Flight found, details: " << endl
-               << "Id - DepartureDate - Duration - Origin - Destination - AvailableSeats" << endl
-               << flightSearched << endl
-               << "Do you want to update it? (Y/N)" << endl;
-            char answer;
-            cin >> answer;
-            if(!cinGood()) return;
-            if(answer == 'y' || answer == 'Y')
-            {
-                updateFlight(flightSearched,plane);
-                return;
-            }
-            else if(answer == 'N' || answer == 'n')
-            {
-                return;
-            }
-            else
-            {
-                cout << "Invalid character! Considered as a 'N'" << endl;
-                wait();
-                return;
-            }
+            updateFlight(*flight);
+            return;
+        }
+        else if(answer == 'N' || answer == 'n')
+        {
+            return;
+        }
+        else
+        {
+            cout << "Invalid character! Considered as a 'N'" << endl;
             wait();
             return;
         }
+        wait();
+        return;
     }
     cout << "Flight does not exist!" << endl;
     cout <<"Do you want to create it? (Y/N)" << endl;
@@ -1849,10 +1846,10 @@ void App::flightFind(Plane &plane)
         duration = Time(hour,minute);
         cout << "\n";
 
-        flight.setDestination(destination);
-        flight.setAvailableSeats(availableSeats);
-        flight.setDuration(duration);
-        plane.addFlight(flight.getId());
+        flight->setDestination(destination);
+        flight->setAvailableSeats(availableSeats);
+        flight->setDuration(duration);
+        plane.addFlight(flight->getId());
         cout << "Flight added!" << endl;
         wait();
         return;
@@ -1869,17 +1866,17 @@ void App::flightFind(Plane &plane)
     }
 }
 
-void App::updateFlight(Flight& flight,Plane &plane)
+void App::updateFlight(Flight& flight)
 {
     Date departure;
     int day,month,year;
     Time duration;
     int hour,minute;
-    Airport origin, destination;
+    Airport origin,destination;
     string initials;
     Flight checkFlight = flight;
 
-    cout << "What should be the new specifications? (type 0 to not change)"
+    cout << "What should be the new specifications? (type 0 to not change)" << endl <<
             "Origin Airport (initials): "; cin >> initials;
             if(initials != "0")
             {
@@ -1905,35 +1902,31 @@ void App::updateFlight(Flight& flight,Plane &plane)
     cout << "\n";
     cout << "Hour: "; cin >> hour;
     if (!cinGood()) return;
-    if(hour != 0) duration.setHour(hour);
+    if(hour == 0) duration.setHour(flight.getDuration().getHour());
+    else duration.setHour(hour);
     cout << "\n";
     cout << "Minute: "; cin >> minute;
     if (!cinGood()) return;
-    if(minute != 0) duration.setMinute(minute);
-    duration = Time(hour,minute);
+    if(minute == 0) duration.setMinute(flight.getDuration().getMinute());
+    else duration.setMinute(minute);
+    checkFlight.setDuration(duration);
     cout << "\n";
     cout << "Day: "; cin >> day;
     if (!cinGood()) return;
-    if(day != 0) departure.setDay(day);
+    if(day == 0) departure.setDay(flight.getDepartureDate().getDay());
+    else departure.setDay(day);
     cout << "\n";
     cout << "Month: "; cin >> month;
     if (!cinGood()) return;
-    if(month != 0) departure.setMonth(month);
+    if(month == 0) departure.setMonth(flight.getDepartureDate().getMonth());
+    else departure.setMonth(month);
     cout << "\n";
     cout << "Year: "; cin >> year;
     if (!cinGood()) return;
-    if(year != 0) departure.setYear(year);
+    if(year == 0) departure.setYear(flight.getDepartureDate().getYear());
+    else departure.setYear(year);
     cout << "\n";
-    departure = Date(year,month,day);
-    for(Flight& flightSearched : flights)
-    {
-        if(flight.getId() == flightSearched.getId())
-        {
-            cout << "Flight already exists!" << endl;
-            wait();
-            return;
-        }
-    }
+    checkFlight.setDeparture(departure);
     flight = checkFlight;
     cout << "Flight Updated!" << endl;
     wait();
@@ -1963,6 +1956,7 @@ void App::showFlights(Plane &plane)
         int hour, minute;
         Airport origin, destination;
         string initials;
+        int availableSeats;
 
         cout << "Type '0' if you do not want to specify \n"
              << "Origin airport (initials): ";
@@ -2004,17 +1998,16 @@ void App::showFlights(Plane &plane)
         if (year != 0) departure.setYear(year);
         cout << "\n";
         departure = Date(year, month, day);
+        cout << "Available seats: ";
+        cin >> availableSeats;
+        if (!cinGood()) return;
+        if(availableSeats == 0) availableSeats = -1;
 
-        /*for (Flight &flight: plane.getFlightsId()) {
-            if (flight.getDestination() == destination || flight.getOrigin() == origin ||
-                flight.getDuration() == duration || flight.getDepartureDate() == departure)
-                aux.push_back(flight);
-        }*/
         for (int flightId: plane.getFlightsId()) {
             {
                 int index = binarySearchFlight(flightId, 0, flights.size() - 1, flights);
                 if (flights[index].getDestination() == destination || flights[index].getOrigin() == origin ||
-                        flights[index].getDuration() == duration || flights[index].getDepartureDate() == departure)
+                        flights[index].getDuration() == duration || flights[index].getDepartureDate() == departure || flights[index].getAvailableSeats() == availableSeats)
                     aux.push_back(flights[index]);
             }
         }
@@ -2294,9 +2287,9 @@ void App::showServicesToDo(Plane &plane)
     while(!services.empty())
     {
         cout << services.front() << endl;
-        wait();
         services.pop();
     }
+    wait();
 }
 
 void App::showServicesDone(Plane &plane)
@@ -2307,9 +2300,9 @@ void App::showServicesDone(Plane &plane)
     while(!services.empty())
     {
         cout << services.top() << endl;
-        wait();
         services.pop();
     }
+    wait();
 }
 
 void App::passengerCreation()

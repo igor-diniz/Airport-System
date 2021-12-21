@@ -5,9 +5,7 @@
 #include "Luggage.h"
 #include "Date.h"
 #include "LuggageCar.h"
-//#include "Plane.h"
-//Um voo é
-//caracterizado, no mínimo, por: numero de voo, data de partida, duração do voo, origem, destino.
+
 class Flight {
 private:
 

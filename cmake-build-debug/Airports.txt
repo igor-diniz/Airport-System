@@ -80,3 +80,8 @@ M,100,00:20
 M,100,00:25
 C,1000,01:00
 C,1000,01:30
+
+Aeroporto Francisco Sa Carneiro,OPO
+M,200,00:35
+
+Aeroporto de Lisboa,LIS

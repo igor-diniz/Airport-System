@@ -19,6 +19,10 @@ public:
     /// \param luggage luggages are compared by ID
     ///
     bool operator==(const Luggage& luggage);
+    ///
+    /// \param os
+    /// \param luggage luggage is showed in the form luggage id - associated ticket id
+    /// \return
     friend ostream& operator<<(ostream& os , const Luggage& luggage);
 };
 

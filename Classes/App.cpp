@@ -296,6 +296,13 @@ void App::readAirportsFile(){
             getline(fileToOpen,initials);
             Airport airport = Airport(name, initials);
 
+            if(fileToOpen.peek() == '\n' || fileToOpen.eof())
+            {
+                airports.push_back(airport);
+                fileToOpen.get();
+                continue;
+            }
+
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
                 //transports
@@ -327,6 +334,14 @@ void App::readPlanesFile() {
         getline(fileToOpen, CSVvalue);
         Plane plane = Plane(CSVvalue);
         //cout << plane << endl;
+
+        if(fileToOpen.peek() == '\n' || fileToOpen.eof())
+        {
+            planes.push_back(plane);
+            fileToOpen.get();
+            continue;
+        }
+
         getline(fileToOpen, CSVvalue);
         flag = "FLIGHTS";
 

@@ -424,7 +424,7 @@ void App::readLuggageCarsFile(const string& luggageCarsFile){
 
 
 vector<int> App::possibleChoices() {
-    vector<int> options = {0,1,11,12,13,14,15,21,22,23,24,31,32,33,34,35,36,41,42,43,44,45};
+    vector<int> options = {0,1,11,12,13,14,15,21,22,23,24,25,31,32,33,34,35,36,41,42,43,44,45};
     return options;
 }
 
@@ -1298,7 +1298,7 @@ void App::showLuggageFromCar()
         return;
     }
     cout << "Luggage in this car: " << endl;
-    cout << "Luggage.ID - Ticket.ID";
+    cout << "Luggage.ID - Ticket.ID" << endl;
     for(Luggage lug:luggageCars[index].getLuggage())
     {
         cout << lug.getId() << " - " << lug.getTicketId() << endl;
@@ -1592,7 +1592,7 @@ void App::flightMenu() {
                 "|  Detail Flight                          [3]  |\n"
                 "|  Show Flights                           [4]  |\n"
                 "|  Get Luggage To Car                     [5]  |\n"
-                "|  Return                                [0]  |\n"
+                "|  Return                                [0]   |\n"
                 "|==============================================|\n";
         cout << "\nchoose an option : ";
         int choice;

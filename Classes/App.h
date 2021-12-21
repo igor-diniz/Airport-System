@@ -85,12 +85,11 @@ private:
     ///  and gives the option to edit if found or to creat if not found
     ///
     void luggageCarFind();
-    void showLuggageCars();
     void showLuggageFromCar();
     ///
     ///  prints the luggage car list, sorted and filtered by user inputs
     ///
-    void showluggageCars();
+    void showLuggageCars();
     ///
     ///  creates a plane and adds it to the general plane list
     ///

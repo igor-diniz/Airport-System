@@ -10,6 +10,63 @@ App::App(const string& flightsFile, const string& passengersFile, const string& 
     readLuggageCarsFile(luggageCarsFile);
 }
 
+void wait()
+{
+    cout << "Type anything to go back" << endl;
+    string choice;
+    cin >> choice;
+    cin.clear();
+    cin.ignore(INT_MAX, '\n');
+    return;
+}
+
+int binary_search_flight(int id,int inicio, int fim,vector<Flight> flights)
+{
+    if(fim >= inicio)
+    {
+        int mid = inicio + (fim-1)/2;
+
+        if(flights[mid].getId() == id)
+        {
+            return mid;
+        }
+
+        if(flights[mid].getId() > id)
+        {
+            return binary_search_flight(id,inicio,mid -1,flights);
+        }
+
+        return binary_search_flight(id,mid+1,fim,flights);
+    }
+    else
+    {
+        return -1;
+    }
+};
+
+int binary_search_LuggageCar(int id,int inicio, int fim,vector<LuggageCar> LuggageCar)
+{
+    if(fim >= inicio)
+    {
+        int mid = inicio + (fim-1)/2;
+
+        if(LuggageCar[mid].getId() == id)
+        {
+            return mid;
+        }
+
+        if(LuggageCar[mid].getId() > id)
+        {
+            return binary_search_LuggageCar(id,inicio,mid -1,LuggageCar);
+        }
+
+        return binary_search_LuggageCar(id,mid+1,fim,LuggageCar);
+    }
+    else
+    {
+        return -1;
+    }
+};
 
 bool cinGood()
 {
@@ -213,7 +270,7 @@ void App::readPlanesFile(const string &planesFile) {
                     else{
                         Flight flight = Flight(CSVvalue);
                         //cout << flight << endl;
-                        plane.addFlight(flight);
+                        plane.addFlight(flight.getId());
                         break;
                     }
 
@@ -332,15 +389,15 @@ void App::mainMenu()
             "|=============================================|=============================================|\n"
             "|  Add Airport                           [11] |  Add Luggage Car                       [21] |\n"
             "|  Remove Airport                        [12] |  Remove Luggage Car                    [22] |\n"
-            "|  Detail Airport                        [13] |  Detail Luggage Car                    [23] |\n"
+            "|  Find Airport                          [13] |  Find Luggage Car                      [23] |\n"
             "|  Show Airports                         [14] |  Show Luggage Car                      [24] |\n"
-            "|  Transports                            [15] |                                             |\n"
+            "|  Transports                            [15] |  Show Luggage                          [25] |\n"
             "|=============================================|=============================================|\n"
             "|                    Plane                    |                  Passenger                  |\n"
             "|=============================================|=============================================|\n"
             "|  Add Plane                             [31] |  Add Passenger                         [41] |\n"
             "|  Remove Plane                          [32] |  Remove Passenger                      [42] |\n"
-            "|  Detail Plane                          [33] |  Detail Passenger                      [43] |\n"
+            "|  Find Plane                            [33] |  Find Passenger                        [43] |\n"
             "|  Show Plane                            [34] |  Show Passengers                       [44] |\n"
             "|  Flights                               [35] |  Tickets                               [45] |\n"
             "|  Services                              [36] |                                             |\n"
@@ -384,7 +441,8 @@ void App::mainMenu()
             case 21: luggageCarCreation(); break;
             case 22: luggageCarDeletion(); break;
             case 23: luggageCarFind(); break;
-            case 24: showluggageCars(); break;
+            case 24: showLuggageCars(); break;
+            case 25: showLuggageFromCar(); break;
             case 31: planeCreation(); break;
             case 32: planeDeletion(); break;
             case 33: planeFind(); break;
@@ -614,11 +672,7 @@ void App::showAirports()
         counter ++;
     }
 
-    cout << "Type anything to go back";
-    cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX,'\n');
-    return;
+    wait();
 }
 
 void App::transportMenu()
@@ -640,11 +694,7 @@ void App::transportMenu()
     }
     if (!exists) {
         cout << "The given airport does not exist!" << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
     }
     while(true) {
@@ -896,11 +946,7 @@ void App::showTransports(Airport &airport)
         cout << counter << " - " << b << "\n";
         counter ++;
     }
-    cout << "Type anything to go back";
-    cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX,'\n');
-    return;
+    wait();
 }
 
 void App::luggageCarCreation()
@@ -958,86 +1004,31 @@ void App::luggageCarCreation()
 
 void App::luggageCarDeletion()
 {
-    Airport* airport;
-    int numCarriages, stacksPerCarriage, luggagesPerStack;
-    string initials;
-    cout << "To what airport is this car associated?" << endl;
-    cout << "Initials:"; cin >> initials;
+    int id;
+    cout << "what is this car ID?" << endl;
+    cout << "ID:"; cin >> id;
     cout << endl;
 
-    if(initials == "")
-    {
-        cout << "Invalid airport with no specification" << endl;
-        return;
-    }
-
-    airport = new Airport("",initials);
-    bool exists = false;
-    for(Airport &a: airports)
-    {
-        if(a == *airport)
-        {
-            airport = &a;
-            exists = true;
-        }
-    }
-    if(!exists)
-    {
-        cout << "Airport does not exist!" << endl;
-    }
-    cout << "How many carriages: "; cin >> numCarriages;
-    if(!cinGood()) return;
-    cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
-    if(!cinGood()) return;
-    cout << "How many suitcases per stack: "; cin >> luggagesPerStack;
-    if(!cinGood()) return;
-    LuggageCar luggageCar(*airport,numCarriages,stacksPerCarriage,luggagesPerStack);
-    if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
+    int index = binary_search_LuggageCar(id,0,luggageCars.size()-1,luggageCars);
+    if(index == -1)
     {
         cout << "This luggage car does not exist!" << endl;
+        wait();
         return;
     }
-    luggageCars.remove(luggageCar);
+    luggageCars.erase(luggageCars.begin() + index);
     cout << "Luggage removed!" << endl;
 }
 
 void App::luggageCarFind()
 {
-    Airport* airport;
-    int numCarriages, stacksPerCarriage, luggagesPerStack;
-    string initials;
-    cout << "To what airport is this car associated?" << endl;
-    cout << "Initials:"; cin >> initials;
+    int id;
+    cout << "what is this car ID?" << endl;
+    cout << "ID:"; cin >> id;
     cout << endl;
 
-    if(initials == "")
-    {
-        cout << "Invalid airport with no specification" << endl;
-        return;
-    }
-
-    airport = new Airport("",initials);
-    bool exists = false;
-    for(Airport &a: airports)
-    {
-        if(a == *airport)
-        {
-            airport = &a;
-            exists = true;
-        }
-    }
-    if(!exists)
-    {
-        cout << "Airport does not exist!" << endl;
-    }
-    cout << "How many carriages: "; cin >> numCarriages;
-    if(!cinGood()) return;
-    cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
-    if(!cinGood()) return;
-    cout << "How many suitcases per stack: "; cin >> luggagesPerStack;
-    if(!cinGood()) return;
-    LuggageCar luggageCar(*airport,numCarriages,stacksPerCarriage,luggagesPerStack);
-    if(find(luggageCars.begin(),luggageCars.end(),luggageCar) == luggageCars.end())
+    int index = binary_search_LuggageCar(id,0,luggageCars.size()-1,luggageCars);
+    if(index == -1)
     {
         char answer;
         cout << "This luggage car does not exist!" << endl;
@@ -1045,8 +1036,7 @@ void App::luggageCarFind()
         if(!cinGood()) return;
         if(answer == 'y' || answer == 'Y')
         {
-            luggageCars.push_back(luggageCar);
-            cout << "Luggage car created!" << endl;
+            luggageCarCreation();
             return;
         }
         else if(answer == 'N' || answer == 'n')
@@ -1059,9 +1049,10 @@ void App::luggageCarFind()
             return;
         }
     }
+
     cout << "Luggage car found, details: " << endl
          << "Id" << " - " << "Airport" << " - " << "NumCarriages" << " - " << "NumStacks"  << " - " << "NumsuitcasesPerStack" << endl
-         << luggageCar << endl
+         << luggageCars[index] << endl
          << "Do you want to update it? (Y/N)" << endl;
 
     char answer;
@@ -1070,6 +1061,7 @@ void App::luggageCarFind()
     if(answer == 'y' || answer == 'Y')
     {
         Airport *airport1;
+        string initials;
         cout << "What should be the new airport of the car: "
         << "Initials: "; cin >> initials;
 
@@ -1095,25 +1087,20 @@ void App::luggageCarFind()
         }
         else
         {
-            for(LuggageCar& luggageCar1 : luggageCars)
+            luggageCars[index].setAirport(*airport1);
+            cout << "Luggage car updated to new airport!" << endl;
+            cout << "Should the suitcases be cleared from the car?" << endl;
+            cin >> answer;
+            if(!cinGood()) return;
+            if(answer == 'y'||answer == 'Y')
             {
-                if(luggageCar == luggageCar1)
-                {
-                    luggageCar1.setAirport(*airport1);
-                    cout << "Luggage car updated to new airport!" << endl;
-                    cout << "Should the suitcases be cleared from the car?" << endl;
-                    cin >> answer;
-                    if(!cinGood()) return;
-                    if(answer == 'y'||answer == 'Y')
-                    {
-                        luggageCar1.clear();
-                    }
-                    else if(answer != 'N' && answer != 'n')
-                    {
-                        cout << "Invalid character! Considered as a 'N'" << endl;
-                    }
-                }
+                luggageCars[index].clear();
             }
+            else if(answer != 'N' && answer != 'n')
+            {
+                cout << "Invalid character! Considered as a 'N'" << endl;
+            }
+            else return;
         }
     }
     else if(answer == 'N' || answer == 'n')
@@ -1127,7 +1114,7 @@ void App::luggageCarFind()
     }
 }
 
-void App::showluggageCars()
+void App::showLuggageCars()
 {
     char choice;
     cout << "Do you want to see specific luggage cars? (Y/N) \n";
@@ -1144,7 +1131,7 @@ void App::showluggageCars()
             break;
         }
     }
-    list<LuggageCar> aux;
+    vector<LuggageCar> aux;
     if(choice == 'Y' || choice == 'y')
     {
         cout << "Type '0' if you do not want to specify \n";
@@ -1207,28 +1194,28 @@ void App::showluggageCars()
     switch(sortChoice)
     {
         case 1:
-            aux.sort(sortCarsByAirportAsc);
+            sort(aux.begin(),aux.end(),sortCarsByAirportAsc);
             break;
         case 2:
-            aux.sort(sortCarsByAirportDesc);
+            sort(aux.begin(),aux.end(),sortCarsByAirportDesc);
             break;
         case 3:
-            aux.sort(sortCarsByCarriageAsc);
+            sort(aux.begin(),aux.end(),sortCarsByCarriageAsc);
             break;
         case 4:
-            aux.sort(sortCarsByCarriageDesc);
+            sort(aux.begin(),aux.end(),sortCarsByCarriageDesc);
             break;
         case 5:
-            aux.sort(sortCarsByStacksAsc);
+            sort(aux.begin(),aux.end(),sortCarsByStacksAsc);
             break;
         case 6:
-            aux.sort(sortCarsByStacksDesc);
+            sort(aux.begin(),aux.end(),sortCarsByStacksDesc);
             break;
         case 7:
-            aux.sort(sortCarsByLuggagesStackAsc);
+            sort(aux.begin(),aux.end(),sortCarsByLuggagesStackAsc);
             break;
         case 8:
-            aux.sort(sortCarsByLuggagesStackDesc);
+            sort(aux.begin(),aux.end(),sortCarsByLuggagesStackDesc);
             break;
         default:
             cerr << endl << endl << "Invalid choice!\n";
@@ -1241,11 +1228,15 @@ void App::showluggageCars()
         cout << counter << " - " << b << "\n";
         counter ++;
     }
-    cout << "Type anything to go back";
-    cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX,'\n');
-    return;
+    wait();
+}
+
+void App::showLuggageFromCar()
+{
+    int id;
+    cout << "What luggage car shall the luggage be from" << endl;
+    cout << "ID: "; cin >> id;
+
 
 }
 
@@ -1504,11 +1495,7 @@ void App::showPlanes()
         counter ++;
     }
 
-    cout << "Type anything to go back";
-    cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX,'\n');
-    return;
+    wait();
 }
 
 void App::flightMenu() {
@@ -1528,11 +1515,7 @@ void App::flightMenu() {
     }
     if (!exists) {
         cout << "The given plane does not exist " << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
     }
     while (true) {
@@ -1656,7 +1639,8 @@ void App::flightDeletion(Plane &plane)
         if(flightSearched.getId() == flightid)
         {
             plane.deleteFlight(flightSearched.getId());
-            flights.remove(flightSearched);
+            int index = binary_search_flight(flightSearched.getId(),0,flights.size()-1,flights);
+            flights.erase(flights.begin() + index);
             cout << "Flight removed! \n";
             return;
         }
@@ -1739,12 +1723,8 @@ void App::flightFind(Plane &plane)
         cout << "\n";
         if(!checkAirportExists(initials,destination))
         {
-            string choice;
             cout << "Airport does not exist!" << endl;
-            cout << "Type anything to go back";
-            cin >> choice;
-            cin.clear();
-            cin.ignore(INT_MAX,'\n');
+            wait();
             return;
         }
         cout << "Hour: "; cin >> hour;
@@ -1836,8 +1816,7 @@ void App::updateFlight(Flight& flight,Plane &plane)
             return;
         }
     }
-    flight = checkFlight; //???
-    vou botar esse erro pra chamar atenção pra linha de cima
+    flight = checkFlight;
     cout << "Flight Updated!" << endl;
     return;
 
@@ -1909,20 +1888,36 @@ void App::showFlights(Plane &plane)
         cout << "\n";
         departure = Date(year, month, day);
 
-        for (Flight &flight: plane.getFlights()) {
+        /*for (Flight &flight: plane.getFlightsId()) {
             if (flight.getDestination() == destination || flight.getOrigin() == origin ||
                 flight.getDuration() == duration || flight.getDepartureDate() == departure)
                 aux.push_back(flight);
+        }*/
+        for (int flightId: plane.getFlightsId()) {
+            {
+                int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+                if (flights[index].getDestination() == destination || flights[index].getOrigin() == origin ||
+                        flights[index].getDuration() == duration || flights[index].getDepartureDate() == departure)
+                    aux.push_back(flights[index]);
+            }
         }
     }
     else if(choice == 'N' || choice == 'n')
     {
-        aux = plane.getFlights();
+        for(int flightId: plane.getFlightsId())
+        {
+            int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+            aux.push_back(flights[index]);
+        }
     }
     else
     {
         cout << "Invalid character! Considered as a 'N'" << endl;
-        aux = plane.getFlights();
+        for(int flightId: plane.getFlightsId())
+        {
+            int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+            aux.push_back(flights[index]);
+        }
     }
     cout << "How do you want the transports to be sorted? \n"
             "1 - departure ascending\n"
@@ -1992,10 +1987,7 @@ void App::showFlights(Plane &plane)
         counter ++;
     }
 
-    cout << "Type anything to go back";
-    cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX,'\n');
+    wait();
     return;
 }
 
@@ -2005,26 +1997,22 @@ void App::getLuggageToCar(Plane &plane)
     cout << "What flight should the suitcases be processed from? ";
     cout << "ID: "; cin >> flightId;
     if(!cinGood()) return;
-    bool exists = false;
     Flight* flight;
-    for(Flight& f: plane.getFlights())
-    {
-        if(f.getId() == flightId)
-        {
-            exists = true;
-            flight = &f;
-            break;
-        }
-    }
-    if(!exists)
+    int index = binary_search_flight(flightId,0,flights.size()-1,flights);
+    if(index == -1)
     {
         cout << "This flight does not exist!";
         return;
     }
+    else
+    {
+        flight = &flights[index];
+    }
+
     int LuggageId;
     cout << "Input the car ID: "; cin >> LuggageId;
     if(!cinGood()) return;
-    exists = false;
+    bool exists = false;
     LuggageCar* luggageCar;
     for(LuggageCar& lug: luggageCars)
     {
@@ -2068,11 +2056,7 @@ void App::serviceMenu()
     }
     if (!exists) {
         cout << "The given plane does not exist " << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
     }
     while (true)
@@ -2428,10 +2412,7 @@ void App::showPassengers()
         cout << counter << " - " << b << "\n";
         counter ++;
     }
-    cout << "Type anything to go back";
-    cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX,'\n');
+    wait();
     return;
 }
 
@@ -2452,11 +2433,7 @@ void App::ticketMenu() {
     }
     if (!exists) {
         cout << "The given passenger does not exist!" << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
     }
     while (true) {
@@ -2507,56 +2484,23 @@ void App::ticketCreation(Passenger& passenger)
 {
     string passport;
     int id;
-    Date departure;
-    int day,month,year;
-    Airport origin;
-    string initials;
     cout << "What flight shall the ticked be created for?\n";
-    cout << "Origin Airport (initials): "; cin >> initials;
-    if(!checkAirportExists(initials,origin))
-    {
-        string choice;
-        cout << "Airport does not exist!" << endl;
-        cout << "Type anything to go back";
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX,'\n');
-        return;
-    }
-    cout << endl;
-    cout << "Day: "; cin >> day;
-    if (!cinGood()) return;
+    cout << "ID: "; cin >> id;
     cout << "\n";
-    cout << "Month: "; cin >> month;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Year: "; cin >> year;
-    if (!cinGood()) return;
-    cout << "\n";
-    departure = Date(year,month,day);
-    Flight* flight = new Flight(departure,origin);
-    cout << "\n";
-    Plane* plane;
     bool exists = false;
-    for (Plane &PlaneSearched: planes) {
-        for(Flight &FlightSearched: PlaneSearched.getFlights()){
-            if (FlightSearched.equals(*flight)) {
-                plane = &PlaneSearched;
-                flight = &FlightSearched;
-                exists = true;
-                break;
-            }
-        }
-    }
-    if (!exists) {
+    Flight* flight;
+    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    if(index == -1)
+    {
         cout << "The given flight does not exist!" << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
     }
+    else
+    {
+        flight = &flights[index];
+    }
+
     Ticket TicketCreated = Ticket(*flight);
     /*for(Ticket &b : passenger.getTickets())
     {
@@ -2640,58 +2584,22 @@ void App::ticketCreation(Passenger& passenger)
 void App::ticketDeletion(Passenger& passenger)
 {
     int id;
-    Date departure;
-    int day,month,year;
-    Airport origin;
-    string initials;
     cout << "What flight shall the ticked be deleted from?\n";
-    cout << "Origin Airport (initials): "; cin >> initials;
-    if(!checkAirportExists(initials,origin))
+    cout << "ID: "; cin >> id;
+    if(!cinGood()) return;
+    cout << "\n";
+    Flight* flight;
+    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    if(index == -1)
     {
-        string choice;
-        cout << "Airport does not exist!" << endl;
-        cout << "Type anything to go back";
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX,'\n');
-        return;
-    }
-    cout << endl;
-    cout << "Day: "; cin >> day;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Month: "; cin >> month;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Year: "; cin >> year;
-    if (!cinGood()) return;
-    cout << "\n";
-    departure = Date(year,month,day);
-    Flight* flight = new Flight(departure,origin);
-    cout << "\n";
-    Plane* plane;
-    bool exists = false;
-    for (Plane &planeSearched: planes) {
-        for(Flight &flightSearched: planeSearched.getFlights()){
-            if (flightSearched.equals(*flight)) {
-                plane = &planeSearched;
-                flight = &flightSearched;
-                exists = true;
-                break;
-            }
-        }
-        if(exists) break;
-    }
-    if (!exists) {
         cout << "The given flight does not exist!" << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
     }
-
+    else
+    {
+        flight = &flights[index];
+    }
     for(Ticket &ticketSearched : passenger.getTickets())
     {
         if(*flight == ticketSearched.getFlightAssocited())
@@ -2708,56 +2616,21 @@ void App::ticketDeletion(Passenger& passenger)
 void App::ticketFind(Passenger& passenger){
 
     int id;
-    Date departure;
-    int day,month,year;
-    Airport origin;
-    string initials;
-    cout << "What flight shall the ticked be deleted from?\n";
-    cout << "Origin Airport (initials): "; cin >> initials;
-    if(!checkAirportExists(initials,origin))
+    cout << "What flight shall the ticked be searched from?\n";
+    cout << "ID: "; cin >> id;
+    if(!cinGood()) return;
+    cout << "\n";
+    Flight* flight;
+    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    if(index == -1)
     {
-        string choice;
-        cout << "Airport does not exist!" << endl;
-        cout << "type anything to go back";
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX,'\n');
-        return;
-    }
-    cout << endl;
-    cout << "Day: "; cin >> day;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Month: "; cin >> month;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Year: "; cin >> year;
-    if (!cinGood()) return;
-    cout << "\n";
-    departure = Date(year,month,day);
-    Flight* flight = new Flight(departure,origin);
-    cout << "\n";
-    Plane* plane;
-    bool exists = false;
-    for (Plane &planeSearched: planes) {
-        for(Flight &flightSearched: planeSearched.getFlights()){
-            if (flightSearched.equals(*flight)) {
-                plane = &planeSearched;
-                flight = &flightSearched;
-                exists = true;
-                break;
-            }
-        }
-        if(exists) break;
-    }
-    if (!exists) {
         cout << "The given flight does not exist!" << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
+    }
+    else
+    {
+        flight = &flights[index];
     }
 
     for(Ticket &ticketSearched : passenger.getTickets())
@@ -2880,11 +2753,7 @@ void App::showTicket(Passenger& passenger)
         counter ++;
     }
 
-    string choice;
-    cout << "Type anything to go back";
-    cin >> choice;
-    cin.clear();
-    cin.ignore(INT_MAX,'\n');
+    wait();
     return;
 
 }
@@ -2892,57 +2761,22 @@ void App::showTicket(Passenger& passenger)
 void App::checkin(Passenger& passenger)
 {
     int id;
-    Date departure;
-    int day,month,year;
-    Airport origin;
-    string initials;
-    cout << "What flight shall the ticked be deleted from?\n";
-    cout << "Origin Airport (initials): "; cin >> initials;
-    if(!checkAirportExists(initials,origin))
+    cout << "From what flight shall the checkin be made?\n";
+    cout << "ID: "; cin >> id;
+    if(!cinGood()) return;
+    cout << "\n";
+    Flight* flight;
+    int index = binary_search_flight(id,0,flights.size()-1,flights);
+    if(index == -1)
     {
-        string choice;
-        cout << "Airport does not exist!" << endl;
-        cout << "type anything to go back";
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX,'\n');
-        return;
-    }
-    cout << endl;
-    cout << "Day: "; cin >> day;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Month: "; cin >> month;
-    if (!cinGood()) return;
-    cout << "\n";
-    cout << "Year: "; cin >> year;
-    if (!cinGood()) return;
-    cout << "\n";
-    departure = Date(year,month,day);
-    Flight* flight = new Flight(departure,origin);
-    cout << "\n";
-    Plane* plane;
-    bool exists = false;
-    for (Plane &planeSearched: planes) {
-        for(Flight &flightSearched: planeSearched.getFlights()){
-            if (flightSearched.equals(*flight)) {
-                plane = &planeSearched;
-                flight = &flightSearched;
-                exists = true;
-                break;
-            }
-        } if(exists) break;
-    }
-    if (!exists) {
         cout << "The given flight does not exist!" << endl;
-        cout << "Type anything to go back" << endl;
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return;
     }
-
+    else
+    {
+        flight = &flights[index];
+    }
     for(Ticket &ticketSearched : passenger.getTickets())
     {
         if(*flight == ticketSearched.getFlightAssocited())
@@ -2952,6 +2786,9 @@ void App::checkin(Passenger& passenger)
             cout << "Checkin completed!" <<endl;
         }
     }
+    cout << "Ticket not found!" <<endl;
+    cout << "Get the ticket for this flight first!" << endl;
+    wait();
 }
 
 

@@ -14,9 +14,9 @@ class App {
 private:
     list<Passenger> passengers;
     list<Plane> planes;
-    list<LuggageCar> luggageCars;
+    vector<LuggageCar> luggageCars;
     list<Airport> airports;
-    list<Flight> flights;
+    vector<Flight> flights;
 
 public:
     App(){};
@@ -46,7 +46,8 @@ private:
     void luggageCarCreation();
     void luggageCarDeletion();
     void luggageCarFind();
-    void showluggageCars();
+    void showLuggageCars();
+    void showLuggageFromCar();
     void planeCreation();
     void planeDeletion();
     void planeFind();

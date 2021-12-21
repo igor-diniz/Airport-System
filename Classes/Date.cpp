@@ -1,8 +1,10 @@
 #include "Date.h"
 #include <sstream>
 #include <iomanip>
-
-unsigned stringDateToInt(string str) //converte uma string para inteiro
+///
+/// \param str converts a string to a integer
+///
+unsigned stringDateToInt(string str)
 {
     unsigned int number;
     stringstream convert_string(str);

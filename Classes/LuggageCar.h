@@ -55,6 +55,7 @@ public:
     /// \param luggageCar Luggage cars are showed in the form ID - Airport - num Carriages - stacks per carriage - luggages per stack
     /// \return
     friend ostream& operator<<(ostream& os , const LuggageCar& luggageCar);
+    void addLuggage(Luggage luggage);
 };
 
 

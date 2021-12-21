@@ -105,6 +105,9 @@ int LuggageCar::getNumLuggagesPerStack() const {return luggagesPerStack;}
 int LuggageCar::getId() const{
     return id;
 }
+void LuggageCar::addLuggage(Luggage luggage){
+
+}
 
 void LuggageCar::clear()
 {

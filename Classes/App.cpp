@@ -190,6 +190,14 @@ void App::readPassengersFile() {
         getline(fileToOpen,name,',');
         getline(fileToOpen,passport);
         Passenger passenger = Passenger(name, passport);
+
+        if(fileToOpen.peek() == '\n' || fileToOpen.eof())
+        {
+            if(fileToOpen.eof()) break;
+            passengers.push_back(passenger);
+            fileToOpen.get();
+            continue;
+        }
         //cout << passenger << endl;
         getline(fileToOpen, CSVvalue);
         flag = "TICKET";
@@ -408,29 +416,33 @@ void App::readLuggageCarsFile(){
     {
         string strLuggageCar, strLuggage;
         LuggageCar luggageCar;
-        Luggage luggage;
+
         while(!fileToOpen.eof())
         {
             getline(fileToOpen, strLuggageCar);
             luggageCar = LuggageCar(strLuggageCar);
             //cout << luggageCar << endl;
-            queue<Luggage> luggageOutCar;
+            queue<Luggage> luggageInCar;
 
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
                 getline(fileToOpen, strLuggage);
                 //cout << strLuggage << endl;
-                luggage = Luggage(strLuggage);
+                Luggage luggage = Luggage(strLuggage);
                 //cout << "---" << luggage.getId() << endl;
-                luggageOutCar.push(luggage);
+                ;
             }
             fileToOpen.get();
-            luggageCar.setLuggageInCar(luggageOutCar);
+            luggageCar.setLuggageInCar(luggageInCar);
             luggageCars.push_back(luggageCar);
         }
     }
     /*for (LuggageCar l : luggageCars)
-        cout <<  l << endl;*/
+    {
+        cout << l << endl;
+        for(Luggage luggage : l.getLuggage())
+            cout << luggage.getId() << "," << luggage.getTicketId() << endl;
+    }*/
     fileToOpen.close();
 }
 
@@ -2953,11 +2965,11 @@ void App::checkin(Passenger& passenger)
 
 void App::saveAll()
 {
-    saveAirports();
     saveFlights();
-    saveLuggageCars();
     savePassengers();
+    saveAirports();
     savePlanes();
+    saveLuggageCars();
 }
 
 void App::savePassengers(){
@@ -2976,6 +2988,12 @@ void App::savePassengers(){
        fileToSave << passenger.getName() << ","
         << passenger.getPassport() << endl;
 
+       if (passenger.getTickets().empty())
+       {
+           fileToSave << endl;
+           continue;
+       }
+
         for (Ticket& ticket : passenger.getTickets())
         {
             fileToSave << "TICKET" << endl;
@@ -2989,9 +3007,9 @@ void App::savePassengers(){
             {
                 continue;
             }
+            fileToSave << "LUGGAGE" << endl;
             for (Luggage& luggage : ticket.getTicketLuggages())
             {
-                fileToSave << "LUGGAGE" << endl;
                 fileToSave << luggage.getId();
 
                 if(!(luggage == ticket.getTicketLuggages().back()) || !(passenger == passengers.back()))
@@ -3024,11 +3042,17 @@ void App::saveFlights()
         << flight.getOrigin().getInitials() << ","
         << flight.getDestination().getName() << ","
         << flight.getDestination().getInitials() << ","
-        << flight.getAvailableSeats() << endl;
+        << flight.getAvailableSeats();
+
+        if (flight == flights.back() && flight.getLuggagesOutCar().empty())
+            break;
+
+        else fileToSave << endl;
+
 
         if (flight.getLuggagesOutCar().empty())
         {
-            cout << endl;
+            fileToSave << endl;
             continue;
         }
 
@@ -3037,7 +3061,8 @@ void App::saveFlights()
 
         while(!flightLuggage.empty())
         {
-            fileToSave << flightLuggage.front();
+            fileToSave << flightLuggage.front().getId() << ","
+            << flightLuggage.front().getTicketId();
             if(!(flight == flights.back()) || flightLuggage.size() != 1)
                 fileToSave << endl;
             flightLuggage.pop();
@@ -3063,7 +3088,13 @@ void App::savePlanes(){
     {
         fileToSave << plane.getCapacity() << ","
                    << plane.getRegistration() << ","
-                   << plane.getType() << endl;
+                   << plane.getType();
+
+        if(plane == planes.back() && plane.getFlightsId().empty() && plane.getServicesToDo().empty()
+        && plane.getServicesDone().empty())
+            break;
+
+        else fileToSave << endl;
 
         if(!plane.getFlightsId().empty())
         {
@@ -3071,9 +3102,11 @@ void App::savePlanes(){
             for (int flightID : plane.getFlightsId())
             {
                 fileToSave << flightID;
-                if(flightID != plane.getFlightsId().back() || !(plane.getServicesToDo().empty() ||
-                        plane.getServicesDone().empty()) || !(plane == planes.back()))
-                    fileToSave << endl;
+                if(plane == planes.back()  && plane.getServicesToDo().empty()
+                   && plane.getServicesDone().empty())
+                    break;
+
+                else fileToSave << endl;
             }
         }
 
@@ -3084,9 +3117,13 @@ void App::savePlanes(){
 
             while(!servicesToDo.empty())
             {
-                fileToSave << servicesToDo.front();
-                if(plane.getServicesToDo().size() != 1 || !(plane == planes.back()) || !plane.getFlightsId().empty())
-                    fileToSave << endl;
+                fileToSave << servicesToDo.front().getServiceType() << ","
+                << servicesToDo.front().getDate() << ","
+                << servicesToDo.front().getAccountable();
+                if(plane == planes.back() && plane.getFlightsId().empty() && plane.getServicesDone().empty())
+                    break;
+
+                else fileToSave << endl;
                 servicesToDo.pop();
             }
         }
@@ -3098,9 +3135,13 @@ void App::savePlanes(){
 
             while(!servicesDone.empty())
             {
-                fileToSave << servicesDone.top();
-                if(plane.getServicesDone().size() != 1 || !(plane == planes.back()))
-                    fileToSave << endl;
+                fileToSave << servicesDone.top().getServiceType() << ","
+                << servicesDone.top().getDate() << ","
+                << servicesDone.top().getAccountable();
+                if(plane == planes.back() && plane.getFlightsId().empty() && plane.getServicesToDo().empty())
+                    break;
+
+                else fileToSave << endl;
                 servicesDone.pop();
             }
         }
@@ -3173,7 +3214,7 @@ void App::saveLuggageCars()
         {
             for (Luggage& luggage : luggageCar.getLuggage())
             {
-                fileToSave << luggage.getId();
+                fileToSave << luggage.getId() << "," << luggage.getTicketId();
                 if(!(luggage == luggageCar.getLuggage().back()) || !(luggageCar == luggageCars.back()))
                     fileToSave << endl;
             }

@@ -3,6 +3,12 @@
 #include <algorithm>
 
 App::App(const string& flightsFile, const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
+    this->flightsFile = flightsFile;
+    this->passengersFile = passengersFile;
+    this->planesFile = planesFile;
+    this->luggageCarsFile = luggageCarsFile;
+    this->airportsFile = airportsFile;
+
     readFlightsFile(flightsFile);
     readPassengersFile(passengersFile);
     readAirportsFile(airportsFile);
@@ -486,7 +492,7 @@ void App::mainMenu()
         switch (choice)
         {
             case 0: exit(0);
-            case 1: save(); exit(0);
+            case 1: saveAll(); exit(0);
             case 11: airportCreation(); break;
             case 12: airportDeletion(); break;
             case 13: airportFind(); break;
@@ -2857,5 +2863,237 @@ void App::checkin(Passenger& passenger)
     wait();
 }
 
+void App::saveAll()
+{
+    saveAirports();
+    saveFlights();
+    saveLuggageCars();
+    savePassengers();
+    savePlanes();
+}
+
+void App::savePassengers(){
+    ofstream fileToSave;
+
+    fileToSave.open(passengersFile, ios::trunc);
+
+    if(!fileToSave.is_open())
+    {
+        cout << "Cannot open Passengers file." << endl;
+        return;
+    }
+
+   for(Passenger passenger : passengers)
+   {
+       fileToSave << passenger.getName() << ","
+        << passenger.getPassport() << endl;
+
+        for (Ticket& ticket : passenger.getTickets())
+        {
+            fileToSave << "TICKET" << endl;
+            fileToSave << ticket.getID() << ","
+            << ticket.getFlightAssocited().getId();
+            if(!(ticket == passenger.getTickets().back()) || !ticket.getTicketLuggages().empty() ||
+            !(passenger == passengers.back()))
+                fileToSave << endl;
+
+            if(ticket.getTicketLuggages().empty())
+            {
+                continue;
+            }
+            for (Luggage& luggage : ticket.getTicketLuggages())
+            {
+                fileToSave << "LUGGAGE" << endl;
+                fileToSave << luggage.getId();
+
+                if(!(luggage == ticket.getTicketLuggages().back()) || !(passenger == passengers.back()))
+                    fileToSave << endl;
+            }
+        }
+        if(!(passenger == passengers.back()))
+            fileToSave << endl;
+   }
+    fileToSave.close();
+}
+
+void App::saveFlights()
+{
+    ofstream fileToSave;
+    fileToSave.open(flightsFile, ios::trunc);
+
+    if(!fileToSave.is_open())
+    {
+        cout << "Cannot open Flights file." << endl;
+        return;
+    }
+
+    for (Flight& flight : flights)
+    {
+        fileToSave << flight.getId() << ","
+        << flight.getDepartureDate() << ','
+        << flight.getDuration() << ","
+        << flight.getOrigin().getName() << ","
+        << flight.getOrigin().getInitials() << ","
+        << flight.getDestination().getName() << ","
+        << flight.getDestination().getInitials() << ","
+        << flight.getAvailableSeats() << endl;
+
+        if (flight.getLuggagesOutCar().empty())
+        {
+            cout << endl;
+            continue;
+        }
+
+        fileToSave << "ALL_LUGGAGE" << endl;
+        queue<Luggage> flightLuggage = flight.getLuggagesOutCar();
+
+        while(!flightLuggage.empty())
+        {
+            fileToSave << flightLuggage.front();
+            if(!(flight == flights.back()) || flightLuggage.size() != 1)
+                fileToSave << endl;
+            flightLuggage.pop();
+        }
+        if(!(flight == flights.back()))
+            fileToSave << endl;
+    }
+    fileToSave.close();
+}
+
+void App::savePlanes(){
+    ofstream fileToSave;
+
+    fileToSave.open(planesFile, ios::trunc);
+
+    if(!fileToSave.is_open())
+    {
+        cout << "Cannot open Planes file." << endl;
+        return;
+    }
+
+    for(Plane& plane : planes)
+    {
+        fileToSave << plane.getCapacity() << ","
+                   << plane.getRegistration() << ","
+                   << plane.getType() << endl;
+
+        if(!plane.getFlightsId().empty())
+        {
+            fileToSave << "FLIGHTS" << endl;
+            for (int flightID : plane.getFlightsId())
+            {
+                fileToSave << flightID;
+                if(flightID != plane.getFlightsId().back() || !(plane.getServicesToDo().empty() ||
+                        plane.getServicesDone().empty()) || !(plane == planes.back()))
+                    fileToSave << endl;
+            }
+        }
+
+        if(!plane.getServicesToDo().empty())
+        {
+            queue<Service> servicesToDo = plane.getServicesToDo();
+            fileToSave << "NEW_SERVICES" << endl;
+
+            while(!servicesToDo.empty())
+            {
+                fileToSave << servicesToDo.front();
+                if(plane.getServicesToDo().size() != 1 || !(plane == planes.back()) || !plane.getFlightsId().empty())
+                    fileToSave << endl;
+                servicesToDo.pop();
+            }
+        }
+
+        if(!plane.getServicesDone().empty())
+        {
+            stack<Service> servicesDone = plane.getServicesDone();
+            fileToSave << "OLD_SERVICES" << endl;
+
+            while(!servicesDone.empty())
+            {
+                fileToSave << servicesDone.top();
+                if(plane.getServicesDone().size() != 1 || !(plane == planes.back()))
+                    fileToSave << endl;
+                servicesDone.pop();
+            }
+        }
+        if(!(plane == planes.back()))
+            fileToSave << endl;
+    }
+    fileToSave.close();
+}
+
+void App::saveAirports()
+{
+    ofstream fileToSave;
+    fileToSave.open(airportsFile);
+
+    if(!fileToSave.is_open(), ios::trunc)
+    {
+        cout << "Cannot open AirportsFile" << endl;
+        return;
+    }
+    for (Airport& airport : airports)
+    {
+        fileToSave << airport.getName() << ","
+        << airport.getInitials() << "," << endl;
+
+        if(!airport.getTransports().isEmpty())
+        {
+            BST<Transport> transports = airport.getTransports();
+            for(auto transportPtr = transports.begin(); transportPtr != transports.end(); transportPtr++)
+            {
+                fileToSave << (*transportPtr).getType() << ","
+                << (*transportPtr).getDistance() << ","
+                << (*transportPtr).getTime();
+
+                auto auxTransportPtr = transportPtr;
+                auxTransportPtr++;
+
+                if(auxTransportPtr != transports.end() || !(airport == airports.back()))
+                {
+                    fileToSave << endl;
+                }
+            }
+        }
+        if(!(airport == airports.back()))
+            fileToSave << endl;
+    }
+    fileToSave.close();
+}
+
+void App::saveLuggageCars()
+{
+    ofstream  fileToSave;
+    fileToSave.open(luggageCarsFile);
+
+    if(!fileToSave.is_open(), ios::trunc)
+    {
+        cout << "Cannot open LuggageCar file." << endl;
+        return;
+    }
+
+    for(LuggageCar& luggageCar : luggageCars)
+    {
+        fileToSave << luggageCar.getId() << ","
+        << luggageCar.getAirport().getName() << ","
+        << luggageCar.getAirport().getInitials() << ","
+        << luggageCar.getNumCarriages() << ","
+        << luggageCar.getNumStacks() << ","
+        << luggageCar.getNumLuggagesPerStack() << endl;
+
+        if(!luggageCar.getLuggage().empty())
+        {
+            for (Luggage& luggage : luggageCar.getLuggage())
+            {
+                fileToSave << luggage.getId();
+                if(!(luggage == luggageCar.getLuggage().back()) || !(luggageCar == luggageCars.back()))
+                    fileToSave << endl;
+            }
+        }
+        if(!(luggageCar == luggageCars.back()))
+            fileToSave << endl;
+    }
+    fileToSave.close();
+}
 
 

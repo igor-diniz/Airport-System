@@ -18,11 +18,12 @@ private:
     list<Airport> airports;
     vector<Flight> flights;
 
+    string flightsFile, passengersFile, planesFile, luggageCarsFile, airportsFile;
+
 public:
-    App(){};
+    App() = default;
     App(const string& flightsFile, const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile);
     void mainMenu();
-    void save(){}; //TODO
 
 private:
     vector<int> possibleChoices();
@@ -192,6 +193,13 @@ private:
     /// \param ticket allows the user to update a specific passenger's ticket info
     ///
     void updateTicket(Ticket& ticket);
+
+    void saveAll();
+    void saveLuggageCars();
+    void saveAirports();
+    void savePlanes();
+    void saveFlights();
+    void savePassengers();
 };
 
 

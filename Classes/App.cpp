@@ -343,8 +343,7 @@ void App::readPlanesFile() {
             continue;
         }
 
-        getline(fileToOpen, CSVvalue);
-        flag = "FLIGHTS";
+        getline(fileToOpen, flag);
 
         while(true)
         {

@@ -1,7 +1,7 @@
 #include "LuggageCar.h"
 #include <sstream>
 int LuggageCar::nextid = 0;
-LuggageCar::LuggageCar(Airport airport, int numCarriages, int stacksPerCarriage, int luggagesPerStack){
+LuggageCar::LuggageCar(Airport& airport, int numCarriages, int stacksPerCarriage, int luggagesPerStack){
     nextid++;
     id = nextid;
     this-> numCarriages = numCarriages;
@@ -26,6 +26,7 @@ LuggageCar::LuggageCar(string CSVluggageCar){
     getline(ssLuggageCar, nLuggage);
 
     id = stoi(strID);
+    nextid = id;
     airport = Airport(nameAirport, initials);
     numCarriages = stoi(nCarriages);
     stacksPerCarriage = stoi(stacks);

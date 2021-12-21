@@ -24,7 +24,7 @@ public:
     /// \param stacksPerCarriage the max number of stacks each carriage handles
     /// \param luggagesPerStack the max number of luggages a stack can handle
     ///
-    LuggageCar(Airport airport,int numCarriages, int stacksPerCarriage, int luggagesPerStack);
+    LuggageCar(Airport &airport,int numCarriages, int stacksPerCarriage, int luggagesPerStack);
     LuggageCar(string CSVluggageCar);
     void setAirport(Airport& airport1);
     Airport getAirport() const;

@@ -43,6 +43,7 @@ Flight::Flight(string CSVflight){
     //ID
     getline(ssFlight,strID,',' );
     id = stoi(strID);
+    nextid = id;
 
     //departureDate
     getline(ssFlight,date,',' );

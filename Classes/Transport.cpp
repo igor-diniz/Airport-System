@@ -51,7 +51,7 @@ bool Transport::operator<(const Transport &transp) const
 }
 std::ostream& operator<<(std::ostream& os , const Transport& transport)
 {
-    os << transport.getType() << " - " << transport.getDistance() << " - " << transport.getTime().getHour() << ":" << transport.getTime().getMinute();
+    os << transport.getType() << " - " << transport.getDistance() << " - " << transport.getTime();
     return os;
 }
 

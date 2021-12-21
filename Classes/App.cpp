@@ -43,7 +43,7 @@ void wait()
 void wait(){
     using namespace std::this_thread;
     using namespace std::chrono;
-    sleep_for(nanoseconds(1000000000));
+    sleep_for(seconds(1));
 }
 
 int binarySearchFlight(int id, int inicio, int fim, vector<Flight> flights)
@@ -100,7 +100,7 @@ Transport getTransportInfos()
     float distance;
     int hour,minute;
 
-    Transport transp('o',0,{0,0}); //not found
+    Transport transp = Transport('o',0,{-1,-1}); //not found
     cout << "Input the transport specifications: \n"
             "Type: "; cin >> type;
     if (!cinGood()) return transp;
@@ -558,10 +558,9 @@ void App::airportDeletion()
 {
     string name,initials;
     cout << "What airport should be removed?" << endl;
-    cout << "Name:"; cin.get(); getline(cin, name);
     cout << "Initials: "; cin >> initials; cout << endl;
 
-    Airport airport(name,initials);
+    Airport airport("",initials);
     for(Airport &a : airports)
     {
         if(a == airport)
@@ -589,7 +588,7 @@ void App::airportFind()
         if(a == airport)
         {
             cout << "Airport found, details:" << endl
-                 << airport << endl
+                 << a << endl
                  << "Do you want to update it? (Y/N)" << endl;
 
             char answer;
@@ -597,7 +596,7 @@ void App::airportFind()
             if(!cinGood()) return;
             if(answer == 'y' || answer == 'Y')
             {
-                updateAirport(airport);
+                updateAirport(a);
                 return;
             }
             else if(answer == 'n' || answer == 'N') return;
@@ -679,6 +678,7 @@ void App::showAirports()
     if(choice == 'Y' || choice == 'y')
     {
         string name,initials;
+        cout << "Type '0' if you do not want to specify \n";
         cout << "Name:"; cin.get(); getline(cin,name);
         cout << "Initials: "; cin >> initials; cout << endl;
 
@@ -772,7 +772,7 @@ void App::transportMenu()
                 "|                   Transport                  |\n"
                 "|  Add Transport                          [1]  |\n"
                 "|  Remove Transport                       [2]  |\n"
-                "|  Detail Transport                       [3]  |\n"
+                "|  Find Transport                         [3]  |\n"
                 "|  Show Transport                         [4]  |\n"
                 "|  Return                                 [0]  |\n"
                 "|==============================================|\n";
@@ -813,7 +813,7 @@ void App::transportMenu()
 void App::transportCreation(Airport &airport)
 {
     Transport transp = getTransportInfos();
-    Transport transpnotfound('o',0,{0,0});
+    Transport transpnotfound('o',0,{-1,-1});
     if (transp == transpnotfound) return;
     if(!(airport.getTransports().find(transp) == transpnotfound))
     {
@@ -831,7 +831,7 @@ void App::transportDeletion(Airport &airport)
 {
     Transport transp = getTransportInfos();
     if (transp == Transport('o',0,{0,0})) return;
-    if((airport.getTransports().find(transp) == Transport('o',0,{0,0})))
+    if((airport.getTransports().find(transp) == Transport('o',0,{-1,-1})))
     {
         cout << "This transport does not exist!" << endl;
         wait();
@@ -847,7 +847,7 @@ void App::transportFind(Airport &airport)
     Transport transp = getTransportInfos();
     if (transp == Transport('o',0,{0,0})) return;
     cout << "Searching... \n";
-    if((airport.getTransports().find(transp) == Transport('o',0,{0,0})))
+    if((airport.getTransports().find(transp) == Transport('o',0,{-1,-1})))
     {
         cout << "This transport does not exist!" << endl;
         cout <<"Do you want to create it? (Y/N)" << endl;
@@ -858,6 +858,8 @@ void App::transportFind(Airport &airport)
         {
             airport.addTransport(transp);
             cout << "Transport added!" << endl;
+            wait();
+            return;
         }
         else if(answer == 'n' || answer == 'N') return;
         else
@@ -894,16 +896,17 @@ void App::updateTransport(Transport &transport, Airport& airport)
     float distance;
     Time time = transport.getTime();
     int hour,minute;
-    Transport checkTransport = transport;
+    Transport backupTransp = transport;
+    airport.deleteTransport(transport);
 
     cout << "What should be the new specifications? (type 0 to not change)" << endl
     <<  "Type: "; cin >> type;
     if (!cinGood()) return;
-    if(type != '0') checkTransport.setType(type);
+    if(type != '0') transport.setType(type);
     cout << "\n";
     cout << "Distance: "; cin >> distance;
     if (!cinGood()) return;
-    if (distance != 0) checkTransport.setDistance(distance);
+    if (distance != 0) transport.setDistance(distance);
     cout << "\n";
     cout << "Hour: "; cin >> hour;
     if (!cinGood()) return;
@@ -913,14 +916,15 @@ void App::updateTransport(Transport &transport, Airport& airport)
     if (!cinGood()) return;
     if(minute != 0) time.setMinute(minute);
     cout << "\n";
-    checkTransport.setTime(time);
-    if(airport.getTransports().find(checkTransport) == Transport ('o',0,{0,0}))
+    transport.setTime(time);
+    if(airport.getTransports().find(transport) == Transport ('o',0,{-1,-1}))
     {
-        transport = checkTransport;
         cout << "Transport updated!" << endl;
+        airport.addTransport(transport);
         wait();
         return;
     }
+    airport.addTransport(backupTransp);
     cout << "Transport already exists!" << endl;
     wait();
 }
@@ -948,7 +952,8 @@ void App::showTransports(Airport &airport)
         string name, initials;
         cout << "Type '0' if you do not want to specify \n";
         Transport transport = getTransportInfos();
-        for (auto i = airport.getTransports().begin(); i != airport.getTransports().end(); i++)
+        auto bst = airport.getTransports();
+        for (auto i = bst.begin(); i != bst.end(); i++)
         {
             if (transport.getTime() == (*i).getTime() || transport.getDistance() == (*i).getDistance() ||
                 transport.getType() == (*i).getType())
@@ -965,7 +970,8 @@ void App::showTransports(Airport &airport)
     }
     else
     {
-        for (iteratorBST<Transport> i = airport.getTransports().begin(); i != airport.getTransports().end(); i++)
+        BST<Transport> tree = airport.getTransports();
+        for (auto i = tree.begin(); i != tree.end(); i++)
         {
             aux.push_back(*i);
         }
@@ -1170,12 +1176,13 @@ void App::luggageCarFind()
         {
             luggageCars[index].setAirport(*airport1);
             cout << "Luggage car updated to new airport!" << endl;
-            cout << "Should the suitcases be cleared from the car?" << endl;
+            cout << "Should the suitcases be cleared from the car? (Y/N)" << endl;
             cin >> answer;
             if(!cinGood()) return;
             if(answer == 'y'||answer == 'Y')
             {
                 luggageCars[index].clear();
+                cout << "Luggage car cleared!" << endl;
             }
             else if(answer != 'N' && answer != 'n')
             {
@@ -1223,15 +1230,19 @@ void App::showLuggageCars()
         string initials;
         cout << "To what airport is this car associated?" << endl;
         cout << "Initials:"; cin >> initials;
-        if(initials == "0") initials = "";
         cout << endl;
+        if(initials == "0") initials = "";
+        airport.setInitials(initials);
         cout << "How many carriages: "; cin >> numCarriages;
+        cout << endl;
         if(!cinGood()) return;
         if(numCarriages == 0) numCarriages = -1;
         cout << "How many stacks per carriage: "; cin >> stacksPerCarriage;
+        cout << endl;
         if(!cinGood()) return;
         if(stacksPerCarriage == 0) stacksPerCarriage = -1;
         cout << "How many suitcases per stack: "; cin >> luggagesPerStack;
+        cout << endl;
         if(!cinGood()) return;
         if(luggagesPerStack == 0) luggagesPerStack = -1;
         LuggageCar lug(airport,numCarriages,stacksPerCarriage,luggagesPerStack);
@@ -3112,7 +3123,7 @@ void App::saveAirports()
     for (Airport& airport : airports)
     {
         fileToSave << airport.getName() << ","
-        << airport.getInitials() << "," << endl;
+        << airport.getInitials() << endl;
 
         if(!airport.getTransports().isEmpty())
         {

@@ -9,7 +9,7 @@ using namespace std;
 class Airport{
     string name;
     string initials; ///This is also known as "IATA initials"
-    BST<Transport> transports = BST<Transport>(Transport());
+    BST<Transport> transports = BST<Transport>(Transport('o',0,{-1,-1}));
 public:
     Airport(){};
     ///
@@ -30,7 +30,7 @@ public:
 
     string getInitials() const;
 
-    const BST<Transport>& getTransports() const;
+    BST<Transport> getTransports() const;
 
     void setName(string name);
 

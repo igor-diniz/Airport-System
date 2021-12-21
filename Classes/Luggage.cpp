@@ -2,11 +2,11 @@
 #include "Luggage.h"
 #include <sstream>
 
-int Luggage::nextId = 0;
+int Luggage::nextid = 0;
 
 Luggage::Luggage(int ticketId){
-    nextId++;
-    luggageId = nextId;
+    nextid++;
+    luggageId = nextid;
     this->ticketId = ticketId;
 }
 
@@ -17,6 +17,7 @@ Luggage::Luggage(string CSVluggage){
     getline(ssLuggage, strLuggageId, ',');
     getline(ssLuggage, strTicketId);
     luggageId = stoi(strLuggageId);
+    nextid = luggageId;
     ticketId = stoi(strTicketId);
 }
 

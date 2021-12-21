@@ -7,7 +7,7 @@ using namespace std;
 
 class Luggage {
 private:
-    static int nextId; ///incrementor for next luggage creation
+    static int nextid; ///incrementor for next luggage creation
     int luggageId, ticketId; ///current ticket id and luggage id
 public:
     Luggage(){};

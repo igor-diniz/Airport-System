@@ -334,6 +334,14 @@ void App::readPlanesFile() {
         getline(fileToOpen, CSVvalue);
         Plane plane = Plane(CSVvalue);
         //cout << plane << endl;
+
+        if(fileToOpen.peek() == '\n' || fileToOpen.eof())
+        {
+            planes.push_back(plane);
+            fileToOpen.get();
+            continue;
+        }
+
         getline(fileToOpen, CSVvalue);
         flag = "FLIGHTS";
 

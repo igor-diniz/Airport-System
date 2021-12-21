@@ -434,20 +434,30 @@ void App::readLuggageCarsFile(){
 
         while(!fileToOpen.eof())
         {
+            Luggage luggage;
             getline(fileToOpen, strLuggageCar);
             luggageCar = LuggageCar(strLuggageCar);
+
+            if(fileToOpen.peek() == '\n' || fileToOpen.eof())
+            {
+                luggageCars.push_back(luggageCar);
+                fileToOpen.get();
+                continue;
+            }
             //cout << luggageCar << endl;
-            queue<Luggage> luggageInCar;
+            queue<Luggage> luggageOutCar;
 
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
                 getline(fileToOpen, strLuggage);
                 //cout << strLuggage << endl;
-                Luggage luggage = Luggage(strLuggage);
-                //cout << "---" << luggage.getId() << endl;
+                luggage = Luggage(strLuggage);
+                //cout << luggage.getId() << "," << luggage.getTicketId() << endl;
+                luggageOutCar.push(luggage);
+                //cout << luggageOutCar.back() << endl;
             }
             fileToOpen.get();
-            luggageCar.setLuggageInCar(luggageInCar);
+            luggageCar.setLuggageInCar(luggageOutCar);
             luggageCars.push_back(luggageCar);
         }
     }
@@ -694,7 +704,7 @@ void App::showAirports()
             cin.clear();
             cin.ignore(INT_MAX,'\n');
             wait();
-            cout << endl << endl << "Invalid answer!\n";
+            cerr << endl << endl << "Invalid answer!\n";
             continue;
         }
         break;
@@ -1957,7 +1967,7 @@ void App::showFlights(Plane &plane)
             (choice != 'N' && choice != 'n' && choice != 'Y' && choice != 'y')) {
             cin.clear();
             cin.ignore(INT_MAX, '\n');
-            cout << endl << endl << "Invalid answer!\n";
+            cerr << endl << endl << "Invalid answer!\n";
             continue;
         } else {
             break;
@@ -1971,7 +1981,6 @@ void App::showFlights(Plane &plane)
         int hour, minute;
         Airport origin, destination;
         string initials;
-        int availableSeats;
 
         cout << "Type '0' if you do not want to specify \n"
              << "Origin airport (initials): ";
@@ -2302,6 +2311,7 @@ void App::showServicesToDo(Plane &plane)
     while(!services.empty())
     {
         cout << services.front() << endl;
+        wait();
         services.pop();
     }
     wait();

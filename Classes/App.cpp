@@ -337,6 +337,7 @@ void App::readPlanesFile() {
 
         if(fileToOpen.peek() == '\n' || fileToOpen.eof())
         {
+            if(fileToOpen.eof()) break;
             planes.push_back(plane);
             fileToOpen.get();
             continue;

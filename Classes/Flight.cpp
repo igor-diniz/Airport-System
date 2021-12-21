@@ -34,12 +34,15 @@ Flight::Flight(Date &departure, Airport &origin)
 }
 
 Flight::Flight(string CSVflight){
-    nextid ++;
-    id = nextid;
+
     stringstream ssFlight;
     ssFlight << CSVflight;
 
-    string name, passport, airport, initials, date, durationStr, availableSeatsStr;
+    string strID, name, passport, airport, initials, date, durationStr, availableSeatsStr;
+
+    //ID
+    getline(ssFlight,strID,',' );
+    id = stoi(strID);
 
     //departureDate
     getline(ssFlight,date,',' );

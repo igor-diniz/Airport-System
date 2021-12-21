@@ -3,7 +3,7 @@
 #include <algorithm>
 
 App::App(const string& flightsFile, const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile){
-    //readFlightsFile(flightsFile);
+    readFlightsFile(flightsFile);
     readPassengersFile(passengersFile);
     readAirportsFile(airportsFile);
     readPlanesFile(planesFile);
@@ -117,13 +117,65 @@ Transport getTransportInfos()
     return transp;
 }
 
+void App::readFlightsFile(const string &flightsFile) {
+    ifstream fileToOpen;
+    fileToOpen.open(flightsFile);
+
+    if(!fileToOpen.is_open())
+    {
+        cout << "Cannot open Flights file" << endl;
+    }
+
+    else
+    {
+        string CSVflight, CSVluggage, flag;
+
+        while(!fileToOpen.eof())
+        {
+            //flight
+            getline(fileToOpen,CSVflight);
+            Flight flight = Flight(CSVflight);
+
+            if(fileToOpen.peek() == '\n')
+            {
+                flights.push_back(flight);
+                fileToOpen.get();
+                continue;
+            }
+
+            getline(fileToOpen, flag);
+
+            while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
+            {
+                //luggage
+                getline(fileToOpen, CSVluggage);
+                Luggage luggage = Luggage(CSVluggage);
+                flight.addLuggageToQueue(luggage);
+            }
+            fileToOpen.get();
+            flights.push_back(flight);
+        }
+        /*for(Flight f : flights)
+        {
+            cout << f << endl;
+            queue<Luggage> luggages = f.getLuggagesOutCar();
+            for(int i = 0; i < luggages.size(); i++)
+            {
+                cout << luggages.front() << endl;
+                luggages.pop();
+            }
+        }*/
+        fileToOpen.close();
+    }
+}
+
 void App::readPassengersFile(const string &passengersFile) {
     ifstream fileToOpen;
     fileToOpen.open(passengersFile);
 
     if(!fileToOpen.is_open())
     {
-        cout << endl << "Can not open passengers file" << endl;
+        cout << endl << "Cannot open Passengers file" << endl;
         return;
     }
 
@@ -155,9 +207,15 @@ void App::readPassengersFile(const string &passengersFile) {
                     }
 
                     else{
-                        Flight flight = Flight(CSVvalue);
+                        Ticket ticket = Ticket(CSVvalue);
                         //cout << flight << endl;
-                        ticket = Ticket(flight);
+                        for (Flight& flight : flights)
+                        {
+                            if (ticket.getFlightAssocited().getId() == flight.getId()) {
+                                ticket.setFlightAssociated(flight);
+                                break;
+                            }
+                        }
                         //cout << ticket << endl;
 
                         if(fileToOpen.peek() == '\n')
@@ -181,7 +239,7 @@ void App::readPassengersFile(const string &passengersFile) {
                     }
 
                     else{
-                        Luggage luggage = Luggage(CSVvalue);
+                        Luggage luggage = Luggage(ticket.getID());
                         //assert(luggage.getId() == stoi(CSVvalue));
                         //cout << luggage.getId() << endl;
                         ticket.addLuggage(luggage);
@@ -217,7 +275,7 @@ void App::readAirportsFile(const string& airportsFile){
     fileToOpen.open(airportsFile);
 
     if(!fileToOpen.is_open())
-        cout << endl << "Can not open airports file" << endl;
+        cout << endl << "Cannot open Airports file" << endl;
     else
     {
         string name, initials, CSVtransport;
@@ -249,7 +307,7 @@ void App::readPlanesFile(const string &planesFile) {
 
     if(!fileToOpen.is_open())
     {
-        cout << endl << "Can not open planes file" << endl;
+        cout << endl << "Cannot open Planes file" << endl;
         return;
     }
 
@@ -276,9 +334,9 @@ void App::readPlanesFile(const string &planesFile) {
                     }
 
                     else{
-                        Flight flight = Flight(CSVvalue);
+                        int idFlight = stoi(CSVvalue);
                         //cout << flight << endl;
-                        plane.addFlight(flight.getId());
+                        plane.addFlight(idFlight);
                         break;
                     }
 
@@ -343,7 +401,7 @@ void App::readLuggageCarsFile(const string& luggageCarsFile){
     fileToOpen.open(luggageCarsFile);
 
     if(!fileToOpen.is_open())
-        cout << "Can not open luggage cars file." << endl;
+        cout << "Cannot open luggageCars file." << endl;
 
     else
     {
@@ -374,6 +432,7 @@ void App::readLuggageCarsFile(const string& luggageCarsFile){
         cout <<  l << endl;*/
     fileToOpen.close();
 }
+
 
 
 

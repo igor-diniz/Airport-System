@@ -1,4 +1,4 @@
-1,2022/12/26,05:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Pequim,PEK,220
+1,2022/12/26,05:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Pequim,PEK,218
 
 2,2023/05/13,07:45,Aeroporto Internacional de Toquio,HND,Aeroporto Internacional de Los Angeles,LAX,200
 

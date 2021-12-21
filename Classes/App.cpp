@@ -17,28 +17,6 @@ App::App(const string& flightsFile, const string& passengersFile, const string& 
     readPlanesFile();
     readLuggageCarsFile();
 }
-/*
-void wait()
-{
-    cout << "|=============================================|\n"
-         << "|  Return                                 [0] |\n"
-         << "|  Exit                                   [1] |\n"
-         << "|=============================================|\n";
-    string choice;
-    cin >> choice;
-    while(choice != "0" && choice != "1")
-    {
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
-        cout << "Invalid answer!" << endl << endl;
-        cout << "|=============================================|\n"
-             << "|  Return                                 [0] |\n"
-             << "|  Exit                                   [1] |\n"
-             << "|=============================================|\n";
-    }
-    if(choice == "0") return;
-    if(choice == "1") exit(0);
-}*/
 
 void wait(){
     using namespace std::this_thread;
@@ -100,7 +78,7 @@ Transport getTransportInfos()
     float distance;
     int hour,minute;
 
-    Transport transp = Transport('o',0,{-1,-1}); //not found
+    Transport transp = Transport('o',0,{-1,-1});
     cout << "Input the transport specifications: \n"
             "Type: "; cin >> type;
     if (!cinGood()) return transp;
@@ -133,7 +111,6 @@ void App::readFlightsFile() {
 
         while(!fileToOpen.eof())
         {
-            //flight
             getline(fileToOpen,CSVflight);
             Flight flight = Flight(CSVflight);
 
@@ -148,7 +125,6 @@ void App::readFlightsFile() {
 
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
-                //luggage
                 getline(fileToOpen, CSVluggage);
                 Luggage luggage = Luggage(CSVluggage);
                 flight.addLuggageToQueue(luggage);
@@ -156,16 +132,6 @@ void App::readFlightsFile() {
             fileToOpen.get();
             flights.push_back(flight);
         }
-        /*for(Flight f : flights)
-        {
-            cout << f << endl;
-            queue<Luggage> luggages = f.getLuggagesOutCar();
-            for(int i = 0; i < luggages.size(); i++)
-            {
-                cout << luggages.front() << endl;
-                luggages.pop();
-            }
-        }*/
         fileToOpen.close();
     }
 }
@@ -186,7 +152,6 @@ void App::readPassengersFile() {
     while(!fileToOpen.eof())
     {
         Ticket ticket;
-        //passenger
         getline(fileToOpen,name,',');
         getline(fileToOpen,passport);
         Passenger passenger = Passenger(name, passport);
@@ -198,7 +163,6 @@ void App::readPassengersFile() {
             fileToOpen.get();
             continue;
         }
-        //cout << passenger << endl;
         getline(fileToOpen, flag);
 
         while(true)
@@ -216,7 +180,6 @@ void App::readPassengersFile() {
 
                     else{
                         ticket = Ticket(CSVvalue);
-                        //cout << flight << endl;
                         for (Flight& flight : flights)
                         {
                             if (ticket.getFlightAssocited().getId() == flight.getId()) {
@@ -224,7 +187,6 @@ void App::readPassengersFile() {
                                 break;
                             }
                         }
-                        //cout << ticket << endl;
 
                         if(fileToOpen.peek() == '\n')
                         {
@@ -242,14 +204,11 @@ void App::readPassengersFile() {
                     {
                         flag = "TICKET";
                         passenger.addTicket(ticket);
-                        //cout << ticket << endl;
                         break;
                     }
 
                     else{
                         Luggage luggage = Luggage(ticket.getID());
-                        //assert(luggage.getId() == stoi(CSVvalue));
-                        //cout << luggage.getId() << endl;
                         ticket.addLuggage(luggage);
 
                         if(fileToOpen.peek() == '\n')
@@ -264,17 +223,11 @@ void App::readPassengersFile() {
             {
                 fileToOpen.get();
                 passenger.addTicket(ticket);
-                //cout << ticket << endl;
                 break;
             }
         }
         passengers.push_back(passenger);
     }
-    /*for(Passenger p : passengers) {
-        cout << p << endl;
-        for (Ticket t: p.getTickets())
-            cout << t << endl;
-    }*/
     fileToOpen.close();
 }
 
@@ -290,7 +243,6 @@ void App::readAirportsFile(){
 
         while(!fileToOpen.eof())
         {
-            //airport
             getline(fileToOpen,name,',');
             getline(fileToOpen,initials);
             Airport airport = Airport(name, initials);
@@ -304,7 +256,6 @@ void App::readAirportsFile(){
 
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
-                //transports
                 getline(fileToOpen, CSVtransport);
                 Transport transport = Transport(CSVtransport);
                 airport.addTransport(transport);
@@ -332,7 +283,6 @@ void App::readPlanesFile() {
     {
         getline(fileToOpen, CSVvalue);
         Plane plane = Plane(CSVvalue);
-        //cout << plane << endl;
 
         if(fileToOpen.peek() == '\n' || fileToOpen.eof())
         {
@@ -358,7 +308,6 @@ void App::readPlanesFile() {
 
                     else{
                         int idFlight = stoi(CSVvalue);
-                        //cout << flight << endl;
                         plane.addFlight(idFlight);
                         break;
                     }
@@ -374,7 +323,6 @@ void App::readPlanesFile() {
 
                     else{
                         Service newService = Service(CSVvalue);
-                        //cout << newService.getServiceType() << endl;
                         plane.addService(newService);
                         break;
                     }
@@ -388,7 +336,6 @@ void App::readPlanesFile() {
                     getline(fileToOpen, CSVvalue);
 
                     Service oldService = Service(CSVvalue);
-                    //cout << "OLD" << oldService.getServiceType() << endl;
                     plane.addOldService(oldService);
                     break;
             }
@@ -400,22 +347,6 @@ void App::readPlanesFile() {
         }
         planes.push_back(plane);
     }
-    /*queue<Service> std;
-    stack<Service> sd;
-    for(Plane p : planes) {
-        cout << endl << p << endl;
-        std = p.getServicesToDo();
-        sd = p.getServicesDone();
-        while(!std.empty()){
-            cout << std.front() << endl;
-            std.pop();
-        }
-        cout << "OLD" << endl;
-        while(!sd.empty()){
-            cout << sd.top() << endl;
-            sd.pop();
-        }
-    }*/
     fileToOpen.close();
 }
 
@@ -443,29 +374,19 @@ void App::readLuggageCarsFile(){
                 fileToOpen.get();
                 continue;
             }
-            //cout << luggageCar << endl;
             queue<Luggage> luggageOutCar;
 
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
                 getline(fileToOpen, strLuggage);
-                //cout << strLuggage << endl;
                 luggage = Luggage(strLuggage);
-                //cout << luggage.getId() << "," << luggage.getTicketId() << endl;
                 luggageOutCar.push(luggage);
-                //cout << luggageOutCar.back() << endl;
             }
             fileToOpen.get();
             luggageCar.setLuggageInCar(luggageOutCar);
             luggageCars.push_back(luggageCar);
         }
     }
-    /*for (LuggageCar l : luggageCars)
-    {
-        cout << l << endl;
-        for(Luggage luggage : l.getLuggage())
-            cout << luggage.getId() << "," << luggage.getTicketId() << endl;
-    }*/
     fileToOpen.close();
 }
 
@@ -564,7 +485,7 @@ void App::airportCreation()
 {
     string name,initials;
     cout << "Input the airport specifications:" << endl;
-    cout << "Name:"; cin.get(); //necessary because '\n' keep in buffer
+    cout << "Name:"; cin.get();
     getline(cin, name);
     cout << "Initials:"; cin >> initials;
     cout << endl;
@@ -591,7 +512,7 @@ void App::airportCreation()
 
 void App::airportDeletion()
 {
-    string name,initials;
+    string initials;
     cout << "What airport should be removed?" << endl;
     cout << "Initials: "; cin >> initials; cout << endl;
 
@@ -652,7 +573,7 @@ void App::airportFind()
     if(answer == 'y' || answer == 'Y')
     {
         string name;
-        cout << "Input the airport name: "; cin.get(); getline(cin, name); //missing information since we searched using only the key
+        cout << "Input the airport name: "; cin.get(); getline(cin, name);
         airport.setName(name);
         airports.push_back(airport);
         wait();
@@ -686,7 +607,7 @@ void App::updateAirport(Airport &airport)
         }
         airport.setInitials(initials);
     }
-     cout<< "Name:"; cin.get(); getline(cin,name);
+     cout<< "Name: "; cin.get(); getline(cin,name);
          if(name != "0") airport.setName(name);
     wait();
     cout << "Airport updated" << endl;
@@ -1790,7 +1711,7 @@ void App::flightDeletion(Plane &plane)
     return;
 }
 
-bool App::checkAirportExists(string &initials, Airport& airport) //se existir coloca o aeroporto em airport
+bool App::checkAirportExists(string &initials, Airport& airport)
 {
     for(Airport& air: airports)
     {
@@ -2334,8 +2255,9 @@ void App::showServicesDone(Plane &plane)
 void App::passengerCreation()
 {
     string name,passport;
-    cout << "Input the Passenger specifications : \n"
-         << "name: "; cin >> name;    cout << "\n";
+    cout << "Input the Passenger specifications : \n";
+    cout << "Name: "; cin.get();
+    getline(cin, name);    cout << "\n";
     cout << "passport: "; cin >> passport;
     cout << "\n";
     if(!cinGood()) return;
@@ -2428,7 +2350,8 @@ void App::passengerFind()
     {
         string name;
         cout << "Input the remaining passenger specifications: ";
-        cout << "Name: "; cin >> name;
+        cout << "Name: "; cin.get();
+        getline(cin, name);
         cout << "\n";
         if(!cinGood()) return;
         if(name.empty() || passport.empty())
@@ -2457,8 +2380,9 @@ void App::passengerFind()
 void App::updatePassenger(Passenger &passenger)
 {
     string name,passport;
-    cout << "What should be the new specifications? (type 0 to not change): \n"
-            "Name: "; cin >> name;
+    cout << "What should be the new specifications? (type 0 to not change): \n";
+    cout << "Name: "; cin.get();
+    getline(cin, name);
     cout << "\n";
     cout << "Passport: "; cin >> passport;
     cout << "\n";
@@ -2472,6 +2396,13 @@ void App::updatePassenger(Passenger &passenger)
     Passenger PassengerCreated(name,passport);
     if(PassengerCreated.getName() == "0")PassengerCreated.setName(passenger.getName());
     if(PassengerCreated.getPassport() == "0")PassengerCreated.setPassport(passenger.getPassport());
+    if(passport == "0")
+    {
+        passenger = PassengerCreated;
+        cout << "Passenger updated!" << endl;
+        wait();
+        return;
+    }
     for(Passenger &PassengerSearched : passengers)
     {
         if(PassengerSearched == PassengerCreated)
@@ -2483,6 +2414,7 @@ void App::updatePassenger(Passenger &passenger)
     }
     passenger = PassengerCreated;
     cout << "Passenger updated!" << endl;
+    wait();
 }
 
 void App::showPassengers()
@@ -2505,7 +2437,7 @@ void App::showPassengers()
     {
         string name,passport;
         cout << "Type '0' if you do not want to specify \n";
-        cout << "Name:"; cin.get(); getline(cin,name);
+        cout << "Name: "; cin.get(); getline(cin,name);
         cout << "Passport: "; cin >> passport; cout << endl;
         if(name == "0") name = "";
         if(passport == "0") passport = "";
@@ -2633,6 +2565,9 @@ void App::ticketMenu() {
             case 4:
                 showTicket(*passenger);
                 break;
+            case 5:
+                checkin(*passenger);
+                break;
             default:
                 cout << "Not a possibility" << endl;
                 wait();
@@ -2662,14 +2597,6 @@ void App::ticketCreation(Passenger& passenger)
     }
 
     Ticket TicketCreated = Ticket(*flight);
-    /*for(Ticket &b : passenger.getTickets())
-    {
-        if(b == a)
-        {
-            cout <<"This ticket already exists \n";
-            return;
-        }
-    }*/
     int numBag;
     cout << "How many suitcases is the passenger taking to the flight?"<< endl;
     cin >> numBag;
@@ -2711,7 +2638,7 @@ void App::ticketCreation(Passenger& passenger)
                     {
                         if(ticket == t)
                         {
-                            cout <<"This ticket already exists! \n"; //A passenger cant buy ticket for the same flight twice.
+                            cout <<"This ticket already exists! \n";
                             wait();
                             return;
                         }
@@ -2853,7 +2780,6 @@ void App::ticketFind(Passenger& passenger){
             wait();
             break;
         }
-        //return;
     }
 
 }
@@ -2889,7 +2815,6 @@ void App::updateTicket(Ticket& ticket){
 
 void App::showTicket(Passenger& passenger)
 {
-    //m faz sentido ele espeficicar nada do ticket pq o ticket so tem flight e n se pode um passageiro ter 2 ticket do msmo flight
     list<Ticket> aux = passenger.getTickets();
     cout << "How do you want the tickets to be sorted? \n"
          << "1 - Flight ascending\n"
@@ -2933,35 +2858,20 @@ void App::showTicket(Passenger& passenger)
 void App::checkin(Passenger& passenger)
 {
     int id;
-    cout << "From what flight shall the checkin be made?\n";
+    cout << "From what ticket shall the checkin be made?\n";
     cout << "ID: "; cin >> id;
-    if(!cinGood()) return;
-    cout << "\n";
-    Flight* flight;
-    int index = binarySearchFlight(id, 0, flights.size() - 1, flights);
-    if(index == -1)
-    {
-        cout << "The given flight does not exist!" << endl;
-        wait();
-        return;
-    }
-    else
-    {
-        flight = &flights[index];
-    }
     for(Ticket &ticketSearched : passenger.getTickets())
     {
-        if(*flight == ticketSearched.getFlightAssocited())
+        if(id == ticketSearched.getID())
         {
             cout << "Ticket found!" << endl;
             ticketSearched.setCheckin();
             cout << "Checkin completed!" <<endl;
+            return;
             wait();
         }
     }
     cout << "Ticket not found!" <<endl;
-    wait();
-    cout << "Get the ticket for this flight first!" << endl;
     wait();
 }
 

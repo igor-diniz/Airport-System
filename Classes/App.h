@@ -22,7 +22,7 @@ public:
     App(){};
     App(const string& flightsFile, const string& passengersFile, const string& planesFile, const string& luggageCarsFile, const string& airportsFile);
     void mainMenu();
-    void save(); //TODO
+    void save(){}; //TODO
 
 private:
     vector<int> possibleChoices();

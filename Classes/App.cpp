@@ -336,7 +336,6 @@ void App::readPlanesFile() {
 
         if(fileToOpen.peek() == '\n' || fileToOpen.eof())
         {
-            if(fileToOpen.eof()) break;
             planes.push_back(plane);
             fileToOpen.get();
             continue;
@@ -400,7 +399,7 @@ void App::readPlanesFile() {
         }
         planes.push_back(plane);
     }
-    /*queue<Service> std;
+    queue<Service> std;
     stack<Service> sd;
     for(Plane p : planes) {
         cout << endl << p << endl;
@@ -415,7 +414,7 @@ void App::readPlanesFile() {
             cout << sd.top() << endl;
             sd.pop();
         }
-    }*/
+    }
     fileToOpen.close();
 }
 
@@ -3143,7 +3142,10 @@ void App::savePlanes(){
                 if(plane == planes.back() && plane.getFlightsId().empty() && plane.getServicesToDo().empty())
                     break;
 
-                else fileToSave << endl;
+                else if(!(plane.getServicesDone().size() == 1) || !(plane == planes.back()))
+                {
+                    fileToSave << endl;
+                }
                 servicesDone.pop();
             }
         }

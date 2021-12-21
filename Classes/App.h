@@ -28,12 +28,55 @@ public:
 private:
     static vector<int> possibleChoices();
     ///
-    ///  reads the file no formato bla bla bla bla
+    ///  reads the file in the following pattern:
+    ///  flight id, flight date of departure, flight duration, origin airport name, origin airport initials, arrival airport name, arrival airport initials
+    ///  flight id, flight date of departure, flight duration, origin airport name, origin airport initials, arrival airport name, arrival airport initials...
+    ///  control title used to know the following items are flight luggage
+    ///  luggage id, associated ticket id
+    ///  luggage id, associated ticket id...
+    ///  control title used to know the following items are luggage out of a car
+    ///  luggage id, associated ticket id
+    ///  luggage id, associated ticket id...
     ///
     void readFlightsFile();
+    ///
+    ///  reads the file in the following pattern:
+    ///  airport name, airport initials
+    ///  transport type, transport distance, transport time
+    ///  transport type, transport distance, transport time...
+    ///
     void readAirportsFile();
+    ///
+    ///  reads the file in the following pattern:
+    ///  passenger name, passenger passport
+    ///  control title used to know the following items are tickets
+    ///  ticket id, associated flight id
+    ///  ticket id, associated flight id...
+    ///  control title used to know the following items are luggage
+    ///  luggage id
+    ///  luggage id...
+    ///
     void readPassengersFile();
+    ///
+    ///  reads the file in the following pattern:
+    ///  plane capacity, plane registration, plane type
+    ///  control title used to know the following items are flights
+    ///  flight id
+    ///  flight id...
+    ///  control title used to know the following items are services to do
+    ///  service type, service date, accountable
+    ///  service type, service date, accountable...
+    ///  control title used to know the following items are services done
+    ///  service type, service date, accountable
+    ///  service type, service date, accountable...
+    ///
     void readPlanesFile();
+    ///
+    ///  reads the file in the following pattern:
+    ///  luggage car id, associated airport name, associated airport initials, numOfCarriages, numOfStacksPerCarriages, numOfLuggagesPerStacks
+    ///  luggage id, associated ticket id
+    ///  luggage id, associated ticket id...
+    ///
     void readLuggageCarsFile();
     ///
     ///  \param passenger updates de passenger's ticket checkin state and sends its luggage to the flights luggage lists

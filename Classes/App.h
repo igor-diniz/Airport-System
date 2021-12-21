@@ -26,7 +26,7 @@ public:
     void mainMenu();
 
 private:
-    vector<int> possibleChoices();
+    static vector<int> possibleChoices();
     ///
     ///  reads the file no formato bla bla bla bla
     ///
@@ -148,7 +148,7 @@ private:
     ///  \param plane prints the plane's services to do list, sorted and filtered by user inputs
     ///
     void showFlights(Plane &plane);
-    bool checkAirportExists(string initials,Airport& airport);
+    bool checkAirportExists(string& initials,Airport& airport);
     void getLuggageToCar(Plane &plane);
     ///
     ///  creates a passenger and adds it to the general passengers list

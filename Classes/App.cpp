@@ -2351,14 +2351,12 @@ void App::passengerCreation()
 
 void App::passengerDeletion()
 {
-    string name,passport;
-    cout << "Input the passenger specifications: \n"
-            "Name "; cin >> name;
-    cout << "\n";
+    string passport;
+    cout << "Input the passenger specifications: \n";
     cout << "Passport: "; cin >> passport;
     cout << "\n";
     if(!cinGood()) return;
-    Passenger PassengerCreated(name,passport);
+    Passenger PassengerCreated("",passport);
     for(Passenger &PassengerSearched : passengers)
     {
         if(PassengerSearched == PassengerCreated)
@@ -2473,6 +2471,7 @@ void App::updatePassenger(Passenger &passenger)
         }
     }
     passenger = PassengerCreated;
+    cout << "Passenger updated!" << endl;
 }
 
 void App::showPassengers()
@@ -2497,7 +2496,8 @@ void App::showPassengers()
         cout << "Type '0' if you do not want to specify \n";
         cout << "Name:"; cin.get(); getline(cin,name);
         cout << "Passport: "; cin >> passport; cout << endl;
-
+        if(name == "0") name = "";
+        if(passport == "0") passport = "";
         for(Passenger &PassengerCreated : passengers)
         {
             if(PassengerCreated.getName() == name || PassengerCreated.getPassport() == passport)

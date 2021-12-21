@@ -29,6 +29,9 @@ public:
     void setAirport(Airport& airport1);
     Airport getAirport() const;
     int getNumCarriages() const;
+    ///
+    /// returns a list with all the luggage from the car
+    /// \return
     list<Luggage> getLuggage() const;
     int getNumStacks() const;
     ///

@@ -74,11 +74,7 @@ bool cinGood()
         cin.clear();
         cin.ignore(INT_MAX, '\n');
         cout << endl << endl << "Invalid input! \n";
-        cout << "Type '0' to go back: ";
-        string choice;
-        cin >> choice;
-        cin.clear();
-        cin.ignore(INT_MAX, '\n');
+        wait();
         return false;
     }
     return true;

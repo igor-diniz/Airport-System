@@ -296,6 +296,13 @@ void App::readAirportsFile(){
             getline(fileToOpen,initials);
             Airport airport = Airport(name, initials);
 
+            if(fileToOpen.peek() == '\n' || fileToOpen.eof())
+            {
+                airports.push_back(airport);
+                fileToOpen.get();
+                continue;
+            }
+
             while(fileToOpen.peek() != '\n' && !fileToOpen.eof())
             {
                 //transports

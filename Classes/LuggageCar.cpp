@@ -75,6 +75,8 @@ queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
                 availability--;
                 if (availability == 0)
                 {
+                    carruagens.push_back(pilha);
+                    luggageInCar.push_back(carruagens);
                     return luggageOutCar;
                 }
                 if (luggageOutCar.empty())
@@ -85,8 +87,10 @@ queue<Luggage> LuggageCar::setLuggageInCar(queue<Luggage> &luggageOutCar)
                 }
             }
             carruagens.push_back(pilha);
+            pilha = stack <Luggage>();
         }
         luggageInCar.push_back(carruagens);
+        carruagens = list<stack<Luggage>>();
     }
     return luggageOutCar;
 }

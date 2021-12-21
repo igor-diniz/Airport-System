@@ -1,0 +1,83 @@
+1,2022/12/26,05:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Pequim,PEK,220
+
+2,2023/05/13,07:45,Aeroporto Internacional de Toquio,HND,Aeroporto Internacional de Los Angeles,LAX,200
+
+3,2022/02/14,21:15,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional OHare,ORD,200
+
+4,2022/03/13,05:55,Aeroporto Internacional Heathrow,LHR,Aeroporto Internacional Tom Jobim,GIG,250
+ALL_LUGGAGE
+7,11
+8,11
+
+5,2022/05/08,02:00,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Sao Paulo,GRU,190
+
+6,2022/05/09,01:50,Aeroporto Internacional de São Paulo,GRU,Aeroporto Internacional Tom Jobim,GIG,190
+ALL_LUGGAGE
+4,10
+5,10
+
+7,2022/06/03,16:00,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Hong Kong,HKG,210
+ALL_LUGGAGE
+19,19
+20,19
+
+8,2022/02/11,05:00,Aeroporto Internacional de Pequim,PEK,Aeroporto Internacional de Dubai,DXB,250
+ALL_LUGGAGE
+23,17
+
+9,2022/02/07,05:45,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,210
+ALL_LUGGAGE
+14,14
+
+10,2022/05/09,07:10,Aeroporto Internacional Hong Kong,HKG,Aeroporto Internacional Hartsfield-Jackson,ATL,200
+ALL_LUGGAGE
+9,2
+10,3
+11,3
+24,26
+25,27
+26,27
+27,27
+28,28
+29,28
+30,28
+31,29
+32,29
+33,29
+34,30
+35,30
+36,30
+37,30
+
+11,2022/02/04,06:00,Aeroporto Internacional de Los Angeles,LAX,Aeroporto Internacional Hartsfield-Jackson,ATL,190
+ALL_LUGGAGE
+13,4
+
+12,2023/01/10,00:45,Aeroporto Internacional de Toquio,HND,Aeroporto Internacional de Los Angeles,LAX,200
+
+13,2022/04/21,10:00,Aeroporto Internacional de Dubai,DXB,Aeroporto Internacional de Toquio,HND,210
+ALL_LUGGAGE
+16,7
+
+14,2022/07/09,00:55,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Sao Paulo,GRU,210
+ALL_LUGGAGE
+21,21
+22,21
+
+21,2022/05/14,05:00,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Los Angeles,LAX,190
+
+15,2022/07/14,15:30,Aeroporto Internacional de Toquio,HND,Aeroporto Internacional de Sao Paulo,GRU,200
+ALL_LUGGAGE
+12,5
+
+16,2022/03/14,06:25,Aeroporto Internacional Hartsfield-Jackson,ATL,Aeroporto Internacional de Pequim,PEK,210
+ALL_LUGGAGE
+15,13
+
+17,2022/12/29,05:55,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional Heathrow,LHR,220
+ALL_LUGGAGE
+1,5
+2,5
+3,5
+
+20,2022/05/05,01:50,Aeroporto Internacional Tom Jobim,GIG,Aeroporto Internacional de Sao Paulo,GRU,190

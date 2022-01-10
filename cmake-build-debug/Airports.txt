@@ -1,0 +1,84 @@
+Aeroporto Internacional Hartsfield-Jackson,ATL
+M,100,00:20
+C,1000,01:00
+A,30,00:05
+
+Aeroporto Internacional de Pequim,PEK
+M,150,00:10
+C,1000,50:00
+A,100,00:10
+M,150,00:20
+C,1000,01:30
+A,100,00:13
+
+Aeroporto Internacional de Dubai,DXB
+M,70,00:50
+C,2000,01:00
+A,30,05:15
+M,70,01:15
+C,2000,01:20
+A,30,05:06
+M,70,00:50
+C,2000,02:40
+A,30,00:22
+
+Aeroporto Internacional de Toquio,HND
+M,70,00:07
+C,700,01:00
+A,70,00:05
+M,70,00:07
+M,70,00:08
+M,70,00:09
+M,70,00:10
+M,70,00:13
+M,70,00:15
+M,70,00:20
+M,70,00:30
+
+Aeroporto Internacional de Los Angeles,LAX
+A,50,00:05
+A,50,00:10
+A,50,00:15
+A,50,00:20
+A,50,00:25
+
+Aeroporto Internacional OHare,ORD
+M,125,00:30
+M,125,00:35
+M,125,00:40
+M,125,00:45
+M,125,00:50
+M,125,01:00
+M,125,01:30
+
+Aeroporto Internacional Heathrow,LHR
+C,900,00:26
+C,900,00:55
+C,900,01:20
+C,900,01:35
+C,900,02:20
+C,900,02:59
+
+Aeroporto Internacional Hong Kong,HKG
+M,100,00:20
+C,1000,01:00
+A,30,00:05
+M,100,00:25
+C,1000,01:30
+A,30,00:10
+
+Aeroporto Internacional Tom Jobim,GIG
+M,100,00:20
+C,1000,01:00
+A,30,00:05
+M,100,00:25
+C,1000,01:30
+A,30,00:10
+
+Aeroporto Internacional de Sao Paulo,GRU
+M,100,00:20
+C,1000,01:00
+A,30,00:05
+M,100,00:25
+C,1000,01:30
+A,30,00:10

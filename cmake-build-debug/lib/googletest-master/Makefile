@@ -56,10 +56,10 @@ RM = "C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\GitHub\Airport-System
+CMAKE_SOURCE_DIR = C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\GitHub\Airport-System\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -131,14 +131,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /d D:\GitHub\Airport-System\cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\Airport-System\cmake-build-debug\CMakeFiles D:\GitHub\Airport-System\cmake-build-debug\lib\googletest-master\\CMakeFiles\progress.marks
-	cd /d D:\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\GitHub\Airport-System\cmake-build-debug\CMakeFiles 0
+	cd /d C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug\CMakeFiles C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug\lib\googletest-master\\CMakeFiles\progress.marks
+	cd /d C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /d D:\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/clean
+	cd /d C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/clean
 .PHONY : clean
 
 # The main clean target
@@ -147,17 +147,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /d D:\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/preinstall
+	cd /d C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /d D:\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/preinstall
+	cd /d C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 lib/googletest-master/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /d D:\GitHub\Airport-System\cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
+	cd /d C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -183,6 +183,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /d D:\GitHub\Airport-System\cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
+	cd /d C:\Users\drigo\OneDrive\Documentos\GitHub\Airport-System\cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -2595,9 +2595,6 @@ void App::ticketMenu() {
             case 4:
                 showTicket(*passenger);
                 break;
-            case 5:
-                checkin(*passenger);
-                break;
             default:
                 cout << "Not a possibility" << endl;
                 wait();

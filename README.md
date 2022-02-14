@@ -11,7 +11,7 @@
 
 ![](imgs/mainMenu.png)
 <p>
-  <b><i>Fig 3. Inventory Menu </i></b>
+  <b><i>Fig 1. Main Menu </i></b>
 </p>  
 
 <br>
@@ -19,7 +19,7 @@
 
 ![](imgs/usage.png)
 <p>
-  <b><i>Fig 3. Inventory Menu </i></b>
+  <b><i>Fig 3. Usage </i></b>
 </p>  
 
 <br>

@@ -10,6 +10,18 @@
 ## Mockups
 
 ![](imgs/mainMenu.png)
+<p>
+  <b><i>Fig 3. Inventory Menu </i></b>
+</p>  
+
+<br>
+<br />
 
 ![](imgs/usage.png)
+<p>
+  <b><i>Fig 3. Inventory Menu </i></b>
+</p>  
+
+<br>
+<br />
 

@@ -19,7 +19,7 @@
 
 ![](imgs/usage.png)
 <p>
-  <b><i>Fig 3. Usage </i></b>
+  <b><i>Fig 2. Usage </i></b>
 </p>  
 
 <br>

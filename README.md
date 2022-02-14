@@ -9,7 +9,7 @@
 
 ## Mockups
 
-![](mainMenu.png)
+![](imgs/mainMenu.png)
 
-![](usage.png)
+![](imgs/usage.png)
 

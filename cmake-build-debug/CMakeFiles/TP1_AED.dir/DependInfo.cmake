@@ -20,16 +20,12 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Ticket.cpp" "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/Ticket.cpp.obj"
   "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Time.cpp" "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/Time.cpp.obj"
   "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/Transport.cpp" "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/Transport.cpp.obj"
-  "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/Classes/tests.cpp" "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/cmake-build-debug/CMakeFiles/TP1_AED.dir/Classes/tests.cpp.obj"
   "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/main.cpp" "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/cmake-build-debug/CMakeFiles/TP1_AED.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../lib/googletest-master/googlemock/include"
-  "../lib/googletest-master/googletest/include"
-  "../lib/googletest-master/googletest"
   )
 
 # The set of dependency files which are needed:
@@ -38,8 +34,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/cmake-build-debug/lib/googletest-master/googletest/CMakeFiles/gtest.dir/DependInfo.cmake"
-  "C:/Users/drigo/OneDrive/Documentos/GitHub/Airport-System/cmake-build-debug/lib/googletest-master/googletest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -3,17 +3,11 @@ project(TP1_AED)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_subdirectory(lib/googletest-master)
-include_directories(lib/googletest-master/googletest/include)
-include_directories(lib/googletest-master/googlemock/include)
-
 add_executable(TP1_AED main.cpp Classes/Plane.cpp Classes/Plane.h Classes/Flight.cpp Classes/Flight.h
         Classes/Service.cpp Classes/Service.h Classes/Airport.cpp Classes/Airport.h
         Classes/Transport.cpp Classes/Transport.h Classes/Ticket.cpp Classes/Ticket.h
         Classes/Passenger.cpp Classes/Passenger.h Classes/Luggage.cpp Classes/Luggage.h
-        Classes/BST.h Classes/tests.cpp Classes/LuggageCar.cpp Classes/LuggageCar.h Classes/Date.h Classes/Date.cpp
+        Classes/BST.h Classes/LuggageCar.cpp Classes/LuggageCar.h Classes/Date.h Classes/Date.cpp
         Classes/Time.cpp Classes/Time.h Classes/App.cpp Classes/App.h)
-
-target_link_libraries(TP1_AED gtest gtest_main)
 
 #Doxygen Build have made with Doxygen Wizard
